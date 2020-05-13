@@ -1,0 +1,165 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+.header {
+  padding: 4em;
+  color: white;
+
+  &_content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    .left {
+      width: 50%;
+    }
+
+    h1 {
+      margin-bottom: 1em;
+      font-size: 3em;
+      font-weight: 700;
+    }
+
+    p {
+      margin-bottom: 1em;
+      font-size: large;
+    }
+
+    .btn-header {
+      //place-self: center;
+      @include btn($orange, 20em);
+      font-size: larger;
+    }
+
+    .btnG {
+      @include btn($green, 20em);
+
+    }
+
+
+    .header_img {
+      max-width: 50em;
+    }
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: $green;
+  padding: 2em 3em 1em 3em;
+  color: white;
+
+  &__info {
+    padding: 0em 0em 0em 1em;
+
+  }
+
+  &__serv {
+    padding-top: 2em;
+
+    .btn-footer {
+        @include btn($orange, 20em);
+        font-size: larger;
+      margin: 1em;
+
+    }
+
+    .a2 {
+      color: white;
+      font-size: 1em;
+      background-color: $lPink;
+      text-decoration: none;
+      padding: 1em 3em;
+      border-radius: 2em;
+      font-weight: 700;
+    }
+  }
+
+  &__social {
+    img {
+      width: 30%;
+    }
+  }
+}
+
+@media (max-width: 1044px) {
+  * {
+    font-size: 10px;
+  }
+  .header {
+    text-align: center;
+
+    img {
+      width: 45em;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    text-align: center;
+
+    .left {
+      min-width: 100%;
+
+    }
+
+    img {
+      width: 33em;
+    }
+  }
+  .footer {
+
+    &__serv {
+      padding-top: 0;
+    }
+
+    &__social {
+      img {
+        width: 15%;
+      }
+    }
+  }
+}
+
+@media (max-width: 360px) {
+  * {
+    font-size: 8px;
+    margin: 0;
+  }
+  .header {
+    text-align: center;
+
+    .btn-header {
+      //place-self: center;
+      @include btn($orange, 15 xem);
+      font-size: larger;
+    }
+
+    img {
+      width: 25em;
+    }
+  }
+}
+
+
+.backGreen {
+  background-color: $green;
+}
+
+.backOrange {
+  background-color: $orange;
+
+}
+
+.backRed {
+  background-color: $lPink;
+
+}
