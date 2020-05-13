@@ -1,3 +1,10 @@
+<?php
+session_start();
+require_once("connexion.php");
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,16 +46,26 @@
                 <button>Inscrivez-Vous</button>
             </form>
         </div>
+<!--        ****-->
         <div class="form-container sign-in-container">
-            <form action="#">
+            <form action="login.php" method="post" >
                 <h1>Connexion</h1>
 
-                <input type="email" placeholder="Email"/>
-                <input type="password" placeholder="Password"/>
+                <input id="email" type="email" placeholder="Email"/>
+                <input id="password" type="password" placeholder="Password"/>
                 <a href="#">Mot de passe Oubliée ?</a>
-                <button>Connexion</button>
+
+                <button type="submit" id="connect">Connexion</button>
             </form>
+            <?php
+if (isset($_GET['erreur'])){
+    $error = $_GET['erreur'];
+    if ($error==1 || $error==2)
+        echo "<p>User name or password Wrong</p>";
+}
+            ?>
         </div>
+<!--        ****-->
         <div class="overlay-container">
             <div class="overlay">
                 <div class="overlay-panel overlay-left">
@@ -101,7 +118,7 @@
 <div class="loginPopup hide">
     <div class="spec">
         <div class="inscription-form3">
-            <div class="containre-form2">
+            <div class="containre-form2 d-flex flex-column aline-items-center">
 
                 <h1>Choisi la filière</h1>
 

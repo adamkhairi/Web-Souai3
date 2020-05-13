@@ -347,13 +347,15 @@ text-align: center;
 .spec{
   position: relative;
   z-index: 99999;
+
   .inscription-form3 {
 
     background-color: white;
     position: absolute;
     z-index: 1111;
     top: 10px;
-    margin-left: 40%;
+   left: 30%;
+    right: 30%;
     padding: 80px 80px;
     border-radius: 30px;
 
@@ -363,10 +365,14 @@ text-align: center;
     }
 
     .inswerinput3 {
-      border-radius: 1.5em;
+
+      margin-bottom: .5em;
+      border-radius: 2em;
+      background-color: #F50057;
+      text-align: center;
+      width: max-content;
       //background-color: #F50057;
       //width: 300px;
-      margin-bottom: 1em;
 
       input[type="radio"] {
         -webkit-appearance: none;
@@ -381,12 +387,11 @@ text-align: center;
       label {
         color: white;
         padding: .5em 1em;
-        margin-bottom: .5em;
-        border-radius: 2em;
-        background-color: #F50057;
         width: 25vw;
+        margin-bottom: 1em;
+        border-radius: 1.5em;
         height: 6em;
-        text-align: center;
+
 
         span {
           font-size: 22px;
@@ -418,6 +423,14 @@ text-align: center;
 @media (max-width: 763px) {
   *{
     font-size: 10px;
+  }
+  .inscription-form3{
+    left: 20%;
+    right: 20%;
+    label{
+      width: 30vw;
+
+    }
   }
   .inscription-form2{
     left: 26%;
