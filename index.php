@@ -76,6 +76,7 @@ if (isset($_REQUEST['username'], $_REQUEST['prenom'], $_REQUEST['email'], $_REQU
                             <label for="fname"><i class="zmdi zmdi-account material-icons-name"></i></label>
                             <input type="text" name="username" id="fname" placeholder="Votre Nom"/>
                         </div>
+
                         <div class="form-group">
                             <label for="lname"><i class="zmdi zmdi-account material-icons-name"></i></label>
                             <input type="text" name="prenom" id="lname" placeholder="Votre Prénom"/>
@@ -85,16 +86,22 @@ if (isset($_REQUEST['username'], $_REQUEST['prenom'], $_REQUEST['email'], $_REQU
                             <label for="email"><i class="zmdi zmdi-email"></i></label>
                             <input type="email" name="email" id="email" placeholder="Votre Email"/>
                         </div>
+
+                        <div class="form-group">
+                            <label for="nScolaire"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                            <input type="text" name="nScolaire" id="nScolaire" placeholder="niveau scolaire"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="filier"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                            <input type="text" name="filier" id="filier" placeholder="Filier"/>
+                        </div>
                         <!--                        Password-->
                         <div class="form-group">
                             <label for="pass"><i class="zmdi zmdi-lock"></i></label>
                             <input type="password" name="password" id="pass" placeholder="Mot de passe"/>
                         </div>
-                        <!--                        <div class="form-group">-->
-                        <!--                            <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>-->
-                        <!--                            <input type="password" name="re_pass" id="rcon_pass"-->
-                        <!--                                   placeholder="Confirmez votre mot de passe"/>-->
-                        <!--                        </div>-->
+
 
                         <div class="form-group form-button">
                             <input type="submit" name="signup" id="signup" class="form-submit rounded-pill"
