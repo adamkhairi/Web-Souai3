@@ -1,6 +1,36 @@
 <?php
 session_start();
 require_once("connexion.php");
+//include("inscription.php");
+
+
+if (isset($_REQUEST['username'], $_REQUEST['prenom'], $_REQUEST['email'], $_REQUEST['password'])) {
+    // récupérer le nom d'utilisateur et supprimer les antislashes ajoutés par le formulaire
+    $username = stripslashes($_REQUEST['username']);
+    $username = mysqli_real_escape_string($conn, $username);
+    // récupérer le prenom et supprimer les antislashes ajoutés par le formulaire
+    $prenom = stripslashes($_REQUEST['prenom']);
+    $prenom = mysqli_real_escape_string($conn, $prenom);
+    // récupérer l'email et supprimer les antislashes ajoutés par le formulaire
+    $email = stripslashes($_REQUEST['email']);
+    $email = mysqli_real_escape_string($conn, $email);
+    // récupérer le mot de passe et supprimer les antislashes ajoutés par le formulaire
+    $password = stripslashes($_REQUEST['password']);
+    $password = mysqli_real_escape_string($conn, $password);
+    //requéte SQL + mot de passe crypté
+    $query = "INSERT into `etudiant` (`idetudiant`, `nometudiant`, `prenometudiant`, `mailetudiant`, `passwordetudiant`) VALUES ('', '" . $username . "', '" . $prenom . "', '" . $email . "', '" . hash('sha256', $password) . "')";
+    // Exécuter la requête sur la base de données
+    $res = mysqli_query($conn, $query);
+    if ($res) {
+        echo "
+        <script>
+        alert('Done');
+</script>";
+    }
+} else {
+    echo 'Tesst';
+}
+
 
 ?>
 
@@ -29,60 +59,93 @@ require_once("connexion.php");
     </a>
 </nav>
 <!--header-->
-<div class="loginPopup hide">
+<div class="registerPopup popup hide">
+    <!-- Sign up form -->
+    <section class="signup">
+        <div class="container">
+            <div id="exit">
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="signup-content">
+                <div class="signup-form">
+                    <!--                    Inscriptio-->
+                    <h2 class="form-title">Inscription</h2>
+                    <form method="POST" class="register-form">
+                        <!--                        name-->
+                        <div class="form-group">
+                            <label for="fname"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                            <input type="text" name="username" id="fname" placeholder="Votre Nom"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="lname"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                            <input type="text" name="prenom" id="lname" placeholder="Votre Prénom"/>
+                        </div>
+                        <!--                        Email-->
+                        <div class="form-group">
+                            <label for="email"><i class="zmdi zmdi-email"></i></label>
+                            <input type="email" name="email" id="email" placeholder="Votre Email"/>
+                        </div>
+                        <!--                        Password-->
+                        <div class="form-group">
+                            <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                            <input type="password" name="password" id="pass" placeholder="Mot de passe"/>
+                        </div>
+                        <!--                        <div class="form-group">-->
+                        <!--                            <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>-->
+                        <!--                            <input type="password" name="re_pass" id="rcon_pass"-->
+                        <!--                                   placeholder="Confirmez votre mot de passe"/>-->
+                        <!--                        </div>-->
 
-    <div class="container" id="container">
-        <div class="exit">
-            <i class="fas fa-times"></i>
-        </div>
-        <div class="form-container sign-up-container">
-            <form class="formm" action="#">
-                <h1>Create Account</h1>
-                <input type="text" placeholder="Nom"/>
-                <input type="text" placeholder="Prenom"/>
-                <input type="email" placeholder="Email"/>
-                <input type="password" placeholder="Mot de passe"/>
-                <input type="password" placeholder="Confirmez votre Mot de passe"/>
-                <button>Inscrivez-Vous</button>
-            </form>
-        </div>
-<!--        ****-->
-        <div class="form-container sign-in-container">
-            <form action="login.php" method="post" >
-                <h1>Connexion</h1>
-
-                <input id="email" type="email" placeholder="Email"/>
-                <input id="password" type="password" placeholder="Password"/>
-                <a href="#">Mot de passe Oubliée ?</a>
-
-                <button type="submit" id="connect">Connexion</button>
-            </form>
-            <?php
-if (isset($_GET['erreur'])){
-    $error = $_GET['erreur'];
-    if ($error==1 || $error==2)
-        echo "<p>User name or password Wrong</p>";
-}
-            ?>
-        </div>
-<!--        ****-->
-        <div class="overlay-container">
-            <div class="overlay">
-                <div class="overlay-panel overlay-left">
-                    <h1>Bienvenu !</h1>
-                    <p>Pour rester connecter enter vos information</p>
-                    <button class="ghost" id="signIn">Connection</button>
+                        <div class="form-group form-button">
+                            <input type="submit" name="signup" id="signup" class="form-submit rounded-pill"
+                                   value="Inscrivez-Vousss"/>
+                        </div>
+                    </form>
                 </div>
-                <div class="overlay-panel overlay-right">
-                    <h1>Bonjour !</h1>
-                    <p>Entrer vos informations pour continue</p>
-                    <button class="ghost" id="signUp">Sign Up</button>
+                <div class="signup-image">
+                    <figure><img src="src/img/signup-image.jpg" alt="sing up image"></figure>
+                    <a href="#" class="signup-image-link">Vous êtes déjà un member !</a>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 </div>
 
+<div class="loginPopup popup hide">
+
+    <!-- Sing in  Form -->
+    <section class="sign-in">
+        <div class="container">
+            <div class="signin-content">
+                <div class="signin-image">
+                    <figure><img src="src/img/signin-image.jpg" alt="sing up image"></figure>
+                    <a href="#" class="signup-image-link">Create an account</a>
+                </div>
+
+                <div class="signin-form">
+                    <h2 class="form-title">Se Connecter</h2>
+                    <form method="POST" class="register-form" id="login-form">
+                        <div class="form-group">
+                            <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                            <input type="email" name="your_name" id="your_email" placeholder="Votre Email"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
+                            <input type="password" name="your_pass" id="your_pass" placeholder="Mot de passe"/>
+                        </div>
+
+                        <div class="form-group form-button">
+                            <input type="submit" name="signin" id="signin" class="form-submit" value="Connexion"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+</div>
 <div class="loginPopup hide">
     <div class="niveau">
         <div class="inscription-form2 hiding ">
@@ -98,7 +161,7 @@ if (isset($_GET['erreur'])){
 
                 <div class="inswerinput ">
                     <input type="radio" name="choix" id="1erebac">
-                    <label  for="1erebac" class="bgclor2 widthlabel">
+                    <label for="1erebac" class="bgclor2 widthlabel">
                         <span>1ere année baccalauréat</span> </label>
                 </div>
 
@@ -109,7 +172,9 @@ if (isset($_GET['erreur'])){
                 </div>
 
 
-                <div><a href="#"><button id="btn-next">Next</button></a></div>
+                <div><a href="#">
+                        <button id="btn-next">Next</button>
+                    </a></div>
 
             </div>
         </div>
@@ -123,7 +188,7 @@ if (isset($_GET['erreur'])){
                 <h1>Choisi la filière</h1>
 
                 <div class="inswerinput3">
-                    <input type="radio"  id="sciephyi" name="inpo">
+                    <input type="radio" id="sciephyi" name="inpo">
                     <label for="sciephyi">
                         <span>Sciences phyisique</span>
                     </label>
@@ -138,14 +203,14 @@ if (isset($_GET['erreur'])){
 
                 <div class="inswerinput3">
                     <input type="radio" id="sciemathA" name="inpo">
-                    <label for="sciemathA" >
+                    <label for="sciemathA">
                         <span>Sciences mathématiques A  </span>
                     </label>
                 </div>
 
                 <div class="inswerinput3">
                     <input type="radio" id="sciemathB" name="inpo">
-                    <label for="sciemathB" >
+                    <label for="sciemathB">
                         <span>Sciences mathématiques B  </span>
                     </label>
                 </div>
@@ -158,7 +223,9 @@ if (isset($_GET['erreur'])){
                 </div>
 
 
-                <div><a href="#"><button id="btn-next">Next</button></a></div>
+                <div><a href="#">
+                        <button id="btn-next">Next</button>
+                    </a></div>
 
             </div>
         </div>
@@ -175,8 +242,8 @@ if (isset($_GET['erreur'])){
                         vous pouvez avoir un professeur qui peut vous
                         assurer des cours de soutien à distance.</p>
                     <button id="login" class="btn btn-header" data-toggle="modal" data-target="#exampleModalCentertype="
-                            button
-                    ">Connectez-vous</button>
+                    >Connectez-vous
+                    </button>
                 </div>
                 <div class="">
 
@@ -197,7 +264,7 @@ if (isset($_GET['erreur'])){
                     <p>C’est simple, inscrivez-vous en remplissant ce
                         formulaire d’inscription, poster la problématique
                         et réserver vos places.</p>
-                    <button id="" class="btn btn-header btnG" type="button">Inscrivez</button>
+                    <button id="register" class="btn btn-header btnG" type="button">Inscrivez-vous</button>
                 </div>
             </div>
         </div>
