@@ -2,36 +2,14 @@
 // session_start();
 require("connexion.php");
 //include("inscription.php");
-
+include("navbar.php");
 
 
 
 ?>
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <!--    Bootstrap CSS-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="src/css/main.css"/>
-    <script src="https://kit.fontawesome.com/8ac7442e81.js" crossorigin="anonymous"></script>
-    <title>Document</title>
-</head>
-<body>
-<!--  Navbar-->
-<nav class="navbar navbar-light backGreen">
-    <a class="navbar-brand" href="#">
-        <img src="src/img/logo-02.png" width="180" class="d-inline-block align-top" alt="">
-    </a>
-    <a href="" class="navbar_Name">
-        $studentName
-        <img src="src/img/account.png" alt="">
-    </a>
-</nav>
+
 <!--header-->
 <div class="registerPopup popup hide">
     <!-- Sign up form -->
@@ -92,11 +70,59 @@ require("connexion.php");
     </section>
 </div>
 
-<div class="loginPopup popup hide">
+<div id="student"  class="loginPopup popup hide">
 
-    <!-- Sing in  Form -->
+    <!-- Sing in  Form for student -->
     <section class="sign-in">
         <div class="container">
+        <div id="exit1">
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="signin-content">
+                <div class="signin-image">
+                    <figure><img src="src/img/signin-image.jpg" alt="sing up image"></figure>
+                    <a href="#" class="signup-image-link">Create an account</a>
+                </div>
+
+                <div class="signin-form">
+                    <h2 class="form-title">Se Connecter</h2>
+                    <form method="POST" action="login.php" class="register-form" id="login-form">
+                        <div class="form-group">
+                            <label for="your_email"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                            <input type="email" name="your_email" id="your_email" placeholder="Votre Email"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
+                            <input type="password" name="your_pass" id="your_pass" placeholder="Mot de passe"/>
+                        </div>
+
+                        <div class="form-group form-button">
+                            <input type="submit" name="signin" id="signin" class="form-submit" value="Connexion"/>
+                        </div>
+                        <?php 
+                              if(isset($_GET['erreur'])){
+                                $err = $_GET['erreur'];
+                                if($err==1 || $err==2)
+                                    echo "<script>
+                                    alert('Utilisateur ou mot de passe incorrect')</script>";
+                            }
+            
+                        ?>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div id="teacher"  class="loginPopup popup hide">
+
+    <!-- Sing in  Form for teacher -->
+    <section class="sign-in">
+        <div class="container">
+        <div id="exit2">
+                <i class="fas fa-times"></i>
+            </div>
             <div class="signin-content">
                 <div class="signin-image">
                     <figure><img src="src/img/signin-image.jpg" alt="sing up image"></figure>
@@ -123,10 +149,9 @@ require("connexion.php");
             </div>
         </div>
     </section>
-
-
-
 </div>
+
+
 <div class="loginPopup hide">
     <div class="niveau">
         <div class="inscription-form2 hiding ">
@@ -222,10 +247,10 @@ require("connexion.php");
                         nous avons la solution ! Avec les cours en ligne de '???',
                         vous pouvez avoir un professeur qui peut vous
                         assurer des cours de soutien à distance.</p>
-                    <button id="login" class="btn btn-header" data-toggle="modal" data-target="#exampleModalCentertype="
+                    <button id="etud" class="btn btn-header" data-toggle="modal" data-target="#exampleModalCentertype="
                     >Connectez-vous (Etudient)
                     </button>
-                    <button id="login" class="btn btn-header" data-toggle="modal" data-target="#exampleModalCentertype="
+                    <button id="prof" class="btn btn-header" data-toggle="modal" data-target="#exampleModalCentertype="
                     >Connectez-vous (Profiseur)
                     </button>
                 </div>

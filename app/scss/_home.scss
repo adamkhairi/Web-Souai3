@@ -31,12 +31,12 @@
 
     .btn-header {
       //place-self: center;
-      @include btn($orange, 20em);
+      @include btn($orange, 17em);
       font-size: larger;
     }
 
     .btnG {
-      @include btn($green, 20em);
+      @include btn($green, 17em);
 
     }
 

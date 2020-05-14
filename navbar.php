@@ -1,9 +1,7 @@
 <?php
 
-require_once("connexion.php");
+require("connexion.php");
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,3 +28,7 @@ require_once("connexion.php");
         </div>
     </a>
 </nav>
+
+
+
+

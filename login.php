@@ -1,90 +1,45 @@
-
-//session_start();
-//require_once("connexion.php");
-//
-//
-//if ($_SERVER["REQUEST_METHOD"] == "POST") {
-//    // username and password sent from form
-//
-//    $myusername = mysqli_real_escape_string($dbname, $_POST['email']);
-//    $mypassword = mysqli_real_escape_string($dbname, $_POST['password']);
-//
-//    $sql = "SELECT mailetudiant.etudiant,
-//    passwordetudiant.etudiant FROM etudiant
-//    WHERE mailetudiant == '$myusername' and passwordetudiant == '$mypassword'";
-//    $result = mysqli_query($dbname, $sql);
-//    $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-//    $active = $row['active'];
-//
-//    $count = mysqli_num_rows($result);
-//
-//    // If result matched $myusername and $mypassword, table row must be 1 row
-//
-//    if ($count == 1) {
-//        //user is etudiant
-//        session_register("myusername");
-//        $_SESSION['login_user'] = $myusername;
-//
-//        header("location: etudiant.html");
-//        die();
-//    } else {
-//        $sql = "SELECT mailbenevole.benevole, passwordbenevole.benevole FROM benevole
-//        WHERE mailbenevole == '$myusername' and passwordbenevole == '$mypassword'";
-//        $result = mysqli_query($dbname, $sql);
-//        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-//        $active = $row['active'];
-//        $count = mysqli_num_rows($result);
-//        if ($count == 1) {
-//            //user is benevole
-//            session_register("myusername");
-//            $_SESSION['login_user'] = $myusername;
-//            header("location: benevole.html");
-//            die();
-//        } else {
-//            //login or password incorrect
-//            $error = "Your Login Name or Password is invalid";
-//        }
-//    }
-//}
-//
-
-
-
-<!DOCTYPE html>
-<html>
-<head>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
 <?php
-require('connexion.php');
 session_start();
+if(isset($_POST['your_email']) && isset($_POST['your_pass']))
+{
+    // connexion à la base de données
+    $db_username = 'root';
+    $db_password = 'ABDO@RAJA@01';
+    $db_name     = 'sway3';
+    $db_host     = 'localhost';
+    $db = mysqli_connect($db_host, $db_username, $db_password,$db_name)
+           or die('could not connect to database');
 
-if (isset($_POST['mail'])){
-  $mail = stripslashes($_REQUEST['mail']);
-  $mail = mysqli_real_escape_string($conn, $mail);
-  $password = stripslashes($_REQUEST['password']);
-  $password = mysqli_real_escape_string($conn, $password);
-  $query = "SELECT mailbenevole, passwordbenevole FROM 'benevole' WHERE mailbenevole='$mail' AND passwordbenevole='".hash('sha256', $password)."'";
-  $result = mysqli_query($conn,$query) or die(mysql_error());
-  $rows = mysqli_num_rows($result);
-  if($rows==1){
-      $_SESSION['mail'] = $mail;
-      header("Location: index.php");
-  }else{
-    $message = "Le nom d'utilisateur ou le mot de passe est incorrect.";
-  }
+    // on applique les deux fonctions mysqli_real_escape_string et htmlspecialchars
+    // pour éliminer toute attaque de type injection SQL et XSS
+    $your_email = mysqli_real_escape_string($db,htmlspecialchars($_POST['your_email'])); 
+    $password = mysqli_real_escape_string($db,htmlspecialchars($_POST['your_pass']));
+
+    if($your_email !== "" && $password !== "")
+    {
+        $requete = "SELECT count(*) FROM etudiant where 
+              mailetudiant = '".$your_email."' and passwordetudiant = '" . hash('sha256', $password) . "' ";
+        $exec_requete = mysqli_query($db,$requete);
+        $reponse      = mysqli_fetch_array($exec_requete);
+        $count = $reponse['count(*)'];
+        if($count!=0) // nom d'utilisateur et mot de passe correctes
+        {
+           $_SESSION['your_email'] = $your_email;
+           header('Location: Student.php');
+        }
+        else
+        {
+           header('Location: index.php?erreur=1'); // utilisateur ou mot de passe incorrect
+        }
+    }
+    else
+    {
+       header('Location: index.php?erreur=2'); // utilisateur ou mot de passe vide
+    }
 }
+else
+{
+   header('Location: index.php');
+}
+mysqli_close($db); // fermer la connexion
 ?>
-<form class="box" action="" method="post" name="login">
-<h1 class="box-title">Connexion</h1>
-<input type="text" class="box-input" name="mail" placeholder="Adresse mail">
-<input type="password" class="box-input" name="password" placeholder="Mot de passe">
-<input type="submit" value="Connexion " name="submit" class="box-button">
-<p class="box-register">Vous êtes nouveau ici? <a href="register.php">S'inscrire</a></p>
-<?php if (! empty($message)) { ?>
-    <p class="errorMessage"><?php echo $message; ?></p>
-<?php } ?>
-</form>
-</body>
-</html>
