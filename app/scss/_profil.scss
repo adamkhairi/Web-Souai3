@@ -19,7 +19,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: .5em;
+    padding: 15px;
     background-color: $colorV;
 
     a {
@@ -51,7 +51,7 @@ nav {
 .chart {
     .chart_title {
         h2 {
-            font-weight: 500;
+            font-weight: 400;
             width: 347px;
             border-bottom: 3px solid $colorOr;
             margin-top: -20px;
@@ -141,10 +141,10 @@ nav {
 
 
 
-.container {
+.containers {
     margin: 2em auto;
     max-width: 71vw;
-    box-shadow: 6px 7px 19px 3px rgba(149, 152, 154, 0.554);
+    box-shadow: 0px 0px 11px 0px rgba(149, 152, 154, 0.554);
     padding: 2em;
     border-radius: .3em;
 
@@ -154,8 +154,14 @@ nav {
             justify-content: space-between;
             align-items: center;
 
-            .pen_img {
+            .pen_img
+            {
                 width: 18px;
+            }
+            .pen_for_modify{
+                i{
+                    font-size: 1.2em;
+                }
             }
 
             .profil_img {
@@ -163,6 +169,7 @@ nav {
                 height: 60px;
                 border-radius: 50%;
                 object-fit: cover;
+
             }
 
             .name-img {
@@ -214,6 +221,10 @@ nav {
             align-items: center;
             flex-wrap: wrap;
             margin: 8px;
+            padding: 6px;
+            h4{
+                border-bottom: 3px solid $colorOr;
+            }
         }
 
         label {
@@ -223,12 +234,14 @@ nav {
     }
 
 }
-
+.bBottom{
+    border-bottom: 2px solid $colorOr;
+    //margin-top: -20px;
+}
 .historique {
-    font-weight: 500;
-    width: 123px;
-    border-bottom: 3px solid $colorOr;
-    margin-top: -20px;
+    font-weight: 400;
+    //width: ;
+
 
     @media only screen and (max-width :475px) {
         font-size: 18px;
@@ -262,7 +275,7 @@ nav {
 
 
     iframe {
-        box-shadow: 6px 7px 19px 3px rgba(149, 152, 154, 0.554);
+        box-shadow: 0px 0px 11px 0px rgba(149, 152, 154, 0.554);
         width: 74vw;
         font-size: large;
         padding: 10px;
@@ -283,13 +296,14 @@ nav {
     justify-content: center;
     font-size: medium;
     box-shadow: 6px 7px 19px 3px rgba(149, 152, 154, 0.554);
+    font-size: large;
 
 }
 
 .pop-up-add_events {
     width: 100%;
-    height: 215%;
-    position: absolute;
+    height: 100%;
+    position: fixed;
     top: 0;
     background-color: $colorB;
     z-index: 1111;
@@ -442,14 +456,11 @@ nav {
         font-size: medium;
         font-weight: 600;
     }
-
-
 }
 
 footer {
     background-color: $colorV;
     padding: 10px;
-    margin-top: 26px;
 
     .Copyright {
         margin-left: 20px;
@@ -540,6 +551,127 @@ footer {
                     width: 15%;
                 }
             }
+        }
+    }
+}
+
+
+
+
+.notif{
+    .show{
+        display: none;
+    }
+    .ntif_icon{
+        width: 70px;
+        height: 70px;
+        position: fixed;
+        right: 30px;
+        bottom:30px;
+        background-color: $colorOr;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0px 0px 11px 0px rgba(149, 152, 154, 0.554);
+        z-index: 1;
+        @media only screen and (max-width :500px){
+            right: 20px;
+            width: 70px;
+            height: 70px;
+        }
+        svg{
+            height: 35px;
+            
+        }
+
+    }
+    .notification{
+        position: fixed;
+        width: 370px;
+        height: 500px;
+        background-color: $colorW;
+        box-shadow: 0px 0px 11px 0px rgba(149, 152, 154, 0.554);
+        border-radius: 10px;
+        bottom: 130px;
+        right: 80px;
+        box-sizing: border-box;
+        overflow: auto;
+        z-index: 1;
+       
+        @media only screen and (max-width :500px){
+            right: 20px;
+            width: 340px;
+        }
+        @media only screen and (max-width :365px){
+            right: 10px;
+        }
+        .message{
+            margin: 10px auto;
+            width: 95%;
+            padding: 2px;
+            border-radius: 5px;
+            transition: ease-in-out .4s;
+            // box-shadow: 0px 0px 11px 0px rgba(149, 152, 154, 0.554);
+            &:hover{
+                box-shadow: 0px 0px 11px 0px rgba(149, 152, 154, 0.554);
+            }
+            span{
+                color: rgb(90, 90, 90);
+            }
+
+         
+        }
+        svg{
+            width: 30px;
+            
+        }
+        .nofit_message{
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            box-sizing: border-box;
+            overflow: hidden;
+            .nofit_message_A{
+                margin-left: 10px;
+            }
+        }
+        .notif_name{
+            text-align: center;
+            background-color: $colorOr;
+            height: auto;
+            padding: 1px;
+            box-shadow: 0px 0px 11px 0px rgba(149, 152, 154, 0.554);
+            h3{
+                color: $colorW;
+            }
+        }
+    }
+    .valid{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        button{
+            height: 30px;
+            width: 60px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: medium;
+            color: white;
+           border: none;
+           
+           &:hover{
+            box-shadow: 0 0 8Px 0 rgba(149, 152, 154, 0.554);
+           }
+          
+        }
+        .OUI{
+            background-color: $colorV;
+            // border: 1px solid $colorV;
+        }
+        .NON{
+            background-color: $colorR;
+            border: 1px solid $colorR;
         }
     }
 }

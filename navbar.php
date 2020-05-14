@@ -1,6 +1,8 @@
 <?php
+//session_start()
+//require("connexion.php");
+//$user = $_SESSION['your_email'];
 
-require("connexion.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,14 +18,24 @@ require("connexion.php");
 </head>
 <body>
 <nav>
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="index.php">
         <img src="src/img/logo-02.png" width="150" class="d-inline-block align-top" alt="">
     </a>
 
     <a class="inscr" href="#">
         <div>
-            <h4>Name of student</h4>
-            <img src="src/img/account.png" class="d-inline-block align-top" alt="">
+
+<!--            --><?php
+//            if ($_SESSION['your_email'] !== "") {
+//                $user = $_SESSION['your_email'];
+//                // afficher un message
+//                echo "
+//            <div class='container'>
+//                <label>E-mail</label>
+//                <h4>$user</h4>
+//            </div>
+//            ";
+//            } ?>
 
         </div>
     </a>

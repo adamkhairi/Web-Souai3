@@ -19,7 +19,7 @@
 // Informations d'identification
 define('DB_SERVER', 'localhost');
 define('DB_USERNAME', 'root');
-define('DB_PASSWORD', 'ABDO@RAJA@01');
+define('DB_PASSWORD', '');
 define('DB_NAME', 'sway3');
 
 // Connexion à la base de données MySQL

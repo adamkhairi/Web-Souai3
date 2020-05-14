@@ -1,13 +1,18 @@
 // Popups LOGIN
 const loginBtn = document.querySelector('#login');
 const loginPopup = document.querySelector('.popup');
-let student = document.getElementById("student");
-let etud = document.getElementById("etud");
+let student ;
+
 let teacher = document.getElementById("teacher");
 let prof = document.getElementById("prof");
-etud.addEventListener("click" , () => {
+
+let logingEtudiant;
+logingEtudiant = () => {
+	student = document.getElementById("student");
 	student.classList.remove('hide');
-})
+	
+};
+let loginprof
 prof.addEventListener("click" , () => {
 	teacher.classList.remove('hide');
 })
@@ -24,6 +29,7 @@ exit.addEventListener('click',function () {
 });
 let exit1 = document.querySelector('#exit1');
 exit1.addEventListener('click',function () {
+	student = document.getElementById("student");
 	student.classList.add('hide');
 	// registerPop.classList.add('hide');
 });
@@ -36,6 +42,15 @@ exit2.addEventListener('click',function () {
 	// registerPop.classList.add('hide');
 });
 // }
+
+// *****Notification
+
+let notification = document.getElementById("notification");
+let notification_alert = document.getElementById("notification_alert");
+notification.addEventListener('click' , () => {
+	// notification_alert.style.display = 'block';
+	notification_alert.classList.toggle('show');
+})
 
 
 // Popups register

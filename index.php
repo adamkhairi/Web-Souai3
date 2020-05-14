@@ -1,14 +1,9 @@
 <?php
-// session_start();
+ session_start();
 require("connexion.php");
-//include("inscription.php");
 include("navbar.php");
 
-
-
 ?>
-
-
 
 <!--header-->
 <div class="registerPopup popup hide">
@@ -247,7 +242,7 @@ include("navbar.php");
                         nous avons la solution ! Avec les cours en ligne de '???',
                         vous pouvez avoir un professeur qui peut vous
                         assurer des cours de soutien à distance.</p>
-                    <button id="etud" class="btn btn-header" data-toggle="modal" data-target="#exampleModalCentertype="
+                    <button id="etud" onclick="logingEtudiant()" class="btn btn-header" data-toggle="modal" data-target="#exampleModalCentertype="
                     >Connectez-vous (Etudient)
                     </button>
                     <button id="prof" class="btn btn-header" data-toggle="modal" data-target="#exampleModalCentertype="
@@ -288,7 +283,6 @@ include("navbar.php");
                     <button id="" class="btnG btn btn-header" type="button">Voir des vidéos</button>
                 </div>
                 <div class="">
-
                     <img class="header_img" src="src/img/thirdimg.png" alt="">
                 </div>
             </div>
@@ -296,18 +290,5 @@ include("navbar.php");
     </section>
 </main>
 <!--Footer-->
-
-
-<!--  Bootstrap JS-->
-<script crossorigin="anonymous"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
-<script crossorigin="anonymous"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-<script crossorigin="anonymous"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-<script src="src/js/general.js"></script>
-</body>
-</html>
+<?php
+include "footer.php"?>
