@@ -240,11 +240,12 @@ include("navbar.php");
                     <div class="left d-flex flex-column justify-content-center">
                         <h1>Les bons Profs font des bons élèves </h1>
                         <p>Vous trouvez des difficultés au niveau des cours ?
-                            nous avons la solution ! Avec les cours en ligne de '???',
+                            nous avons la solution ! Avec les cours en ligne de <span>Sway3</span>,
                             vous pouvez avoir un professeur qui peut vous
                             assurer des cours de soutien à distance.</p>
-
-                        <button id="etud" onclick="logingEtudiant()" class="btn btn-header"
+<div class="btn_for_login">
+    
+<button id="etud" onclick="logingEtudiant()" class="btn btn-header"
                                 data-target="#exampleModalCentertype="
                         >Connectez-vous (Etudient)
                         </button>
@@ -253,6 +254,7 @@ include("navbar.php");
                                 data-target="#exampleModalCentertype="
                         >Connectez-vous (Professeur)
                         </button>
+</div>
                     </div>
                     <div class="">
 

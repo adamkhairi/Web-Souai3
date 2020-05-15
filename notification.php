@@ -8,11 +8,11 @@ if (!empty($_SESSION['lastName'])) {
     $lastname = $_SESSION['lastName'];
     // afficher un message
     echo
-    "<h2 class='h4-w'>Bonjour 
+    "<h2 class='notif_name_h2'>Bonjour 
             $lastname
             </h2>";
 } else {
-    echo "<h4 class='h4-w'>Bonjour</h4>";
+    echo "<h2 class='notif_name_h2'>Bonjour</h2>";
 }
 
 ?>

@@ -1,11 +1,13 @@
 @mixin btn($color,$width) {
   color: white;
-  padding: 1em;
-  margin: 1em 0 ;
+  padding: 1.1em;
+  margin: 1.2em auto ;
   border-radius: 5em;
   background-color: $color;
   width: $width;
   height: 4em;
+  border: none;
+
 }
 @mixin input($brColor,$width){
   background-color: white;

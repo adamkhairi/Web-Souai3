@@ -12,7 +12,7 @@
   &_content {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: wrap-reverse;
     justify-content: space-around;
 
     .left {
@@ -23,17 +23,31 @@
       margin-bottom: 1em;
       font-size: 3em;
       font-weight: 700;
+      margin-top: 20px;
     }
 
     p {
       margin-bottom: 1em;
+      font-size: medium;
+      font-weight: 600;
+    }
+    .btn_for_login{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    span{
+      border-bottom: 3px solid $lOrange ;
       font-size: large;
+      font-weight: 600;
     }
 
     .btn-header {
       //place-self: center;
-      @include btn($orange, 17em);
-      font-size: larger;
+      @include btn($orange, 18em);
+      font-size: medium;
+      font-weight: 600;
+      margin-left: 20px;
     }
 
     .btnG {
@@ -90,6 +104,11 @@
       //place-self: center;
       @include btn($orange, 15 xem);
       font-size: larger;
+
+    }
+    .btnG {
+      @include btn($green, 17em);
+
     }
 
     img {

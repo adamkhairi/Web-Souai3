@@ -88,7 +88,7 @@ if (!empty($_SESSION['userCours']) && !empty($_SESSION['mail'])) {
 
         echo "
 
-        <h3 class=\"activité\"> " . $_SESSION['cours'] . "  </h3>
+        <h5 class=\"activité\"> " . $_SESSION['cours'] . "  </h5> 
 
      ";
     };
@@ -96,9 +96,9 @@ if (!empty($_SESSION['userCours']) && !empty($_SESSION['mail'])) {
 
 } else {
     echo "
-<div class=\"containers\">
-    <h3 class=\"activité\">aucun activité</h3>
-</div>
+
+    <h5 class=\"activité\">aucun activité</h5></div>
+
 ";
 }
 
