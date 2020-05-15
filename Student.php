@@ -77,9 +77,9 @@ include "notification.php"
                     <select name="matiere" id="matiere">
                         <option value="math">Mathématique</option>
                         <option value="svt">Sciences de la vie et de la Terre</option>
-                        <option value="philos">Philosophique</option>
-                        <option value="fr">Physique Chimie</option>
-                        <option value="phys">Anglais</option>
+                        <!-- <option value="philos">Philosophique</option> -->
+                        <option value="pc">Physique Chimie</option>
+                        <!-- <option value="an">Anglais</option> -->
                     </select>
                 </div>
                 <div>

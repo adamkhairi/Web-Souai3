@@ -39,12 +39,66 @@ let cours_for_math = `    <option value="1">Continuité d'une fonction numériqu
 <option value="13">Geométrie de l’espace Produit scalaire et applications</option>
 <option value="14">Fonctions exponentielles</option>
 </optgroup>`;
+let cours_for_pc = `
+<optgroup label="PHYSIQUE">
+    <optgroup label=" Les ondes">
+        <option value="1">Ondes progressives</option>
+        <option value="2">Ondes progressives périodiques</option>
+        <option value="3">Propagation d'une onde lumineuse</option>
+    </optgroup>
+    <optgroup label="Les transformations nucléaires">
+        <option value="4">Décroissance radioactive</option>
+        <option value="5">Noyau-masse et énergie</option>
+    </optgroup>
+    <optgroup label="  L’électricité">
+        <option value="6">Dipôle RC</option>
+        <option value="7">Dipôle RL</option>
+        <option value="8">Oscillations libres dans un circuit RLC série</option>
+        <option value="9">les ondes électromagnétiques-transmission d’informations</option>
+    </optgroup>
+    <optgroup label=" La mécanique">
+        <option value="10">Les Lois de Newton</option>
+        <option value="11">Applications de Lois de Newton: Chute verticale</option>
+        <option value="12">La relation quantitative entre le total des moments et l'accélération angulaire</option>
+        <option value="13">Systèmes oscillants</option>
+        <option value="14">Aspects énergétiques</option>
+        <option value="15">Applications de Lois de Newton: mouvements plans </option>
+        <option value="16">Atome et mécanique de Newton</option>
+    </optgroup>
+</optgroup>
+<optgroup label="CHIMIE">
+    <optgroup label=" Transformations rapides et transformations lentes d'un groupe chimique">
+        <option value="17">Transformations rapides et transformations lentes</option>
+        <option value="18">Suivi temporel d'une transformation chimique - Vitesse de réaction</option>                         
+    </optgroup>
+    <optgroup label=" Les transformations non totales d'un système chimiques">
+        <option value="19">Transformations chimiques s'effectuant dans les deux sens</option>
+        <option value="20">Etat d'équilibre d'un système chimique</option>                         
+        <option value="21">Transformations liées à des réactions acido - basiques dans une solution aqueuse</option>                         
+    </optgroup>
+    <optgroup label="Sens d'évolution d'un système chimique">
+        <option value="22">Evolution spontanée d'un système chimique</option>
+        <option value="23">Transformations spontanées dans les piles et récupération d'énergie</option>                         
+        <option value="24">Exemples de transformations forcées</option>                         
+    </optgroup>
+    <optgroup label=" Comment contrôler l'évolution des systèmes chimiques">
+        <option value="25">Réactions d'estérification et d'hydrolyse</option>
+        <option value="26">Contrôle de l'évolution des groupes chimiques depuis la modification du réactif ou depuis l'autocatalytique</option>                                                
+    </optgroup>
+       
+</optgroup>`
+
+
+
 function show_matiers(){
     if(The_matiers.value === "math"){
         cours.innerHTML = cours_for_math;
 
     }else if(The_matiers.value === "svt"){
         cours.innerHTML = cours_for_SVT;
+
+    }else if(The_matiers.value == "pc"){
+        cours.innerHTML = cours_for_pc;
 
     }
 }
