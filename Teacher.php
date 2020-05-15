@@ -74,23 +74,34 @@ include('navbar.php');
             <div class="pop-up-add_event_matairs">
             <div>
                     <!-- Matiers -->
-                    <select name="matiere" id="Matiers">
+                    <select name="matiere" id="matiere">
                         <option value="math">Mathématique</option>
                         <option value="svt">Sciences de la vie et de la Terre</option>
-                        <option value="philos">Philosophique</option>
-                        <option value="fr">Français</option>
-                        <option value="phys">Physique</option>
+                        <!-- <option value="philos">Philosophique</option> -->
+                        <option value="pc">Physique Chimie</option>
+                        <!-- <option value="an">Anglais</option> -->
                     </select>
                 </div>
                 <div>
                     <!-- Cours -->
-                    <select class="hour2" name="Matiers" id="Matier">
-                        <option value="#">Matiers 1</option>
-                        <option value="#">Matiers 1</option>
-                        <option value="#">Matiers 1</option>
-                        <option value="#">Matiers 1</option>
-                        <option value="#">Matiers 1</option>
-                        <option value="#">Matiers 1</option>
+                    <select class="hour2" name="cours" id="cours">
+                        <optgroup label="Analyse">
+                        <option value="1">Continuité d'une fonction numérique</option>
+                        <option value="2">Dérivabilité d'une fonction, fonctions primitives</option>
+                        <option value="3">Etude des fonctions</option>
+                        <option value="4">Fonctions logarithmiques</option>
+                        <option value="5">Calcul intégral</option>
+                        <option value="7">Equations différentielles</option>
+                        <option value="8">Les suites numériques</option>
+                        <option value="9">Fonctions exponentielles</option>
+                        </optgroup>
+                        <optgroup label="Algèbre">
+                        <option value="10">Les nombres complexes 1</option>
+                        <option value="11">Les nombres complexes 2</option>
+                        <option value="12">Calcul des Probabilités</option>
+                        <option value="13">Geométrie de l’espace Produit scalaire et applications</option>
+                        <option value="14">Fonctions exponentielles</option>
+                        </optgroup>
                     </select>
                 </div>
             </div>
@@ -113,6 +124,7 @@ include('navbar.php');
     </div>
 
 
+    <script src="src/js/student.js" ></script>
     <?php
 include 'footer.php';
 ?>
