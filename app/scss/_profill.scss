@@ -333,11 +333,14 @@ nav {
             height: 50px;
             border-radius: 5px;
             border: 1px solid black;
+            text-align: center;
             font-weight: 500;
             font-size: medium;
             margin-bottom: 10px;
             font-family: 'Poppins', sans-serif;
-            // background-color: rgba(0, 0, 0, 0.164);
+            padding-left: 5px;
+    
+ 
             
         }
 
@@ -750,7 +753,7 @@ footer {
         
 
         select {
-            width: 260px;
+            width: 300px;
             height: 50px;
             border-radius: 5px;
             border: 1px solid $colorOr;
@@ -759,6 +762,7 @@ footer {
             margin-bottom: 10px;
             text-align: center;
             font-family: 'Poppins', sans-serif;
+            // padding-left: 10px;
             @media only screen and (max-width :400px){
                 width: 220px;
             }

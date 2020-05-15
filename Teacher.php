@@ -72,15 +72,14 @@ include('navbar.php');
             </div>
 
             <div class="pop-up-add_event_matairs">
-                <div>
+            <div>
                     <!-- Matiers -->
-                    <select name="Matiers" id="Matiers">
-                        <option value="#">Matiers 1</option>
-                        <option value="#">Matiers 1</option>
-                        <option value="#">Matiers 1</option>
-                        <option value="#">Matiers 1</option>
-                        <option value="#">Matiers 1</option>
-                        <option value="#">Matiers 1</option>
+                    <select name="matiere" id="Matiers">
+                        <option value="math">Mathématique</option>
+                        <option value="svt">Sciences de la vie et de la Terre</option>
+                        <option value="philos">Philosophique</option>
+                        <option value="fr">Français</option>
+                        <option value="phys">Physique</option>
                     </select>
                 </div>
                 <div>
