@@ -1,5 +1,16 @@
 let The_matiers = document.getElementById("matiere");
 let cours = document.getElementById("cours");
+let School_level = document.getElementById("nvscolaire");
+
+let lesMatair_de_1erBac = `
+<option value="Ar">Langue arabe</option>
+<option value="fr">1ère langue étrangère</option>
+<option value="isla">Education islamique</option>
+<option value="hg">Histoire géographie</option>`
+let lesMatair_de_2EmeBac = ` <option value="math">Mathématique</option>
+<option value="svt">Sciences de la vie et de la Terre</option>
+
+<option value="pc">Physique Chimie</option>`
 let cours_for_SVT = `<optgroup label="Consommation de la matière organique et flux de l’énergie">
 <option value="1">Réactions responsables de libération de l’énergie de la matière organique au niveau cellulaire</option>
  <option value="2">Le rôle du muscle squelettique strié dans la conversion d'énergie</option>
@@ -87,6 +98,26 @@ let cours_for_pc = `
     </optgroup>
        
 </optgroup>`
+let cours_for_hg = `    <optgroup label="Histoire">
+<option value="1">Les transformations économiques du monde capitaliste</option>
+<option value="2">Présentation générale pour la matière d'Histoire</option>
+<option value="3">Rivalité Impérialiste</option>
+<option value="4">la vigilance intellectuelle dans l'orient arabe</option>
+</optgroup>
+<optgroup label="Géographie">
+<option value="10">Concept de développement, la multiplicité des approches, les grandes divisions du monde</option>
+<option value="11">La zone marocaine, les ressources naturelles et humaines</option>
+<option value="12">Les grands choix de la politique de préparation du territoire national</option>
+<option value="13">Configuration urbaine et rurale, la crise de la ville et de la campagne et les formes d'intervention</option>
+</optgroup>`
+
+function School_levels(){
+    if(School_level.value === "1bac"){
+        The_matiers.innerHTML = lesMatair_de_1erBac
+    }else if(School_level.value === "2bac"){
+        The_matiers.innerHTML = lesMatair_de_2EmeBac;
+    }
+}
 
 
 
@@ -100,6 +131,10 @@ function show_matiers(){
     }else if(The_matiers.value == "pc"){
         cours.innerHTML = cours_for_pc;
 
+    }else if(The_matiers.value == "hg"){
+        cours.innerHTML = cours_for_hg;
+
     }
 }
 The_matiers.addEventListener("click", show_matiers);
+School_level.addEventListener('click' , School_levels);
