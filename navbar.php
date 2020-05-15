@@ -22,7 +22,6 @@
         <img src="src/img/logo-02.png" width="150" class="d-inline-block align-top" alt="">
     </a>
 
-    <a class="inscr" href="Student.php">
         <div>
 
             <!--            -->
@@ -31,10 +30,13 @@
                 $usermail = $_SESSION['mail'];
                 // afficher un message
                 echo
-                "<div class='text-right '>
+                "
+    <a class=\"inscr\" href=\"Student.php\">
+<div class='text-right '>
                     <h4 class='mt-2'>Your E-mail :</h4>
                     <h4 class='mt-2 ml-4'>$usermail</h4>
-                </div>";
+                </div>
+                </a>";
             } else {
                 echo "
 <div class='header p-0'>
@@ -54,7 +56,6 @@
             }
             ?>
         </div>
-    </a>
 </nav>
 
 

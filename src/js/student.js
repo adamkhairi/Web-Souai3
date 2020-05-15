@@ -1,4 +1,4 @@
-let The_matiers = document.getElementById("Matiers");
+let The_matiers = document.getElementById("matiere");
 let cours = document.getElementById("cours");
 let cours_for_SVT = `<optgroup label="Consommation de la matière organique et flux de l’énergie">
 <option value="1">Réactions responsables de libération de l’énergie de la matière organique au niveau cellulaire</option>
@@ -40,12 +40,12 @@ let cours_for_math = `    <option value="1">Continuité d'une fonction numériqu
 <option value="14">Fonctions exponentielles</option>
 </optgroup>`;
 function show_matiers(){
-    if(The_matiers.value == "math"){
+    if(The_matiers.value === "math"){
         cours.innerHTML = cours_for_math;
 
-    }else if(Matiers.value == "svt"){
+    }else if(The_matiers.value === "svt"){
         cours.innerHTML = cours_for_SVT;
 
     }
 }
-The_matiers.addEventListener("click", show_matiers)
+The_matiers.addEventListener("click", show_matiers);

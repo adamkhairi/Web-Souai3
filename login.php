@@ -21,12 +21,6 @@ if (isset($_POST['your_email']) && isset($_POST['your_pass'])) {
         $exec_requete = mysqli_query($db, $requete);
         $reponse = mysqli_fetch_array($exec_requete);
 
-
-
-
-
-
-
         if (!empty($reponse['mailetudiant'])) // nom d'utilisateur et mot de passe correctes
         {
 //            var_dump($reponse);
@@ -47,13 +41,14 @@ if (isset($_POST['your_email']) && isset($_POST['your_pass'])) {
             $exec_sql = mysqli_query($db,$sql);
             $sqlReponse = mysqli_fetch_array($exec_sql);
 
-            $_SESSION['idcours'] = $reponse['idcours'];
+            $_SESSION['idcours'] = $reponse['iddemande'];
             $_SESSION['matiers'] = $reponse['matiere'];
             $_SESSION['cours'] = $reponse['cours'];
             $_SESSION['coursDesc'] = $reponse['description'];
             $_SESSION['userCours'] = $reponse['idetudiantc'];
 
-
+//            var_dump($sqlReponse);
+//            die();
 
 
 
@@ -98,7 +93,15 @@ if (isset($_POST['your_email']) && isset($_POST['your_pass'])) {
         header('Location: index.php?erreur=2'); // utilisateur ou mot de passe vide
     }
 } else {
-    header('Location: index.php');
+    header('Location: index.php?error=ddddd');
+    echo "
+    <script> 
+    
+    alert('azdzadsdqsd');
+    
+    </script>
+    
+    ";
 }
 
 mysqli_close($db); // fermer la connexion

@@ -3,26 +3,23 @@
         <div class="notif_name">
 
 
-<?php
-if (!empty($_SESSION['lastName'])) {
-    $lastname = $_SESSION['lastName'];
-    // afficher un message
-    echo
-    "<h2 class='notif_name_h2'>Bonjour 
+            <?php
+            if (!empty($_SESSION['lastName'])) {
+                $lastname = $_SESSION['lastName'];
+                // afficher un message
+                echo
+                "<h2 class='notif_name_h2'>Bonjour 
             $lastname
             </h2>";
-} else {
-    echo "<h2 class='notif_name_h2'>Bonjour</h2>";
-}
+            } else {
+                echo "<h2 class='notif_name_h2'>Bonjour</h2>";
+            }
 
-?>
+            ?>
 
-
-
-
-
-    </div>
+        </div>
         <div class="message">
+
             <div class="nofit_message">
                 <div class="">
                     <i class="far fa-check-circle"></i>
@@ -34,18 +31,24 @@ if (!empty($_SESSION['lastName'])) {
                 </div>
 
             </div>
+
             <div class="valid">
                 <p>Intéressé(e) ?</p>
                 <button class="OUI">oui</button>
                 <button class="NON">non</button>
             </div>
+
         </div>
     </div>
+
+    <!--    //TODO fix Notify-->
+
     <div class="show_notification">
-        <p>0</p>
+
+
     </div>
 
-    <div id="notification" onclick="show_notify()" class="ntif_icon">
+    <div id="notification" onclick="" class="ntif_icon">
         <svg focusable="false" data-prefix="far" data-icon="bell"
              class="svg-inline--fa fa-bell fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg"
              viewBox="0 0 448 512">
@@ -54,3 +57,15 @@ if (!empty($_SESSION['lastName'])) {
         </svg>
     </div>
 </div>
+
+
+<!--JS For NOTIFICATION-->
+<script>
+	// *****Notification
+	let notification = document.getElementById("notification");
+	notification.addEventListener('click', () => {
+		notification_alert = document.getElementById("notification_alert");
+		// notification_alert.style.display = 'block';
+		notification_alert.classList.toggle('show');
+	})
+</script>
