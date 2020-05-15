@@ -49,18 +49,12 @@ nav {
 }
 
 .chart {
+   
     .chart_title {
-        h2 {
-            font-weight: 400;
-            width: 347px;
-            border-bottom: 3px solid $colorOr;
-            margin-top: -20px;
-
-            @media only screen and (max-width :475px) {
-                font-size: 17px;
-                width: 246px;
-
-            }
+        &_h2 {
+            @extend .historique;
+            width: 345px;
+            margin-bottom: 20px;
 
         }
     }
@@ -267,18 +261,23 @@ nav {
 }
 
 .btn_add_event {
+    display: flex;
+    justify-content: center;
+   button{
     width: 170px;
     padding: 15px;
     background-color: $colorOr;
     color: $colorW;
     border: none;
     border-radius: 49px;
-    margin: auto;
-    display: flex;
-    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 40px;;
     font-size: medium;
-    box-shadow: 6px 7px 19px 3px rgba(149, 152, 154, 0.554);
     font-size: large;
+    &:hover{
+        box-shadow: 6px 7px 19px 3px rgba(149, 152, 154, 0.554);
+    }
+   }
 
 }
 

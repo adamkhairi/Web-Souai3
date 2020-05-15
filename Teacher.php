@@ -15,10 +15,11 @@
 <?php
 include('navbar.php');
 ?>
-    <div class="container">
+   
+   <div class="containers">
         <div class="chart">
             <div class="chart_title">
-                <h2>Les cours qui plus demande :</h2>
+                <h class="chart_title_h2">Les cours qui plus demande :</h2>
             </div>
             <div class="chart_ui">
                 <div>Les cours qui plus demande :</div>
@@ -46,24 +47,24 @@ include('navbar.php');
 
 
     </div>
-    <div class="container">
+    <div class="containers">
         <h2 class="historique">Historique:</h2>
-        <h3 class="activité">aucun activité</h3>
+        <h5 class="activité">aucun activité</h5>
     </div>
     <div class="agenda">
         <iframe src="https://calendar.google.com/calendar/embed?src=minanon77%40gmail.com&ctz=Africa%2FCasablanca"
             style="border: 0" height="600" frameborder="0" scrolling="no"></iframe>
     </div>
 
-    <div>
-        <button class="btn_add_event" id="add_event_btn" type="button"> Add event</button>
+    <div class="btn_add_event">
+        <button  id="add_event_btn" type="button"> Add event</button>
     
     
     </div>
 
 
 
-    <div style="display: none;" id="pop-up-add_events" class="pop-up-add_events">
+    <div  id="pop-up-add_events" class="pop-up-add_events">
         
         <div class="pop-up-add_event">
             <div class="clouse">
@@ -112,6 +113,10 @@ include('navbar.php');
         </div>
     </div>
 
+
+    <?php
+include 'footer.php';
+?>
 
 
 
