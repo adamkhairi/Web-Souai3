@@ -8,3 +8,14 @@
 @import "layouts/main";
 // Responsive
 @import "layouts/responsive";
+.small{
+  font-size: .8em !important;
+  width: 35em !important;
+  margin: 0 auto !important;
+}
+.inscr{
+  text-decoration: none !important;
+
+  //&:hove{
+  //}
+}

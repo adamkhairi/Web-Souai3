@@ -42,14 +42,9 @@
 
              <div class=\"left d-flex flex-row justify-content-center\">
                    
-                        <button id=\"etud\" onclick=\"logingEtudiant()\" class=\"btn btn-header\"
+                        <button id=\"etud\" onclick=\"logingEtudiant()\" class=\"btn small btn-header\"
                                 data-target=\"#exampleModalCentertype=\"
                         >Connectez-vous (Etudient)
-                        </button>
-
-                        <button id=\"prof\" onclick=\"logingTeacher()\" class=\"btn btn-header\"
-                                data-target=\"#exampleModalCentertype=\"
-                        >Connectez-vous (Professeur)
                         </button>
                     </div>
                  </div>
