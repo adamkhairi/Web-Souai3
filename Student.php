@@ -65,11 +65,12 @@ $querylevel ="SELECT * FROM niveau where idniveau = '" . $levelid . "' ";
 
 $exec_requete = mysqli_query($conn, $querylevel);
 $reponse = mysqli_fetch_array($exec_requete);
+var_dump($reponse);
 $levelname= $reponse['niveau'];
 
 $querymatiere ="SELECT * FROM matiere where idniveau = '" . $levelid . "' ";
-$exec_requete = mysqli_query($conn, $querymatiere);
- $reponsematiere = mysqli_fetch_array($exec_requete);
+$exec_requetes = mysqli_query($conn, $querymatiere);
+ $reponsematiere = mysqli_fetch_array($exec_requetes);
 var_dump($reponsematiere);
 $listcours = [];
 
