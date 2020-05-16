@@ -106,7 +106,7 @@ foreach ($reponsecours as $cours){
                 <div>
                     <!-- Matiers -->
                     <select name="matiere" id="matiere">
-<!--                         <?php
+                       <?php
 foreach ($reponsecours as $cours){
 echo "
                         <option value='$cours[0]'>$cours[1]</option>
@@ -117,7 +117,7 @@ echo "
                     </select>
                 </div>
                 <div>
-                    <!-- Cours -->
+                  Cours -->
                     <select class="hour2" name="cours" id="cours">
 <!--                        <optgroup label="Analyse">-->
 <!--                        <option value="1">Continuité d'une fonction numérique</option>-->
