@@ -1,7 +1,6 @@
+let School_level = document.getElementById("nvscolaire");
 let The_matiers = document.getElementById("matiere");
 let cours = document.getElementById("cours");
-let School_level = document.getElementById("nvscolaire");
-
 let lesMatair_de_1erBac = `
 <option value="Ar">Langue arabe</option>
 <option value="fr">1ère langue étrangère</option>

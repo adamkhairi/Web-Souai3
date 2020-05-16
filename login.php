@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once("connexion.php");
+require("connexion.php");
 
 if (isset($_POST['your_email']) && isset($_POST['your_pass'])) {
 
@@ -11,6 +11,8 @@ if (isset($_POST['your_email']) && isset($_POST['your_pass'])) {
 //    $db_host = 'localhost';
 //    $db = mysqli_connect($db_host, $db_username, $db_password, $db_name)
 //    or die('could not connect to database');
+
+
 
     $your_email = mysqli_real_escape_string($conn, htmlspecialchars($_POST['your_email']));
     $password = mysqli_real_escape_string($conn, htmlspecialchars($_POST['your_pass']));

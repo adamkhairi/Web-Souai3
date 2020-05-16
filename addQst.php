@@ -19,7 +19,8 @@ if (isset($_REQUEST['matiere'], $_REQUEST['cours'], $_REQUEST['description'], $_
 
 //    $sql = "INSERT INTO `demande` (`iddemande`,`matiere`,`cours`,`description`,`nvscolaire`,`idetudiantc`)
 //VALUES ( ''," . $_POST['matiere'] . "," . $_POST['cours'] . "," . htmlspecialchars($_POST['description']) . "," . htmlspecialchars($_POST['nvscolaire']) . "," . $_SESSION['userid'] . " )";
-   $sql = "INSERT into demande1 (`iddemande`,`matiere`,`cours`,`description`,`nvscolaire`) 
+
+    $sql = "INSERT into demande1 (`iddemande`,`matiere`,`cours`,`description`,`nvscolaire`) 
 VALUES ( ''," . $matiere . "," . $cours . "," . $description. "," . $nvscolaire . " )";
 
     $rep = mysqli_query($conn, $sql);
