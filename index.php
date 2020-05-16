@@ -300,7 +300,7 @@ include("navbar.php");
 <!--Footer-->
 <?php
 include "footer.php" ?>
-
+<script src="src/js/collectInfo.js"></script>
 
 <script>
 	// Popups register
@@ -317,9 +317,9 @@ include "footer.php" ?>
 		loginPopup.classList.add('hide');
 		registerPop.classList.add('hide');
 	});
+		student = document.getElementById("student");
 	let exit1 = document.querySelector('#exit1');
 	exit1.addEventListener('click', function () {
-		student = document.getElementById("student");
 		student.classList.add('hide');
 		// registerPop.classList.add('hide');
 	});
@@ -330,9 +330,6 @@ include "footer.php" ?>
 		teacher.classList.add('hide');
 		// registerPop.classList.add('hide');
 	});
-
-
-
 
 	// Popups LOGIN
 	const loginBtn = document.querySelector('#login');

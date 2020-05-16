@@ -57,7 +57,30 @@ include "notification.php"
 
     </div>
 </div>
+<?php
+$levelid=$_SESSION['nvScolaire'] ;
+$querylevel ="SELECT * FROM niveau where idniveau = '" . $levelid . "' ";
 
+$exec_requete = mysqli_query($conn, $querylevel);
+$reponse = mysqli_fetch_array($exec_requete);
+$levelname= $reponse['niveau'];
+
+$querycours ="SELECT * FROM matiere where idniveau = '" . $levelid . "' ";
+$exec_requete = mysqli_query($conn, $querycours);
+$reponsecours = mysqli_fetch_array($exec_requete);
+
+$listcours = [];
+
+foreach ($reponsecours as $cours){
+    $coursid = $cours[0];
+    $querycours ="SELECT * FROM cours where idmatiere = '" . $coursid . "' ";
+    $exec_requetes = mysqli_query($conn, $querycours);
+    $reponsecours = mysqli_fetch_array($exec_requetes);
+    array_push($listcours,$reponsecours);
+}
+
+
+?>
 <div class="Post_problem">
     <form action="addQst.php" method="post">
 
@@ -67,41 +90,52 @@ include "notification.php"
                 <div>
 
                     <select name="nvscolaire" id="nvscolaire">
-                        <option value="2bac">2eme année Bac</option>
-                        <option value="1bac">1er année Bac</option>
+                        <?php
+                        echo "
+                        <option value='$levelid'>$levelname</option>
+                        
+                        ";
+                        ?>
+
+
+
+
                     </select>
 
                 </div>
                 <div>
                     <!-- Matiers -->
                     <select name="matiere" id="matiere">
-                        <option value="math">Mathématique</option>
-                        <option value="svt">Sciences de la vie et de la Terre</option>
-                        <option value="philos">Philosophique</option>
-                        <option value="fr">Physique Chimie</option>
-                        <option value="phys">Anglais</option>
+<!--                         <?php
+foreach ($reponsecours as $cours){
+echo "
+                        <option value='$cours[0]'>$cours[1]</option>
+                        
+                        ";
+}
+?>
                     </select>
                 </div>
                 <div>
                     <!-- Cours -->
                     <select class="hour2" name="cours" id="cours">
-                        <optgroup label="Analyse">
-                        <option value="1">Continuité d'une fonction numérique</option>
-                        <option value="2">Dérivabilité d'une fonction, fonctions primitives</option>
-                        <option value="3">Etude des fonctions</option>
-                        <option value="4">Fonctions logarithmiques</option>
-                        <option value="5">Calcul intégral</option>
-                        <option value="7">Equations différentielles</option>
-                        <option value="8">Les suites numériques</option>
-                        <option value="9">Fonctions exponentielles</option>
-                        </optgroup>
-                        <optgroup label="Algèbre">
-                        <option value="10">Les nombres complexes 1</option>
-                        <option value="11">Les nombres complexes 2</option>
-                        <option value="12">Calcul des Probabilités</option>
-                        <option value="13">Geométrie de l’espace Produit scalaire et applications</option>
-                        <option value="14">Fonctions exponentielles</option>
-                        </optgroup>
+<!--                        <optgroup label="Analyse">-->
+<!--                        <option value="1">Continuité d'une fonction numérique</option>-->
+<!--                        <option value="2">Dérivabilité d'une fonction, fonctions primitives</option>-->
+<!--                        <option value="3">Etude des fonctions</option>-->
+<!--                        <option value="4">Fonctions logarithmiques</option>-->
+<!--                        <option value="5">Calcul intégral</option>-->
+<!--                        <option value="7">Equations différentielles</option>-->
+<!--                        <option value="8">Les suites numériques</option>-->
+<!--                        <option value="9">Fonctions exponentielles</option>-->
+<!--                        </optgroup>-->
+<!--                        <optgroup label="Algèbre">-->
+<!--                        <option value="10">Les nombres complexes 1</option>-->
+<!--                        <option value="11">Les nombres complexes 2</option>-->
+<!--                        <option value="12">Calcul des Probabilités</option>-->
+<!--                        <option value="13">Geométrie de l’espace Produit scalaire et applications</option>-->
+<!--                        <option value="14">Fonctions exponentielles</option>-->
+<!--                        </optgroup>-->
                     </select>
                 </div>
             </div>
