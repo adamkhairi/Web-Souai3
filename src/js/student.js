@@ -1,5 +1,16 @@
 let The_matiers = document.getElementById("matiere");
 let cours = document.getElementById("cours");
+let School_level = document.getElementById("nvscolaire");
+
+let lesMatair_de_1erBac = `
+<option value="Ar">Langue arabe</option>
+<option value="fr">1ère langue étrangère</option>
+<option value="isla">Education islamique</option>
+<option value="hg">Histoire géographie</option>`
+let lesMatair_de_2EmeBac = ` <option value="math">Mathématique</option>
+<option value="svt">Sciences de la vie et de la Terre</option>
+
+<option value="pc">Physique Chimie</option>`
 let cours_for_SVT = `<optgroup label="Consommation de la matière organique et flux de l’énergie">
 <option value="1">Réactions responsables de libération de l’énergie de la matière organique au niveau cellulaire</option>
  <option value="2">Le rôle du muscle squelettique strié dans la conversion d'énergie</option>
@@ -39,6 +50,77 @@ let cours_for_math = `    <option value="1">Continuité d'une fonction numériqu
 <option value="13">Geométrie de l’espace Produit scalaire et applications</option>
 <option value="14">Fonctions exponentielles</option>
 </optgroup>`;
+let cours_for_pc = `
+<optgroup label="PHYSIQUE">
+    <optgroup label=" Les ondes">
+        <option value="1">Ondes progressives</option>
+        <option value="2">Ondes progressives périodiques</option>
+        <option value="3">Propagation d'une onde lumineuse</option>
+    </optgroup>
+    <optgroup label="Les transformations nucléaires">
+        <option value="4">Décroissance radioactive</option>
+        <option value="5">Noyau-masse et énergie</option>
+    </optgroup>
+    <optgroup label="  L’électricité">
+        <option value="6">Dipôle RC</option>
+        <option value="7">Dipôle RL</option>
+        <option value="8">Oscillations libres dans un circuit RLC série</option>
+        <option value="9">les ondes électromagnétiques-transmission d’informations</option>
+    </optgroup>
+    <optgroup label=" La mécanique">
+        <option value="10">Les Lois de Newton</option>
+        <option value="11">Applications de Lois de Newton: Chute verticale</option>
+        <option value="12">La relation quantitative entre le total des moments et l'accélération angulaire</option>
+        <option value="13">Systèmes oscillants</option>
+        <option value="14">Aspects énergétiques</option>
+        <option value="15">Applications de Lois de Newton: mouvements plans </option>
+        <option value="16">Atome et mécanique de Newton</option>
+    </optgroup>
+</optgroup>
+<optgroup label="CHIMIE">
+    <optgroup label=" Transformations rapides et transformations lentes d'un groupe chimique">
+        <option value="17">Transformations rapides et transformations lentes</option>
+        <option value="18">Suivi temporel d'une transformation chimique - Vitesse de réaction</option>                         
+    </optgroup>
+    <optgroup label=" Les transformations non totales d'un système chimiques">
+        <option value="19">Transformations chimiques s'effectuant dans les deux sens</option>
+        <option value="20">Etat d'équilibre d'un système chimique</option>                         
+        <option value="21">Transformations liées à des réactions acido - basiques dans une solution aqueuse</option>                         
+    </optgroup>
+    <optgroup label="Sens d'évolution d'un système chimique">
+        <option value="22">Evolution spontanée d'un système chimique</option>
+        <option value="23">Transformations spontanées dans les piles et récupération d'énergie</option>                         
+        <option value="24">Exemples de transformations forcées</option>                         
+    </optgroup>
+    <optgroup label=" Comment contrôler l'évolution des systèmes chimiques">
+        <option value="25">Réactions d'estérification et d'hydrolyse</option>
+        <option value="26">Contrôle de l'évolution des groupes chimiques depuis la modification du réactif ou depuis l'autocatalytique</option>                                                
+    </optgroup>
+       
+</optgroup>`
+let cours_for_hg = `    <optgroup label="Histoire">
+<option value="1">Les transformations économiques du monde capitaliste</option>
+<option value="2">Présentation générale pour la matière d'Histoire</option>
+<option value="3">Rivalité Impérialiste</option>
+<option value="4">la vigilance intellectuelle dans l'orient arabe</option>
+</optgroup>
+<optgroup label="Géographie">
+<option value="10">Concept de développement, la multiplicité des approches, les grandes divisions du monde</option>
+<option value="11">La zone marocaine, les ressources naturelles et humaines</option>
+<option value="12">Les grands choix de la politique de préparation du territoire national</option>
+<option value="13">Configuration urbaine et rurale, la crise de la ville et de la campagne et les formes d'intervention</option>
+</optgroup>`
+
+function School_levels(){
+    if(School_level.value === "1bac"){
+        The_matiers.innerHTML = lesMatair_de_1erBac
+    }else if(School_level.value === "2bac"){
+        The_matiers.innerHTML = lesMatair_de_2EmeBac;
+    }
+}
+
+
+
 function show_matiers(){
     if(The_matiers.value === "math"){
         cours.innerHTML = cours_for_math;
@@ -46,6 +128,13 @@ function show_matiers(){
     }else if(The_matiers.value === "svt"){
         cours.innerHTML = cours_for_SVT;
 
+    }else if(The_matiers.value == "pc"){
+        cours.innerHTML = cours_for_pc;
+
+    }else if(The_matiers.value == "hg"){
+        cours.innerHTML = cours_for_hg;
+
     }
 }
 The_matiers.addEventListener("click", show_matiers);
+School_level.addEventListener('click' , School_levels);
