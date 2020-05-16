@@ -33,21 +33,59 @@ include("navbar.php");
                             <label for="email"><i class="zmdi zmdi-email"></i></label>
                             <input type="email" name="email" id="email" placeholder="Votre Email"/>
                         </div>
-
-                        <div class="form-group">
-                            <label for="nScolaire"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                            <input type="text" name="nScolaire" id="nScolaire" placeholder="niveau scolaire"/>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="filier"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                            <input type="text" name="filier" id="filier" placeholder="Filier"/>
-                        </div>
-                        <!--                        Password-->
                         <div class="form-group">
                             <label for="pass"><i class="zmdi zmdi-lock"></i></label>
                             <input type="password" name="password" id="pass" placeholder="Mot de passe"/>
                         </div>
+                        <div class="form-group">
+                            <label for="pass2"><i class="zmdi zmdi-lock"></i></label>
+                            <input type="password" name="password2" id="pass" placeholder="Confirmer Mot de passe"/>
+                        </div>
+
+                        <div class="form-group">
+                            <!--                            <label for="nScolaire"><i class="zmdi zmdi-account material-icons-name"></i></label>-->
+                            <!--                            <input type="text" name="nScolaire" id="nScolaire" placeholder="niveau scolaire"/>-->
+                            <div class="input-group mb-3">
+                                <select class="custom-select" name="nScolaire" id="nScolaire">
+                                    <option selected>Niveau Scolaire</option>
+                                    <option value="1">2éme année Bac</option>
+                                    <option value="2">1er année Bac</option>
+                                </select>
+                            </div>
+
+                            <?php
+
+//                            $levelid = $_SESSION['nvScolaire'];
+//
+//                            $querylevel ="SELECT * FROM niveau where idniveau = '" . $levelid . "' ";
+//
+//                            $exec_requete = mysqli_query($conn, $querylevel);
+//                            $reponse = mysqli_fetch_array($exec_requete);
+//                            $levelname= $reponse['niveau'];
+//
+//
+//                            ?>
+
+
+
+
+
+
+                            <div class="form-group">
+                                <select class="custom-select" name="filier" id="filier">
+                                    <option selected>Filière</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!--                        <div class="form-group">-->
+                        <!--                            <label for="filier"><i class="zmdi zmdi-account material-icons-name"></i></label>-->
+                        <!--                            <input type="text" name="filier" id="filier" placeholder="Filier"/>-->
+                        <!--                        </div>-->
+                        <!--                        Password-->
 
 
                         <div class="form-group form-button">
@@ -317,7 +355,7 @@ include "footer.php" ?>
 		loginPopup.classList.add('hide');
 		registerPop.classList.add('hide');
 	});
-		student = document.getElementById("student");
+	student = document.getElementById("student");
 	let exit1 = document.querySelector('#exit1');
 	exit1.addEventListener('click', function () {
 		student.classList.add('hide');
@@ -337,7 +375,6 @@ include "footer.php" ?>
 
 	let teacher = document.getElementById("teacher");
 	let prof = document.getElementById("prof");
-
 
 
 </script>

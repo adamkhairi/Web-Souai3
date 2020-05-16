@@ -33,6 +33,8 @@ $sql = "SELECT count(*) FROM `etudiant`  WHERE `mailetudiant`= '$your_email' ";
 
             // Exécuter la requête sur la base de données
             $res = mysqli_query($conn, $query);
+            var_dump($res);
+//            die();
             if ($res) {
                 header('Location: index.php');
                 echo "<script>alert('Done')</script>";
