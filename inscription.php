@@ -1,6 +1,5 @@
 <?php
 require("connexion.php");
-//include("inscription.php");
 $your_email = mysqli_real_escape_string($conn,htmlspecialchars($_POST['email']));
 
 $sql = "SELECT count(*) FROM `etudiant`  WHERE `mailetudiant`= '$your_email' ";
@@ -33,9 +32,9 @@ $sql = "SELECT count(*) FROM `etudiant`  WHERE `mailetudiant`= '$your_email' ";
 
             // Exécuter la requête sur la base de données
             $res = mysqli_query($conn, $query);
-            var_dump($res);
-//            die();
-            if ($res) {
+
+           if ($res) {
+
                 header('Location: index.php');
                 echo "<script>alert('Done')</script>";
             }
