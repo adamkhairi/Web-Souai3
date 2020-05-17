@@ -92,32 +92,23 @@ foreach ($reponsematiere as $cours){
                 <div>
 
                     <select name="nvscolaire" id="nvscolaire">
-<!--                        --><?php
-//                        echo "
-//                        <option value='$levelid'>$levelname</option>
-//
-//                        ";
-//                        ?>
-
-
-
+                    <option value="2bac">2eme année Bac</option>
+                        <option value="1bac">1er année Bac</option>
 
                     </select>
 
                 </div>
+        
                 <div>
                     <!-- Matiers -->
                     <select name="matiere" id="matiere">
-                       <?php
-foreach ($reponsecours as $cours){
-echo "
-                        <option value='$cours[0]'>$cours[1]</option>
+                    <option value="math">Mathématique</option>
+                        <option value="svt">Sciences de la vie et de la Terre</option>
+                        <option value="philos">Philosophique</option>
+                        <option value="fr">Physique Chimie</option>
+                        <option value="phys">Anglais</option>
 
-                        ";
-}
-//?>
                     </select>
-
                 </div>
                 <div>
 
@@ -152,7 +143,6 @@ echo "
     </form>
 
 </div>
-
 
 <?php
 

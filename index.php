@@ -76,7 +76,7 @@ include("navbar.php");
             <div class="signin-content">
                 <div class="signin-image">
                     <figure><img src="src/img/signin-image.jpg" alt="sing up image"></figure>
-                    <a href="#" class="signup-image-link">Create an account</a>
+                    <a href="forget_the_password.php" class="signup-image-link">Mode passe oublie</a>
                 </div>
 
                 <div class="signin-form">
