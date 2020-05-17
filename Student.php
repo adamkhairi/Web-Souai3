@@ -140,7 +140,7 @@ include "notification.php";
             $result = mysqli_query($conn, $sql);
             //$reponse = mysqli_fetch_assoc($exec_requete);
             if (isset($result)) {
-                $row = mysqli_fetch_array($result);
+                // $row = mysqli_fetch_array($result);
                 $demandes = [];
 
                 $fname = $_SESSION['firstName'];
