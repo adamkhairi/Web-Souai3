@@ -40,7 +40,7 @@ $sql = "SELECT count(*) FROM `etudiant`  WHERE `mailetudiant`= '$your_email' ";
             }
 
         } else {
-            echo "<script>alert('email existe dèjà')</script>";
+            echo "<script>alert('Verifier vos informations !')</script>";
 //        header('Location: index.php');
 
         }

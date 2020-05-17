@@ -14,7 +14,7 @@ include "notification.php";
                         <?php
                         if (!empty($_SESSION['mail'])) {
                             echo($_SESSION['firstName'] . ' ' . $_SESSION['lastName']);
-                        };
+                        }
                         ?>
                     </h2>
                 </div>
@@ -29,7 +29,7 @@ include "notification.php";
                         <?php
                         if (!empty($_SESSION['mail'])) {
                             echo(' ' . $_SESSION['mail']);
-                        };
+                        }
                         ?></h4>
                 </div>
                 <div>
@@ -48,7 +48,7 @@ include "notification.php";
                       <h5 class=\"font-weight-bold bBottom mr-4\">Niveau scolaire : </h5>
                 <h4>le Niveau scolaire</h4>
                       ";
-                    };
+                    }
                     ?>
 
 
@@ -135,49 +135,48 @@ include "notification.php";
 
 
             <?php
-            $sql = "SELECT * FROM demande where
+//            $sql = "SELECT * FROM demande where
+//               idetudiantc = '" . $_SESSION['userid'] . "'";
+//
+              $sql = "SELECT * FROM demande where
                idetudiantc = '" . $_SESSION['userid'] . "'";
-            $result = mysqli_query($conn, $sql);
+              $result = mysqli_query($conn, $sql);
             //$reponse = mysqli_fetch_assoc($exec_requete);
-            if (isset($result)) {
-                // $row = mysqli_fetch_array($result);
+
+//                var_dump($_SESSION['userid']);
+        if (isset($result)) {
+//                $row = mysqli_fetch_array($result);
+
                 $demandes = [];
 
                 $fname = $_SESSION['firstName'];
                 $lname = $_SESSION['lastName'];
 
                 while ($row = mysqli_fetch_array($result)) {
-//
 //    echo ($row[1]);  // description
                     array_push($demandes, $row[1]);
 
 ////    echo ($row[3]);  // cours
-
                     $requet = "SELECT * FROM cours where
-               idcours = '" . $row[3] . "'";
+                    idcours = '" . $row[3] . "'";
 
                     $results = mysqli_query($conn, $requet);
                     $row1 = mysqli_fetch_array($results);
                     $cours = [];
 
                     echo "
-        <div class=\"card mb-4\" style=\"width: 18rem;\">
-           <div class=\"card-body\">
-            <h5 class=\"card-title\">$row1[1]</h5>
-            <h6 class=\"card-subtitle mb-2 text-muted\"> $lname  $fname</h6>
-            <p class=\"card-text\">$row[1]</p>
-          </div>
-        </div>
-        ";
+                        <div class=\"card mb-4\" style=\"width: 18rem;\">
+                           <div class=\"card-body\">
+                            <h5 class=\"card-title\">$row1[1]</h5>
+                            <h6 class=\"card-subtitle mb-2 text-muted\"> $lname  $fname</h6>
+                            <p class=\"card-text\">$row[1]</p>
+                          </div>
+                        </div>
+                         ";
                 }
-            } else {
-                echo "        <h5 class=\"activité\">aucune activité</h5>
-";
-            }
-
-
-            ?>
-
+        } else {
+                echo "<h5 class=\"activité\">aucune activité</h5>";
+            };?>
         </div>
     </div>
 

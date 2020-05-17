@@ -1,6 +1,6 @@
 <?php
-session_start();
 require("connexion.php");
+session_start();
 
 if (isset($_POST['your_email']) && isset($_POST['your_pass'])) {
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 17, 2020 at 07:47 AM
+-- Generation Time: May 17, 2020 at 08:41 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.30
 
@@ -90,7 +90,11 @@ INSERT INTO `demande` (`iddemande`, `description`, `idetudiantc`, `cours`, `idma
 (13, 'here may be a case when a user does not allow to store cookies on their machine. So there is another method to send session ID to the browser.', 1, 2, 1),
 (14, ' there is another method to send session ID to the browser here may be a case when a user does not allow to store cookies on their machine. So', 1, 5, 1),
 (15, '111111111111111111111111111111111111111', 1, 4, 2),
-(16, '555555555555555555555555555555555555555555555\r\n555555555555555\r\n\r\n5555\r\nPLZ', 1, 1, 1);
+(16, '555555555555555555555555555555555555555555555\r\n555555555555555\r\n\r\n5555\r\nPLZ', 1, 1, 1),
+(17, 'afeeen akha Prof', 5, 5, 1),
+(18, 'jjjj', 1, 3, 1),
+(19, 'aaaqqq', 6, 3, 1),
+(20, 'xxxaaaaeeeeexxxx', 7, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -116,7 +120,10 @@ INSERT INTO `etudiant` (`idetudiant`, `nometudiant`, `prenometudiant`, `niveausc
 (1, 'Khairi', 'Adam', 2, 1, 'khairiadam1@gmail.com', 'ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb'),
 (2, 'a', 'b', 1, 2, 'a@b.c', '3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d'),
 (3, '', '', 0, 0, '', 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'),
-(4, 'xx', 'yy', 2, 2, 'x@y.x', '5dde896887f6754c9b15bfe3a441ae4806df2fde94001311e08bf110622e0bbe');
+(4, 'xx', 'yy', 2, 2, 'x@y.x', '5dde896887f6754c9b15bfe3a441ae4806df2fde94001311e08bf110622e0bbe'),
+(5, 'ayoub', 'benchihaja', 1, 1, 'ayoub@gmail.com', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4'),
+(6, 'ccc', 'dddd', 1, 1, 'ad@ad.d', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4'),
+(7, 'ww', 'wxxw', 2, 1, 'w@w.w', 'b84ff8057ee3a7f87deac4ae29ac59292f02e6c28f987031648011018384d888');
 
 -- --------------------------------------------------------
 
@@ -254,13 +261,13 @@ ALTER TABLE `cours`
 -- AUTO_INCREMENT for table `demande`
 --
 ALTER TABLE `demande`
-  MODIFY `iddemande` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `iddemande` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `etudiant`
 --
 ALTER TABLE `etudiant`
-  MODIFY `idetudiant` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idetudiant` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `filiere`
