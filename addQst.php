@@ -53,19 +53,14 @@ if (!empty($_SESSION['mail'])) {
 
 // Attempt insert query execution
     $sql = "INSERT INTO demande (description,idetudiantc,cours,idmatiere ) VALUES ( '" . $inputMsg . "' , '" . $iduser . "'  ,  '" . $inputCrs . "' , '" . $inputNv . "' )";
-
     $res = mysqli_query($conn, $sql);
-//    var_dump($res);
-//die();
+
     if ($res) {
         header('Location: Student.php');
 
     } else {
-//    echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
         header('Location: Student.php');
-
         echo "<script>
-
             alert('erroor !!!');
             </script>";
 
