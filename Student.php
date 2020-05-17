@@ -76,11 +76,11 @@ include "notification.php";
                     <div>
                         <!-- Matiers -->
                         <select name="matiere" id="matiere">
-                            <option value="math">Mathématique</option>
-                            <option value="svt">Sciences de la vie et de la Terre</option>
-                            <option value="philos">Philosophique</option>
-                            <option value="fr">Physique Chimie</option>
-                            <option value="phys">Anglais</option>
+                            <option value="1">Mathématique</option>
+                            <option value="2">Sciences de la vie et de la Terre</option>
+<!--                            <option value="3">Philosophique</option>-->
+                            <option value="3">Physique Chimie</option>
+<!--                            <option value="5">Anglais</option>-->
                         </select>
                         <input type="text" hidden value="" name="mt" id="matieres">
 
@@ -135,12 +135,12 @@ include "notification.php";
               $sql = "SELECT * FROM demande where
                idetudiantc = '" . $_SESSION['userid'] . "'";
               $result = mysqli_query($conn, $sql);
+
             //$reponse = mysqli_fetch_assoc($exec_requete);
 //                var_dump($_SESSION['userid']);
-        if (isset($result)) {
+        if (!empty($result)) {
 //                $row = mysqli_fetch_array($result);
                 $demandes = [];
-
                 $fname = $_SESSION['firstName'];
                 $lname = $_SESSION['lastName'];
 
@@ -154,7 +154,7 @@ include "notification.php";
 
                     $results = mysqli_query($conn, $requet);
                     $row1 = mysqli_fetch_array($results);
-                    $cours = [];
+//                    $cours = [];
 
                     echo "
                         <div class=\"card mb-4\" style=\"width: 18rem;\">

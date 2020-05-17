@@ -123,7 +123,7 @@ include("navbar.php");
             <div class="signin-content">
                 <div class="signin-image">
                     <figure><img src="src/img/signin-image.jpg" alt="sing up image"></figure>
-                    <a href="#" class="signup-image-link">Create an account</a>
+                    <a href="forget_the_password.php" class="signup-image-link">Mot de passe Oublié ?</a>
                 </div>
 
                 <div class="signin-form">
@@ -195,91 +195,7 @@ include("navbar.php");
 </div>
 
 
-<div class="loginPopup hide">
-    <div class="niveau">
-        <div class="inscription-form2 hiding ">
-            <div class="containre-form2">
 
-                <h1>Niveau scolaire</h1>
-
-                <div class="inswerinput">
-                    <input type="radio" name="choix" id="2emebac">
-                    <label for="2emebac" class="widthlabel">
-                        <span>2 éme année baccalauréat</span> </label>
-                </div>
-
-                <div class="inswerinput ">
-                    <input type="radio" name="choix" id="1erebac">
-                    <label for="1erebac" class="bgclor2 widthlabel">
-                        <span>1ere année baccalauréat</span> </label>
-                </div>
-
-                <div class="inswerinput ">
-                    <input type="radio" name="choix" id="3emecollege">
-                    <label for="3emecollege" class="bgclor3  widthlabel">
-                        <span>3eme année collège </span> </label>
-                </div>
-
-
-                <div><a href="#">
-                        <button id="btn-next">Next</button>
-                    </a></div>
-
-            </div>
-        </div>
-    </div>
-</div>
-<div class="loginPopup hide">
-    <div class="spec">
-        <div class="inscription-form3">
-            <div class="containre-form2 d-flex flex-column aline-items-center">
-
-                <h1>Choisi la filière</h1>
-
-                <div class="inswerinput3">
-                    <input type="radio" id="sciephyi" name="inpo">
-                    <label for="sciephyi">
-                        <span>Sciences phyisique</span>
-                    </label>
-                </div>
-
-                <div class="inswerinput3">
-                    <input type="radio" id="scievie" name="inpo">
-                    <label for="scievie">
-                        <span>Sciences de vie et terre</span>
-                    </label>
-                </div>
-
-                <div class="inswerinput3">
-                    <input type="radio" id="sciemathA" name="inpo">
-                    <label for="sciemathA">
-                        <span>Sciences mathématiques A  </span>
-                    </label>
-                </div>
-
-                <div class="inswerinput3">
-                    <input type="radio" id="sciemathB" name="inpo">
-                    <label for="sciemathB">
-                        <span>Sciences mathématiques B  </span>
-                    </label>
-                </div>
-
-                <div class="inswerinput3">
-                    <input type="radio" id="scieagron" name="inpo">
-                    <label for="scieagron">
-                        <span>Sciences agronomiques  </span>
-                    </label>
-                </div>
-
-
-                <div><a href="#">
-                        <button id="btn-next">Next</button>
-                    </a></div>
-
-            </div>
-        </div>
-    </div>
-</div>
 <main>
     <section class="header backGreen">
         <div class="container-fluid">

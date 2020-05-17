@@ -40,22 +40,22 @@ require_once("connexion.php");
 //}
 //};
 
-if (!empty($_SESSION['mail'])) {
+if (!empty($_SESSION['mail']) && $_POST['description']) {
     $usermail = $_SESSION['mail'];
     $iduser = $_SESSION['userid'];
 
-
 // Escape user inputs for security
-    $inputNv = mysqli_real_escape_string($conn, $_REQUEST['nv']);
-    $inputMt = mysqli_real_escape_string($conn, $_REQUEST['mt']);
-    $inputCrs = mysqli_real_escape_string($conn, $_REQUEST['crs']);
-    $inputMsg = mysqli_real_escape_string($conn, $_REQUEST['description']);
-
+    $inputNv = $_POST['nvscolaire'];
+    $inputMt = $_POST['matiere'];
+    $inputCrs = $_POST['cours'];
+    $inputMsg = $_POST['description'];
+ echo $inputMt, $inputCrs , $inputMsg , $inputNv ;
+// die();
 // Attempt insert query execution
-    $sql = "INSERT INTO demande (description,idetudiantc,cours,idmatiere ) VALUES ( '" . $inputMsg . "' , '" . $iduser . "'  ,  '" . $inputCrs . "' , '" . $inputNv . "' )";
+    $sql = "INSERT INTO demande (description,idetudiantc,cours,idmatiere ) VALUES ( '" . $inputMsg . "' , '" . $iduser . "'  ,  '" . $inputCrs . "' , '" . $inputMt . "' )";
     $res = mysqli_query($conn, $sql);
 
-    if ($res) {
+    if (!empty($res)) {
         header('Location: Student.php');
 
     } else {
