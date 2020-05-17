@@ -142,9 +142,11 @@ include "notification.php";
                idetudiantc = '" . $_SESSION['userid'] . "'";
               $result = mysqli_query($conn, $sql);
             //$reponse = mysqli_fetch_assoc($exec_requete);
+
 //                var_dump($_SESSION['userid']);
         if (isset($result)) {
 //                $row = mysqli_fetch_array($result);
+
                 $demandes = [];
 
                 $fname = $_SESSION['firstName'];
