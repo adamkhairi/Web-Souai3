@@ -55,15 +55,21 @@ if (!empty($_SESSION['mail'])) {
     $sql = "INSERT INTO demande (description,idetudiantc,cours,idmatiere ) VALUES ( '" . $inputMsg . "' , '" . $iduser . "'  ,  '" . $inputCrs . "' , '" . $inputNv . "' )";
 
     $res = mysqli_query($conn, $sql);
-    var_dump($res);
+//    var_dump($res);
 //die();
     if ($res) {
-        echo "<script>
-            alert('Demande Added');
-            </script>";
+        header('Location: Student.php');
+//        echo "<script>
+//            alert('Demande Added');
+//            </script>";
+
+
     } else {
 //    echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
+        header('Location: Student.php');
+
         echo "<script>
+
             alert('erroor !!!');
             </script>";
 

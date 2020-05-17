@@ -38,7 +38,9 @@
                     <h4 class='mt-2'>Your E-mail :</h4>
                     <h4 class='mt-2 ml-4'>$usermail</h4>
                 </div>
-               <a name=\" \" id=\"\" class=\"btn btn-primary w-25 \" href=\"logout.php\" role=\"button\">Logout !</a>
+               <a href=\"logout.php\">
+               <button class='btn_post btn btn-danger rounded-pill ml-4'>Déconnecté</button>
+</a>
 
                 </div>
                 </a>";
