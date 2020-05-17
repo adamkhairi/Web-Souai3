@@ -41,7 +41,6 @@
         </div>
     </div>
 
-    <!--    //TODO fix Notify-->
 
     <div class="show_notification">
 

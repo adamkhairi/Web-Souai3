@@ -25,8 +25,10 @@ include("navbar.php");
                         $reponse = mysqli_fetch_array($result);
                         if(!empty($reponse['mailetudiant'])){
                             //TODO Send email to Client
+
                          header("location: resetNewPassword.php");
 //                        echo"<p class ='text-success m-4'>vérifiez votre email!</p>";
+
                         }
                         else{
                             echo"<p class ='text-danger m-4'>cet email n'existe pas!</p>";

@@ -18,7 +18,7 @@
 </head>
 <body>
 <nav>
-    <a class="navbar-brand" href="index.php">
+    <a class="navbar-brand" href="logout.php">
         <img src="src/img/logo-02.png" width="150" class="d-inline-block align-top" alt="">
     </a>
 
