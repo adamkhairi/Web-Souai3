@@ -57,17 +57,20 @@ include "notification.php";
 
         </div>
     </div>
+</div>
+<div class="Post_problem">
+    <form action="addQst.php" method="post">
 
-    <div class="Post_problem">
-        <form action="addQst.php" method="post">
-            <h2 class="historique d-inline-block">Poster un problème:</h2>
-            <div class="post_pro">
-                <div class="find_help">
-                    <div>
+        <h2 class="historique d-inline-block">Poster un problème:</h2>
+        <div class="post_pro">
+            <div class="find_help">
+                <div>
 
-                        <select name="nvscolaire" id="nvscolaire">
-                            <option value="2">2eme année Bac</option>
-                            <option value="1">1er année Bac</option>
+                    <select name="nvscolaire" id="nvscolaire">
+                    <option value="2bac">2eme année Bac</option>
+                        <option value="1bac">1er année Bac</option>
+
+
 
                         </select>
                         <input type="text" hidden value="" name="nv" id="niveauS">
@@ -111,9 +114,11 @@ include "notification.php";
 
                     </div>
                 </div>
+
                 <div class="text_message form-group">
                     <textarea name="description" id="message" cols="30" rows="10"
                               placeholder="Votre message"></textarea>
+
                 </div>
             </div>
             <div>
@@ -121,6 +126,7 @@ include "notification.php";
             </div>
         </form>
     </div>
+
 
 
     <div class="containers">
