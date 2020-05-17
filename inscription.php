@@ -7,7 +7,7 @@ $sql = "SELECT count(*) FROM `etudiant`  WHERE `mailetudiant`= '$your_email' ";
     $req = mysqli_query($conn,$sql) or die('Erreur SQL ! ' . $sql . ' ' . mysqli_error());
     $data = mysqli_fetch_array($req);
     if ($data[0] == 0) {
-        if (isset($_REQUEST['username'], $_REQUEST['prenom'], $_REQUEST['nScolaire'], $_REQUEST['filier'], $_REQUEST['email'], $_REQUEST['password'])) {
+        if (isset($_REQUEST['username'], $_REQUEST['prenom'], $_REQUEST['nScolaire'], $_REQUEST['filier'], $_REQUEST['email'], $_REQUEST['password'],$_REQUEST['password2']) && $_REQUEST['password'] = $_REQUEST['password2']) {
             // récupérer le nom d'utilisateur et supprimer les antislashes ajoutés par le formulaire
             $username = stripslashes($_REQUEST['username']);
             $username = mysqli_real_escape_string($conn, $username);

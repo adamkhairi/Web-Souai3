@@ -32,9 +32,14 @@
                 echo
                 "
     <a class=\"inscr\" href=\"Student.php\">
+    <div>
+    
 <div class='text-right '>
                     <h4 class='mt-2'>Your E-mail :</h4>
                     <h4 class='mt-2 ml-4'>$usermail</h4>
+                </div>
+               <a name=\" \" id=\"\" class=\"btn btn-primary w-25 \" href=\"logout.php\" role=\"button\">Logout !</a>
+
                 </div>
                 </a>";
             } else {

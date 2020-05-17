@@ -33,14 +33,7 @@ include("navbar.php");
                             <label for="email"><i class="zmdi zmdi-email"></i></label>
                             <input type="email" name="email" id="email" placeholder="Votre Email"/>
                         </div>
-                        <div class="form-group">
-                            <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                            <input type="password" name="password" id="pass" placeholder="Mot de passe"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="pass2"><i class="zmdi zmdi-lock"></i></label>
-                            <input type="password" name="password2" id="pass" placeholder="Confirmer Mot de passe"/>
-                        </div>
+
 
                         <div class="form-group">
                             <!--                            <label for="nScolaire"><i class="zmdi zmdi-account material-icons-name"></i></label>-->
@@ -48,8 +41,8 @@ include("navbar.php");
                             <div class="input-group mb-3">
                                 <select class="custom-select" name="nScolaire" id="nScolaire">
                                     <option selected>Niveau Scolaire</option>
-                                    <option value="1">2éme année Bac</option>
-                                    <option value="2">1er année Bac</option>
+                                    <option value="2">2éme année Bac</option>
+                                    <option value="1">1er année Bac</option>
                                 </select>
                             </div>
 
@@ -86,6 +79,22 @@ include("navbar.php");
                         <!--                            <input type="text" name="filier" id="filier" placeholder="Filier"/>-->
                         <!--                        </div>-->
                         <!--                        Password-->
+
+                        <div class="form-group">
+                            <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                            <input type="password" name="password" id="pass" placeholder="Mot de passe"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="pass2"><i class="zmdi zmdi-lock"></i></label>
+                            <input type="password" name="password2" id="pass" placeholder="Confirmer Mot de passe"/>
+                        </div>
+                        <?php
+//                        if(isset($_REQUEST['password']) &&  ){
+//
+//                        }
+
+                        ?>
+
 
 
                         <div class="form-group form-button">
