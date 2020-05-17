@@ -14,14 +14,11 @@ if(!empty($email)){
             header("location: index.php");
             echo "<script>alert('Done')</script>";
         }else {
-            
             header("location: resetthepassword.php");
         }
-      
     }
     else{
         header("location: forget_the_password.php");
-      
     }
 }
 ?>
