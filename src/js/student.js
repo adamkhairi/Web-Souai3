@@ -111,30 +111,50 @@ let cours_for_hg = `    <optgroup label="Histoire">
 </optgroup>`
 
 function School_levels(){
-    if(School_level.value === "1bac"){
-        The_matiers.innerHTML = lesMatair_de_1erBac
-    }else if(School_level.value === "2bac"){
-        The_matiers.innerHTML = lesMatair_de_2EmeBac;
-    }
+	if(School_level.value == "1"){
+		The_matiers.innerHTML = lesMatair_de_1erBac;
+	}else if(School_level.value == "2"){
+		The_matiers.innerHTML = lesMatair_de_2EmeBac;
+	}
 }
 
 
 
 function show_matiers(){
-    if(The_matiers.value === "math"){
-        cours.innerHTML = cours_for_math;
-
-    }else if(The_matiers.value === "svt"){
-        cours.innerHTML = cours_for_SVT;
-
-    }else if(The_matiers.value == "pc"){
-        cours.innerHTML = cours_for_pc;
-
-    }else if(The_matiers.value == "hg"){
-        cours.innerHTML = cours_for_hg;
-
-    }
+	if(The_matiers.value === "math"){
+		cours.innerHTML = cours_for_math;
+		
+	}else if(The_matiers.value === "svt"){
+		cours.innerHTML = cours_for_SVT;
+		
+	}else if(The_matiers.value === "pc"){
+		cours.innerHTML = cours_for_pc;
+		
+	}else if(The_matiers.value === "hg"){
+		cours.innerHTML = cours_for_hg;
+		
+	}
 }
-The_matiers.addEventListener("click", show_matiers);
+// let getinfos = () => {
+//
+// };
+function getinfos() {
+	let niveaux = document.getElementById('niveauS');
+	niveaux.value = School_level.value;
+	console.log(niveaux.value);
+	let matieres = document.getElementById('matieres');
+	matieres.value = The_matiers.value;
+	console.log(matieres.value);
+	let courss =document.getElementById('cours');
+	let inputCours = document.getElementById('courses');
+	inputCours.value = courss.value ;
+}
+
+
+
 School_level.addEventListener('click' , School_levels);
+The_matiers.addEventListener("click", show_matiers);
+
+School_level.addEventListener('click' , School_levels);
+
 
