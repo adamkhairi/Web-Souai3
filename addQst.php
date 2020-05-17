@@ -59,10 +59,6 @@ if (!empty($_SESSION['mail'])) {
 //die();
     if ($res) {
         header('Location: Student.php');
-//        echo "<script>
-//            alert('Demande Added');
-//            </script>";
-
 
     } else {
 //    echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
