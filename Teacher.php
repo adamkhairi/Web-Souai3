@@ -9,12 +9,65 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap" rel="stylesheet"> 
 
 </head>
-
 <body style="font-family: 'Poppins', sans-serif;">
-
 <?php
 include('navbar.php');
+require("connexion.php");
+session_start();
 ?>
+   <div class="containers">
+        <div class="check">
+            <div class="name-and-pen">
+                <div class="name-img d-flex justify-content-center">
+                    <img class="profil_img" src="src/img/account.png" alt="">
+                    <h2 class="mt-4 ml-4">
+                        <?php
+                        if (!empty($_SESSION['mail'])) {
+                            echo($_SESSION['firstName'] . ' ' . $_SESSION['lastName']);
+                        };
+                        ?>
+                    </h2>
+                </div>
+                <div class="pen_for_modify">
+                    <i class="fas fa-pencil-alt"></i>
+                </div>
+            </div>
+            <div class="inputs d-flex flex-row justify-content-around aline-items-baseline">
+                <div>
+                    <h5 class='font-weight-bold bBottom'>E-mail : </h5>
+                    <h4 class='ml-4'>
+                        <?php
+                        if (!empty($_SESSION['mail'])) {
+                            echo(' ' . $_SESSION['mail']);
+                        };
+                        ?></h4>
+                </div>
+                <div>
+                    <?php
+                    if (!empty($_SESSION['mail'])) {
+                        $usermail = $_SESSION['mail'];
+                        // afficher un message
+                        echo
+                            " 
+                <h5 class=\"font-weight-bold bBottom mr-4\">la matiere : </h5>
+                <h4> " .   $_SESSION['matiere'] . "</h4>
+
+                ";
+                    } else {
+                        echo "
+                      <h5 class=\"font-weight-bold bBottom mr-4\">Niveau scolaire : </h5>
+                <h4>le Niveau scolaire</h4>
+                      ";
+                    };
+                    ?>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
    
    <div class="containers">
         <div class="chart">
@@ -49,7 +102,7 @@ include('navbar.php');
     </div>
     <div class="containers">
         <h2 class="historique">Historique:</h2>
-        <h5 class="activité">aucun activité</h5>
+        <h5 class="activité">aucune activité</h5>
     </div>
     <div class="agenda">
         <iframe src="https://calendar.google.com/calendar/embed?src=minanon77%40gmail.com&ctz=Africa%2FCasablanca"
@@ -64,7 +117,7 @@ include('navbar.php');
 
 
 
-    <div  id="pop-up-add_events" class="pop-up-add_events">
+    <div style="display :none;"  id="pop-up-add_events" class="pop-up-add_events">
         
         <div class="pop-up-add_event">
             <div class="clouse">

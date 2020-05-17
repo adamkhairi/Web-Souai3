@@ -37,18 +37,17 @@ if (isset($_POST['your_email']) && isset($_POST['your_pass'])) {
 
 
     elseif ($_POST["userType"] == "teacher") {
-        $requete = "SELECT * FROM benevole where
-                   mailbenevole = '" . $your_email . "' and passwordbenevole = '" . hash('sha256', $password) . "' ";
+        $requete = "SELECT c.nombenevole , c.mailbenevole, c.prenombenevole , c.passwordbenevole , b.idmatiere , b.nommatiere FROM benevole c INNER JOIN matiere b ON b.idmatiere = c.idmatiere WHERE c.mailbenevole = '" . $your_email . "' and c.passwordbenevole = '" . hash('sha256', $password) . "' ;";
         $exec_requete = mysqli_query($conn, $requete);
         $reponse = mysqli_fetch_array($exec_requete);
 
         if (!empty($reponse['mailbenevole'])) // nom d'utilisateur et mot de passe correctes
         {
-//            $_SESSION['your_email'] = $your_email;
             $_SESSION['firstName'] = $reponse['nombenevole '];
             $_SESSION['lastName'] = $reponse['prenombenevole'];
             $_SESSION['mail'] = $reponse['mailbenevole'];
             $_SESSION['password'] = $reponse['passwordbenevole'];
+            $_SESSION['matiere'] = $reponse['nommatiere'];
 
             echo($reponse);
             header('Location: Teacher.php');
