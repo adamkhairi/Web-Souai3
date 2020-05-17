@@ -52,7 +52,7 @@ if (!empty($_SESSION['mail'])) {
     $inputMsg = mysqli_real_escape_string($conn, $_REQUEST['description']);
 
 // Attempt insert query execution
-    $sql = "INSERT INTO demande (description,idetudiantc,cours,idmatiere ) VALUES ( '" . $inputMsg . "' , '" . $iduser . "'  ,  '" . $inputCrs . "' , '" . $inputNv . "' )";
+    $sql = "INSERT INTO demande (description, idetudiantc , cours, idmatiere ) VALUES ( '". $inputMsg ."' , '". $iduser . "'  ,  '". $inputCrs . "' , '". $inputMt ."' )";
     $res = mysqli_query($conn, $sql);
 
     if ($res) {
