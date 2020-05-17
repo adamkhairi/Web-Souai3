@@ -57,32 +57,6 @@ include "notification.php"
 
     </div>
 </div>
-<?php
-
-$levelid=$_SESSION['nvScolaire'];
-
-$querylevel ="SELECT * FROM niveau where idniveau = '" . $levelid . "' ";
-
-$exec_requete = mysqli_query($conn, $querylevel);
-$reponse = mysqli_fetch_array($exec_requete);
-$levelname= $reponse['niveau'];
-
-$querymatiere ="SELECT * FROM matiere where idniveau = '" . $levelid . "' ";
-$exec_requete = mysqli_query($conn, $querymatiere);
- $reponsematiere = mysqli_fetch_array($exec_requete);
-var_dump($reponsematiere);
-$listcours = [];
-
-foreach ($reponsematiere as $cours){
-    $coursid = $cours[0];
-    $querycours ="SELECT * FROM cours where idmatiere = '" . $levelid . "' ";
-    $exec_requetes = mysqli_query($conn, $querycours);
-    $reponsecours = mysqli_fetch_array($exec_requetes);
-    array_push($listcours,$reponsecours);
-}
-
-
-//?>
 <div class="Post_problem">
     <form action="addQst.php" method="post">
 

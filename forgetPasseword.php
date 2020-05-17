@@ -1,8 +1,9 @@
 <?php
 require("connexion.php");
 $email = $_POST['email'];
+session_start();
 
-if(isset($email)){
+if(!empty($email)){
     $sql = "SELECT * FROM `etudiant` WHERE mailetudiant = '". $email ."';";
     $result = $conn->query($sql);
     $reponse = mysqli_fetch_array($result);
@@ -10,15 +11,25 @@ if(isset($email)){
        header("location: resetNewPassword.php");
     }
     else{
-        
         header("location: index.php");
+      
     }
 
 
+} else{
+    header("location: index.php");
+  
 }
 
 
 
-// $req = mysqli_query($conn,$sql);
+
+
+
+
+
+
+
+
 ?>
 
