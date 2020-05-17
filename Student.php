@@ -1,8 +1,8 @@
 <?php
 require("connexion.php");
 session_start();
-include 'navbar.php';
-include "notification.php"
+include "navbar.php";
+include "notification.php";
 ?>
 
 <div class="containers">
@@ -106,6 +106,7 @@ include "notification.php"
                             <option value="14">Fonctions exponentielles</option>
                         </optgroup>
                     </select>
+
                     <input type="text" hidden value="" name="crs" id="courses">
 
                 </div>
@@ -120,59 +121,23 @@ include "notification.php"
     </form>
 </div>
 
-<?php
-
-//if (!empty($_SESSION['mail'])) {
-//    $usermail = $_SESSION['mail'];
-//    $iduser = $_SESSION['userid'];
-//
-//
-//// Escape user inputs for security
-//    $inputNv = mysqli_real_escape_string($conn, $_REQUEST['nv']);
-//    $inputMt = mysqli_real_escape_string($conn, $_REQUEST['mt']);
-//    $inputCrs = mysqli_real_escape_string($conn, $_REQUEST['crs']);
-//    $inputMsg = mysqli_real_escape_string($conn, $_REQUEST['description']);
-//
-//// Attempt insert query execution
-//    $sql = "INSERT INTO demande (description,idetudiantc,cours,idmatiere ) VALUES ( '" . $inputMsg . "' , '" . $iduser . "'  ,  '" . $inputCrs . "' , '" . $inputNv . "' )";
-//
-//    $res = mysqli_query($conn, $query);
-//    var_dump($res);
-//
-//    if ($res) {
-//        echo "<script>
-//            alert('Demande Added');
-//            </script>";
-//    } else {
-////    echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
-//        echo "<script>
-//            alert('erroor !!!');
-//            </script>";
-//
-//    };
-//
-//// Close connection
-////mysqli_close($conn);
-//
-//};
-?>
 
 
 <div class="containers">
     <h2 class="historique d-inline-block bBottom">Historique:</h2>
+
+    <?php
+    if ()
+
+
+    ?>
     <h5 class="activité">aucun activité</h5>
 </div>
 
 
-<div class="agenda">
-    <!--        Agenda-->
-</div>
 
 
-<!-- <div class="agenda">
-    <iframe src="https://calendar.google.com/calendar/embed?src=minanon77%40gmail.com&ctz=Africa%2FCasablanca"
-        style="border: 0" height="600" frameborder="0" scrolling="no"></iframe>
-</div> -->
+
 <script src="src/js/general.js"></script>
 <script src="src/js/student.js"></script>
 
