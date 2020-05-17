@@ -2,15 +2,16 @@ let School_level = document.getElementById("nvscolaire");
 let The_matiers = document.getElementById("matiere");
 let cours = document.getElementById("cours");
 let lesMatair_de_1erBac = `
-<option value="Ar">Langue arabe</option>
-<option value="fr">1ère langue étrangère</option>
-<option value="isla">Education islamique</option>
-<option value="hg">Histoire géographie</option>`
-let lesMatair_de_2EmeBac = ` <option value="math">Mathématique</option>
-<option value="svt">Sciences de la vie et de la Terre</option>
-
-<option value="pc">Physique Chimie</option>`
-let cours_for_SVT = `<optgroup label="Consommation de la matière organique et flux de l’énergie">
+<option value="1">Langue arabe</option>
+<option value="2">1ère langue étrangère</option>
+<option value="3">Education islamique</option>
+<option value="4">Histoire géographie</option>`
+let lesMatair_de_2EmeBac = `
+ <option value="1">Mathématique</option>
+<option value="2">Sciences de la vie et de la Terre</option>
+<option value="3">Physique Chimie</option>`
+let cours_for_SVT = `
+<optgroup label="Consommation de la matière organique et flux de l’énergie">
 <option value="1">Réactions responsables de libération de l’énergie de la matière organique au niveau cellulaire</option>
  <option value="2">Le rôle du muscle squelettique strié dans la conversion d'énergie</option>
 </optgroup>
@@ -121,16 +122,16 @@ function School_levels(){
 
 
 function show_matiers(){
-	if(The_matiers.value === "math"){
+	if(The_matiers.value === "1"){
 		cours.innerHTML = cours_for_math;
 		
-	}else if(The_matiers.value === "svt"){
+	}else if(The_matiers.value === "2"){
 		cours.innerHTML = cours_for_SVT;
 		
-	}else if(The_matiers.value === "pc"){
+	}else if(The_matiers.value === "3"){
 		cours.innerHTML = cours_for_pc;
 		
-	}else if(The_matiers.value === "hg"){
+	}else if(The_matiers.value === "4"){
 		cours.innerHTML = cours_for_hg;
 		
 	}
