@@ -153,7 +153,7 @@ function getinfos() {
 
 
 
-School_level.addEventListener('click' , School_levels);
+// School_level.addEventListener('click' , School_levels);
 The_matiers.addEventListener("click", show_matiers);
 
 School_level.addEventListener('click' , School_levels);

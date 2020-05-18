@@ -129,20 +129,21 @@ session_start();
             </div>
 
             <div class="pop-up-add_event_matairs">
-            <div>
-                    <select name="nvscolaire" id="nvscolaire">
+            <!-- <div>
+                     <select name="nvscolaire" id="nvscolaire">
                         <option value="2">2eme année Bac</option>
                         <option value="1">1er année Bac</option>
                         </select>
-                    </div>
+                    </div>-->
             
-            <div>
-                    <!-- Matiers -->
+           <div>
+                    
                     <select name="matiere" id="matiere">
-                        <option value="1">Mathématique</option>
-                        <option value="2">Sciences de la vie et de la Terre</option>
+                        <option value="1">Mathématique(2éme année bac)</option>
+                        <option value="2">Sciences de la vie et de la Terre(2éme année bac)</option>
                         <!-- <option value="philos">Philosophique</option> -->
-                        <option value="3">Physique Chimie</option>
+                        <option value="3">Physique Chimie(2éme année bac)</option>
+                        <option value="4">Histoire géographie(1éme année bac)</option>`
                         <!-- <option value="an">Anglais</option> -->
                     </select>
                 </div>
