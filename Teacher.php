@@ -39,10 +39,6 @@ require("connexion.php");
 
 
             <div class="input-group mb-3 w-25">
-
-
-                <!--//               getdemande();-->
-
                 <form action="" method="post" class="w-100">
 
                     <select class="custom-select" id="inputGroupSelect01" name="sel">
@@ -186,15 +182,14 @@ require("connexion.php");
 
 
             <div class="pop-up-add_event_matairs">
-            <!-- <div>
-                     <select name="nvscolaire" id="nvscolaire">
+             <div>
+                     <!-- <select name="nvscolaire" id="nvscolaire">
                         <option value="2">2eme année Bac</option>
                         <option value="1">1er année Bac</option>
                         </select>
-                    </div>-->
+                    </div>  -->
             
-           <div>
-                    
+                  <div>
                     <select name="matiere" id="matiere">
                         <option value="1">Mathématique(2éme année bac)</option>
                         <option value="2">Sciences de la vie et de la Terre(2éme année bac)</option>
@@ -245,14 +240,9 @@ require("connexion.php");
                 <input  class="lien_for_the_meeting" type="text" placeholder="https://le lien.com">
 
             </div>
-            <div class="hour">
-                l'heure
-                <div><input class="thedate" type="time" id="appt" name="appt"></div>
-            </div>
+
         </div>
-        <div>lien de meeting
-            <input class="lien_for_the_meeting" type="text" placeholder="#">
-        </div>
+
         <div>
             <textarea class="message" name="message" id="message" cols="30" rows="10"
                       placeholder="Votre message"></textarea>
