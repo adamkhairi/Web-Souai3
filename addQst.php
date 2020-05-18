@@ -1,6 +1,6 @@
 <?php
+require("connexion.php");
 session_start();
-require_once("connexion.php");
 //require("login.php");
 //$db_username = 'root';
 //$db_password = '';
