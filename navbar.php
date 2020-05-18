@@ -79,7 +79,7 @@ session_start();
                    
                         <button id=\"etud\" onclick=\"logingEtudiant()\" class=\"btn rounded-pill backOrange  \"
                                 data-target=\"#exampleModalCentertype=\"
-                        >Connectez-vous (Etudient)
+                        >Se connecter
                         </button>
            </div>
            </div>
