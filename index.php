@@ -124,6 +124,7 @@ include("navbar.php");
                 <div class="signin-image">
                     <figure><img src="src/img/signin-image.jpg" alt="sing up image"></figure>
                     <a href="forget_the_password.php" class="signup-image-link">Mot de passe Oublié ?</a>
+
                 </div>
 
                 <div class="signin-form">

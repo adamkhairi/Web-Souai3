@@ -1,3 +1,4 @@
+
 <?php
 include('navbar.php');
 require("connexion.php");
@@ -63,7 +64,9 @@ require("connexion.php");
         </div>
 
     </div>
+
 </div>
+
 
 <div class="containers">
     <div class="chart">
@@ -74,6 +77,7 @@ require("connexion.php");
             <div>Les cours qui plus demande :</div>
             <div class="chart_UI">
                 <div class="chart_UI1"></div>
+
             </div>
             <div>12</div>
         </div>
@@ -180,21 +184,31 @@ require("connexion.php");
             </svg>
         </div>
 
-        <div class="pop-up-add_event_matairs">
-            <div>
-                <!-- Matiers -->
-                <select name="matiere" id="matiere">
-                    <option value="math">Mathématique</option>
-                    <option value="svt">Sciences de la vie et de la Terre</option>
-                    <!-- <option value="philos">Philosophique</option> -->
-                    <option value="pc">Physique Chimie</option>
-                    <!-- <option value="an">Anglais</option> -->
-                </select>
-            </div>
-            <div>
-                <!-- Cours -->
-                <select class="hour2" name="cours" id="cours">
-                    <optgroup label="Analyse">
+
+            <div class="pop-up-add_event_matairs">
+            <!-- <div>
+                     <select name="nvscolaire" id="nvscolaire">
+                        <option value="2">2eme année Bac</option>
+                        <option value="1">1er année Bac</option>
+                        </select>
+                    </div>-->
+            
+           <div>
+                    
+                    <select name="matiere" id="matiere">
+                        <option value="1">Mathématique(2éme année bac)</option>
+                        <option value="2">Sciences de la vie et de la Terre(2éme année bac)</option>
+                        <!-- <option value="philos">Philosophique</option> -->
+                        <option value="3">Physique Chimie(2éme année bac)</option>
+                        <option value="4">Histoire géographie(1éme année bac)</option>`
+                        <!-- <option value="an">Anglais</option> -->
+                    </select>
+                </div>
+                <div>
+                    <!-- Cours -->
+                    <select class="hour2" name="cours" id="cours">
+                        <optgroup label="Analyse">
+
                         <option value="1">Continuité d'une fonction numérique</option>
                         <option value="2">Dérivabilité d'une fonction, fonctions primitives</option>
                         <option value="3">Etude des fonctions</option>
@@ -210,13 +224,26 @@ require("connexion.php");
                         <option value="12">Calcul des Probabilités</option>
                         <option value="13">Geométrie de l’espace Produit scalaire et applications</option>
                         <option value="14">Fonctions exponentielles</option>
-                    </optgroup>
-                </select>
+
+
+                        </optgroup>
+                    </select>
+                </div>
+             
+
             </div>
-        </div>
-        <div class="Date">
-            <div> la date
-                <div><input class="thedate" type="date" name="date" id="date"></div>
+           
+            <div class="Date"> 
+              <div>  la date
+                <div><input class="thedate" type="date" name="date" id="date"></div></div>
+                <div class="hour">
+                    l'heure
+                <div><input class="thedate" type="time" id="appt" name="appt"></div>
+                </div>
+            </div>
+            <div>lien de meeting
+                <input  class="lien_for_the_meeting" type="text" placeholder="https://le lien.com">
+
             </div>
             <div class="hour">
                 l'heure
@@ -237,7 +264,11 @@ require("connexion.php");
 
    <script src="src/js/script.js" ></script>
 
-<?php
+
+    <script src="src/js/script.js" ></script>
+    <script src="src/js/Student.js" ></script>
+    <?php
+
 include 'footer.php';
 ?>
 

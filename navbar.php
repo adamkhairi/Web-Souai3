@@ -17,8 +17,10 @@ session_start();
     <title>Document</title>
 </head>
 <body>
+
 <nav class="sticky-top">
     <a class="navbar-brand" href="index.php">
+
         <img src="src/img/logo-02.png" width="150" class="d-inline-block align-top" alt="">
     </a>
 

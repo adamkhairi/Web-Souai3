@@ -153,9 +153,10 @@ function getinfos() {
 
 
 
-School_level.addEventListener('click' , School_levels);
+// School_level.addEventListener('click' , School_levels);
 The_matiers.addEventListener("click", show_matiers);
 
-let getinfo = document.getElementById('cours');
-getinfo.addEventListener("change",getinfos);
+School_level.addEventListener('click' , School_levels);
+
+
 
