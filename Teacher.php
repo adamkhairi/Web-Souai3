@@ -31,33 +31,35 @@ session_start();
                     ?></h4>
             </div>
 
-                <?php
-                if (!empty($_SESSION['mailb'])) {
-                    $usermail = $_SESSION['mailb'];
-                    $matiere = $_SESSION['matiere'];
 
-                    // afficher un message
-                    echo
-                        " 
-           
-                <div class=\"input-group mb-3 w-25\">
-  <div class=\"input-group-prepend\">
-    <button class=\"btn btn-outline-secondary\" disabled type=\"button\">Matieres</button>
-  </div>
-  <select class=\"custom-select\" id=\"inputGroupSelect01\">
-    <option selected>Sélectionner</option>
-    <option value=\"1\">One</option>
-    <option value=\"2\">Two</option>
-    <option value=\"3\">Three</option>
-  </select>
-</div>
-                
-                ";
-                }
-                ?>
+            <!--//                    $matiereT = $_SESSION['matiereT-->
+
+            <!--                    // afficher un message-->
 
 
+            <div class="input-group mb-3 w-25">
 
+
+                <!--//               getdemande();-->
+
+                <form action="" method="post" class="w-100">
+
+                    <select class="custom-select" id="inputGroupSelect01" name="sel">
+                        <option selected>Matières</option>
+                        <option value="1">Français</option>
+                        <option value="2">Physique</option>
+                        <option value="3">Maths</option>
+                        <option value="4">Philosophie</option>
+                    </select>
+                    <button type="submit" name="submit" id="" class="btn backRed btn-lg"> Select</button>
+                </form>
+
+            </div>
+            <?php
+            //$secetion = $_POST['sel'];
+            //var_dump($secetion);
+
+            ?>
         </div>
 
     </div>
@@ -100,11 +102,63 @@ session_start();
 </div>
 <div class="containers">
     <h2 class="historique">Historique:</h2>
-    <h5 class="activité">aucune activité</h5>
+    <div class="d-flex flex-wrap justify-content-around m-2">
+        <?php
+
+        if (isset($_POST['submit'])) {
+
+            if (isset($_POST['submit'])) {
+                $matiereT = $_POST['sel'];
+
+                $req = "SELECT * FROM demande where
+                   idmatiere = '" . $matiereT . "'";
+                $reqt = mysqli_query($conn, $req);
+                if (!empty($_SESSION['mailb'] && $reqt)) {
+                    $row = mysqli_fetch_array($reqt);
+                    while ($row = mysqli_fetch_array($reqt)) {
+//                etudiant name
+                        $requet = "SELECT * FROM etudiant where
+                    idetudiant = '" . $row[2] . "'";
+                        $results = mysqli_query($conn, $requet);
+                        $row1 = mysqli_fetch_array($results);
+//                Course name
+                        $requet2 = "SELECT * FROM cours where
+                    idmatiere = '" . $row[4] . "'";
+
+                        $results1 = mysqli_query($conn, $requet2);
+                        $row2 = mysqli_fetch_array($results1);
+//                    $cours = [];
+
+                        echo "
+                        <div class=\"card mb-4\" style=\"width: 18rem;\">
+                           <div class=\"card-body\">
+                            <h5 class=\"card-title\">$row2[1]</h5>
+                            <h6 class=\"card-subtitle mb-2 text-muted\"> $row1[1]  $row1[2]</h6>
+                            <p class=\"card-text\">$row[1]</p>
+                          </div>
+                        </div>
+                         ";
+
+                    }
+
+
+                }
+            }
+        } else {
+            echo "
+            <h5 class=\"activité\">aucune activité</h5>
+
+        ";
+        }
+        //    ?>
+
+
+    </div>
+
 </div>
 <div class="agenda">
-<!--    <iframe src="https://calendar.google.com/calendar/embed?src=minanon77%40gmail.com&ctz=Africa%2FCasablanca"-->
-<!--            style="border: 0" height="600" frameborder="0" scrolling="no"></iframe>-->
+    <!--    <iframe src="https://calendar.google.com/calendar/embed?src=minanon77%40gmail.com&ctz=Africa%2FCasablanca"-->
+    <!--            style="border: 0" height="600" frameborder="0" scrolling="no"></iframe>-->
 </div>
 
 <div class="btn_add_event">

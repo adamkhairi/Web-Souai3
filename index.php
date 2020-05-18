@@ -41,8 +41,8 @@ include("navbar.php");
                             <div class="input-group mb-3">
                                 <select class="custom-select" name="nScolaire" id="nScolaire">
                                     <option selected>Niveau Scolaire</option>
-                                    <option value="2">2éme année Bac</option>
-                                    <option value="1">1er année Bac</option>
+                                    <option value="2">Deuxième année Bac</option>
+                                    <option value="1">Premiere année Bac</option>
                                 </select>
                             </div>
 
