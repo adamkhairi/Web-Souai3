@@ -1,5 +1,5 @@
 <?php
-//session_start();
+session_start();
 //require("connexion.php");
 //$user = $_SESSION['your_email'];
 
@@ -27,6 +27,30 @@
         <!--            -->
         <?php
 
+        if (!empty($_SESSION['type'])) {
+//            session_start();
+            $teacherMail = $_SESSION['mailb'];
+            echo
+            "
+    <a class=\"inscr\" href=\"Student.php\">
+        <div>
+    
+                <div class='text-right '>
+                    <h4 class='mt-2'>Your E-mail :</h4>
+                    <h4 class='mt-2 ml-4'>$teacherMail</h4>
+                </div>
+               <a href=\"logout.php\">
+                     <button class='btn btn-danger rounded-pill ml-4'>Déconnecté</button>
+                </a>
+
+        </div>
+    </a>";
+        }
+        else
+
+
+
+
         if (!empty($_SESSION['mail'])) {
 
             $usermail = $_SESSION['mail'];
@@ -47,25 +71,6 @@
     </a>";
         }
 
-        elseif (!empty($_SESSION['mailb'])) {
-//            session_start();
-            $teacherMail = $_SESSION['mailb'];
-            echo
-            "
-    <a class=\"inscr\" href=\"Student.php\">
-        <div>
-    
-                <div class='text-right '>
-                    <h4 class='mt-2'>Your E-mail :</h4>
-                    <h4 class='mt-2 ml-4'>$teacherMail</h4>
-                </div>
-               <a href=\"logout.php\">
-                     <button class='btn btn-danger rounded-pill ml-4'>Déconnecté</button>
-                </a>
-
-        </div>
-    </a>";
-        }
         else {
             echo "
                 <div class='header p-0'>

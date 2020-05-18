@@ -1,6 +1,6 @@
 <?php
 require("connexion.php");
-session_start();
+//session_start();
 include "navbar.php";
 include "notification.php";
 ?>

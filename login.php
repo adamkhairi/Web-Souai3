@@ -71,6 +71,7 @@ if (isset($_POST['your_email']) && isset($_POST['your_pass'])) {
 
 
     elseif ($_POST["userType"] == "teacher") {
+        $_SESSION['type'] = $_POST['userType'];
         $requete = "SELECT c.nombenevole , c.mailbenevole, c.prenombenevole , c.passwordbenevole , b.idmatiere , b.nommatiere FROM benevole c INNER JOIN matiere b ON b.idmatiere = c.idmatiere WHERE c.mailbenevole = '" . $your_email . "' and c.passwordbenevole = '" . $password . "' ;";
 
         $exec_requete = mysqli_query($conn, $requete);

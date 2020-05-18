@@ -1,7 +1,7 @@
 <?php
 include('navbar.php');
 require("connexion.php");
-session_start();
+//session_start();
 ?>
 <div class="containers">
     <div class="check">
