@@ -9,7 +9,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap" rel="stylesheet"> 
 
 </head>
+
 <body style="font-family: 'Poppins', sans-serif;">
+
+<?php
+include('navbar.php');
+
+?>
+
 <?php
 include('navbar.php');
 require("connexion.php");
@@ -67,7 +74,9 @@ session_start();
 
         </div>
     </div>
+
 </div>
+
    
    <div class="containers">
         <div class="chart">
