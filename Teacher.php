@@ -14,11 +14,6 @@
 
 <?php
 include('navbar.php');
-
-?>
-
-<?php
-include('navbar.php');
 require("connexion.php");
 session_start();
 ?>
@@ -135,12 +130,19 @@ session_start();
 
             <div class="pop-up-add_event_matairs">
             <div>
+                    <select name="nvscolaire" id="nvscolaire">
+                        <option value="2">2eme année Bac</option>
+                        <option value="1">1er année Bac</option>
+                        </select>
+                    </div>
+            
+            <div>
                     <!-- Matiers -->
                     <select name="matiere" id="matiere">
-                        <option value="math">Mathématique</option>
-                        <option value="svt">Sciences de la vie et de la Terre</option>
+                        <option value="1">Mathématique</option>
+                        <option value="2">Sciences de la vie et de la Terre</option>
                         <!-- <option value="philos">Philosophique</option> -->
-                        <option value="pc">Physique Chimie</option>
+                        <option value="3">Physique Chimie</option>
                         <!-- <option value="an">Anglais</option> -->
                     </select>
                 </div>
@@ -166,7 +168,10 @@ session_start();
                         </optgroup>
                     </select>
                 </div>
+             
+
             </div>
+           
             <div class="Date"> 
               <div>  la date
                 <div><input class="thedate" type="date" name="date" id="date"></div></div>
@@ -186,7 +191,8 @@ session_start();
     </div>
 
 
-    <script src="src/js/student.js" ></script>
+    <script src="src/js/script.js" ></script>
+    <script src="src/js/Student.js" ></script>
     <?php
 include 'footer.php';
 ?>
