@@ -79,14 +79,14 @@ if (isset($_POST['your_email']) && isset($_POST['your_pass'])) {
         if (!empty($reponse['mailbenevole'])) // nom d'utilisateur et mot de passe correctes
         {
 //            $_SESSION['your_email'] = $your_email;
-            $_SESSION['firstName'] = $reponse['nombenevole '];
-            $_SESSION['lastName'] = $reponse['prenombenevole'];
-            $_SESSION['mail'] = $reponse['mailbenevole'];
+            $_SESSION['teacherFname'] = $reponse['nombenevole'];
+            $_SESSION['teacherLname'] = $reponse['prenombenevole'];
+            $_SESSION['mailb'] = $reponse['mailbenevole'];
             $_SESSION['password'] = $reponse['passwordbenevole'];
-            $_SESSION['matiere'] = $reponse['nommatiere'];
+            $_SESSION['matiere'] = $reponse['idmatiere'];
 
 
-            echo($reponse);
+//            echo($reponse);
             header('Location: Teacher.php');
         } else {
             header('Location: index.php?erreur=1'); // utilisateur ou mot de passe incorrect
