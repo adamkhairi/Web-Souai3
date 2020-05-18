@@ -1,5 +1,5 @@
 <?php
-//session_start()
+session_start();
 //require("connexion.php");
 //$user = $_SESSION['your_email'];
 
@@ -17,52 +17,81 @@
     <title>Document</title>
 </head>
 <body>
-<nav>
-    <a class="navbar-brand" href="logout.php">
+
+<nav class="sticky-top">
+    <a class="navbar-brand" href="index.php">
+
         <img src="src/img/logo-02.png" width="150" class="d-inline-block align-top" alt="">
     </a>
 
-        <div>
-
-            <!--            -->
-            <?php
-            if (!empty($_SESSION['mail'])) {
-                $usermail = $_SESSION['mail'];
-                // afficher un message
-                echo
-                "
-    <a class=\"inscr\" href=\"Student.php\">
     <div>
+
+        <!--            -->
+        <?php
+
+        if (!empty($_SESSION['type'])) {
+//            session_start();
+            $teacherMail = $_SESSION['mailb'];
+            echo
+            "
+    <a class=\"inscr\" href=\"Student.php\">
+        <div>
     
-<div class='text-right '>
+                <div class='text-right '>
+                    <h4 class='mt-2'>Your E-mail :</h4>
+                    <h4 class='mt-2 ml-4'>$teacherMail</h4>
+                </div>
+               <a href=\"logout.php\">
+                     <button class='btn btn-danger rounded-pill ml-4'>Déconnecté</button>
+                </a>
+
+        </div>
+    </a>";
+        }
+        else
+
+
+
+
+        if (!empty($_SESSION['mail'])) {
+
+            $usermail = $_SESSION['mail'];
+            // afficher un message
+            echo
+            "
+    <a class=\"inscr\" href=\"Student.php\">
+        <div>
+                <div class='text-right '>
                     <h4 class='mt-2'>Your E-mail :</h4>
                     <h4 class='mt-2 ml-4'>$usermail</h4>
                 </div>
                <a href=\"logout.php\">
-               <button class='btn_post btn btn-danger rounded-pill ml-4'>Déconnecté</button>
-</a>
+                  <button class='btn btn-danger rounded-pill'>Déconnecté</button>
+                </a>
 
-                </div>
-                </a>";
-            } else {
-                echo "
-<div class='header p-0'>
-<div class='header_content'>
+         </div>
+    </a>";
+        }
 
-             <div class=\"left d-flex flex-row justify-content-center\">
+        else {
+            echo "
+                <div class='header p-0'>
+                <div class='header_content'>
+
                    
-                        <button id=\"etud\" onclick=\"logingEtudiant()\" class=\"btn small btn-header\"
+                        <button id=\"etud\" onclick=\"logingEtudiant()\" class=\"btn rounded-pill backOrange  \"
                                 data-target=\"#exampleModalCentertype=\"
-                        >Connectez-vous (Etudient)
+                        >Se connecter
                         </button>
-                    </div>
-                 </div>
-                  </div>
+           </div>
+           </div>
+           
 
                 ";
-            }
-            ?>
-        </div>
+        };
+
+        ?>
+        <!--        </div>-->
 </nav>
 
 

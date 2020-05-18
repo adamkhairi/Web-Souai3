@@ -38,6 +38,8 @@ if (isset($_POST['your_email']) && isset($_POST['your_pass'])) {
 
     elseif ($_POST["userType"] == "teacher") {
 
+        $_SESSION['type'] = $_POST['userType'];
+
         $requete = "SELECT c.nombenevole , c.mailbenevole, c.prenombenevole , c.passwordbenevole , b.idmatiere , b.nommatiere FROM benevole c INNER JOIN matiere b ON b.idmatiere = c.idmatiere WHERE c.mailbenevole = '" . $your_email . "' and c.passwordbenevole = '" . $password . "' ;";
 
         $exec_requete = mysqli_query($conn, $requete);
@@ -45,13 +47,16 @@ if (isset($_POST['your_email']) && isset($_POST['your_pass'])) {
 
         if (!empty($reponse['mailbenevole'])) // nom d'utilisateur et mot de passe correctes
         {
-            $_SESSION['firstName'] = $reponse['nombenevole '];
-            $_SESSION['lastName'] = $reponse['prenombenevole'];
-            $_SESSION['mail'] = $reponse['mailbenevole'];
-            $_SESSION['password'] = $reponse['passwordbenevole'];
-            $_SESSION['matiere'] = $reponse['nommatiere'];
 
-            echo($reponse);
+//            $_SESSION['your_email'] = $your_email;
+            $_SESSION['teacherFname'] = $reponse['nombenevole'];
+            $_SESSION['teacherLname'] = $reponse['prenombenevole'];
+            $_SESSION['mailb'] = $reponse['mailbenevole'];
+
+            $_SESSION['password'] = $reponse['passwordbenevole'];
+            $_SESSION['matiere'] = $reponse['idmatiere'];
+
+
             header('Location: Teacher.php');
         } else {
             header('Location: index.php?erreur=1'); // utilisateur ou mot de passe incorrect

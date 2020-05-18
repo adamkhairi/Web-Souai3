@@ -1,5 +1,6 @@
 <?php
 require("connexion.php");
+session_start();
 $email = $_POST['email'];
 $password1 = $_POST['password1'];
 $password2 = $_POST['password2'];

@@ -53,7 +53,7 @@ nav {
     .chart_title {
         &_h2 {
             @extend .historique;
-            width: 345px;
+
             margin-bottom: 20px;
 
         }
@@ -220,7 +220,7 @@ nav {
 .historique {
     font-weight: 400;
     font-size: x-large;
-    width: 120px;
+    //width: 120px;
     border-bottom: 3px solid $colorOr;
     margin-top: -20px;
 
@@ -689,7 +689,7 @@ footer {
     }
     h2{
         @extend .historique;
-        width: 240px;
+        //width: 240px;
         // font-weight: 400;
         // font-size: x-large;
         // width: 240px;
