@@ -235,7 +235,7 @@ require("connexion.php");
 </div>
 
 
-<!--    <script src="src/js/student.js" ></script>-->
+   <script src="src/js/script.js" ></script>
 
 <?php
 include 'footer.php';
