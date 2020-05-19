@@ -7,8 +7,3 @@ add_event_btn.addEventListener('click' , () => {
 img_close.addEventListener('click' , () => {
     pop_events.style.display = 'none';
 });
-
-// notification.addEventListener('click' , () => {
-//     // notification_alert.style.display = 'block';
-//     notification_alert.classList.toggle('show');
-// })

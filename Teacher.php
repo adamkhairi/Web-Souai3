@@ -31,13 +31,6 @@ require("connexion.php");
                     };
                     ?></h4>
             </div>
-
-
-            <!--//                    $matiereT = $_SESSION['matiereT-->
-
-            <!--                    // afficher un message-->
-
-
             <div class="input-group mb-3 w-25">
                 <form action="" method="post" class="w-100">
 
@@ -46,17 +39,13 @@ require("connexion.php");
                         <option value="1">Français</option>
                         <option value="2">Physique</option>
                         <option value="3">Maths</option>
+                        
                         <option value="4">Philosophie</option>
                     </select>
                     <button type="submit" name="submit" id="" class="btn backRed btn-lg"> Select</button>
                 </form>
 
             </div>
-            <?php
-            //$secetion = $_POST['sel'];
-            //var_dump($secetion);
-
-            ?>
         </div>
 
     </div>
@@ -170,7 +159,8 @@ require("connexion.php");
 
 <div style="display :none;" id="pop-up-add_events" class="pop-up-add_events">
 
-    <div class="pop-up-add_event">
+<div class="pop-up-add_event">
+<form method="POST" action="addEvent.php" >
         <div class="clouse">
             <svg id="img_close" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times"
                  class="svg-inline--fa fa-times fa-w-11" role="img" xmlns="http://www.w3.org/2000/svg"
@@ -179,31 +169,26 @@ require("connexion.php");
                       d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path>
             </svg>
         </div>
-
-
-            <div class="pop-up-add_event_matairs">
-             <div>
-                     <!-- <select name="nvscolaire" id="nvscolaire">
-                        <option value="2">2eme année Bac</option>
-                        <option value="1">1er année Bac</option>
-                        </select>
-                    </div>  -->
-            
-                  <div>
-                    <select name="matiere" id="matiere">
-                        <option value="1">Mathématique(2éme année bac)</option>
-                        <option value="2">Sciences de la vie et de la Terre(2éme année bac)</option>
-                        <!-- <option value="philos">Philosophique</option> -->
-                        <option value="3">Physique Chimie(2éme année bac)</option>
-                        <option value="4">Histoire géographie(1éme année bac)</option>`
-                        <!-- <option value="an">Anglais</option> -->
-                    </select>
-                </div>
-                <div>
-                    <!-- Cours -->
-                    <select class="hour2" name="cours" id="cours">
-                        <optgroup label="Analyse">
-
+        <div class="pop-up-add_event_matairs">
+            <div>
+                <!-- Matiers -->
+                <select name="matiere" id="matiere">
+                <optgroup label="2éme Année Bac">
+                    <option value="1">Mathématique</option>
+                    <option value="2">Sciences de la vie et de la Terre</option>
+                    <option value="3">Physique Chimie</option>
+                    <!-- <option value="philos">Philosophique</option> -->
+                    <!-- <option value="an">Anglais</option> -->
+                </optgroup>
+                <optgroup label="1er Année Bac">
+                    <option value="4">Histoire géographie</option>`
+                    </optgroup>
+                </select>
+            </div>
+            <div>
+                <!-- Cours -->
+                <select class="hour2" name="cours" id="cours">
+                    <optgroup label="Analyse">
                         <option value="1">Continuité d'une fonction numérique</option>
                         <option value="2">Dérivabilité d'une fonction, fonctions primitives</option>
                         <option value="3">Etude des fonctions</option>
@@ -219,42 +204,33 @@ require("connexion.php");
                         <option value="12">Calcul des Probabilités</option>
                         <option value="13">Geométrie de l’espace Produit scalaire et applications</option>
                         <option value="14">Fonctions exponentielles</option>
-
-
-                        </optgroup>
-                    </select>
-                </div>
-             
-
+                    </optgroup>
+                </select>
             </div>
-           
-            <div class="Date"> 
-              <div>  la date
-                <div><input class="thedate" type="date" name="date" id="date"></div></div>
-                <div class="hour">
-                    l'heure
-                <div><input class="thedate" type="time" id="appt" name="appt"></div>
-                </div>
-            </div>
-            <div>lien de meeting
-                <input  class="lien_for_the_meeting" type="text" placeholder="https://le lien.com">
-
-            </div>
-
         </div>
-
+        
+        <div class="Date">
+            <div> la date
+                <div><input class="thedate" type="date" name="date" id="date"></div>
+            </div>
+            <div class="hour">
+                l'heure
+                <div><input class="thedate" type="time" id="appt" name="hours"></div>
+            </div>
+        </div>
+        <div>lien de meeting
+            <input class="lien_for_the_meeting" type="text" name="lien" placeholder="#">
+        </div>
         <div>
-            <textarea class="message" name="message" id="message" cols="30" rows="10"
+            <textarea class="message" name="message" id="message" name="message" cols="30" rows="10"
                       placeholder="Votre message"></textarea>
         </div>
         <button type="submit">Add event</button>
     </div>
+    </form>
 </div>
 
-
-   <script src="src/js/script.js" ></script>
-
-
+</div>
     <script src="src/js/script.js" ></script>
     <script src="src/js/Student.js" ></script>
     <?php

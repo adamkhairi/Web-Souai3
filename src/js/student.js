@@ -139,24 +139,21 @@ function show_matiers(){
 // let getinfos = () => {
 //
 // };
-function getinfos() {
-	let niveaux = document.getElementById('niveauS');
-	niveaux.value = School_level.value;
-	console.log(niveaux.value);
-	let matieres = document.getElementById('matieres');
-	matieres.value = The_matiers.value;
-	console.log(matieres.value);
-	let courss =document.getElementById('cours');
-	let inputCours = document.getElementById('courses');
-	inputCours.value = courss.value ;
-}
+// function getinfos() {
+// 	let niveaux = document.getElementById('niveauS');
+// 	niveaux.value = School_level.value;
+// 	console.log(niveaux.value);
+// 	let matieres = document.getElementById('matieres');
+// 	matieres.value = The_matiers.value;
+// 	console.log(matieres.value);
+// 	let courss =document.getElementById('cours');
+// 	let inputCours = document.getElementById('courses');
+// 	inputCours.value = courss.value ;
+// }
 
 
-
-// School_level.addEventListener('click' , School_levels);
 The_matiers.addEventListener("click", show_matiers);
 
-School_level.addEventListener('click' , School_levels);
 
 
 

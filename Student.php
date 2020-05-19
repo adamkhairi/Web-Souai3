@@ -66,13 +66,10 @@ include "notification.php";
             <div class="find_help">
                 <div>
 
-                    <select name="nvscolaire" id="nvscolaire">
-                    <option value="2bac">2eme année Bac</option>
-                        <option value="1bac">1er année Bac</option>
-
-
-
-                        </select>
+                    <select name="nvscolaire" onclick="School_levels()" id="nvscolaire">
+                        <option value="2">2eme année Bac</option>
+                        <option value="1">1er année Bac</option>
+                    </select>
                         <input type="text" hidden value="" name="nv" id="niveauS">
                     </div>
 
