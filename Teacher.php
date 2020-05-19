@@ -158,7 +158,6 @@ require("connexion.php");
 
 
 <div style="display :none;" id="pop-up-add_events" class="pop-up-add_events">
-
 <div class="pop-up-add_event">
 <form method="POST" action="addEvent.php" >
         <div class="clouse">
@@ -225,11 +224,11 @@ require("connexion.php");
             <textarea class="message" name="message" id="message" name="message" cols="30" rows="10"
                       placeholder="Votre message"></textarea>
         </div>
+
         <button type="submit">Add event</button>
     </div>
-    </form>
+</form>
 </div>
-
 </div>
     <script src="src/js/script.js" ></script>
     <script src="src/js/Student.js" ></script>
