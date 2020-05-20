@@ -224,7 +224,6 @@ require("connexion.php");
             <textarea class="message" name="message" id="message" name="message" cols="30" rows="10"
                       placeholder="Votre message"></textarea>
         </div>
-
         <button type="submit">Add event</button>
     </div>
 </form>
