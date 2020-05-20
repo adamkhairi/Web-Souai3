@@ -1,6 +1,6 @@
 <?php
 include('navbar.php');
-require("connexion.php");
+include("connexion.php");
 //session_start();
 ?>
 <div class="containers">
@@ -37,21 +37,28 @@ require("connexion.php");
             <!--                    // afficher un message-->
 
 
-            <div class="input-group mb-3 w-25">
+            <div class="col-4 mb-3 ">
 
 
                 <!--//               getdemande();-->
 
                 <form action="" method="post" class="w-100">
+                    <div class="d-flex justify-content-between aline-items-center">
+                        <div>
 
-                    <select class="custom-select" id="inputGroupSelect01" name="sel">
-                        <option selected>Matières</option>
-                        <option value="1">Français</option>
-                        <option value="2">Physique</option>
-                        <option value="3">Maths</option>
-                        <option value="4">Philosophie</option>
-                    </select>
-                    <button type="submit" name="submit" id="" class="btn backRed btn-lg"> Select</button>
+                            <select class="custom-select" id="inputGroupSelect01" name="sel">
+                                <option selected>Matières</option>
+                                <option value="1">Français</option>
+                                <option value="2">Physique</option>
+                                <option value="3">Maths</option>
+                                <option value="4">Philosophie</option>
+                            </select>
+                        </div>
+                        <div>
+
+                            <button type="submit" name="submit" id="" class="btn backRed btn-lg h-75"> Select</button>
+                        </div>
+                    </div>
                 </form>
 
             </div>
@@ -112,9 +119,12 @@ require("connexion.php");
 
                 $req = "SELECT * FROM demande where
                    idmatiere = '" . $matiereT . "'";
+
                 $reqt = mysqli_query($conn, $req);
+
                 if (!empty($_SESSION['mailb'] && $reqt)) {
-                    $row = mysqli_fetch_array($reqt);
+//                    $row = mysqli_fetch_array($reqt);
+
                     while ($row = mysqli_fetch_array($reqt)) {
 //                etudiant name
                         $requet = "SELECT * FROM etudiant where
@@ -128,6 +138,7 @@ require("connexion.php");
                         $results1 = mysqli_query($conn, $requet2);
                         $row2 = mysqli_fetch_array($results1);
 //                    $cours = [];
+
 
                         echo "
                         <div class=\"card mb-4\" style=\"width: 18rem;\">
@@ -160,7 +171,31 @@ require("connexion.php");
     <!--    <iframe src="https://calendar.google.com/calendar/embed?src=minanon77%40gmail.com&ctz=Africa%2FCasablanca"-->
     <!--            style="border: 0" height="600" frameborder="0" scrolling="no"></iframe>-->
 </div>
-
+<?php
+//if (isset($_POST['submit'])) {
+//    if ($_POST['submit'] == 'addEvent') {
+//
+//        $cours = $_POST['cours'];
+//        $date = $_POST['date'];
+//        $hours = $_POST['hours'];
+//        $lien = $_POST['lien'];
+//        $message = $_POST['message'];
+//        $idProuf = $_SESSION['idProf'];
+//        if (!empty($lien) && !empty($hours) && !empty($date)) {
+//            $sql = "INSERT INTO `theevanets`(`coursID`, `ProfID`, `message`, `lien`, `hours`, `theDate`) VALUES ('" . $cours . "','" . $idProuf . "','" . $message . "','" . $lien . "','" . $hours . "','" . $date . "') ";
+//            $select = mysqli_query($conn, $sql);
+////    print_r($select);
+////    die();
+//            header("location: Teacher.php");
+//        } else {
+//            echo "<script>alert('veuillez compléter les informations')</script>";
+//            // header("location: Teacher.php");
+//        }
+//
+//    }
+//}
+//Teacher.php?action=addEvent
+//?>
 <div class="btn_add_event">
     <button id="add_event_btn" type="button"> Add event</button>
 
@@ -169,73 +204,81 @@ require("connexion.php");
 
 
 <div style="display :none;" id="pop-up-add_events" class="pop-up-add_events">
-
     <div class="pop-up-add_event">
-        <div class="clouse">
-            <svg id="img_close" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times"
-                 class="svg-inline--fa fa-times fa-w-11" role="img" xmlns="http://www.w3.org/2000/svg"
-                 viewBox="0 0 352 512">
-                <path style="fill: #F50057;" fill="currentColor"
-                      d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path>
-            </svg>
-        </div>
+        <form method="POST" action="addEvent.php">
+            <div class="clouse">
+                <svg id="img_close" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times"
+                     class="svg-inline--fa fa-times fa-w-11" role="img" xmlns="http://www.w3.org/2000/svg"
+                     viewBox="0 0 352 512">
+                    <path style="fill: #F50057;" fill="currentColor"
+                          d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path>
+                </svg>
+            </div>
+            <div class="pop-up-add_event_matairs">
+                <div>
+                    <!-- Matiers -->
+                    <select name="matiere" id="matiere">
+                        <optgroup label="2éme Année Bac">
+                            <option value="1">Mathématique</option>
+                            <option value="2">Sciences de la vie et de la Terre</option>
+                            <option value="3">Physique Chimie</option>
+                            <!-- <option value="philos">Philosophique</option> -->
+                            <!-- <option value="an">Anglais</option> -->
+                        </optgroup>
+                        <optgroup label="1er Année Bac">
+                            <option value="4">Histoire géographie</option>
+                            `
+                        </optgroup>
+                    </select>
+                </div>
+                <div>
+                    <!-- Cours -->
+                    <select class="hour2" name="cours" id="cours">
+                        <optgroup label="Analyse">
+                            <option value="1">Continuité d'une fonction numérique</option>
+                            <option value="2">Dérivabilité d'une fonction, fonctions primitives</option>
+                            <option value="3">Etude des fonctions</option>
+                            <option value="4">Fonctions logarithmiques</option>
+                            <option value="5">Calcul intégral</option>
+                            <option value="7">Equations différentielles</option>
+                            <option value="8">Les suites numériques</option>
+                            <option value="9">Fonctions exponentielles</option>
+                        </optgroup>
+                        <optgroup label="Algèbre">
+                            <option value="10">Les nombres complexes 1</option>
+                            <option value="11">Les nombres complexes 2</option>
+                            <option value="12">Calcul des Probabilités</option>
+                            <option value="13">Geométrie de l’espace Produit scalaire et applications</option>
+                            <option value="14">Fonctions exponentielles</option>
+                        </optgroup>
+                    </select>
+                </div>
+            </div>
 
-        <div class="pop-up-add_event_matairs">
-            <div>
-                <!-- Matiers -->
-                <select name="matiere" id="matiere">
-                    <option value="math">Mathématique</option>
-                    <option value="svt">Sciences de la vie et de la Terre</option>
-                    <!-- <option value="philos">Philosophique</option> -->
-                    <option value="pc">Physique Chimie</option>
-                    <!-- <option value="an">Anglais</option> -->
-                </select>
+            <div class="Date">
+                <div> la date
+                    <div><input class="thedate" type="date" name="date" id="date"></div>
+                </div>
+                <div class="hour">
+                    l'heure
+                    <div><input class="thedate" type="time" id="appt" name="hours"></div>
+                </div>
+            </div>
+            <div>lien de meeting
+                <input class="lien_for_the_meeting" type="text" name="lien" placeholder="#">
             </div>
             <div>
-                <!-- Cours -->
-                <select class="hour2" name="cours" id="cours">
-                    <optgroup label="Analyse">
-                        <option value="1">Continuité d'une fonction numérique</option>
-                        <option value="2">Dérivabilité d'une fonction, fonctions primitives</option>
-                        <option value="3">Etude des fonctions</option>
-                        <option value="4">Fonctions logarithmiques</option>
-                        <option value="5">Calcul intégral</option>
-                        <option value="7">Equations différentielles</option>
-                        <option value="8">Les suites numériques</option>
-                        <option value="9">Fonctions exponentielles</option>
-                    </optgroup>
-                    <optgroup label="Algèbre">
-                        <option value="10">Les nombres complexes 1</option>
-                        <option value="11">Les nombres complexes 2</option>
-                        <option value="12">Calcul des Probabilités</option>
-                        <option value="13">Geométrie de l’espace Produit scalaire et applications</option>
-                        <option value="14">Fonctions exponentielles</option>
-                    </optgroup>
-                </select>
-            </div>
-        </div>
-        <div class="Date">
-            <div> la date
-                <div><input class="thedate" type="date" name="date" id="date"></div>
-            </div>
-            <div class="hour">
-                l'heure
-                <div><input class="thedate" type="time" id="appt" name="appt"></div>
-            </div>
-        </div>
-        <div>lien de meeting
-            <input class="lien_for_the_meeting" type="text" placeholder="#">
-        </div>
-        <div>
-            <textarea class="message" name="message" id="message" cols="30" rows="10"
+            <textarea class="message" name="message" id="message" name="message" cols="30" rows="10"
                       placeholder="Votre message"></textarea>
-        </div>
-        <button type="submit">Add event</button>
+            </div>
+            <button type="submit">Add event</button>
+        </form>
     </div>
+</div>
 </div>
 
 
-   <script src="src/js/script.js" ></script>
+<script src="src/js/script.js"></script>
 
 <?php
 include 'footer.php';

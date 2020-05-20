@@ -23,9 +23,12 @@ if (isset($_POST['your_email']) && isset($_POST['your_pass'])) {
 
         if (!empty($reponse['mailetudiant'])) // nom d'utilisateur et mot de passe correctes
         {
+
+
 //            var_dump($reponse);
 //            die();
 //            $_SESSION['your_email'] = $your_email;
+
 
             // get infos
             $_SESSION['userid'] = $reponse['idetudiant'];
@@ -72,7 +75,7 @@ if (isset($_POST['your_email']) && isset($_POST['your_pass'])) {
 
     elseif ($_POST["userType"] == "teacher") {
         $_SESSION['type'] = $_POST['userType'];
-        $requete = "SELECT c.nombenevole , c.mailbenevole, c.prenombenevole , c.passwordbenevole , b.idmatiere , b.nommatiere FROM benevole c INNER JOIN matiere b ON b.idmatiere = c.idmatiere WHERE c.mailbenevole = '" . $your_email . "' and c.passwordbenevole = '" . $password . "' ;";
+        $requete = "SELECT c.idbenevole, c.nombenevole , c.mailbenevole, c.prenombenevole , c.passwordbenevole , b.idmatiere , b.nommatiere FROM benevole c INNER JOIN matiere b ON b.idmatiere = c.idmatiere WHERE c.mailbenevole = '" . $your_email . "' and c.passwordbenevole = '" . $password . "' ;";
 
         $exec_requete = mysqli_query($conn, $requete);
         $reponse = mysqli_fetch_array($exec_requete);
@@ -80,6 +83,7 @@ if (isset($_POST['your_email']) && isset($_POST['your_pass'])) {
         if (!empty($reponse['mailbenevole'])) // nom d'utilisateur et mot de passe correctes
         {
 //            $_SESSION['your_email'] = $your_email;
+            $_SESSION['idProf'] = $reponse['idbenevole'];
             $_SESSION['teacherFname'] = $reponse['nombenevole'];
             $_SESSION['teacherLname'] = $reponse['prenombenevole'];
             $_SESSION['mailb'] = $reponse['mailbenevole'];

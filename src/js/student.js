@@ -1,6 +1,7 @@
 let School_level = document.getElementById("nvscolaire");
 let The_matiers = document.getElementById("matiere");
 let cours = document.getElementById("cours");
+
 let lesMatair_de_1erBac = `
 <option value="1">Langue arabe</option>
 <option value="2">1ère langue étrangère</option>
@@ -111,31 +112,30 @@ let cours_for_hg = `    <optgroup label="Histoire">
 <option value="13">Configuration urbaine et rurale, la crise de la ville et de la campagne et les formes d'intervention</option>
 </optgroup>`
 
-function School_levels(){
-	if(School_level.value == "1"){
+function School_levels() {
+	if (School_level.value == "1") {
 		The_matiers.innerHTML = lesMatair_de_1erBac;
-	}else if(School_level.value == "2"){
+	} else if (School_level.value == "2") {
 		The_matiers.innerHTML = lesMatair_de_2EmeBac;
 	}
 }
 
-
-
-function show_matiers(){
-	if(The_matiers.value === "1"){
+function show_matiers() {
+	if (The_matiers.value === "1") {
 		cours.innerHTML = cours_for_math;
 		
-	}else if(The_matiers.value === "2"){
+	} else if (The_matiers.value === "2") {
 		cours.innerHTML = cours_for_SVT;
 		
-	}else if(The_matiers.value === "3"){
+	} else if (The_matiers.value === "3") {
 		cours.innerHTML = cours_for_pc;
 		
-	}else if(The_matiers.value === "4"){
+	} else if (The_matiers.value === "4") {
 		cours.innerHTML = cours_for_hg;
 		
 	}
 }
+
 // let getinfos = () => {
 //
 // };
@@ -146,16 +146,19 @@ function getinfos() {
 	let matieres = document.getElementById('matieres');
 	matieres.value = The_matiers.value;
 	console.log(matieres.value);
-	let courss =document.getElementById('cours');
+	let courss = document.getElementById('cours');
 	let inputCours = document.getElementById('courses');
-	inputCours.value = courss.value ;
+	inputCours.value = courss.value;
 }
 
-
-
-School_level.addEventListener('click' , School_levels);
 The_matiers.addEventListener("click", show_matiers);
 
 let getinfo = document.getElementById('cours');
-getinfo.addEventListener("change",getinfos);
+getinfo.addEventListener("change", getinfos);
 
+// $(function() {
+// 	// Sidebar toggle behavior
+// 	$('#sidebarCollapse').on('click', function() {
+// 		$('#sidebar, #content').toggleClass('active');
+// 	});
+// });

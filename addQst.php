@@ -49,7 +49,7 @@ if (!empty($_SESSION['mail']) && $_POST['description']) {
     $inputMt = $_POST['matiere'];
     $inputCrs = $_POST['cours'];
     $inputMsg = $_POST['description'];
- echo $inputMt, $inputCrs , $inputMsg , $inputNv ;
+    echo $inputMt, $inputCrs, $inputMsg, $inputNv;
 // die();
 // Attempt insert query execution
     $sql = "INSERT INTO demande (description,idetudiantc,cours,idmatiere ) VALUES ( '" . $inputMsg . "' , '" . $iduser . "'  ,  '" . $inputCrs . "' , '" . $inputMt . "' )";
