@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 17, 2020 at 08:41 PM
+-- Generation Time: May 21, 2020 at 08:45 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.30
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `souaie`
+-- Database: `sw3`
 --
 
 -- --------------------------------------------------------
@@ -35,6 +35,15 @@ CREATE TABLE `benevole` (
   `passwordbenevole` text DEFAULT NULL,
   `idmatiere` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `benevole`
+--
+
+INSERT INTO `benevole` (`idbenevole`, `nombenevole`, `prenombenevole`, `mailbenevole`, `passwordbenevole`, `idmatiere`) VALUES
+(1, 'O', 'u', 'o@o.o', 'o', 3),
+(2, 'a', 'b', 'w@w.w', 'w', 1),
+(3, 'ss', 'ss', 'ss', 'ss', NULL);
 
 -- --------------------------------------------------------
 
@@ -72,29 +81,20 @@ CREATE TABLE `demande` (
   `iddemande` int(11) NOT NULL,
   `description` text DEFAULT NULL,
   `idetudiantc` int(11) DEFAULT NULL,
-  `cours` int(11) NOT NULL,
-  `idmatiere` int(11) NOT NULL
+  `cours` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `demande`
 --
 
-INSERT INTO `demande` (`iddemande`, `description`, `idetudiantc`, `cours`, `idmatiere`) VALUES
-(6, 'adsdsfsfsdfxxxxxxxxxxxxxxxxxxxxxxxxx', 1, 8, 1),
-(7, 'qqqq', 1, 4, 1),
-(8, 'qqsss', 1, 4, 1),
-(9, 'aeaeaeaeaeaea', 4, 4, 1),
-(11, 'wwwwwwww', 1, 2, 2),
-(12, 'wwwwwwww', 1, 2, 2),
-(13, 'here may be a case when a user does not allow to store cookies on their machine. So there is another method to send session ID to the browser.', 1, 2, 1),
-(14, ' there is another method to send session ID to the browser here may be a case when a user does not allow to store cookies on their machine. So', 1, 5, 1),
-(15, '111111111111111111111111111111111111111', 1, 4, 2),
-(16, '555555555555555555555555555555555555555555555\r\n555555555555555\r\n\r\n5555\r\nPLZ', 1, 1, 1),
-(17, 'afeeen akha Prof', 5, 5, 1),
-(18, 'jjjj', 1, 3, 1),
-(19, 'aaaqqq', 6, 3, 1),
-(20, 'xxxaaaaeeeeexxxx', 7, 3, 1);
+INSERT INTO `demande` (`iddemande`, `description`, `idetudiantc`, `cours`) VALUES
+(38, 'hhghgngn', 9, 5),
+(39, 'qqxqxqxw', 9, 3),
+(40, 'qqqqqqqqqqqqqq', 9, 2),
+(41, 'Weeeeee', 9, 5),
+(42, 'kkkkkk', 9, 8),
+(43, '!!!!!!!!!!!!!!!!!!', 9, 5);
 
 -- --------------------------------------------------------
 
@@ -117,13 +117,22 @@ CREATE TABLE `etudiant` (
 --
 
 INSERT INTO `etudiant` (`idetudiant`, `nometudiant`, `prenometudiant`, `niveauscolaire`, `filiere`, `mailetudiant`, `passwordetudiant`) VALUES
-(1, 'Khairi', 'Adam', 2, 1, 'khairiadam1@gmail.com', 'ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb'),
+(1, 'Khairi', 'Adam', 2, 1, 'khairiadam1@gmail.com', '3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d'),
 (2, 'a', 'b', 1, 2, 'a@b.c', '3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d'),
 (3, '', '', 0, 0, '', 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'),
 (4, 'xx', 'yy', 2, 2, 'x@y.x', '5dde896887f6754c9b15bfe3a441ae4806df2fde94001311e08bf110622e0bbe'),
 (5, 'ayoub', 'benchihaja', 1, 1, 'ayoub@gmail.com', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4'),
 (6, 'ccc', 'dddd', 1, 1, 'ad@ad.d', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4'),
-(7, 'ww', 'wxxw', 2, 1, 'w@w.w', 'b84ff8057ee3a7f87deac4ae29ac59292f02e6c28f987031648011018384d888');
+(7, 'ww', 'wxxw', 2, 1, 'w@w.w', 'b84ff8057ee3a7f87deac4ae29ac59292f02e6c28f987031648011018384d888'),
+(8, 'm', 'm', 2, 3, 'm@m.m', '62c66a7a5dd70c3146618063c344e531e6d4b59e379808443ce962b3abd63c5a'),
+(9, 'a', 'b', 2, 3, 'a@a.a', 'ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb'),
+(10, 'q', 'q', 2, 1, 'q@q.q', '8e35c2cd3bf6641bdb0e2050b76932cbb2e6034a0ddacc1d9bea82a6ba57f7cf'),
+(11, 'z', 'z', 1, 3, 'z@z.z', '594e519ae499312b29433b7dd8a97ff068defcba9755b6d5d00e84c524d67b06'),
+(12, 'khairi', 'adam', 2, 2, 'khairiadam@gmail.com', 'ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb'),
+(13, 'khairi', 'adam', 2, 1, 'adam@gmail.com', 'f7f376a1fcd0d0e11a10ed1b6577c99784d3a6bbe669b1d13fae43eb64634f6e'),
+(14, 'salim ', 'youssef', 2, 2, 'salim@gmail.com', 'ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb'),
+(15, 'b', 'b', 2, 2, 'b@b.b', '3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d'),
+(16, 't', 't', 2, 1, 't@t.t', 'e3b98a4da31a127d4bde6e43033f66ba274cab0eb7eb1c70ec41402bf6273dd8');
 
 -- --------------------------------------------------------
 
@@ -188,6 +197,31 @@ INSERT INTO `niveau` (`idniveau`, `niveau`) VALUES
 (1, '1er année Bac'),
 (2, '2éme année Bac');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `theevanets`
+--
+
+CREATE TABLE `theevanets` (
+  `eventID` int(11) NOT NULL,
+  `coursID` int(11) NOT NULL,
+  `ProfID` int(11) NOT NULL,
+  `message` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `lien` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `hours` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `theDate` date DEFAULT NULL,
+  `reponse` varchar(100) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `theevanets`
+--
+
+INSERT INTO `theevanets` (`eventID`, `coursID`, `ProfID`, `message`, `lien`, `hours`, `theDate`, `reponse`) VALUES
+(6, 4, 2, '2222', '2222', '22:22', '2020-05-08', ''),
+(7, 5, 2, '22', '22', '22:22', '2020-05-14', '');
+
 --
 -- Indexes for dumped tables
 --
@@ -212,7 +246,6 @@ ALTER TABLE `cours`
 ALTER TABLE `demande`
   ADD PRIMARY KEY (`iddemande`),
   ADD KEY `idetudiant` (`idetudiantc`),
-  ADD KEY `idmatieres` (`idmatiere`),
   ADD KEY `idcours` (`cours`);
 
 --
@@ -242,6 +275,14 @@ ALTER TABLE `niveau`
   ADD PRIMARY KEY (`idniveau`);
 
 --
+-- Indexes for table `theevanets`
+--
+ALTER TABLE `theevanets`
+  ADD PRIMARY KEY (`eventID`),
+  ADD KEY `coursID` (`coursID`),
+  ADD KEY `ProfID` (`ProfID`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -249,7 +290,7 @@ ALTER TABLE `niveau`
 -- AUTO_INCREMENT for table `benevole`
 --
 ALTER TABLE `benevole`
-  MODIFY `idbenevole` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idbenevole` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `cours`
@@ -261,13 +302,13 @@ ALTER TABLE `cours`
 -- AUTO_INCREMENT for table `demande`
 --
 ALTER TABLE `demande`
-  MODIFY `iddemande` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `iddemande` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `etudiant`
 --
 ALTER TABLE `etudiant`
-  MODIFY `idetudiant` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idetudiant` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `filiere`
@@ -286,6 +327,12 @@ ALTER TABLE `matiere`
 --
 ALTER TABLE `niveau`
   MODIFY `idniveau` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `theevanets`
+--
+ALTER TABLE `theevanets`
+  MODIFY `eventID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
@@ -308,8 +355,7 @@ ALTER TABLE `cours`
 --
 ALTER TABLE `demande`
   ADD CONSTRAINT `idcours` FOREIGN KEY (`cours`) REFERENCES `cours` (`idcours`),
-  ADD CONSTRAINT `idetudiant` FOREIGN KEY (`idetudiantc`) REFERENCES `etudiant` (`idetudiant`),
-  ADD CONSTRAINT `idmatieres` FOREIGN KEY (`idmatiere`) REFERENCES `matiere` (`idmatiere`);
+  ADD CONSTRAINT `idetudiant` FOREIGN KEY (`idetudiantc`) REFERENCES `etudiant` (`idetudiant`);
 
 --
 -- Constraints for table `filiere`
@@ -322,6 +368,13 @@ ALTER TABLE `filiere`
 --
 ALTER TABLE `matiere`
   ADD CONSTRAINT `idfiliere` FOREIGN KEY (`idfiliere`) REFERENCES `filiere` (`idfiliere`);
+
+--
+-- Constraints for table `theevanets`
+--
+ALTER TABLE `theevanets`
+  ADD CONSTRAINT `theevanets_ibfk_1` FOREIGN KEY (`coursID`) REFERENCES `cours` (`idcours`),
+  ADD CONSTRAINT `theevanets_ibfk_2` FOREIGN KEY (`ProfID`) REFERENCES `benevole` (`idbenevole`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
