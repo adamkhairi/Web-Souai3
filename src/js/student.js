@@ -156,9 +156,21 @@ The_matiers.addEventListener("click", show_matiers);
 let getinfo = document.getElementById('cours');
 getinfo.addEventListener("change", getinfos);
 
-// $(function() {
-// 	// Sidebar toggle behavior
-// 	$('#sidebarCollapse').on('click', function() {
-// 		$('#sidebar, #content').toggleClass('active');
-// 	});
-// });
+
+let toggleBtn;
+toggleBtn = () => {
+	let x = document.getElementById("togl");
+	if (x.textContent === ">>>") {
+		x.textContent = "<<<";
+	} else {
+		x.textContent = ">>>";
+	}
+};
+
+$(function () {
+	// Sidebar toggle behavior
+	$('#sidebarCollapse').on('click', function () {
+		toggleBtn();
+		$('#sidebar, #content').toggleClass('active');
+	});
+});

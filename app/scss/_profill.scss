@@ -518,6 +518,7 @@ footer {
 
 
 .notif {
+  width: 20em;
   .show {
     display: none;
   }
@@ -786,8 +787,8 @@ footer {
 }
 
 .vertical-nav {
-  min-width: 17rem;
-  width: 17rem;
+  min-width: 15rem;
+  width: 15rem;
   position: fixed;
   top: 0;
   left: 0;
@@ -806,15 +807,15 @@ footer {
 
 
 .page-content {
-  width: calc(100% - 17rem);
-  margin-left: 17rem;
+  width: calc(100% - 15rem);
+  margin-left: 15rem;
   transition: all 0.4s;
 }
 
 /* for toggle behavior */
 
 #sidebar.active {
-  margin-left: -17rem;
+  margin-left: -15rem;
 }
 
 #content.active {
@@ -824,7 +825,7 @@ footer {
 
 @media (max-width: 768px) {
   #sidebar {
-    margin-left: -17rem;
+    margin-left: -15rem;
   }
   #sidebar.active {
     margin-left: 0;
@@ -834,7 +835,20 @@ footer {
     margin: 0;
   }
   #content.active {
-    margin-left: 17rem;
-    width: calc(100% - 17rem);
+    margin-left: 15rem;
+    width: calc(100% - 15rem);
   }
+}
+
+.shdow{
+  -webkit-box-shadow:0px 0px 11px 0px rgba(149, 152, 154, 0.554);
+  -moz-box-shadow:0px 0px 11px 0px rgba(149, 152, 154, 0.554);
+  box-shadow: 0px 0px 11px 0px rgba(149, 152, 154, 0.554);
+
+}
+.width{
+  width: 30em;
+}
+.ccc{
+  overflow-x: scroll;
 }

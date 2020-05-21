@@ -1,5 +1,4 @@
 <?php
-session_start();
 require("connexion.php");
 include("navbar.php");
 ?>    

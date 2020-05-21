@@ -3,7 +3,6 @@ require("connexion.php");
 session_start();
  $matiere = $_POST['matiere'];
 
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $cours = $_POST['cours'];
     $date = $_POST['date'];

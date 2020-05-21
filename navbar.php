@@ -48,21 +48,21 @@ session_start();
 
                 echo
                 "
-    <a class=\"inscr\" href=\"Student.php\">
+    
         <div>
                <a href=\"logout.php\">
                      <button class='btn btn-danger rounded-pill ml-4'>Déconnecté</button>
                 </a>
 
         </div>
-    </a>";
+    ";
             } else if (!empty($_SESSION['mail'])) {
 
                 $usermail = $_SESSION['mail'];
                 // afficher un message
                 echo
                 "
-    <a class=\"inscr\" href=\"Student.php\">
+    
         <div>
         
                <a href=\"logout.php\">
@@ -70,7 +70,7 @@ session_start();
                 </a>
 
          </div>
-    </a>";
+   ";
             } else {
                 echo "
                 <div class='header p-0'>

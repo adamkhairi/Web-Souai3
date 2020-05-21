@@ -3,42 +3,106 @@ include('navbar.php');
 include("connexion.php");
 //session_start();
 ?>
-<div class="containers">
-    <div class="check">
-        <div class="name-and-pen">
-            <div class="name-img d-flex justify-content-center">
-                <img class="profil_img" src="src/img/account.png" alt="">
-                <h2 class="mt-4 ml-4">
-                    <?php
+<div class="vertical-nav pt-lg-5  bg-light" id="sidebar">
+    <div class="py-4 px-3 mb-4  menu-head text-center">
+        <i class="far fa-user img-thumbnail shadow-sm rounded-circle p-3"
+           style="font-size: 40px; color: #00BFA6"></i>
+        <div class="media d-flex align-items-center ">
+
+
+            <!--            <img-->
+            <!--                    src="https://res.cloudinary.com/mhmd/image/upload/v1556074849/avatar-1_tcnd60.png" alt="..."-->
+            <!--                    width="65" class="">-->
+            <div class="media-body">
+                <h3 class="">
+                   <?php
                     if (!empty($_SESSION['mailb'])) {
                         echo($_SESSION['teacherFname'] . ' ' . $_SESSION['teacherLname']);
                     };
                     ?>
-                </h2>
+                </h3>
+                <p class="font-weight-light text-muted mb-0">Etudiant</p>
             </div>
-            <div class="pen_for_modify">
-                <i class="fas fa-pencil-alt"></i>
-            </div>
+
+
         </div>
-        <div class="inputs d-flex flex-row justify-content-around aline-items-baseline">
-            <div>
-                <h5 class='font-weight-bold bBottom'>E-mail : </h5>
-                <h4 class='ml-4'>
-                    <?php
+        <div class="mt-4">
+
+            <h6 class='text-center'>
+                <?php
                     if (!empty($_SESSION['mailb'])) {
                         echo(' ' . $_SESSION['mailb']);
                     };
-                    ?></h4>
-            </div>
+                    ?>
+            </h6>
+        </div>
+        <!--        <div class="text-center">-->
+
+        <!--        </div>-->
+    </div>
+
+    <div class="w-50 ml-auto p-2 mr-auto mb-5">
+        <!--        <div>-->
+        <!---->
+        <!--            --><?php
+        //            if (!empty($_SESSION['mail'])) {
+        //                $usermail = $_SESSION['mail'];
+        //                // afficher un message
+        //                echo
+        //                    "
+        //                 <h5 class=\"font-weight-bold bBottom mr-4\">Niveau scolaire : </h5>
+        //
+        //                <h4> " . $_SESSION['nvScolaire'] . "</h4>
+        //
+        //                ";
+        //            } else {
+        //                echo "
+        //                      <h5 class=\"font-weight-bold bBottom mr-4\">Niveau scolaire : </h5>
+        //                <h4>le Niveau scolaire</h4>
+        //                      ";
+        //            }
+        //            ?>
+        <!---->
+        <!--        </div>-->
+
+    </div>
+    <!--   Links Of each section -->
+
+    <ul class="nav flex-column  mt-3 text-center">
+        <li class="nav-item" id="prods">
+            <a class="nav-link text-dark  mt-4 " href="index.php">
+                Accueil
+            </a>
+        </li>
+        <li class="nav-item" id="cats">
+            <a class="nav-link text-dark mt-4  " href="#">
+                Student
+            </a>
+        </li>
+        <li class="nav-item mt-3">
+            <a href="#">
+                <button class='btn btn-danger rounded-pill'>Voir les videos</button>
+            </a>
+        </li>
+
+
+    </ul>
+</div>
+<div class="page-content pl-4" id="content">
+    <!-- Toggle button -->
+    <button class="btn btn-dark bg-dark rounded-pill shadow-sm px-4 m-4" id="sidebarCollapse" type="button">
+        <small class="text-uppercase font-weight-bold" id="togl"> <<< </small>
+    </button>
+
+    <div class="containers">
+    <div class="check">
 
 
             <!--//                    $matiereT = $_SESSION['matiereT-->
 
             <!--                    // afficher un message-->
 
-
             <div class="col-4 mb-3 ">
-
 
                 <!--//               getdemande();-->
 
@@ -50,7 +114,7 @@ include("connexion.php");
                                 <option selected>Matières</option>
                                 <option value="1">Français</option>
                                 <option value="2">Physique</option>
-                                <option value="3">Maths</option>
+                                 <option value="3">Maths</option>
                                 <option value="4">Philosophie</option>
                             </select>
                         </div>
@@ -70,41 +134,41 @@ include("connexion.php");
         </div>
 
     </div>
-</div>
+
 
 <div class="containers">
-    <div class="chart">
+    <div class="">
         <div class="chart_title">
             <h4 class="chart_title_h2">Les cours qui plus demande :</h4>
         </div>
-        <div class="chart_ui">
-            <div>Les cours qui plus demande :</div>
-            <div class="chart_UI">
-                <div class="chart_UI1"></div>
-            </div>
-            <div>12</div>
-        </div>
-        <div class="chart_ui">
-            <div>Les cours qui plus demande :</div>
-            <div class="chart_2">
-                <div class="chart_UI2"></div>
-            </div>
-            <div>5</div>
-        </div>
-        <div class="chart_ui">
-            <div>Les cours qui plus demande :</div>
-            <div class="chart_3">
-                <div class="chart_UI3"></div>
-            </div>
-            <div>3</div>
-        </div>
-        <div class="chart_ui">
-            <div>Les cours qui plus demande :</div>
-            <div class="chart_4">
-                <div class="chart_UI4"></div>
-            </div>
-            <div>1</div>
-        </div>
+        <?php
+
+
+        if (!empty($_SESSION['mailb'])) {
+
+            $therequet = "SELECT COUNT(d.cours) AS num, d.cours,c.nomcours , m.nommatiere FROM demande d INNER JOIN cours c ON 
+           d.cours = c.idcours INNER JOIN matiere m ON c.idmatiere = m.idmatiere GROUP BY d.cours ORDER BY COUNT(d.cours) DESC;";
+            $do = mysqli_query($conn, $therequet);
+            if ($do = mysqli_query($conn, $therequet)) {
+
+                while ($array = mysqli_fetch_array($do)) {
+                    echo '<div class="row font-weight-bold align-items-center text-nowrap  text-center">
+                   <div class="col-sm m-2 rounded p-3  backRed">' . $array[3] . '</div>
+
+                   <div class="col-sm m-2 rounded p-3  backOrange
+                    ">' . $array[2] . '</div>
+                    <div class="col-sm m-2 rounded p-3  backGreen">' . $array[0] . '</div>
+                    </div>
+                    <hr class="backRed">';
+                };
+
+            } else {
+                echo "<h5 class='text-danger text-center font-weight-bold mt-5'>Aucune demande</h5>";
+            };
+        };
+        ?>
+
+
     </div>
 </div>
 <div class="containers">
@@ -276,13 +340,14 @@ include("connexion.php");
     </div>
 </div>
 </div>
-
-
-<script src="src/js/script.js"></script>
-
 <?php
 include 'footer.php';
 ?>
+
+<script src="src/js/script.js"></script>
+<script src="src/js/student.js"></script>
+
+
 
 
 

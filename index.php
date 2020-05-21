@@ -250,7 +250,10 @@ include("navbar.php");
                     <h1>L'enseignement à distance nous rapproche</h1>
                     <p>vous avez raté le cour, ne paniquez pas on a pensé à
                         enregistrer les cours en vidéo.</p>
+                    <a href="video.php">
+
                     <button id="" class="btnG btn btn-header" type="button">Voir des vidéos</button>
+                    </a>
                 </div>
                 <div class="">
                     <img class="header_img" src="src/img/thirdimg.png" alt="">
