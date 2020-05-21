@@ -3,6 +3,7 @@ include('navbar.php');
 include("connexion.php");
 //session_start();
 ?>
+
 <div class="containers">
     <div class="check">
         <div class="name-and-pen">
@@ -73,38 +74,40 @@ include("connexion.php");
 </div>
 
 <div class="containers">
-    <div class="chart">
+    <div class="">
         <div class="chart_title">
             <h4 class="chart_title_h2">Les cours qui plus demande :</h4>
         </div>
-        <div class="chart_ui">
-            <div>Les cours qui plus demande :</div>
-            <div class="chart_UI">
-                <div class="chart_UI1"></div>
-            </div>
-            <div>12</div>
-        </div>
-        <div class="chart_ui">
-            <div>Les cours qui plus demande :</div>
-            <div class="chart_2">
-                <div class="chart_UI2"></div>
-            </div>
-            <div>5</div>
-        </div>
-        <div class="chart_ui">
-            <div>Les cours qui plus demande :</div>
-            <div class="chart_3">
-                <div class="chart_UI3"></div>
-            </div>
-            <div>3</div>
-        </div>
-        <div class="chart_ui">
-            <div>Les cours qui plus demande :</div>
-            <div class="chart_4">
-                <div class="chart_UI4"></div>
-            </div>
-            <div>1</div>
-        </div>
+        <?php 
+        
+        
+        if (!empty($_SESSION['mailb'])) {
+        
+           $therequet = "SELECT COUNT(d.cours) AS num, d.cours,c.nomcours , m.nommatiere FROM demande d INNER JOIN cours c ON 
+           d.cours = c.idcours INNER JOIN matiere m ON c.idmatiere = m.idmatiere GROUP BY d.cours ORDER BY COUNT(d.cours) DESC;";
+           $do = mysqli_query($conn, $therequet);
+           if($array = mysqli_fetch_array($do)){
+               while ($array = mysqli_fetch_array($do)) {
+                   echo'<div class="row font-weight-bold align-items-center text-nowrap  text-center">
+                   <div class="col-sm m-2 rounded p-3  backRed">'. $array[3] .'</div>
+
+                   <div class="col-sm m-2 rounded p-3  backOrange
+                    ">'. $array[2] .'</div>
+                    <div class="col-sm m-2 rounded p-3  backGreen">'. $array[0] .'</div>
+                    </div>
+                    <hr class="backRed">';
+                };
+        
+            }else{
+            echo"<h5 class='text-danger text-center font-weight-bold mt-5'>Aucune demande</h5>";
+        };
+    };
+        ?>
+
+  
+
+
+
     </div>
 </div>
 <div class="containers">
@@ -208,10 +211,11 @@ include("connexion.php");
         <form method="POST" action="addEvent.php">
             <div class="clouse">
                 <svg id="img_close" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times"
-                     class="svg-inline--fa fa-times fa-w-11" role="img" xmlns="http://www.w3.org/2000/svg"
-                     viewBox="0 0 352 512">
+                    class="svg-inline--fa fa-times fa-w-11" role="img" xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 352 512">
                     <path style="fill: #F50057;" fill="currentColor"
-                          d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path>
+                        d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z">
+                    </path>
                 </svg>
             </div>
             <div class="pop-up-add_event_matairs">
@@ -268,8 +272,8 @@ include("connexion.php");
                 <input class="lien_for_the_meeting" type="text" name="lien" placeholder="#">
             </div>
             <div>
-            <textarea class="message" name="message" id="message" name="message" cols="30" rows="10"
-                      placeholder="Votre message"></textarea>
+                <textarea class="message" name="message" id="message" name="message" cols="30" rows="10"
+                    placeholder="Votre message"></textarea>
             </div>
             <button type="submit">Add event</button>
         </form>
@@ -283,8 +287,3 @@ include("connexion.php");
 <?php
 include 'footer.php';
 ?>
-
-
-
-
-

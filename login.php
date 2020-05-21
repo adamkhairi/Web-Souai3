@@ -75,6 +75,7 @@ if (isset($_POST['your_email']) && isset($_POST['your_pass'])) {
 
     elseif ($_POST["userType"] == "teacher") {
         $_SESSION['type'] = $_POST['userType'];
+
         $requete = "SELECT c.idbenevole, c.nombenevole , c.mailbenevole, c.prenombenevole , c.passwordbenevole , b.idmatiere , b.nommatiere FROM benevole c INNER JOIN matiere b ON b.idmatiere = c.idmatiere WHERE c.mailbenevole = '" . $your_email . "' and c.passwordbenevole = '" . $password . "' ;";
 
         $exec_requete = mysqli_query($conn, $requete);
@@ -82,6 +83,7 @@ if (isset($_POST['your_email']) && isset($_POST['your_pass'])) {
 
         if (!empty($reponse['mailbenevole'])) // nom d'utilisateur et mot de passe correctes
         {
+            
 //            $_SESSION['your_email'] = $your_email;
             $_SESSION['idProf'] = $reponse['idbenevole'];
             $_SESSION['teacherFname'] = $reponse['nombenevole'];
@@ -89,6 +91,18 @@ if (isset($_POST['your_email']) && isset($_POST['your_pass'])) {
             $_SESSION['mailb'] = $reponse['mailbenevole'];
             $_SESSION['password'] = $reponse['passwordbenevole'];
             $_SESSION['matiere'] = $reponse['idmatiere'];
+
+           // for show the prot the chart of demande cours 
+
+        //    $therequet = "SELECT COUNT(d.cours) AS num, d.cours,m.nomcours , s.nommatiere FROM demande d INNER JOIN cours m ON 
+        //    d.cours = m.idcours INNER JOIN matiere s on m.idmatiere = s.idmatiere GROUP BY d.cours ORDER BY COUNT(d.cours) DESC;";
+        //    $do = mysqli_query($conn, $therequet);
+        //    $array = mysqli_fetch_array($do);
+        //    $_SESSION['num'] = $array['num'];
+        //     // $_SESSION['cours'] = $array['d.cours'];
+        //     $_SESSION['cours'] = $array['m.nomcours'];
+        //     $_SESSION['matriere'] = $array['s.nommatiere'];
+     
 
 
 //            echo($reponse);
@@ -112,4 +126,42 @@ if (isset($_POST['your_email']) && isset($_POST['your_pass'])) {
 }
 
 mysqli_close($conn); // fermer la connexion
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ?>

@@ -16,91 +16,11 @@ button:focus, input:focus, textarea:focus, select:focus {
 }
 
 
-.chart {
 
-  .chart_title {
-    &_h2 {
-      @extend .historique;
-
-      margin-bottom: 20px;
-
-    }
-  }
-
-  .chart_ui {
-    display: flex;
-    align-items: center;
-    width: 80%;
-    margin: 10px auto;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    padding: 0;
-
-    @media only screen and (max-width: 500px) {
-      width: 100%;
-    }
-
-    .chart_UI {
-      height: 15px;
-      width: 40%;
-      border: 1px solid $colorR;
-      border-radius: 10px;
-
-      @media only screen and (max-width: 670px) {
-        width: 80%;
-      }
-
-      .chart_UI1 {
-        width: 60%;
-        height: 15px;
-        background-color: $colorR;
-        border-radius: 10px;
-
-      }
-
-    }
-
-    .chart_2 {
-      @extend .chart_UI;
-      border: 1px solid $colorOr;
-
-      .chart_UI2 {
-        @extend .chart_UI1;
-        background-color: $colorOr;
-        width: 30%;
-
-      }
-
-    }
-
-    .chart_3 {
-      @extend .chart_UI;
-      border: 1px solid $colorV;
-
-      .chart_UI3 {
-        @extend .chart_UI1;
-        background-color: $colorV;
-        width: 20%;
-
-      }
-
-    }
-
-    .chart_4 {
-      @extend .chart_UI;
-
-      .chart_UI4 {
-        @extend .chart_UI1;
-        width: 10%;
-
-
-      }
-
-    }
-  }
+.chart_title_h2{
+  @extend .historique;
+  width: auto;
 }
-
-
 .containers {
   margin: 2em auto;
   max-width: 71vw;
@@ -187,13 +107,13 @@ button:focus, input:focus, textarea:focus, select:focus {
 .historique {
   font-weight: 400;
   font-size: x-large;
-  //width: 120px;
+ padding-bottom: 5px;
   border-bottom: 3px solid $colorOr;
   margin-top: -20px;
 
   @media only screen and (max-width: 475px) {
     font-size: 18px;
-    width: 100px;
+    // width: 100px;
     margin-top: 1px;
 
   }

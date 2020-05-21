@@ -20,7 +20,7 @@
 define('DB_SERVER', 'localhost');
 define('DB_USERNAME', 'root');
 define('DB_PASSWORD', '');
-define('DB_NAME', 'sw3');
+define('DB_NAME', 'souaie');
 
 
 // Connexion à la base de données MySQL
