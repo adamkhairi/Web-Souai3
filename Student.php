@@ -97,20 +97,20 @@ include "notification.php";
     </button>
 
     <div class="row  w-100 flex-nowrap justify-content-around m-auto  ccc">
-            <?php
-            $idetudiant = $_SESSION['userid'];
-            $sql = "SELECT d.idetudiantc, d.cours, e.eventID , b.nombenevole ,b.prenombenevole ,e.hours ,e.theDate, c.nomcours FROM demande d INNER JOIN theevanets e ON d.cours = e.coursID INNER JOIN 
-                    benevole b ON e.ProfID = b.idbenevole INNER JOIN cours c ON c.idcours = e.coursID WHERE d.idetudiantc = ". $idetudiant ." AND e.reponse = '' ;";
-            $exec_requete = mysqli_query($conn, $sql);
-//            var_dump($exec_requete);
-//            $reponse = mysqli_fetch_array($exec_requete);
+        <?php
+        $idetudiant = $_SESSION['userid'];
+        $sql = "SELECT d.idetudiantc, d.cours, e.eventID , b.nombenevole ,b.prenombenevole ,e.hours ,e.theDate, c.nomcours FROM demande d INNER JOIN theevanets e ON d.cours = e.coursID INNER JOIN 
+                    benevole b ON e.ProfID = b.idbenevole INNER JOIN cours c ON c.idcours = e.coursID WHERE d.idetudiantc = " . $idetudiant . " AND d.reponse = '' ;";
+        $exec_requete = mysqli_query($conn, $sql);
+        //            var_dump($exec_requete);
+        //            $reponse = mysqli_fetch_array($exec_requete);
 
-//            print_r($reponse);
-//            die();
-            if ($exec_requete = mysqli_query($conn, $sql)){
-             while ($reponse = mysqli_fetch_array($exec_requete)){
-                 echo "
-            <form action=\"\" class=\"width ml-3\">
+        //            print_r($reponse);
+        //            die();
+        if ($exec_requete = mysqli_query($conn, $sql)) {
+            while ($reponse = mysqli_fetch_array($exec_requete)) {
+                echo "
+            <form name='reponce' action=\"\" method='post' class=\"width ml-3\">
             <div class=\"modal-dialog width shdow\" role=\"document\">
                 <div class=\"modal-content\">
                     <div class=\"modal-header backOrange\">
@@ -120,13 +120,13 @@ include "notification.php";
                         </button>
                     </div>
                     <div class=\"modal-body pl-4\">
-                        <h5>Cours : ". $reponse['nomcours'] ."</h5>
-                        <h6>Time : ". $reponse['hours'] ."</h6>
-                        <h6>Date : ". $reponse['theDate'] ."</h6>
+                        <h5>Cours : " . $reponse['nomcours'] . "</h5>
+                        <h6>Time : " . $reponse['hours'] . "</h6>
+                        <h6>Date : " . $reponse['theDate'] . "</h6>
                         <div class=\"row ml-2\">
 
                             <p>By</p>
-                            <h5 class=\"ml-4\">". $reponse['nombenevole'] ."  " . $reponse['prenombenevole'] . "</h5>
+                            <h5 class=\"ml-4\">" . $reponse['nombenevole'] . "  " . $reponse['prenombenevole'] . "</h5>
                         </div>
                     </div>
                     <div class=\"modal-footer text-center d-flex justify-content-around\">
@@ -140,63 +140,30 @@ include "notification.php";
             </div>
         </form>
             ";
-             }
+                if (!empty($_POST['reponce'])) {
+                    $reqet = "INSERT INTO demande(Reponce) VALUES ( " . $_POST['reponce'] . ")";
+                    $send = mysqli_query($conn, $reqet);
+
+                    if ($_POST['reponce'] == 'oui') {
+                        $req = "INSERT INTO reponce(idetudiant, idevent) VALUES (" . $idetudiant . "," . $reponse['eventID'] . ")";
+                        $reqsend = mysqli_query($conn, $req);
+
+                    } else{
+                        echo "<script>alert('Error1')</script>";
+
+                    }
+
+                }else{
+                    echo "<script>alert('Error2')</script>";
+
+                }
             }
+        }
 
-            ?>
+        ?>
         <!--        <div class="d-flex " role="dialog">-->
-
-
-
-
-        <!--        </div>-->
     </div>
-    <!--        <div class=" notif p-4 rounded w-25 bg-light shdow ml-auto">-->
-    <!---->
-    <!--            <div class="notif_name">-->
-    <!--               -->
-    <!--                --><?php
-    //                if (!empty($_SESSION['lastName'])) {
-    //                    $lastname = $_SESSION['lastName'];
-    //                    // afficher un message
-    //                    echo
-    //                    "<h2 class='notif_name_h2'>Bonjour
-    //                $lastname
-    //                </h2>";
-    //                } else {
-    //                    echo "<h2 class='notif_name_h2'>Bonjour</h2>";
-    //                }
-    //
-    //                ?><!-- -->
-    <!---->
-    <!--            </div>-->
-    <!--            <div class="message">-->
-    <!---->
-    <!--                <div class="nofit_message">-->
-    <!--                    <div class="">-->
-    <!--                        <i class="far fa-check-circle"></i>-->
-    <!--                    </div>-->
-    <!--                    <div class="nofit_message_A">-->
-    <!--                        <p>Cours : <span>tawalo ind dafadi3</span><br>-->
-    <!--                            date : <span>tawalo ind dafadi3</span><br>-->
-    <!--                            Profiseur : <span>tawalo ind dafadi3</span></p>-->
-    <!--                    </div>-->
-    <!---->
-    <!--                </div>-->
-    <!---->
-    <!--                <div class="valid">-->
-    <!--                    <p>Intéressé(e) ?</p>-->
-    <!--                    <button class="OUI">oui</button>-->
-    <!--                    <button class="NON">non</button>-->
-    <!--                </div>-->
-    <!---->
-    <!--            </div>-->
-    <!--        </div>-->
-
-
     <div class="">
-
-
         <div class="Post_problem">
             <form action="addQst.php" method="post">
                 <h2 class="historique d-inline-block">Poster un problème:</h2>

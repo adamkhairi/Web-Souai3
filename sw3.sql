@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 21, 2020 at 08:45 AM
+-- Generation Time: May 22, 2020 at 12:04 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.30
 
@@ -200,6 +200,17 @@ INSERT INTO `niveau` (`idniveau`, `niveau`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `reponce`
+--
+
+CREATE TABLE `reponce` (
+  `idetudiant` int(11) NOT NULL,
+  `idevent` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `theevanets`
 --
 
@@ -210,17 +221,16 @@ CREATE TABLE `theevanets` (
   `message` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `lien` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `hours` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `theDate` date DEFAULT NULL,
-  `reponse` varchar(100) COLLATE utf8_unicode_ci NOT NULL
+  `theDate` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `theevanets`
 --
 
-INSERT INTO `theevanets` (`eventID`, `coursID`, `ProfID`, `message`, `lien`, `hours`, `theDate`, `reponse`) VALUES
-(6, 4, 2, '2222', '2222', '22:22', '2020-05-08', ''),
-(7, 5, 2, '22', '22', '22:22', '2020-05-14', '');
+INSERT INTO `theevanets` (`eventID`, `coursID`, `ProfID`, `message`, `lien`, `hours`, `theDate`) VALUES
+(6, 4, 2, '2222', '2222', '22:22', '2020-05-08'),
+(7, 5, 2, '22', '22', '22:22', '2020-05-14');
 
 --
 -- Indexes for dumped tables
@@ -273,6 +283,12 @@ ALTER TABLE `matiere`
 --
 ALTER TABLE `niveau`
   ADD PRIMARY KEY (`idniveau`);
+
+--
+-- Indexes for table `reponce`
+--
+ALTER TABLE `reponce`
+  ADD KEY `idevent` (`idevent`);
 
 --
 -- Indexes for table `theevanets`
@@ -368,6 +384,12 @@ ALTER TABLE `filiere`
 --
 ALTER TABLE `matiere`
   ADD CONSTRAINT `idfiliere` FOREIGN KEY (`idfiliere`) REFERENCES `filiere` (`idfiliere`);
+
+--
+-- Constraints for table `reponce`
+--
+ALTER TABLE `reponce`
+  ADD CONSTRAINT `idevent` FOREIGN KEY (`idevent`) REFERENCES `theevanets` (`eventID`);
 
 --
 -- Constraints for table `theevanets`
