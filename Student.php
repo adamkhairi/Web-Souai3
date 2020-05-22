@@ -100,17 +100,24 @@ include "notification.php";
         <?php
         $idetudiant = $_SESSION['userid'];
         $sql = "SELECT d.idetudiantc, d.cours, e.eventID , b.nombenevole ,b.prenombenevole ,e.hours ,e.theDate, c.nomcours FROM demande d INNER JOIN theevanets e ON d.cours = e.coursID INNER JOIN 
-                    benevole b ON e.ProfID = b.idbenevole INNER JOIN cours c ON c.idcours = e.coursID WHERE d.idetudiantc = " . $idetudiant . " AND d.reponse = '' ;";
+                    benevole b ON e.ProfID = b.idbenevole INNER JOIN cours c ON c.idcours = e.coursID WHERE d.idetudiantc = " . $idetudiant . " AND d.reponce = '' ;";
         $exec_requete = mysqli_query($conn, $sql);
         //            var_dump($exec_requete);
-        //            $reponse = mysqli_fetch_array($exec_requete);
+        $reponse = mysqli_fetch_array($exec_requete);
+        $courses = array();
+        $events = array();
 
-        //            print_r($reponse);
-        //            die();
+
+        //                    print_r($reponse);
+        //                    die();
         if ($exec_requete = mysqli_query($conn, $sql)) {
             while ($reponse = mysqli_fetch_array($exec_requete)) {
+
+                array_push($courses, $reponse['cours']);
+                array_push($events, $reponse['eventID']);
+
                 echo "
-            <form name='reponce' action=\"\" method='post' class=\"width ml-3\">
+            <form name='reponce' action=\"answer.php\" method='post' class=\"width ml-3\">
             <div class=\"modal-dialog width shdow\" role=\"document\">
                 <div class=\"modal-content\">
                     <div class=\"modal-header backOrange\">
@@ -131,36 +138,22 @@ include "notification.php";
                     </div>
                     <div class=\"modal-footer text-center d-flex justify-content-around\">
                         <p>Intéressé(e) ?</p>
-                        <button type=\"submit\" value=\"oui\" class=\"btn m-0 w-25 rounded-pill backGreen\">Oui</button>
-                        <button type=\"submit\" value=\"non\" class=\"btn m-0 w-25 rounded-pill backRed\"
-                                data-dismiss=\"modal\">Non
-                        </button>
+                        <button type=\"submit\" id='ansoui' class=\"btn m-0 w-25 rounded-pill backGreen\">Oui</button>
+                        <button type=\"submit\" id='ansnon' class=\"btn m-0 w-25 rounded-pill backRed\"> Non</button>
+                               <input type='text' name='getans' hidden value='' id='getans'>
                     </div>
                 </div>
             </div>
         </form>
             ";
-                if (!empty($_POST['reponce'])) {
-                    $reqet = "INSERT INTO demande(Reponce) VALUES ( " . $_POST['reponce'] . ")";
-                    $send = mysqli_query($conn, $reqet);
 
-                    if ($_POST['reponce'] == 'oui') {
-                        $req = "INSERT INTO reponce(idetudiant, idevent) VALUES (" . $idetudiant . "," . $reponse['eventID'] . ")";
-                        $reqsend = mysqli_query($conn, $req);
-
-                    } else{
-                        echo "<script>alert('Error1')</script>";
-
-                    }
-
-                }else{
-                    echo "<script>alert('Error2')</script>";
-
-                }
             }
         }
-
+        $_SESSION['courses'] = $courses;
+        $_SESSION['events'] = $events;
+        print_r($_SESSION['courses']);
         ?>
+
         <!--        <div class="d-flex " role="dialog">-->
     </div>
     <div class="">
@@ -289,7 +282,19 @@ include 'footer.php';
 <script src="src/js/student.js"></script>
 
 <script>
+	let oui = document.getElementById('ansoui');
+	let non = document.getElementById('ansnon');
+	let getans = document.getElementById('getans');
 
+	oui.onclick = () => {
+		getans.value = 'oui';
+		console.log(getans.value)
+	}
+	non.onclick = () => {
+		getans.value = 'non';
+		console.log(getans.value)
+
+	}
 	// let slide = document.getElementById('sidebarCollapse'),
 	// 	slideBar = document.getElementById('sidebar'),
 	// 	content = document.getElementById('content');
