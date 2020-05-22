@@ -99,14 +99,15 @@ include "notification.php";
     <div class="row  w-100 flex-nowrap justify-content-around m-auto  ccc">
         <?php
         $idetudiant = $_SESSION['userid'];
-        $sql = "SELECT d.idetudiantc, d.cours, e.eventID , b.nombenevole ,b.prenombenevole ,e.hours ,e.theDate, c.nomcours FROM demande d INNER JOIN theevanets e ON d.cours = e.coursID INNER JOIN 
+        $sql = "SELECT d.idetudiantc, d.iddemande ,d.cours, e.eventID , b.nombenevole ,b.prenombenevole ,e.hours ,e.theDate, c.nomcours FROM demande d INNER JOIN theevanets e ON d.cours = e.coursID INNER JOIN 
                     benevole b ON e.ProfID = b.idbenevole INNER JOIN cours c ON c.idcours = e.coursID WHERE d.idetudiantc = " . $idetudiant . " AND d.reponce = '' ;";
         $exec_requete = mysqli_query($conn, $sql);
         //            var_dump($exec_requete);
         $reponse = mysqli_fetch_array($exec_requete);
+        //        print_r($reponse)
+        //        die();
         $courses = array();
         $events = array();
-
 
         //                    print_r($reponse);
         //                    die();
@@ -117,7 +118,7 @@ include "notification.php";
                 array_push($events, $reponse['eventID']);
 
                 echo "
-            <form name='reponce' action=\"answer.php\" method='post' class=\"width ml-3\">
+        <form name='reponce' action=\"answer.php\" method='post' class=\"width ml-3\">
             <div class=\"modal-dialog width shdow\" role=\"document\">
                 <div class=\"modal-content\">
                     <div class=\"modal-header backOrange\">
@@ -127,6 +128,9 @@ include "notification.php";
                         </button>
                     </div>
                     <div class=\"modal-body pl-4\">
+                    
+                    
+                    <input type='text' name='iddmd' id='iddmd' hidden value=" . $reponse['iddemande'] . ">
                         <h5>Cours : " . $reponse['nomcours'] . "</h5>
                         <h6>Time : " . $reponse['hours'] . "</h6>
                         <h6>Date : " . $reponse['theDate'] . "</h6>
@@ -146,12 +150,19 @@ include "notification.php";
             </div>
         </form>
             ";
+//                print_r($reponse['iddemande']);
+                if (!empty($_POST['iddemande'])) {
 
+                    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+
+                    }
+                }
+
+//                **********
             }
         }
-        $_SESSION['courses'] = $courses;
-        $_SESSION['events'] = $events;
-        print_r($_SESSION['courses']);
+
         ?>
 
         <!--        <div class="d-flex " role="dialog">-->
@@ -287,11 +298,11 @@ include 'footer.php';
 	let getans = document.getElementById('getans');
 
 	oui.onclick = () => {
-		getans.value = 'oui';
+		getans.value = 2;
 		console.log(getans.value)
 	}
 	non.onclick = () => {
-		getans.value = 'non';
+		getans.value = 1;
 		console.log(getans.value)
 
 	}
