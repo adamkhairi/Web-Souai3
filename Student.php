@@ -113,12 +113,13 @@ include "notification.php";
         //                    die();
         if ($exec_requete = mysqli_query($conn, $sql)) {
             while ($reponse = mysqli_fetch_array($exec_requete)) {
-
+                $i = 0;
+$namefomr = 'reponce_'. $i;
                 array_push($courses, $reponse['cours']);
                 array_push($events, $reponse['eventID']);
 
                 echo "
-        <form name='reponce' action=\"answer.php\" method='post' class=\"width ml-3\">
+        <form name='". $namefomr ."' action=\"answer.php\" method='post' class=\"width ml-3\">
             <div class=\"modal-dialog width shdow\" role=\"document\">
                 <div class=\"modal-content\">
                     <div class=\"modal-header backOrange\">
@@ -128,8 +129,7 @@ include "notification.php";
                         </button>
                     </div>
                     <div class=\"modal-body pl-4\">
-                    
-                    
+                   ". $reponse['iddemande'] ."
                     <input type='text' name='iddmd' id='iddmd' hidden value=" . $reponse['iddemande'] . ">
                         <h5>Cours : " . $reponse['nomcours'] . "</h5>
                         <h6>Time : " . $reponse['hours'] . "</h6>
@@ -150,6 +150,8 @@ include "notification.php";
             </div>
         </form>
             ";
+                $i++;
+
 //                print_r($reponse['iddemande']);
                 if (!empty($_POST['iddemande'])) {
 

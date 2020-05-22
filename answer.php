@@ -13,6 +13,11 @@ session_start();
 //    print_r($send);
 ////    die();
 //
+//$idetud = $_GET['idetudiant'];
+//$idde = $_GET['iddemande'];
+
+//print_r($idetud,$idde);
+//die();
 $idetudiant = $_SESSION['userid'];
 //if (!empty($_POST['submit'])) {
     $ans = $_POST['getans'];
@@ -28,7 +33,6 @@ print_r($_POST['iddmd'] , $idetudiant);
 //    echo "<script>alert('Error2')</script>";
 //
 //}
-
 //    if ($ans == 'oui') {
 //        $req = "INSERT INTO reponce(idetudiant, idevent) VALUES (" . $idetudiant . "," . $reponse['eventID'] . ")";
 //        $reqsend = mysqli_query($conn, $req);
@@ -39,7 +43,6 @@ print_r($_POST['iddmd'] , $idetudiant);
 //        echo "<script>alert('Error1')</script>";
 //
 //    }
-
 //} else {
 //    echo "<script>alert('Error2')</script>";
 //

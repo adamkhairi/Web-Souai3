@@ -28,8 +28,8 @@ $sql = "SELECT count(*) FROM `etudiant`  WHERE `mailetudiant`= '$your_email' ";
             $password = mysqli_real_escape_string($conn, $password);
             //requéte SQL + mot de passe crypté
 
-            $query = "INSERT into `etudiant` (`idetudiant`, `nometudiant`, `prenometudiant`,`niveauscolaire`,`filiere`, `mailetudiant`, `passwordetudiant`) 
-        VALUES ('', '" . $username . "', '" . $prenom . "', '" . $nScolaire . "', '" . $filier . "','" . $email . "', '" . hash('sha256', $password) . "')";
+            $query = "INSERT into `etudiant` (`nometudiant`, `prenometudiant`,`niveauscolaire`,`filiere`, `mailetudiant`, `passwordetudiant`) 
+        VALUES ('" . $username . "', '" . $prenom . "', '" . $nScolaire . "', '" . $filier . "','" . $email . "', '" . hash('sha256', $password) . "')";
 
             // Exécuter la requête sur la base de données
             $res = mysqli_query($conn, $query);
