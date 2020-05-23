@@ -430,7 +430,7 @@ footer {
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;;
-    padding: 20px;
+    //padding: 20px;
     align-items: center;
 
     @media only screen and (max-width: 475px) {
@@ -906,5 +906,10 @@ input[type="radio"]:checked:after {
   border: 2px solid $green;
   @media (max-width: 1044px) {
     left: 16px;
+  }
+}
+@media (max-width: 1230px) {
+  *{
+    font-size: 10px;
   }
 }
