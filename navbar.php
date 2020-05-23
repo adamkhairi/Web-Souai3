@@ -28,7 +28,7 @@ session_start();
             <?php
             if (!empty($_SESSION['mail'])) {
                 echo "
-              <div class=\"p-2 \">
+              <div class=\"rounded-circle p-2 \">
                 <a href=\"Student.php\">
                 <i class=\"fas iconProfile fa-user-circle\"></i>
                 </a>
@@ -40,7 +40,7 @@ session_start();
 
 
                 echo "
-                <div class=\"p-2 \">
+                <div class=\"rounded-circle p-2 \">
                     <a href=\"Teacher.php\">
                         <i class=\"fas iconProfile fa-user-circle\"></i>
                     </a>
