@@ -871,8 +871,10 @@ footer {
   @media (max-width: 650px) {
     display: flex;
     flex-wrap: wrap !important;
+    padding-right: 20px;
   }
 }
+
 input[type="radio"]:after {
   width: 16px;
   height: 16px;
@@ -885,6 +887,9 @@ input[type="radio"]:after {
   display: inline-block;
   visibility: visible;
   border: 2px solid $lOrange;
+  @media (max-width: 1044px) {
+    left: 16px;
+  }
 }
 
 input[type="radio"]:checked:after {
@@ -898,5 +903,8 @@ input[type="radio"]:checked:after {
   content: "";
   display: inline-block;
   visibility: visible;
-  border: 2px solid $orange;
+  border: 2px solid $green;
+  @media (max-width: 1044px) {
+    left: 16px;
+  }
 }

@@ -19,7 +19,7 @@ session_start();
 <body>
 <nav class="sticky-top">
     <a class="navbar-brand" href="index.php">
-        <img src="src/img/logo-02.png" width="150" class="d-inline-block align-top" alt="">
+        <img src="src/img/logo-02.png"  class="d-inline-block align-top" alt="">
     </a>
 
     <div>
