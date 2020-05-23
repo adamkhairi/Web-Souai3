@@ -21,10 +21,9 @@ include("connexion.php");
                     };
                     ?>
                 </h3>
-                <p class="font-weight-light text-muted mb-0">Etudiant</p>
+
+<!--                <p class="font-weight-light text-muted mb-0">Benevole</p>-->
             </div>
-
-
         </div>
         <div class="mt-4">
 
@@ -72,11 +71,6 @@ include("connexion.php");
         <li class="nav-item" id="prods">
             <a class="nav-link text-dark  mt-4 " href="index.php">
                 Accueil
-            </a>
-        </li>
-        <li class="nav-item" id="cats">
-            <a class="nav-link text-dark mt-4  " href="#">
-                Student
             </a>
         </li>
         <li class="nav-item mt-3">
@@ -137,7 +131,7 @@ include("connexion.php");
 
 
 <div class="containers">
-    <div class="">
+    <div class="statistics">
         <div class="chart_title">
             <h4 class="chart_title_h2">Les cours qui plus demande :</h4>
         </div>
@@ -152,7 +146,7 @@ include("connexion.php");
             if ($do = mysqli_query($conn, $therequet)) {
 
                 while ($array = mysqli_fetch_array($do)) {
-                    echo '<div class="row font-weight-bold align-items-center text-nowrap  text-center">
+                    echo '<div class="row  font-weight-bold align-items-center text-nowrap  text-center">
                    <div class="col-sm m-2 rounded p-3  backRed">' . $array[3] . '</div>
 
                    <div class="col-sm m-2 rounded p-3  backOrange

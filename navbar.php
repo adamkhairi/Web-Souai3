@@ -25,15 +25,31 @@ session_start();
     <div>
 
         <div class="p-2">
-            <div class="p-2 ">
-                <i class="fas fa-user-circle"></i>
-            </div>
-            <div class="p-2 ">
-                <i class="fas fa-bell"></i>
-            </div>
-            <div class="p-2 ">
-                <i class="far fa-bell"></i>
-            </div>
+            <?php
+            if (!empty($_SESSION['mail'])) {
+                echo "
+              <div class=\"p-2 \">
+                <a href=\"Student.php\">
+                <i class=\"fas iconProfile fa-user-circle\"></i>
+                </a>
+              </div>
+
+                ";
+            }else
+            if (!empty($_SESSION['mailb'])){
+
+
+                echo "
+                <div class=\"p-2 \">
+                    <a href=\"Teacher.php\">
+                        <i class=\"fas iconProfile fa-user-circle\"></i>
+                    </a>
+                </div>
+";
+                        }
+
+
+            ?>
 
 
         </div>
@@ -49,12 +65,14 @@ session_start();
                 echo
                 "
     
-        <div>
+        <div class=' rounded-circle p-2'>
+        
                <a href=\"logout.php\">
-                     <button class='btn btn-danger rounded-pill ml-4'>Déconnecté</button>
+            <i class=\"fas deleteSec fa-sign-out-alt\"></i>
+                  
                 </a>
 
-        </div>
+         </div>
     ";
             } else if (!empty($_SESSION['mail'])) {
 
@@ -63,10 +81,11 @@ session_start();
                 echo
                 "
     
-        <div>
+        <div class=' rounded-circle p-2'>
         
                <a href=\"logout.php\">
-                  <button class='btn btn-danger rounded-pill'>Déconnecté</button>
+            <i class=\"fas deleteSec fa-sign-out-alt\"></i>
+                  
                 </a>
 
          </div>

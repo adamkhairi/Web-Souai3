@@ -16,40 +16,36 @@ session_start();
 //$idetud = $_GET['idetudiant'];
 //$idde = $_GET['iddemande'];
 
-$idetudiant = $_SESSION['userid'];
-$sql = "SELECT d.idetudiantc, d.iddemande ,d.cours, e.eventID , b.nombenevole ,b.prenombenevole ,e.hours ,e.theDate, c.nomcours FROM demande d INNER JOIN theevanets e ON d.cours = e.coursID INNER JOIN 
-                    benevole b ON e.ProfID = b.idbenevole INNER JOIN cours c ON c.idcours = e.coursID WHERE d.idetudiantc = " . $idetudiant . " AND d.reponce = '' ;";
-$exec_requete = mysqli_query($conn, $sql);
-//            var_dump($exec_requete);
-$reponse = mysqli_fetch_array($exec_requete);
-
-if ($exec_requete = mysqli_query($conn, $sql)) {
-    while ($reponse = mysqli_fetch_array($exec_requete)) {
-
-        $i = 0;
-//        $namefomr = 'reponce_'. $i;
-        if (isset($_POST['submit'])) {
-
-            if (!empty($_POST['reponce_' . $i])) {
-
 //print_r($idetud,$idde);
 //die();
-                $idetudiant = $_SESSION['userid'];
+// $idetudiant = $_SESSION['userid'];
 //if (!empty($_POST['submit'])) {
-                $ans = $_POST['getans'];
-                print_r($_POST['iddmd'], $idetudiant);
-//    if (!empty($_POST['reponce'])) {
-//    print_r($_SESSION['courses']);
-                $reqet = "UPDATE demande SET reponce =" . $ans . " WHERE idetudiantc = " . $idetudiant . " AND iddemande = " . $_POST['iddmd'] . " ";
-                $send = mysqli_query($conn, $reqet);
-                print_r($_POST['iddmd'], $idetudiant);
-                $i++;
-            } else {
-                echo "<script>alert('Error2')</script>";
+//     $ans = $_POST['getans'];
+// print_r($_POST['iddmd'] , $idetudiant);
+// //    if (!empty($_POST['reponce'])) {
+// //    print_r($_SESSION['courses']);
+//     $reqet = "UPDATE demande SET reponce =" . $ans . " WHERE idetudiantc = " . $idetudiant . " AND iddemande = " . $_POST['iddmd'] . " ";
+//     $send = mysqli_query($conn, $reqet);
+//     print_r($_POST['iddmd'] , $idetudiant);
+
+   $Array = $_SESSION['domende'];
+   $Array2 = $_SESSION['event'];
+    for($i = 0 ; $i < sizeof($Array) ; $i++){
+
+        if(isset($_POST['getans_'. $Array[$i]])){
+            $reqet = "UPDATE demande SET reponce =" . $_POST['getans_'. $Array[$i]] . " WHERE idetudiantc = " . $_SESSION['userid'] . " AND iddemande = " . $Array[$i]. ";";
+            $send = mysqli_query($conn, $reqet);
+            if($_POST['getans_'. $Array[$i]] = 1){
+                $sql = "INSERT INTO `reponce`(`idetudiant`, `idevent`) VALUES (" . $_SESSION['userid'] . " , $Array2[$i]);";
+                $send2 = mysqli_query($conn, $sql);
             }
+            $sql2 = "DELETE FROM `demande` WHERE iddemande = " . $Array[$i]. "";
+            $send3 = mysqli_query($conn , $sql2);
+            header('location: Student.php');
+
         }
     }
-}
+
 //}
 //else {
 //    echo "<script>alert('Error2')</script>";

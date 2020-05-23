@@ -41,55 +41,35 @@ include "notification.php";
         <!--        <div class="text-center">-->
 
         <!--        </div>-->
-    </div>
+        <!--   Links Of each section -->
+        <div class="d-flex mt-2 flex-column justify-content-center align-items-center">
 
-    <div class="w-50 ml-auto p-2 mr-auto mb-5">
-        <!--        <div>-->
-        <!---->
-        <!--            --><?php
-        //            if (!empty($_SESSION['mail'])) {
-        //                $usermail = $_SESSION['mail'];
-        //                // afficher un message
-        //                echo
-        //                    "
-        //                 <h5 class=\"font-weight-bold bBottom mr-4\">Niveau scolaire : </h5>
-        //
-        //                <h4> " . $_SESSION['nvScolaire'] . "</h4>
-        //
-        //                ";
-        //            } else {
-        //                echo "
-        //                      <h5 class=\"font-weight-bold bBottom mr-4\">Niveau scolaire : </h5>
-        //                <h4>le Niveau scolaire</h4>
-        //                      ";
-        //            }
-        //            ?>
-        <!---->
-        <!--        </div>-->
 
-    </div>
-    <!--   Links Of each section -->
-
-    <ul class="nav flex-column  mt-3 text-center">
-        <li class="nav-item" id="prods">
-            <a class="nav-link text-dark  mt-4 " href="index.php">
-                Accueil
+            <div class='mt-4 '>
+                <a href="#">
+                    <button class='btn backOrange rounded-pill'>Voir les videos</button>
+                </a>
+            </div>
+            <?php
+            if (!empty($_SESSION['mail'])) {
+                echo "<div class='mt-2'>
+    <a  href=\"logout.php\">
+                <button class='btn btn-danger rounded-pill'>Déconnecté</button>
             </a>
-        </li>
-        <li class="nav-item" id="cats">
-            <a class="nav-link text-dark mt-4  " href="#">
-                Student
-            </a>
-        </li>
-        <li class="nav-item mt-3">
-            <a href="#">
-                <button class='btn btn-danger rounded-pill'>Voir les videos</button>
-            </a>
-        </li>
-
-
-    </ul>
 </div>
+             
+                ";
+            }
+
+
+            ?>
+
+        </div>
+
+    </div>
+</div>
+
+
 <div class="page-content pl-4" id="content">
     <!-- Toggle button -->
     <button class="btn btn-dark bg-dark rounded-pill shadow-sm px-4 m-4" id="sidebarCollapse" type="button">
@@ -100,71 +80,79 @@ include "notification.php";
         <?php
         $idetudiant = $_SESSION['userid'];
         $sql = "SELECT d.idetudiantc, d.iddemande ,d.cours, e.eventID , b.nombenevole ,b.prenombenevole ,e.hours ,e.theDate, c.nomcours FROM demande d INNER JOIN theevanets e ON d.cours = e.coursID INNER JOIN 
-                    benevole b ON e.ProfID = b.idbenevole INNER JOIN cours c ON c.idcours = e.coursID WHERE d.idetudiantc = " . $idetudiant . " AND d.reponce = '' ;";
+                    benevole b ON e.ProfID = b.idbenevole INNER JOIN cours c ON c.idcours = e.coursID WHERE d.idetudiantc = " . $idetudiant . " ;";
         $exec_requete = mysqli_query($conn, $sql);
-        //            var_dump($exec_requete);
         $reponse = mysqli_fetch_array($exec_requete);
-        //        print_r($reponse)
-        //        die();
-        $courses = array();
-        $events = array();
-
-        //                    print_r($reponse);
-        //                    die();
+        $domende = array();
+        $eventID = array();
         if ($exec_requete = mysqli_query($conn, $sql)) {
             while ($reponse = mysqli_fetch_array($exec_requete)) {
-                $i = 0;
-$namefomr = 'reponce_'. $i;
-                array_push($courses, $reponse['cours']);
-                array_push($events, $reponse['eventID']);
+                array_push($domende, $reponse['iddemande']);
+                array_push($eventID, $reponse['eventID']);
 
+                $namefomr = 'reponce_' . $reponse['iddemande'];
+                $name = 'getans_' . $reponse['iddemande'];
+                // print_r($name);
+                // die();
                 echo "
-        <form name='". $namefomr ."' action=\"answer.php\" method='post' class=\"width ml-3\">
-            <div class=\"modal-dialog width shdow\" role=\"document\">
-                <div class=\"modal-content\">
-                    <div class=\"modal-header backOrange\">
-                        <h5 class=\"modal-title text-center \">Évènement</h5>
-                        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">
-                            <span aria-hidden=\"true\">&times;</span>
-                        </button>
-                    </div>
-                    <div class=\"modal-body pl-4\">
-                   ". $reponse['iddemande'] ."
-                    <input type='text' name='iddmd' id='iddmd' hidden value=" . $reponse['iddemande'] . ">
-                        <h5>Cours : " . $reponse['nomcours'] . "</h5>
-                        <h6>Time : " . $reponse['hours'] . "</h6>
-                        <h6>Date : " . $reponse['theDate'] . "</h6>
-                        <div class=\"row ml-2\">
+                <form name='" . $namefomr . "' action=\"answer.php\" method='POST' class=\"width ml-3\">
+                    <div class=\"modal-dialog width shdow\" role=\"document\">
+                        <div class=\"modal-content\">
+                            <div class=\"modal-header backOrange\">
+                                <h5 class=\"modal-title text-center \">Évènement</h5>
+                                <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">
+                                    <span aria-hidden=\"true\">&times;</span>
+                                </button>
+                            </div>
+                            
+                            <div class=\"modal-body pl-4\">     
+                                <h5>Cours : " . $reponse['nomcours'] . "</h5>
+                                <h6>Time : " . $reponse['hours'] . "</h6>
+                                <h6>Date : " . $reponse['theDate'] . "</h6>
+                                <div class=\"row ml-2\">
 
-                            <p>By</p>
-                            <h5 class=\"ml-4\">" . $reponse['nombenevole'] . "  " . $reponse['prenombenevole'] . "</h5>
+                                    <p>By</p>
+                                    <h5 class=\"ml-4\">" . $reponse['nombenevole'] . "  " . $reponse['prenombenevole'] . "</h5>
+                                </div>
+                            </div>
+                            <div class=\"modal-footer text-center d-flex justify-content-around\">
+                                <p>Intéressé(e) ?</p>
+                                <div class='d-flex align-items-center w-25'>
+                                    <input class='mb-2' type='radio' name='" . $name . "' value='1' id='oui'>
+                                    <label for='oui' >Oui</label>
+                                </div>
+                                <div class='d-flex align-items-center w-25'>
+
+                                    <input class='mb-2' type='radio' name='" . $name . "' value='2' id='non'>
+                                    <label  for='non'>Non</label>
+                                </div>
+
+                     
+                                 
+                            </div>
+                        <button type=\"submit\" id='ansnon' class=\"btn m - 0 w - 25 rounded - pill backRed\">Send !</button>
+
                         </div>
                     </div>
-                    <div class=\"modal-footer text-center d-flex justify-content-around\">
-                        <p>Intéressé(e) ?</p>
-                        <button type=\"submit\" id='ansoui' class=\"btn m-0 w-25 rounded-pill backGreen\">Oui</button>
-                        <button type=\"submit\" id='ansnon' class=\"btn m-0 w-25 rounded-pill backRed\"> Non</button>
-                               <input type='text' name='getans' hidden value='' id='getans'>
-                    </div>
-                </div>
-            </div>
-        </form>
-            ";
-                $i++;
+                </form>
+                    ";
+
+                // $i++;
 
 //                print_r($reponse['iddemande']);
-                if (!empty($_POST['iddemande'])) {
+                // if (!empty($_POST['iddemande'])) {
 
-                    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                //     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
-                    }
-                }
+                //     }
+                // }
 
 //                **********
             }
         }
-
+        $_SESSION['domende'] = $domende;
+        $_SESSION['event'] = $eventID;
         ?>
 
         <!--        <div class="d-flex " role="dialog">-->
