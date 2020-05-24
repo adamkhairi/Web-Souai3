@@ -1,19 +1,14 @@
 <?php
 require("connexion.php");
+$pageTitle = "Etudiant Profil";
 //session_start();
 include "navbar.php";
-
 ?>
 <div class="vertical-nav pt-lg-5  bg-light" id="sidebar">
     <div class="mb-4  menu-head text-center">
         <i class="far fa-user img-thumbnail shadow-sm rounded-circle p-3"
            style="font-size: 40px; color: #00BFA6"></i>
         <div class="media d-flex align-items-center ">
-
-
-            <!--            <img-->
-            <!--                    src="https://res.cloudinary.com/mhmd/image/upload/v1556074849/avatar-1_tcnd60.png" alt="..."-->
-            <!--                    width="65" class="">-->
             <div class="media-body">
                 <h3 class=""><?php
                     if (!empty($_SESSION['mail'])) {
@@ -24,8 +19,6 @@ include "navbar.php";
                 <p class="font-weight-light text-muted mb-0">Etudiant</p>
 
             </div>
-
-
         </div>
         <div class="mt-4">
 
@@ -39,13 +32,8 @@ include "navbar.php";
             </h6>
 
         </div>
-        <!--        <div class="text-center">-->
-
-        <!--        </div>-->
         <!--   Links Of each section -->
         <div class="d-flex mt-2 flex-column justify-content-center align-items-center">
-
-
             <div class='mt-4 '>
                 <a href="#">
                     <button class='btn backOrange rounded-pill'>Voir les vidéos</button>
@@ -54,15 +42,13 @@ include "navbar.php";
             <?php
             if (!empty($_SESSION['mail'])) {
                 echo "<div class='mt-2'>
-    <a  href=\"logout.php\">
+            <a  href=\"logout.php\">
                 <button class='btn btn-danger rounded-pill'>Déconnexion</button>
             </a>
-</div>
+            </div>
              
                 ";
             }
-
-
             ?>
 
         </div>
@@ -90,7 +76,6 @@ include "navbar.php";
             while ($reponse = mysqli_fetch_array($exec_requete)) {
                 array_push($domende, $reponse['iddemande']);
                 array_push($eventID, $reponse['eventID']);
-
                 $namefomr = 'reponce_' . $reponse['iddemande'];
                 $name = 'getans_' . $reponse['iddemande'];
                 // print_r($name);
@@ -137,26 +122,11 @@ include "navbar.php";
                     </div>
                 </form>
                     ";
-
-                // $i++;
-
-//                print_r($reponse['iddemande']);
-                // if (!empty($_POST['iddemande'])) {
-
-                //     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-
-                //     }
-                // }
-
-//                **********
             }
         }
         $_SESSION['domende'] = $domende;
         $_SESSION['event'] = $eventID;
         ?>
-
-        <!--        <div class="d-flex " role="dialog">-->
     </div>
     <div class="">
         <div class="Post_problem">
@@ -228,15 +198,12 @@ include "navbar.php";
 
 
                 <?php
-                //            $sql = "SELECT * FROM demande where
-                //               idetudiantc = '" . $_SESSION['userid'] . "'";
-                //
+
                 $sql = "SELECT * FROM demande where
                idetudiantc = '" . $_SESSION['userid'] . "'";
                 $result = mysqli_query($conn, $sql);
 
-                //$reponse = mysqli_fetch_assoc($exec_requete);
-                //                var_dump($_SESSION['userid']);
+
                 if (!empty($result)) {
 //                $row = mysqli_fetch_array($result);
                     $demandes = [];
@@ -256,7 +223,7 @@ include "navbar.php";
 //                    $cours = [];
 
                         echo "
-                        <div class=\"card mb-4 rounded-lg\" style=\"width: 18rem;\">
+                        <div class=\"card mb-4 rounded-lg m-2\" style=\"width: 18rem;\">
                            <div class=\"card-body  p-0\">
                            <div class='backOrange rounded-top pt-2 p-1 text-center'>
                            
@@ -287,30 +254,3 @@ include 'footer.php';
 ?>
 <script src="src/js/general.js"></script>
 <script src="src/js/student.js"></script>
-
-<!-- <script>
-	let oui = document.getElementById('ansoui');
-	let non = document.getElementById('ansnon');
-	let getans = document.getElementById('getans');
-
-	oui.onclick = () => {
-		getans.value = 2;
-		console.log(getans.value)
-	}
-	non.onclick = () => {
-		getans.value = 1;
-		console.log(getans.value)
-
-	}
-	// let slide = document.getElementById('sidebarCollapse'),
-	// 	slideBar = document.getElementById('sidebar'),
-	// 	content = document.getElementById('content');
-	//
-	// slide.addEventListener('click', function () {
-	// 	slideBar.classList.toggle('active');
-	// 	content.classList.toggle('active');
-	//
-	// })
-
-
-</script> -->

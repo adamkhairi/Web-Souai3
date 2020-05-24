@@ -2,10 +2,10 @@
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 22, 2020 at 05:24 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.2.30
+-- Hôte : 127.0.0.1
+-- Généré le : Dim 24 mai 2020 à 03:49
+-- Version du serveur :  8.0.20
+-- Version de PHP : 7.4.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,26 +18,26 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `sw3`
+-- Base de données : `sw3`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `benevole`
+-- Structure de la table `benevole`
 --
 
 CREATE TABLE `benevole` (
-  `idbenevole` int(11) NOT NULL,
+  `idbenevole` int NOT NULL,
   `nombenevole` varchar(255) DEFAULT NULL,
   `prenombenevole` varchar(255) DEFAULT NULL,
-  `mailbenevole` text DEFAULT NULL,
-  `passwordbenevole` text DEFAULT NULL,
-  `idmatiere` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `mailbenevole` text,
+  `passwordbenevole` text,
+  `idmatiere` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `benevole`
+-- Déchargement des données de la table `benevole`
 --
 
 INSERT INTO `benevole` (`idbenevole`, `nombenevole`, `prenombenevole`, `mailbenevole`, `passwordbenevole`, `idmatiere`) VALUES
@@ -48,17 +48,17 @@ INSERT INTO `benevole` (`idbenevole`, `nombenevole`, `prenombenevole`, `mailbene
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cours`
+-- Structure de la table `cours`
 --
 
 CREATE TABLE `cours` (
-  `idcours` int(11) NOT NULL,
+  `idcours` int NOT NULL,
   `nomcours` varchar(255) DEFAULT NULL,
-  `idmatiere` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `idmatiere` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `cours`
+-- Déchargement des données de la table `cours`
 --
 
 INSERT INTO `cours` (`idcours`, `nomcours`, `idmatiere`) VALUES
@@ -74,69 +74,66 @@ INSERT INTO `cours` (`idcours`, `nomcours`, `idmatiere`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `demande`
+-- Structure de la table `demande`
 --
 
 CREATE TABLE `demande` (
-  `iddemande` int(11) NOT NULL,
-  `description` text DEFAULT NULL,
-  `idetudiantc` int(11) DEFAULT NULL,
-  `cours` int(11) NOT NULL,
-  `reponce` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `iddemande` int NOT NULL,
+  `description` text,
+  `idetudiantc` int DEFAULT NULL,
+  `cours` int NOT NULL,
+  `reponce` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `demande`
+-- Déchargement des données de la table `demande`
 --
 
 INSERT INTO `demande` (`iddemande`, `description`, `idetudiantc`, `cours`, `reponce`) VALUES
-(38, 'hhghgngn', 9, 5, 0),
-(39, 'qqxqxqxw', 9, 3, 0),
-(40, 'qqqqqqqqqqqqqq', 9, 2, 0),
-(41, 'Weeeeee', 9, 5, 0),
-(42, 'kkkkkk', 1, 8, 0),
-(43, '!!!!!!!!!!!!!!!!!!', 1, 5, 0),
-(44, 'sss', 1, 3, 0),
-(45, 'ss', 1, 4, 0);
+(60, 'bb', 17, 1, 0),
+(66, 'd', 17, 1, 0),
+(71, 'd', 17, 1, 0),
+(72, 'd', 17, 1, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `etudiant`
+-- Structure de la table `etudiant`
 --
 
 CREATE TABLE `etudiant` (
-  `idetudiant` int(11) NOT NULL,
+  `idetudiant` int NOT NULL,
   `nometudiant` varchar(255) DEFAULT NULL,
   `prenometudiant` varchar(255) DEFAULT NULL,
-  `niveauscolaire` int(11) NOT NULL,
-  `filiere` int(11) DEFAULT NULL,
-  `mailetudiant` text DEFAULT NULL,
-  `passwordetudiant` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `niveauscolaire` int NOT NULL,
+  `filiere` int DEFAULT NULL,
+  `mailetudiant` text,
+  `passwordetudiant` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `etudiant`
+-- Déchargement des données de la table `etudiant`
 --
 
 INSERT INTO `etudiant` (`idetudiant`, `nometudiant`, `prenometudiant`, `niveauscolaire`, `filiere`, `mailetudiant`, `passwordetudiant`) VALUES
 (1, 'Khairi', 'Adam', 2, 1, 'khairiadam1@gmail.com', 'ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb'),
-(9, 'a', 'b', 2, 3, 'a@a.a', 'ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb');
+(9, 'a', 'b', 2, 3, 'a@a.a', 'ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb'),
+(17, 'ABDELKBIR', 'a', 2, 1, 'abdo@gmail.com', 'ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `filiere`
+-- Structure de la table `filiere`
 --
 
 CREATE TABLE `filiere` (
-  `idfiliere` int(11) NOT NULL,
+  `idfiliere` int NOT NULL,
   `namfiliere` varchar(255) DEFAULT NULL,
-  `idniveau` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `idniveau` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `filiere`
+-- Déchargement des données de la table `filiere`
 --
 
 INSERT INTO `filiere` (`idfiliere`, `namfiliere`, `idniveau`) VALUES
@@ -148,17 +145,17 @@ INSERT INTO `filiere` (`idfiliere`, `namfiliere`, `idniveau`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `matiere`
+-- Structure de la table `matiere`
 --
 
 CREATE TABLE `matiere` (
-  `idmatiere` int(11) NOT NULL,
+  `idmatiere` int NOT NULL,
   `nommatiere` varchar(255) DEFAULT NULL,
-  `idfiliere` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `idfiliere` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `matiere`
+-- Déchargement des données de la table `matiere`
 --
 
 INSERT INTO `matiere` (`idmatiere`, `nommatiere`, `idfiliere`) VALUES
@@ -170,16 +167,16 @@ INSERT INTO `matiere` (`idmatiere`, `nommatiere`, `idfiliere`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `niveau`
+-- Structure de la table `niveau`
 --
 
 CREATE TABLE `niveau` (
-  `idniveau` int(11) NOT NULL,
+  `idniveau` int NOT NULL,
   `niveau` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `niveau`
+-- Déchargement des données de la table `niveau`
 --
 
 INSERT INTO `niveau` (`idniveau`, `niveau`) VALUES
@@ -189,59 +186,84 @@ INSERT INTO `niveau` (`idniveau`, `niveau`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `reponce`
+-- Structure de la table `reponce`
 --
 
 CREATE TABLE `reponce` (
-  `idetudiant` int(11) NOT NULL,
-  `idevent` int(11) NOT NULL,
-  `reponce` int(11) NOT NULL DEFAULT 3
+  `idetudiant` int NOT NULL,
+  `idevent` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `reponce`
+--
+
+INSERT INTO `reponce` (`idetudiant`, `idevent`) VALUES
+(17, 6),
+(17, 6),
+(17, 7),
+(17, 6),
+(17, 7),
+(17, 7),
+(17, 7),
+(17, 7),
+(17, 8),
+(17, 8),
+(17, 8),
+(17, 8),
+(17, 8),
+(17, 9),
+(17, 9),
+(17, 9),
+(17, 9),
+(17, 9),
+(17, 10),
+(17, 10),
+(17, 10),
+(17, 10),
+(17, 10),
+(17, 11),
+(17, 11),
+(17, 11),
+(17, 11),
+(17, 11);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `theevanets`
+-- Structure de la table `theevanets`
 --
 
 CREATE TABLE `theevanets` (
-  `eventID` int(11) NOT NULL,
-  `coursID` int(11) NOT NULL,
-  `ProfID` int(11) NOT NULL,
-  `message` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `lien` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `hours` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `eventID` int NOT NULL,
+  `coursID` int NOT NULL,
+  `ProfID` int NOT NULL,
+  `message` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `lien` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `hours` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `theDate` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `theevanets`
---
-
-INSERT INTO `theevanets` (`eventID`, `coursID`, `ProfID`, `message`, `lien`, `hours`, `theDate`) VALUES
-(6, 5, 2, '2222', '2222', '18:22', '2020-05-08'),
-(7, 3, 2, '22', '22', '22:22', '2020-05-14');
-
---
--- Indexes for dumped tables
+-- Index pour les tables déchargées
 --
 
 --
--- Indexes for table `benevole`
+-- Index pour la table `benevole`
 --
 ALTER TABLE `benevole`
   ADD PRIMARY KEY (`idbenevole`),
   ADD KEY `idmatiere` (`idmatiere`);
 
 --
--- Indexes for table `cours`
+-- Index pour la table `cours`
 --
 ALTER TABLE `cours`
   ADD PRIMARY KEY (`idcours`),
   ADD KEY `idmatier` (`idmatiere`);
 
 --
--- Indexes for table `demande`
+-- Index pour la table `demande`
 --
 ALTER TABLE `demande`
   ADD PRIMARY KEY (`iddemande`),
@@ -249,40 +271,39 @@ ALTER TABLE `demande`
   ADD KEY `idcours` (`cours`);
 
 --
--- Indexes for table `etudiant`
+-- Index pour la table `etudiant`
 --
 ALTER TABLE `etudiant`
   ADD PRIMARY KEY (`idetudiant`);
 
 --
--- Indexes for table `filiere`
+-- Index pour la table `filiere`
 --
 ALTER TABLE `filiere`
   ADD PRIMARY KEY (`idfiliere`),
   ADD KEY `idnv` (`idniveau`);
 
 --
--- Indexes for table `matiere`
+-- Index pour la table `matiere`
 --
 ALTER TABLE `matiere`
   ADD PRIMARY KEY (`idmatiere`),
   ADD KEY `idfiliere` (`idfiliere`);
 
 --
--- Indexes for table `niveau`
+-- Index pour la table `niveau`
 --
 ALTER TABLE `niveau`
   ADD PRIMARY KEY (`idniveau`);
 
 --
--- Indexes for table `reponce`
+-- Index pour la table `reponce`
 --
 ALTER TABLE `reponce`
-  ADD PRIMARY KEY (`reponce`),
   ADD KEY `idevent` (`idevent`);
 
 --
--- Indexes for table `theevanets`
+-- Index pour la table `theevanets`
 --
 ALTER TABLE `theevanets`
   ADD PRIMARY KEY (`eventID`),
@@ -290,100 +311,94 @@ ALTER TABLE `theevanets`
   ADD KEY `ProfID` (`ProfID`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT pour les tables déchargées
 --
 
 --
--- AUTO_INCREMENT for table `benevole`
+-- AUTO_INCREMENT pour la table `benevole`
 --
 ALTER TABLE `benevole`
-  MODIFY `idbenevole` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idbenevole` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `cours`
+-- AUTO_INCREMENT pour la table `cours`
 --
 ALTER TABLE `cours`
-  MODIFY `idcours` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `idcours` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `demande`
+-- AUTO_INCREMENT pour la table `demande`
 --
 ALTER TABLE `demande`
-  MODIFY `iddemande` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `iddemande` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
--- AUTO_INCREMENT for table `etudiant`
+-- AUTO_INCREMENT pour la table `etudiant`
 --
 ALTER TABLE `etudiant`
-  MODIFY `idetudiant` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `idetudiant` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT for table `filiere`
+-- AUTO_INCREMENT pour la table `filiere`
 --
 ALTER TABLE `filiere`
-  MODIFY `idfiliere` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idfiliere` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `matiere`
+-- AUTO_INCREMENT pour la table `matiere`
 --
 ALTER TABLE `matiere`
-  MODIFY `idmatiere` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idmatiere` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `niveau`
+-- AUTO_INCREMENT pour la table `niveau`
 --
 ALTER TABLE `niveau`
-  MODIFY `idniveau` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idniveau` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `theevanets`
+-- AUTO_INCREMENT pour la table `theevanets`
 --
 ALTER TABLE `theevanets`
-  MODIFY `eventID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `eventID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- Constraints for dumped tables
+-- Contraintes pour les tables déchargées
 --
 
 --
--- Constraints for table `benevole`
+-- Contraintes pour la table `benevole`
 --
 ALTER TABLE `benevole`
   ADD CONSTRAINT `idmatiere` FOREIGN KEY (`idmatiere`) REFERENCES `matiere` (`idmatiere`);
 
 --
--- Constraints for table `cours`
+-- Contraintes pour la table `cours`
 --
 ALTER TABLE `cours`
   ADD CONSTRAINT `idmatier` FOREIGN KEY (`idmatiere`) REFERENCES `matiere` (`idmatiere`);
 
 --
--- Constraints for table `demande`
+-- Contraintes pour la table `demande`
 --
 ALTER TABLE `demande`
   ADD CONSTRAINT `idcours` FOREIGN KEY (`cours`) REFERENCES `cours` (`idcours`),
   ADD CONSTRAINT `idetudiant` FOREIGN KEY (`idetudiantc`) REFERENCES `etudiant` (`idetudiant`);
 
 --
--- Constraints for table `filiere`
+-- Contraintes pour la table `filiere`
 --
 ALTER TABLE `filiere`
   ADD CONSTRAINT `idnv` FOREIGN KEY (`idniveau`) REFERENCES `niveau` (`idniveau`);
 
 --
--- Constraints for table `matiere`
+-- Contraintes pour la table `matiere`
 --
 ALTER TABLE `matiere`
   ADD CONSTRAINT `idfiliere` FOREIGN KEY (`idfiliere`) REFERENCES `filiere` (`idfiliere`);
 
 --
--- Constraints for table `reponce`
---
-ALTER TABLE `reponce`
-  ADD CONSTRAINT `idevent` FOREIGN KEY (`idevent`) REFERENCES `theevanets` (`eventID`);
-
---
--- Constraints for table `theevanets`
+-- Contraintes pour la table `theevanets`
 --
 ALTER TABLE `theevanets`
   ADD CONSTRAINT `theevanets_ibfk_1` FOREIGN KEY (`coursID`) REFERENCES `cours` (`idcours`),

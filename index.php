@@ -1,6 +1,8 @@
 <?php
 //session_start();
 require("connexion.php");
+$pageTitle = "Bienvenu dans Sway3";
+
 include("navbar.php");
 
 ?>
@@ -197,12 +199,12 @@ include("navbar.php");
 
 
 <main>
-    <section class="header backGreen">
+    <section class="header backGreen ">
         <div class="container-fluid">
             <div class="header_content">
                 <div class="left d-flex flex-column justify-content-center">
-                    <h1>Les bons Profs font des bons élèves </h1>
-                    <p>Vous trouvez des difficultés au niveau des cours ?
+                    <h1 class="animate__slideInLeft">Les bons Profs font des bons élèves </h1>
+                    <p class="animate__slideInLeft">Vous trouvez des difficultés au niveau des cours ?
                         Nous avons la solution ! Avec les cours en ligne de <span>Sway3</span>,
                         vous pouvez avoir un professeur qui peut vous
                         assurer des cours de soutien à distance.</p>

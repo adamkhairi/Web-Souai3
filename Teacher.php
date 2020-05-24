@@ -1,10 +1,12 @@
 <?php
-include('navbar.php');
 include("connexion.php");
+$pageTitle = "Bénévole Profile";
+include('navbar.php');
+
 //session_start();
 ?>
 <div class="vertical-nav pt-lg-5  bg-light" id="sidebar">
-    <div class="py-4 px-3 mb-4  menu-head text-center">
+    <div class=" mb-4  menu-head text-center d-flex flex-column align-items-center">
         <i class="far fa-user img-thumbnail shadow-sm rounded-circle p-3"
            style="font-size: 40px; color: #00BFA6"></i>
         <div class="media d-flex align-items-center ">
@@ -38,104 +40,34 @@ include("connexion.php");
         <!--        <div class="text-center">-->
 
         <!--        </div>-->
-    </div>
 
-    <div class="w-50 ml-auto p-2 mr-auto mb-5">
-        <!--        <div>-->
-        <!---->
-        <!--            --><?php
-        //            if (!empty($_SESSION['mail'])) {
-        //                $usermail = $_SESSION['mail'];
-        //                // afficher un message
-        //                echo
-        //                    "
-        //                 <h5 class=\"font-weight-bold bBottom mr-4\">Niveau scolaire : </h5>
-        //
-        //                <h4> " . $_SESSION['nvScolaire'] . "</h4>
-        //
-        //                ";
-        //            } else {
-        //                echo "
-        //                      <h5 class=\"font-weight-bold bBottom mr-4\">Niveau scolaire : </h5>
-        //                <h4>le Niveau scolaire</h4>
-        //                      ";
-        //            }
-        //            ?>
-        <!---->
+    <div class="p-2  mb-5">
+        <?php
+        if (!empty($_SESSION['mailb'])) {
+            echo "
+            <div class='mt-2'>
+                <a  href=\"logout.php\">
+                    <button class='btn btn-danger rounded-pill'>Déconnexion</button>
+                </a>
+            </div>
+             
+                ";
+        }
+        ?>
         <!--        </div>-->
+    </div>
 
     </div>
     <!--   Links Of each section -->
 
-    <ul class="nav flex-column  mt-3 text-center">
-        <!-- <li class="nav-item" id="prods">
-            <a class="nav-link text-dark  mt-4 " href="index.php">
-                Accueil
-            </a>
-        </li> -->
-        <?php
-        if (!empty($_SESSION['mailb'])) {
-            echo "<div class='mt-2'>
-    <a  href=\"logout.php\">
-                <button class='btn btn-danger rounded-pill'>Déconnexion</button>
-            </a>
+
 </div>
-             
-                ";
-        }
 
-
-        ?>
-
-
-    </ul>
-</div>
 <div class="page-content pl-4" id="content">
     <!-- Toggle button -->
     <button class="btn btn-dark bg-dark rounded-pill shadow-sm px-4 m-4" id="sidebarCollapse" type="button">
         <small class="text-uppercase font-weight-bold" id="togl"> <<< </small>
     </button>
-
-    <div class="containers">
-        <div class="check">
-
-
-            <!--//                    $matiereT = $_SESSION['matiereT-->
-
-            <!--                    // afficher un message-->
-
-            <div class="col-4 mb-3 ">
-
-                <!--//               getdemande();-->
-
-                <form action="" method="post" class="w-100">
-                    <div class="d-flex justify-content-between aline-items-center">
-                        <div>
-
-                            <select class="custom-select" id="inputGroupSelect01" name="sel">
-                                <option selected>Matières</option>
-                                <option value="1">Français</option>
-                                <option value="2">Physique</option>
-                                <option value="3">Maths</option>
-                                <option value="4">Philosophie</option>
-                            </select>
-                        </div>
-                        <div>
-
-                            <button type="submit" name="submit" id="" class="btn backRed btn-lg h-75">Choisir</button>
-                        </div>
-                    </div>
-                </form>
-
-            </div>
-            <?php
-            //$secetion = $_POST['sel'];
-            //var_dump($secetion);
-
-            ?>
-        </div>
-
-    </div>
 
 
     <div class="containers">
@@ -175,35 +107,60 @@ include("connexion.php");
     </div>
     <div class="containers">
         <h2 class="historique">Historique:</h2>
-        <div class="d-flex flex-wrap justify-content-around m-2">
+        <div class="d-flex flex-wrap d-column justify-content-center">
+            <div class="col-4 mb-3 ">
+
+                <!--//               getdemande();-->
+
+                <form action="" method="post" class="w-100">
+                    <div class="d-flex justify-content-between aline-items-baseline">
+                        <div>
+
+                            <select class="custom-select mt-1" id="inputGroupSelect01" name="sel">
+                                <option selected>Matières</option>
+                                <option value="1">Français</option>
+                                <option value="2">Physique</option>
+                                <option value="3">Maths</option>
+                                <option value="4">Philosophie</option>
+                            </select>
+                        </div>
+                        <div>
+
+                            <button type="submit" name="submit" id="" class="btn backRed btn-lg">Choisir</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+
+            <div class="d-flex flex-wrap justify-content-around m-2">
             <?php
 
+
             if (isset($_POST['submit'])) {
+                $matiereT = $_POST['sel'];
 
-                if (isset($_POST['submit'])) {
-                    $matiereT = $_POST['sel'];
-
-                    $req = "SELECT c.nomcours, e.prenometudiant, e.nometudiant, d.description,  m.nommatiere FROM demande d 
+                $req = "SELECT c.nomcours, e.prenometudiant, e.nometudiant, d.description,  m.nommatiere FROM demande d 
     INNER JOIN etudiant e ON d.idetudiantc = e.idetudiant INNER JOIN cours c ON c.idcours = d.cours 
     INNER JOIN matiere m ON m.idmatiere = c.idmatiere WHERE m.idmatiere = '" . $matiereT . "' ";
 
-                    $reqt = mysqli_query($conn, $req);
-                    $row = mysqli_fetch_array($reqt);
+                $reqt = mysqli_query($conn, $req);
+                $row = mysqli_fetch_array($reqt);
 
 //                    print_r($row);
 //                    die();
-                    if (!empty($_SESSION['mailb'] && $reqt)) {
+                if (!empty($_SESSION['mailb'] && $reqt)) {
 //                    $row = mysqli_fetch_array($reqt);
 
-                        while ($row = mysqli_fetch_array($reqt)) {
+                    while ($row = mysqli_fetch_array($reqt)) {
 //                etudiant name
 
 
 //                    $cours = [];
 
 
-                            echo "
-                        <div class=\"card  card mb-4 rounded-lg mb-4\" style=\"width: 18rem;\">
+                        echo "
+                        <div class=\"card  card mb-4 rounded-lg m-2\" style=\"width: 18rem;\">
                           <div class=\"card-body  p-0\">
                            <div class='backOrange rounded-top pt-2 p-1 text-center'>
                             <h5 class=\"card-title mt-2\">$row[0]</h5>
@@ -215,21 +172,53 @@ include("connexion.php");
                          
                          ";
 
-                        }
-
-
                     }
-                }
-            } else {
-                echo "
-            <h5 class=\"activité\">aucune activité</h5>
 
-        ";
+
+                }
+
+            } else {
+                    $req = "SELECT c.nomcours, e.prenometudiant, e.nometudiant, d.description,  m.nommatiere FROM demande d 
+                        INNER JOIN etudiant e ON d.idetudiantc = e.idetudiant INNER JOIN cours c ON c.idcours = d.cours 
+                        INNER JOIN matiere m ON m.idmatiere = c.idmatiere";
+
+                        $reqt = mysqli_query($conn, $req);
+                        $row = mysqli_fetch_array($reqt);
+
+                    //                    print_r($row);
+                    //                    die();
+                    if (!empty($_SESSION['mailb']) && $reqt = mysqli_query($conn, $req)) {
+        //                    $row = mysqli_fetch_array($reqt);
+
+                        while ($row = mysqli_fetch_array($reqt)) {
+        //                etudiant name
+
+
+        //                    $cours = [];
+
+
+                            echo "
+                                <div class=\"card  card mb-4 rounded-lg m-2\" style=\"width: 18rem;\">
+                                  <div class=\"card-body  p-0\">
+                                   <div class='backOrange rounded-top pt-2 p-1 text-center'>
+                                    <h5 class=\"card-title mt-2\">$row[0]</h5>
+                                    </div>
+                                    <h6 class=\"card-subtitle text-center m-2 text-muted\"> $row[1]  $row[2]</h6>
+                                    <p class=\"card-text m-2\">$row[3]</p>
+                                  </div>
+                                 </div>
+                                 
+                                 ";
+
+                        }
+                    }
             }
+
             //    ?>
 
-
         </div>
+        </div>
+
 
     </div>
     <div class="agenda">

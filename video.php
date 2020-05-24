@@ -1,6 +1,9 @@
 <?php
 require("connexion.php");
+$pageTitle = "Voir des enregistrements";
+
     include "navbar.php";
+
 ?>
 <div class=".container-{breakpoint} d-flex flex-row flex-wrap-reverse justify-content-around">
   
