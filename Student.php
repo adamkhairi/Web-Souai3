@@ -34,7 +34,7 @@ include "navbar.php";
                 if (!empty($_SESSION['mail'])) {
                     echo("  " . $_SESSION['mail']);
                 }
-                
+
                 ?>
             </h6>
 
@@ -167,7 +167,7 @@ include "navbar.php";
 
                         <div>
                             <select name="nvscolaire" id="nvscolaire" onclick="School_levels()">
-                                <option value="2">Deuxieme année baccalauréat </option>
+                                <option value="2">Deuxieme année baccalauréat</option>
                                 <option value="1">Première année baccalauréat</option>
                             </select>
                             <input type="text" hidden value="" name="nv" id="niveauS">
@@ -256,11 +256,16 @@ include "navbar.php";
 //                    $cours = [];
 
                         echo "
-                        <div class=\"card mb-4\" style=\"width: 18rem;\">
-                           <div class=\"card-body\">
-                            <h5 class=\"card-title\">$row1[1]</h5>
-                            <h6 class=\"card-subtitle mb-2 text-muted\"> $lname  $fname</h6>
-                            <p class=\"card-text\">$row[1]</p>
+                        <div class=\"card mb-4 rounded-lg\" style=\"width: 18rem;\">
+                           <div class=\"card-body  p-0\">
+                           <div class='backOrange rounded-top pt-2 p-1 text-center'>
+                           
+                            <h6 class=\"card-title mt-2\">$row1[1]</h6>
+                            </div>
+                            <div class='p-2 m-1'>
+                            <h6 class=\"card-subtitle text-center m-2 text-muted\"> $lname  $fname</h6>
+                            <p class=\"card-text m-2\">$row[1]</p>
+                           </div>  
                           </div>
                         </div>
                          ";
