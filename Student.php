@@ -4,7 +4,7 @@ $pageTitle = "Etudiant Profil";
 //session_start();
 include "navbar.php";
 ?>
-<div class="vertical-nav pt-lg-5  backGreen" id="sidebar">
+<div class="vertical-nav pt-lg-5" id="sidebar">
     <div class="mb-4  menu-head text-center">
         <i class="far fa-user img-thumbnail shadow-sm rounded-circle p-3"
            style="font-size: 40px; color: #00BFA6"></i>
