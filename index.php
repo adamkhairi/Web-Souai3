@@ -50,20 +50,16 @@ include("navbar.php");
 
                             <?php
 
-//                            $levelid = $_SESSION['nvScolaire'];
-//
-//                            $querylevel ="SELECT * FROM niveau where idniveau = '" . $levelid . "' ";
-//
-//                            $exec_requete = mysqli_query($conn, $querylevel);
-//                            $reponse = mysqli_fetch_array($exec_requete);
-//                            $levelname= $reponse['niveau'];
-//
-//
-//                            ?>
-
-
-
-
+                            //                            $levelid = $_SESSION['nvScolaire'];
+                            //
+                            //                            $querylevel ="SELECT * FROM niveau where idniveau = '" . $levelid . "' ";
+                            //
+                            //                            $exec_requete = mysqli_query($conn, $querylevel);
+                            //                            $reponse = mysqli_fetch_array($exec_requete);
+                            //                            $levelname= $reponse['niveau'];
+                            //
+                            //
+                            //                            ?>
 
 
                             <div class="form-group">
@@ -91,12 +87,11 @@ include("navbar.php");
                             <input type="password" name="password2" id="pass" placeholder="Confirmer Mot de passe"/>
                         </div>
                         <?php
-//                        if(isset($_REQUEST['password']) &&  ){
-//
-//                        }
+                        //                        if(isset($_REQUEST['password']) &&  ){
+                        //
+                        //                        }
 
                         ?>
-
 
 
                         <div class="form-group form-button">
@@ -197,18 +192,20 @@ include("navbar.php");
 </div> -->
 
 
-
 <main>
     <section class="header backGreen ">
         <div class="container-fluid">
             <div class="header_content">
                 <div class="left d-flex flex-column justify-content-center">
-                    <h1 class="animate__slideInLeft">Les bons Profs font des bons élèves </h1>
-                    <p class="animate__slideInLeft">Vous trouvez des difficultés au niveau des cours ?
-                        Nous avons la solution ! Avec les cours en ligne de <span>Sway3</span>,
-                        vous pouvez avoir un professeur qui peut vous
-                        assurer des cours de soutien à distance.</p>
-                    <div class="btn_for_login">
+                    <div data-aos="fade-right">
+
+                        <h1 class=" animate__slideInLeft">Les bons Profs font des bons élèves </h1>
+                        <p class="animate__slideInLeft">Vous trouvez des difficultés au niveau des cours ?
+                            Nous avons la solution ! Avec les cours en ligne de <span>Sway3</span>,
+                            vous pouvez avoir un professeur qui peut vous
+                            assurer des cours de soutien à distance.</p>
+                    </div>
+                    <div class="btn_for_login ">
 
                         <button id="etud" onclick="logingEtudiant()" class="btn btn-header"
                                 data-target="#exampleModalCentertype="
@@ -221,21 +218,20 @@ include("navbar.php");
                         </button>
                     </div>
                 </div>
-                <div class="">
+                <div class="" data-aos="zoom-in-up">
 
                     <img class="header_img" src="src/img/header.png" alt="img">
                 </div>
             </div>
-        </div>
     </section>
     <section class="header backOrange">
         <div class="container-fluid">
             <div class="header_content">
-                <div class="">
+                <div class="" data-aos="zoom-in-up">
 
                     <img class="header_img" src="src/img/sec2.png" alt="">
                 </div>
-                <div class="left d-flex flex-column justify-content-center">
+                <div class="left d-flex flex-column justify-content-center" data-aos="fade-left">
                     <h1>Comment ?</h1>
                     <p>C’est simple, inscrivez-vous en remplissant ce
                         formulaire d’inscription, poster la problématique
@@ -245,19 +241,22 @@ include("navbar.php");
             </div>
         </div>
     </section>
-    <section class="header backRed">
+    <section class="header backRed ">
         <div class="container-fluid">
             <div class="header_content">
                 <div class="left d-flex flex-column justify-content-center">
-                    <h1>L'enseignement à distance nous rapproche</h1>
-                    <p>Vous avez raté le cour, ne paniquez pas on a pensé à
-                        enregistrer les cours en vidéo.</p>
+                    <div data-aos="fade-right">
+
+                        <h1>L'enseignement à distance nous rapproche</h1>
+                        <p>Vous avez raté le cour, ne paniquez pas on a pensé à
+                            enregistrer les cours en vidéo.</p>
+                    </div>
                     <a href="video.php">
 
-                    <button id="" class="btnG btn btn-header" type="button">Voir des vidéos</button>
+                        <button id="" class="btnG btn btn-header" type="button">Voir des vidéos</button>
                     </a>
                 </div>
-                <div class="">
+                <div class="" data-aos="zoom-in-up">
                     <img class="header_img" src="src/img/thirdimg.png" alt="img">
                 </div>
             </div>
