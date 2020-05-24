@@ -5,7 +5,7 @@ include('navbar.php');
 
 //session_start();
 ?>
-<div class="vertical-nav pt-lg-5  bg-light" id="sidebar">
+<div class="vertical-nav pt-lg-5" id="sidebar">
     <div class=" mb-4  menu-head text-center d-flex flex-column align-items-center">
         <i class="far fa-user img-thumbnail shadow-sm rounded-circle p-3"
            style="font-size: 40px; color: #00BFA6"></i>
@@ -45,6 +45,9 @@ include('navbar.php');
         <?php
         if (!empty($_SESSION['mailb'])) {
             echo "
+            <div class='btn_add_event'>
+            <button id='add_event_btn' type='button'>Ajouter l'événement</button>
+           </div>
             <div class='mt-2'>
                 <a  href=\"logout.php\">
                     <button class='btn btn-danger rounded-pill'>Déconnexion</button>
@@ -58,6 +61,7 @@ include('navbar.php');
     </div>
 
     </div>
+
     <!--   Links Of each section -->
 
 
@@ -107,7 +111,7 @@ include('navbar.php');
     </div>
     <div class="containers">
         <h2 class="historique">Historique:</h2>
-        <div class="d-flex flex-wrap d-column justify-content-center">
+        <div class="d-flex flex-wrap flex-column align-items-center justify-content-center">
             <div class="col-4 mb-3 ">
 
                 <!--//               getdemande();-->
@@ -225,36 +229,9 @@ include('navbar.php');
         <!--    <iframe src="https://calendar.google.com/calendar/embed?src=minanon77%40gmail.com&ctz=Africa%2FCasablanca"-->
         <!--            style="border: 0" height="600" frameborder="0" scrolling="no"></iframe>-->
     </div>
-    <?php
-    //if (isset($_POST['submit'])) {
-    //    if ($_POST['submit'] == 'addEvent') {
-    //
-    //        $cours = $_POST['cours'];
-    //        $date = $_POST['date'];
-    //        $hours = $_POST['hours'];
-    //        $lien = $_POST['lien'];
-    //        $message = $_POST['message'];
-    //        $idProuf = $_SESSION['idProf'];
-    //        if (!empty($lien) && !empty($hours) && !empty($date)) {
-    //            $sql = "INSERT INTO `theevanets`(`coursID`, `ProfID`, `message`, `lien`, `hours`, `theDate`) VALUES ('" . $cours . "','" . $idProuf . "','" . $message . "','" . $lien . "','" . $hours . "','" . $date . "') ";
-    //            $select = mysqli_query($conn, $sql);
-    ////    print_r($select);
-    ////    die();
-    //            header("location: Teacher.php");
-    //        } else {
-    //            echo "<script>alert('veuillez compléter les informations')</script>";
-    //            // header("location: Teacher.php");
-    //        }
-    //
-    //    }
-    //}
-    //Teacher.php?action=addEvent
-    //?>
-    <div class="btn_add_event">
+    <!-- <div class="btn_add_event">
         <button id="add_event_btn" type="button">Ajouter l'événement</button>
-
-
-    </div>
+    </div> -->
 
 
     <div style="display :none;" id="pop-up-add_events" class="pop-up-add_events">

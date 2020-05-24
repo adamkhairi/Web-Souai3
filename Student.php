@@ -4,7 +4,7 @@ $pageTitle = "Etudiant Profil";
 //session_start();
 include "navbar.php";
 ?>
-<div class="vertical-nav pt-lg-5  bg-light" id="sidebar">
+<div class="vertical-nav pt-lg-5" id="sidebar">
     <div class="mb-4  menu-head text-center">
         <i class="far fa-user img-thumbnail shadow-sm rounded-circle p-3"
            style="font-size: 40px; color: #00BFA6"></i>
@@ -129,7 +129,7 @@ include "navbar.php";
         ?>
     </div>
     <div class="">
-        <div class="Post_problem">
+        <div id="addquestion" class="Post_problem">
             <form action="addQst.php" method="post">
                 <h2 class="historique d-inline-block">Poster un problème:</h2>
                 <div class="post_pro">

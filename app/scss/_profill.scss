@@ -227,6 +227,10 @@ button:focus, input:focus, textarea:focus, select:focus {
     overflow: hidden;
   }
 }
+.baco{
+  color: white !important; 
+  background-color:#00BFA6 !important;
+}
 
 .btn_add_event {
   display: flex;
@@ -243,10 +247,6 @@ button:focus, input:focus, textarea:focus, select:focus {
     margin-bottom: 40px;;
     font-size: medium;
     font-size: large;
-
-    &:hover {
-      box-shadow: 6px 7px 19px 3px rgba(149, 152, 154, 0.554);
-    }
   }
 
 }

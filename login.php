@@ -101,14 +101,7 @@ if (isset($_POST['your_email']) && isset($_POST['your_pass'])) {
     }
 } else {
     header('Location: index.php?error=ddddd');
-    echo "
-    <script> 
-    
-    alert('azdzadsdqsd');
-    
-    </script>
-    
-    ";
+
 }
 
 mysqli_close($conn); // fermer la connexion
