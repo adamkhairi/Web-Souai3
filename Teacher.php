@@ -22,7 +22,7 @@ include("connexion.php");
                     ?>
                 </h3>
 
-<!--                <p class="font-weight-light text-muted mb-0">Benevole</p>-->
+               <p class="font-weight-light text-muted mb-0">Bénévole</p>
             </div>
         </div>
         <div class="mt-4">
@@ -68,16 +68,24 @@ include("connexion.php");
     <!--   Links Of each section -->
 
     <ul class="nav flex-column  mt-3 text-center">
-        <li class="nav-item" id="prods">
+        <!-- <li class="nav-item" id="prods">
             <a class="nav-link text-dark  mt-4 " href="index.php">
                 Accueil
             </a>
-        </li>
-        <li class="nav-item mt-3">
-            <a href="#">
-                <button class='btn btn-danger rounded-pill'>Voir les videos</button>
+        </li> -->
+        <?php
+            if (!empty($_SESSION['mailb'])) {
+                echo "<div class='mt-2'>
+    <a  href=\"logout.php\">
+                <button class='btn btn-danger rounded-pill'>Déconnexion</button>
             </a>
-        </li>
+</div>
+             
+                ";
+            }
+
+
+            ?>
 
 
     </ul>
@@ -114,7 +122,7 @@ include("connexion.php");
                         </div>
                         <div>
 
-                            <button type="submit" name="submit" id="" class="btn backRed btn-lg h-75"> Select</button>
+                            <button type="submit" name="submit" id="" class="btn backRed btn-lg h-75">Choisir</button>
                         </div>
                     </div>
                 </form>
@@ -133,7 +141,7 @@ include("connexion.php");
 <div class="containers">
     <div class="statistics">
         <div class="chart_title">
-            <h4 class="chart_title_h2">Les cours qui plus demande :</h4>
+            <h4 class="chart_title_h2">Les cours les plus demandés :</h4>
         </div>
         <?php
 
@@ -255,7 +263,7 @@ include("connexion.php");
 //Teacher.php?action=addEvent
 //?>
 <div class="btn_add_event">
-    <button id="add_event_btn" type="button"> Add event</button>
+    <button id="add_event_btn" type="button">Ajouter l'événement</button>
 
 
 </div>
@@ -322,14 +330,15 @@ include("connexion.php");
                     <div><input class="thedate" type="time" id="appt" name="hours"></div>
                 </div>
             </div>
-            <div>lien de meeting
-                <input class="lien_for_the_meeting" type="text" name="lien" placeholder="#">
+            <div>lien de visioconférence
+
+                <input class="lien_for_the_meeting" type="text" name="lien" placeholder="https//.com">
             </div>
             <div>
             <textarea class="message" name="message" id="message" name="message" cols="30" rows="10"
                       placeholder="Votre message"></textarea>
             </div>
-            <button type="submit">Add event</button>
+            <button type="submit">Ajouter l'événement</button>
         </form>
     </div>
 </div>

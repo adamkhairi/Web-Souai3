@@ -158,9 +158,9 @@ include("navbar.php");
     </section>
 </div>
 
-<div id="teacher" class="loginPopup popup hide">
+<!-- <div id="teacher" class="loginPopup popup hide">
 
-    <!-- Sing in  Form for teacher -->
+   
     <section class="sign-in">
         <div class="container">
             <div id="exit2">
@@ -192,7 +192,7 @@ include("navbar.php");
             </div>
         </div>
     </section>
-</div>
+</div> -->
 
 
 
@@ -203,25 +203,25 @@ include("navbar.php");
                 <div class="left d-flex flex-column justify-content-center">
                     <h1>Les bons Profs font des bons élèves </h1>
                     <p>Vous trouvez des difficultés au niveau des cours ?
-                        nous avons la solution ! Avec les cours en ligne de <span>Sway3</span>,
+                        Nous avons la solution ! Avec les cours en ligne de <span>Sway3</span>,
                         vous pouvez avoir un professeur qui peut vous
                         assurer des cours de soutien à distance.</p>
                     <div class="btn_for_login">
 
                         <button id="etud" onclick="logingEtudiant()" class="btn btn-header"
                                 data-target="#exampleModalCentertype="
-                        >Connectez-vous (Etudient)
+                        >Connectez-vous "Etudiant(e)"
                         </button>
 
-                        <button id="prof" onclick="logingTeacher()" class="btn btn-header"
+                        <button id="prof" onclick="logingTeacher()" class="btn btn-header backro"
                                 data-target="#exampleModalCentertype="
-                        >Connectez-vous (Professeur)
+                        >Connectez-vous "Professeur"
                         </button>
                     </div>
                 </div>
                 <div class="">
 
-                    <img class="header_img" src="src/img/header.png" alt="">
+                    <img class="header_img" src="src/img/header.png" alt="img">
                 </div>
             </div>
         </div>
@@ -248,7 +248,7 @@ include("navbar.php");
             <div class="header_content">
                 <div class="left d-flex flex-column justify-content-center">
                     <h1>L'enseignement à distance nous rapproche</h1>
-                    <p>vous avez raté le cour, ne paniquez pas on a pensé à
+                    <p>Vous avez raté le cour, ne paniquez pas on a pensé à
                         enregistrer les cours en vidéo.</p>
                     <a href="video.php">
 
@@ -256,13 +256,13 @@ include("navbar.php");
                     </a>
                 </div>
                 <div class="">
-                    <img class="header_img" src="src/img/thirdimg.png" alt="">
+                    <img class="header_img" src="src/img/thirdimg.png" alt="img">
                 </div>
             </div>
         </div>
     </section>
 </main>
-<?php include "notification.php"; ?>
+
 <!--Footer-->
 <?php
 include "footer.php" ?>

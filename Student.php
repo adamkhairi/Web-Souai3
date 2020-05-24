@@ -2,7 +2,7 @@
 require("connexion.php");
 //session_start();
 include "navbar.php";
-include "notification.php";
+
 ?>
 <div class="vertical-nav pt-lg-5  bg-light" id="sidebar">
     <div class="mb-4  menu-head text-center">
@@ -34,6 +34,7 @@ include "notification.php";
                 if (!empty($_SESSION['mail'])) {
                     echo("  " . $_SESSION['mail']);
                 }
+                
                 ?>
             </h6>
 
@@ -47,14 +48,14 @@ include "notification.php";
 
             <div class='mt-4 '>
                 <a href="#">
-                    <button class='btn backOrange rounded-pill'>Voir les videos</button>
+                    <button class='btn backOrange rounded-pill'>Voir les vidéos</button>
                 </a>
             </div>
             <?php
             if (!empty($_SESSION['mail'])) {
                 echo "<div class='mt-2'>
     <a  href=\"logout.php\">
-                <button class='btn btn-danger rounded-pill'>Déconnecté</button>
+                <button class='btn btn-danger rounded-pill'>Déconnexion</button>
             </a>
 </div>
              
@@ -106,12 +107,12 @@ include "notification.php";
                             </div>
                             
                             <div class=\"modal-body pl-4\">     
-                                <h5>Cours : " . $reponse['nomcours'] . "</h5>
-                                <h6>Time : " . $reponse['hours'] . "</h6>
-                                <h6>Date : " . $reponse['theDate'] . "</h6>
+                                <h5>Cour : " . $reponse['nomcours'] . "</h5>
+                                <h6>l'heure : " . $reponse['hours'] . "</h6>
+                                <h6>la Date : " . $reponse['theDate'] . "</h6>
                                 <div class=\"row ml-2\">
 
-                                    <p>By</p>
+                                    <p>Organisé par: </p>
                                     <h5 class=\"ml-4\">" . $reponse['nombenevole'] . "  " . $reponse['prenombenevole'] . "</h5>
                                 </div>
                             </div>
@@ -130,7 +131,7 @@ include "notification.php";
                      
                                  
                             </div>
-                        <button type=\"submit\" id='ansnon' class=\"btn m - 0 w - 25 rounded - pill backRed\">Send !</button>
+                        <button type=\"submit\" id='ansnon' class=\"btn m - 0 w - 25 rounded - pill backRed\">Envoyer</button>
 
                         </div>
                     </div>
@@ -166,8 +167,8 @@ include "notification.php";
 
                         <div>
                             <select name="nvscolaire" id="nvscolaire" onclick="School_levels()">
-                                <option value="2">2eme année Bac</option>
-                                <option value="1">1er année Bac</option>
+                                <option value="2">Deuxieme année baccalauréat </option>
+                                <option value="1">Première année baccalauréat</option>
                             </select>
                             <input type="text" hidden value="" name="nv" id="niveauS">
                         </div>
@@ -217,7 +218,7 @@ include "notification.php";
                     </div>
                 </div>
                 <div>
-                    <button class="btn_post" type="submit">Poster</button>
+                    <button class="btn_post" type="submit">Soumettre</button>
                 </div>
             </form>
         </div>
@@ -282,7 +283,7 @@ include 'footer.php';
 <script src="src/js/general.js"></script>
 <script src="src/js/student.js"></script>
 
-<script>
+<!-- <script>
 	let oui = document.getElementById('ansoui');
 	let non = document.getElementById('ansnon');
 	let getans = document.getElementById('getans');
@@ -307,4 +308,4 @@ include 'footer.php';
 	// })
 
 
-</script>
+</script> -->
