@@ -27,10 +27,8 @@ include "navbar.php";
                 if (!empty($_SESSION['mail'])) {
                     echo("  " . $_SESSION['mail']);
                 }
-
                 ?>
             </h6>
-
         </div>
         <!--   Links Of each section -->
         <div class="d-flex mt-2 flex-column justify-content-center align-items-center">
@@ -142,6 +140,15 @@ include "navbar.php";
                             </select>
                             <input type="text" hidden value="" name="nv" id="niveauS">
                         </div>
+<!--                        //Filierer-->
+                        <div>
+                            <select name="filiere" id="filiere" >
+                                <option value="2">Deuxieme année baccalauréat</option>
+                                <option value="1">Première année baccalauréat</option>
+                            </select>
+                            <input type="text" hidden value="" name="nv" id="niveauS">
+                        </div>
+
 
                         <div>
                             <!-- Matiers -->

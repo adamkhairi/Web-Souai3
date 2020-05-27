@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1
--- Généré le : Dim 24 mai 2020 à 03:49
--- Version du serveur :  8.0.20
--- Version de PHP : 7.4.5
+-- Host: localhost
+-- Generation Time: May 27, 2020 at 01:38 AM
+-- Server version: 8.0.18
+-- PHP Version: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,165 +19,332 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `sw3`
+-- Database: `sw3`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `benevole`
+-- Table structure for table `benevole`
 --
 
 CREATE TABLE `benevole` (
-  `idbenevole` int NOT NULL,
+  `idbenevole` int(11) NOT NULL,
   `nombenevole` varchar(255) DEFAULT NULL,
   `prenombenevole` varchar(255) DEFAULT NULL,
   `mailbenevole` text,
   `passwordbenevole` text,
-  `idmatiere` int DEFAULT NULL
+  `idmatiere` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Déchargement des données de la table `benevole`
---
-
-INSERT INTO `benevole` (`idbenevole`, `nombenevole`, `prenombenevole`, `mailbenevole`, `passwordbenevole`, `idmatiere`) VALUES
-(1, 'O', 'u', 'o@o.o', 'o', 3),
-(2, 'a', 'b', 'w@w.w', 'w', 1),
-(3, 'ss', 'ss', 'ss', 'ss', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `cours`
+-- Table structure for table `cours`
 --
 
 CREATE TABLE `cours` (
-  `idcours` int NOT NULL,
+  `idcours` int(11) NOT NULL,
   `nomcours` varchar(255) DEFAULT NULL,
-  `idmatiere` int DEFAULT NULL
+  `idmatiere` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Déchargement des données de la table `cours`
+-- Dumping data for table `cours`
 --
 
 INSERT INTO `cours` (`idcours`, `nomcours`, `idmatiere`) VALUES
-(1, 'cours1-Fr', 1),
-(2, 'cours2-Fr', 1),
-(3, 'cours1-Maths', 3),
-(4, 'cours2-maths', 3),
-(5, 'cours1-Philos', 4),
-(6, 'cours2-Philos', 4),
-(7, 'cours1-PC', 2),
-(8, 'cours2-PC', 2);
+(1, 'الحال', 1),
+(2, 'التمييز', 1),
+(3, ' العدد ', 1),
+(4, ' الاستفهام ', 1),
+(5, ' الأمر والنهي ', 1),
+(6, ' التمني', 1),
+(7, ' النداء', 1),
+(8, 'المجزوءة الأولى: أنواع الخطاب', 1),
+(9, 'المجزوءة الثانية: قضايا معاصرة', 1),
+(10, ' الممنوع من الصرف', 1),
+(11, ' المصادر ', 1),
+(12, ' النسبة', 1),
+(13, ' الإيجاز والإطناب ', 1),
+(14, ' الطباق والمقابلة', 1),
+(15, ' ‫الاستعارة ', 1),
+(16, 'المجزوءة الأولى: مفاهيم', 1),
+(18, 'المجزوءة الثانية: الشعر والقيم', 1),
+(19, ' مهارة الربط بين الأفكار', 1),
+(20, ' مهارة المقارنة والإستنتاج ', 1),
+(21, ' Les champs lexicaux ', 2),
+(22, ' Les registres de langue ', 2),
+(23, ' La focalisation ou point de vue', 2),
+(24, ' L\'énonciation', 2),
+(25, ' Les figures de style', 2),
+(26, ' Les niveaux de langue ', 2),
+(27, 'Récit et discours ', 2),
+(28, 'Le discours rapporté ', 2),
+(29, ' Étude du discours rapporté ', 2),
+(30, 'La Boite à Merveilles (Roman autobiographique) ', 2),
+(31, 'La Planète des singes (Roman de science fiction) ', 2),
+(32, 'Le dernier jour d\'un condamné (Roman à thèse)', 2),
+(33, 'Antigone (Théâtre) ', 2),
+(34, ' تقديم عام لبرنامج التاريخ: التحولات الكبرى للعالم الرأسمالي وانعكاساتها خلال القرنين 19م و20م ', 3),
+(35, ' التحولات الاقتصادية والمالية والاجتماعية والفكرية في العالم في القرن 19م ', 3),
+(36, ' التنافس الامبريالي واندلاع الحرب العالمية الأولى ', 3),
+(37, ' اليقظة الفكرية بالمشرق العربي ', 3),
+(38, ' الضغوط الاستعمارية على المغرب ومحاولات الإصلاح ', 3),
+(39, ' أوروبا من نهاية الحرب العالمية الأولى إلى أزمة 1929م ', 3),
+(40, ' الحرب العالمية الثانية – الأسباب والنتائج ', 3),
+(41, ' نظام الحماية بالمغرب والاستغلال الاستعماري ', 3),
+(42, ' نضال المغرب من أجل تحقيق الاستقلال واستكمال الوحدة الترابية ', 3),
+(43, ' ملف العولمة والتحديات الراهنة ', 3),
+(44, ' مفهوم التنمية – تعدد المقاربات، التقسيمات الكبرى للعالم – خريطة التنمية ', 3),
+(45, ' المجال المغربي – الموارد الطبيعية والبشرية', 3),
+(46, ' الاختيارات الكبرى لسياسة إعداد التراب الوطني', 3),
+(47, ' التهيئة الحضرية والريفية – أزمة المدينة والريف وأشكال التدخل', 3),
+(48, ' العالم العربي – مشكل الماء وظاهرة التصحر', 3),
+(49, ' الولايات المتحدة الأمريكية قوة اقتصادية عظمى', 3),
+(50, ' الاتحاد الأوربي نحو اندماج شامل ', 3),
+(51, ' الصين قوة اقتصادية صاعدة', 3),
+(52, ' ملف الشراكة بين المغرب والاتحاد الأوروبي ', 3),
+(53, 'مدخل التزكية (القرآن الكريم) ', 4),
+(54, 'مدخل التزكية (العقيدة) ', 4),
+(55, 'مدخل الإقتداء ', 4),
+(56, 'مدخل الإستجابة ', 4),
+(57, 'مدخل القسط ', 4),
+(58, 'مدخل الـحكمة ', 4),
+(59, 'الحال\r\n ', 5),
+(60, ' التمييز ', 5),
+(61, ' العدد ', 5),
+(62, ' الاستفهام ', 5),
+(63, ' الأمر والنهي ', 5),
+(64, ' التمني ', 5),
+(65, ' الممنوع من الصرف', 5),
+(66, ' المصادر', 5),
+(67, ' النسبة ', 5),
+(68, ' الإيجاز والإطناب', 5),
+(69, ' الطباق والمقابلة ', 5),
+(70, ' ‫الاستعارة ‬‎ ', 5),
+(71, 'المجزوءة الأولى: أنواع الخطاب', 5),
+(72, 'المجزوءة الثانية: قضايا معاصرة', 5),
+(73, 'المجزوءة الأولى: مفاهيم', 5),
+(74, 'مجزوءة الثانية: الشعر والقيم', 5),
+(75, ' مهارة الربط بين الأفكار', 5),
+(76, ' مهارة المقارنة والإستنتاج ', 5),
+(77, ' Les champs lexicaux ', 6),
+(78, ' Les registres de langue ', 6),
+(79, ' La focalisation ou point de vue ', 6),
+(80, ' L\'énonciation ', 6),
+(81, ' Les figures de style', 6),
+(82, '\r\nLes niveaux de langue\r\n', 6),
+(83, ' Récit et discours ', 6),
+(84, ' Le discours rapporté ', 6),
+(85, ' La focalisation Interne, externe et zéro', 6),
+(86, 'La Boite à Merveilles (Roman autobiographique) ', 6),
+(87, 'La Planète des singes (Roman de science fiction) ', 6),
+(88, 'Le dernier jour d\'un condamné (Roman à thèse) ', 6),
+(89, 'Antigone (Théâtre) ', 6),
+(90, ' تقديم عام لبرنامج التاريخ: التحولات الكبرى للعالم الرأسمالي وانعكاساتها خلال القرنين 19م و20م ', 7),
+(91, ' التحولات الاقتصادية والمالية والاجتماعية والفكرية في العالم في القرن 19م ', 7),
+(92, ' التنافس الامبريالي واندلاع الحرب العالمية الأولى', 7),
+(93, ' اليقظة الفكرية بالمشرق العربي', 7),
+(94, ' الضغوط الاستعمارية على المغرب ومحاولات الإصلاح', 7),
+(95, ' أوروبا من نهاية الحرب العالمية الأولى إلى أزمة 1929م', 7),
+(96, ' الحرب العالمية الثانية – الأسباب والنتائج ', 7),
+(97, ' نظام الحماية بالمغرب والاستغلال الاستعماري ', 7),
+(98, ' نضال المغرب من أجل تحقيق الاستقلال واستكمال الوحدة الترابية ', 7),
+(99, ' ملف العولمة والتحديات الراهنة ', 7),
+(100, ' مفهوم التنمية – تعدد المقاربات، التقسيمات الكبرى للعالم – خريطة التنمية ', 7),
+(101, ' المجال المغربي – الموارد الطبيعية والبشرية ', 7),
+(102, ' الاختيارات الكبرى لسياسة إعداد التراب الوطني ', 7),
+(103, ' التهيئة الحضرية والريفية – أزمة المدينة والريف وأشكال التدخل', 7),
+(104, ' العالم العربي – مشكل الماء وظاهرة التصحر ', 7),
+(105, ' الولايات المتحدة الأمريكية قوة اقتصادية عظمى', 7),
+(106, ' الاتحاد الأوربي نحو اندماج شامل ', 7),
+(107, ' الصين قوة اقتصادية صاعدة ', 7),
+(108, ' ملف الشراكة بين المغرب والاتحاد الأوروبي ', 7),
+(109, ' تقديم عام لبرنامج التاريخ: التحولات الكبرى للعالم الرأسمالي وانعكاساتها خلال القرنين 19م و20م ', 7),
+(110, ' التحولات الاقتصادية والمالية والاجتماعية والفكرية في العالم في القرن 19م ', 7),
+(111, ' التنافس الامبريالي واندلاع الحرب العالمية الأولى', 7),
+(112, ' اليقظة الفكرية بالمشرق العربي', 7),
+(113, ' الضغوط الاستعمارية على المغرب ومحاولات الإصلاح', 7),
+(114, ' أوروبا من نهاية الحرب العالمية الأولى إلى أزمة 1929م', 7),
+(115, ' الحرب العالمية الثانية – الأسباب والنتائج ', 7),
+(116, ' نظام الحماية بالمغرب والاستغلال الاستعماري ', 7),
+(117, ' نضال المغرب من أجل تحقيق الاستقلال واستكمال الوحدة الترابية ', 7),
+(118, ' ملف العولمة والتحديات الراهنة ', 7),
+(119, ' مفهوم التنمية – تعدد المقاربات، التقسيمات الكبرى للعالم – خريطة التنمية ', 7),
+(120, ' المجال المغربي – الموارد الطبيعية والبشرية ', 7),
+(121, ' الاختيارات الكبرى لسياسة إعداد التراب الوطني ', 7),
+(122, ' التهيئة الحضرية والريفية – أزمة المدينة والريف وأشكال التدخل', 7),
+(123, ' العالم العربي – مشكل الماء وظاهرة التصحر ', 7),
+(124, ' الولايات المتحدة الأمريكية قوة اقتصادية عظمى', 7),
+(125, ' الاتحاد الأوربي نحو اندماج شامل ', 7),
+(126, ' الصين قوة اقتصادية صاعدة ', 7),
+(127, ' ملف الشراكة بين المغرب والاتحاد الأوروبي ', 7),
+(128, 'مدخل التزكية (القرآن الكريم)', 8),
+(129, 'مدخل التزكية (العقيدة) ', 8),
+(130, 'مدخل الإقتداء ', 8),
+(131, 'مدخل الإستجابة ', 8),
+(132, 'مدخل القسط ', 8),
+(133, 'مدخل الـحكمة ', 8),
+(134, 'مبادئ في المنطق ', 9),
+(135, 'الحساب العددي والتناسبية ', 9),
+(136, 'عموميات حول الدوال العددية ', 9),
+(137, 'المتتاليات العددية ', 9),
+(138, 'التعداد ', 9),
+(139, 'نهاية دالة عددية ', 9),
+(140, 'الاشتقاق ', 9),
+(141, 'دراسة الدوال وتمثيلها ', 9),
+(142, ' Les champs lexicaux ', 10),
+(143, ' Les registres de langue', 10),
+(144, ' La focalisation ou point de vue ', 10),
+(145, ' Les figures de style ', 10),
+(146, ' Les niveaux de langue ', 10),
+(147, ' Récit et discours ', 10),
+(148, ' Le discours rapporté', 10),
+(149, ' Étude du discours rapporté ', 10),
+(150, ' La focalisation Interne, externe et zéro', 10),
+(151, 'La Boite à Merveilles (Roman autobiographique) ', 10),
+(152, 'La Planète des singes (Roman de science fiction) ', 10),
+(153, 'Le dernier jour d\'un condamné (Roman à thèse) ', 10),
+(154, 'Antigone (Théâtre) ', 10),
+(155, 'جذاذات علوم الحياة والارض للأولى باك آداب وعلوم إنسانية', 11),
+(156, 'تعضي وفيزيولوجية الجهاز التناسلي عند الرجل ', 11),
+(157, 'تعضي وفيزيولوجية الجهاز التناسلي عند المرأة ', 11),
+(158, 'الحمل والولادة ', 11),
+(159, 'ملفات للبحث والاستقصاء ', 11),
+(160, 'دور كل من الانقسام الاختزالي والاخصاب في التوالد الجنسي', 11),
+(161, 'انتقال الصفات الوراثية عبر الأجيال ', 11),
+(162, 'انتقال بعض الأمراض الوراثية ', 11),
+(163, 'انتقال بعض حالات الشذوذ الصبغي والطفرات ', 11);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `demande`
+-- Table structure for table `demande`
 --
 
 CREATE TABLE `demande` (
-  `iddemande` int NOT NULL,
+  `iddemande` int(11) NOT NULL,
   `description` text,
-  `idetudiantc` int DEFAULT NULL,
-  `cours` int NOT NULL,
-  `reponce` int NOT NULL
+  `idetudiantc` int(11) DEFAULT NULL,
+  `cours` int(11) NOT NULL,
+  `reponce` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Déchargement des données de la table `demande`
---
-
-INSERT INTO `demande` (`iddemande`, `description`, `idetudiantc`, `cours`, `reponce`) VALUES
-(60, 'bb', 17, 1, 0),
-(66, 'd', 17, 1, 0),
-(71, 'd', 17, 1, 0),
-(72, 'd', 17, 1, 0);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `etudiant`
+-- Table structure for table `etudiant`
 --
 
 CREATE TABLE `etudiant` (
-  `idetudiant` int NOT NULL,
+  `idetudiant` int(11) NOT NULL,
   `nometudiant` varchar(255) DEFAULT NULL,
   `prenometudiant` varchar(255) DEFAULT NULL,
-  `niveauscolaire` int NOT NULL,
-  `filiere` int DEFAULT NULL,
+  `niveauscolaire` int(11) NOT NULL,
+  `filiere` int(11) DEFAULT NULL,
   `mailetudiant` text,
   `passwordetudiant` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Déchargement des données de la table `etudiant`
---
-
-INSERT INTO `etudiant` (`idetudiant`, `nometudiant`, `prenometudiant`, `niveauscolaire`, `filiere`, `mailetudiant`, `passwordetudiant`) VALUES
-(1, 'Khairi', 'Adam', 2, 1, 'khairiadam1@gmail.com', 'ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb'),
-(9, 'a', 'b', 2, 3, 'a@a.a', 'ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb'),
-(17, 'ABDELKBIR', 'a', 2, 1, 'abdo@gmail.com', 'ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb');
-
 -- --------------------------------------------------------
 
 --
--- Structure de la table `filiere`
+-- Table structure for table `filiere`
 --
 
 CREATE TABLE `filiere` (
-  `idfiliere` int NOT NULL,
+  `idfiliere` int(11) NOT NULL,
   `namfiliere` varchar(255) DEFAULT NULL,
-  `idniveau` int DEFAULT NULL
+  `idniveau` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Déchargement des données de la table `filiere`
+-- Dumping data for table `filiere`
 --
 
 INSERT INTO `filiere` (`idfiliere`, `namfiliere`, `idniveau`) VALUES
-(1, 'SVT', 2),
-(2, 'SVT', 1),
-(3, 'AR', 1),
-(4, 'AR', 2);
+(1, 'Sciences Mathématiques', 1),
+(2, 'Sciences Expérimentales', 1),
+(3, 'Lettres et Sciences Humaines', 1),
+(4, 'Sciences Mathématiques', 2),
+(5, 'Sciences Physiques', 2),
+(6, 'Sciences de la Vie et de la Terre (SVT)', 2),
+(7, 'Sciences Économiques', 2),
+(8, 'Sciences de Gestion Comptable (SGC)', 2),
+(9, 'Lettres', 2);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `matiere`
+-- Table structure for table `matiere`
 --
 
 CREATE TABLE `matiere` (
-  `idmatiere` int NOT NULL,
+  `idmatiere` int(11) NOT NULL,
   `nommatiere` varchar(255) DEFAULT NULL,
-  `idfiliere` int DEFAULT NULL
+  `idfiliere` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Déchargement des données de la table `matiere`
+-- Dumping data for table `matiere`
 --
 
 INSERT INTO `matiere` (`idmatiere`, `nommatiere`, `idfiliere`) VALUES
-(1, 'Français', 1),
-(2, 'Physique', 1),
-(3, 'Maths', 2),
-(4, 'Philos', 2);
+(1, 'Arabe', 1),
+(2, 'Français', 1),
+(3, 'Histoire Géographie', 1),
+(4, 'Education Islamique', 1),
+(5, 'Arabe', 2),
+(6, 'Français', 2),
+(7, 'Histoire Géographie', 2),
+(8, 'Education Islamique', 2),
+(9, 'Mathématiques', 3),
+(10, 'Français', 3),
+(11, 'Sciences de la Vie et de la Terre (SVT)', 3),
+(12, 'Mathématiques', 4),
+(13, 'Physique et Chimie', 4),
+(14, 'Sciences de la Vie et de la Terre (SVT)', 4),
+(15, 'Sciences de l\'ingénieur', 4),
+(16, 'Anglais', 4),
+(17, 'Philosophie', 4),
+(18, 'Mathématiques', 5),
+(19, 'Physique et Chimie', 5),
+(20, 'Sciences de la Vie et de la Terre (SVT)', 5),
+(21, 'Anglais', 5),
+(22, 'Philosophie', 5),
+(23, 'Mathématiques', 6),
+(24, 'Physique et Chimie', 6),
+(25, 'Sciences de la Vie et de la Terre (SVT)', 6),
+(26, 'Anglais', 6),
+(27, 'Philosophie', 6),
+(28, 'Mathématiques', 7),
+(29, 'Economie et Organisation Administrative des Entreprises', 7),
+(30, 'Comptabilité et Mathématiques financières', 7),
+(31, 'Anglais', 7),
+(32, 'Philosophie', 7),
+(33, 'Economie générale et Statistiques', 7),
+(34, 'Droit', 7),
+(35, 'Comptabilité et Mathématiques financières', 8),
+(36, 'Anglais', 8),
+(37, 'Mathématiques', 8),
+(38, 'Philosophie', 8),
+(39, 'Economie générale et Statistiques', 8),
+(40, 'Economie et Organisation Administrative des Entreprises', 8);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `niveau`
+-- Table structure for table `niveau`
 --
 
 CREATE TABLE `niveau` (
-  `idniveau` int NOT NULL,
+  `idniveau` int(11) NOT NULL,
   `niveau` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Déchargement des données de la table `niveau`
+-- Dumping data for table `niveau`
 --
 
 INSERT INTO `niveau` (`idniveau`, `niveau`) VALUES
@@ -186,58 +354,24 @@ INSERT INTO `niveau` (`idniveau`, `niveau`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `reponce`
+-- Table structure for table `reponce`
 --
 
 CREATE TABLE `reponce` (
-  `idetudiant` int NOT NULL,
-  `idevent` int NOT NULL
+  `idetudiant` int(11) NOT NULL,
+  `idevent` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Déchargement des données de la table `reponce`
---
-
-INSERT INTO `reponce` (`idetudiant`, `idevent`) VALUES
-(17, 6),
-(17, 6),
-(17, 7),
-(17, 6),
-(17, 7),
-(17, 7),
-(17, 7),
-(17, 7),
-(17, 8),
-(17, 8),
-(17, 8),
-(17, 8),
-(17, 8),
-(17, 9),
-(17, 9),
-(17, 9),
-(17, 9),
-(17, 9),
-(17, 10),
-(17, 10),
-(17, 10),
-(17, 10),
-(17, 10),
-(17, 11),
-(17, 11),
-(17, 11),
-(17, 11),
-(17, 11);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `theevanets`
+-- Table structure for table `theevanets`
 --
 
 CREATE TABLE `theevanets` (
-  `eventID` int NOT NULL,
-  `coursID` int NOT NULL,
-  `ProfID` int NOT NULL,
+  `eventID` int(11) NOT NULL,
+  `coursID` int(11) NOT NULL,
+  `ProfID` int(11) NOT NULL,
   `message` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `lien` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `hours` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -245,25 +379,25 @@ CREATE TABLE `theevanets` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Index pour les tables déchargées
+-- Indexes for dumped tables
 --
 
 --
--- Index pour la table `benevole`
+-- Indexes for table `benevole`
 --
 ALTER TABLE `benevole`
   ADD PRIMARY KEY (`idbenevole`),
   ADD KEY `idmatiere` (`idmatiere`);
 
 --
--- Index pour la table `cours`
+-- Indexes for table `cours`
 --
 ALTER TABLE `cours`
   ADD PRIMARY KEY (`idcours`),
   ADD KEY `idmatier` (`idmatiere`);
 
 --
--- Index pour la table `demande`
+-- Indexes for table `demande`
 --
 ALTER TABLE `demande`
   ADD PRIMARY KEY (`iddemande`),
@@ -271,39 +405,40 @@ ALTER TABLE `demande`
   ADD KEY `idcours` (`cours`);
 
 --
--- Index pour la table `etudiant`
+-- Indexes for table `etudiant`
 --
 ALTER TABLE `etudiant`
-  ADD PRIMARY KEY (`idetudiant`);
+  ADD PRIMARY KEY (`idetudiant`),
+  ADD KEY `filiere` (`filiere`);
 
 --
--- Index pour la table `filiere`
+-- Indexes for table `filiere`
 --
 ALTER TABLE `filiere`
   ADD PRIMARY KEY (`idfiliere`),
   ADD KEY `idnv` (`idniveau`);
 
 --
--- Index pour la table `matiere`
+-- Indexes for table `matiere`
 --
 ALTER TABLE `matiere`
   ADD PRIMARY KEY (`idmatiere`),
   ADD KEY `idfiliere` (`idfiliere`);
 
 --
--- Index pour la table `niveau`
+-- Indexes for table `niveau`
 --
 ALTER TABLE `niveau`
   ADD PRIMARY KEY (`idniveau`);
 
 --
--- Index pour la table `reponce`
+-- Indexes for table `reponce`
 --
 ALTER TABLE `reponce`
   ADD KEY `idevent` (`idevent`);
 
 --
--- Index pour la table `theevanets`
+-- Indexes for table `theevanets`
 --
 ALTER TABLE `theevanets`
   ADD PRIMARY KEY (`eventID`),
@@ -311,94 +446,100 @@ ALTER TABLE `theevanets`
   ADD KEY `ProfID` (`ProfID`);
 
 --
--- AUTO_INCREMENT pour les tables déchargées
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT pour la table `benevole`
+-- AUTO_INCREMENT for table `benevole`
 --
 ALTER TABLE `benevole`
-  MODIFY `idbenevole` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idbenevole` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT pour la table `cours`
+-- AUTO_INCREMENT for table `cours`
 --
 ALTER TABLE `cours`
-  MODIFY `idcours` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `idcours` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=164;
 
 --
--- AUTO_INCREMENT pour la table `demande`
+-- AUTO_INCREMENT for table `demande`
 --
 ALTER TABLE `demande`
-  MODIFY `iddemande` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `iddemande` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 
 --
--- AUTO_INCREMENT pour la table `etudiant`
+-- AUTO_INCREMENT for table `etudiant`
 --
 ALTER TABLE `etudiant`
-  MODIFY `idetudiant` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `idetudiant` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
--- AUTO_INCREMENT pour la table `filiere`
+-- AUTO_INCREMENT for table `filiere`
 --
 ALTER TABLE `filiere`
-  MODIFY `idfiliere` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idfiliere` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT pour la table `matiere`
+-- AUTO_INCREMENT for table `matiere`
 --
 ALTER TABLE `matiere`
-  MODIFY `idmatiere` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idmatiere` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
--- AUTO_INCREMENT pour la table `niveau`
+-- AUTO_INCREMENT for table `niveau`
 --
 ALTER TABLE `niveau`
-  MODIFY `idniveau` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idniveau` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT pour la table `theevanets`
+-- AUTO_INCREMENT for table `theevanets`
 --
 ALTER TABLE `theevanets`
-  MODIFY `eventID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `eventID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- Contraintes pour les tables déchargées
+-- Constraints for dumped tables
 --
 
 --
--- Contraintes pour la table `benevole`
+-- Constraints for table `benevole`
 --
 ALTER TABLE `benevole`
   ADD CONSTRAINT `idmatiere` FOREIGN KEY (`idmatiere`) REFERENCES `matiere` (`idmatiere`);
 
 --
--- Contraintes pour la table `cours`
+-- Constraints for table `cours`
 --
 ALTER TABLE `cours`
   ADD CONSTRAINT `idmatier` FOREIGN KEY (`idmatiere`) REFERENCES `matiere` (`idmatiere`);
 
 --
--- Contraintes pour la table `demande`
+-- Constraints for table `demande`
 --
 ALTER TABLE `demande`
   ADD CONSTRAINT `idcours` FOREIGN KEY (`cours`) REFERENCES `cours` (`idcours`),
   ADD CONSTRAINT `idetudiant` FOREIGN KEY (`idetudiantc`) REFERENCES `etudiant` (`idetudiant`);
 
 --
--- Contraintes pour la table `filiere`
+-- Constraints for table `etudiant`
+--
+ALTER TABLE `etudiant`
+  ADD CONSTRAINT `filiere` FOREIGN KEY (`filiere`) REFERENCES `filiere` (`idfiliere`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+--
+-- Constraints for table `filiere`
 --
 ALTER TABLE `filiere`
   ADD CONSTRAINT `idnv` FOREIGN KEY (`idniveau`) REFERENCES `niveau` (`idniveau`);
 
 --
--- Contraintes pour la table `matiere`
+-- Constraints for table `matiere`
 --
 ALTER TABLE `matiere`
   ADD CONSTRAINT `idfiliere` FOREIGN KEY (`idfiliere`) REFERENCES `filiere` (`idfiliere`);
 
 --
--- Contraintes pour la table `theevanets`
+-- Constraints for table `theevanets`
 --
 ALTER TABLE `theevanets`
   ADD CONSTRAINT `theevanets_ibfk_1` FOREIGN KEY (`coursID`) REFERENCES `cours` (`idcours`),
