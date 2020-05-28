@@ -134,59 +134,30 @@ include "navbar.php";
                     <div class="find_help">
 
                         <div>
-                            <select name="nvscolaire" id="nvscolaire" onclick="School_levels()">
-                                <option value="2">Deuxieme année baccalauréat</option>
-                                <option value="1">Première année baccalauréat</option>
-                            </select>
-                            <input type="text" hidden value="" name="nv" id="niveauS">
-                        </div>
-<!--                        //Filierer-->
-                        <div>
-                            <select name="filiere" id="filiere" >
-                                <option value="2">Deuxieme année baccalauréat</option>
-                                <option value="1">Première année baccalauréat</option>
-                            </select>
-                            <input type="text" hidden value="" name="nv" id="niveauS">
-                        </div>
-
-
-                        <div>
                             <!-- Matiers -->
-                            <select name="matiere" id="matiere">
-                                <option value="1">Mathématique</option>
-                                <option value="2">Sciences de la vie et de la Terre</option>
-                                <!--                            <option value="3">Philosophique</option>-->
-                                <option value="3">Physique Chimie</option>
-                                <!--                            <option value="5">Anglais</option>-->
+                            <select class="custom-select" name="matiere" id="matiere" onchange="showMatiere(this.value)">
+                                <option value="" SELECTED disabled>Matière</option>
+                                <?php
+                                $sql = "SELECT * FROM `matiere` WHERE idfiliere = " .$_SESSION['banche'] . "";
+                                $send = mysqli_query($conn, $sql);
+                                $rows = mysqli_fetch_all($send, MYSQLI_ASSOC);
+
+                                foreach ($rows as $row ) {
+
+                                    echo '<option value=' . $row['idmatiere'] . '> ' . $row['nommatiere'] . '</option>';
+
+                                }
+                                ?>
+
+
                             </select>
                             <input type="text" hidden value="" name="mt" id="matieres">
 
-                        </div>
+                        </div >
                         <div>
-
                             <select class="hour2" name="cours" id="cours">
-                                <optgroup label="Analyse">
-                                    <option value="1">Continuité d'une fonction numérique</option>
-                                    <option value="2">Dérivabilité d'une fonction, fonctions primitives</option>
-                                    <option value="3">Etude des fonctions</option>
-                                    <option value="4">Fonctions logarithmiques</option>
-                                    <option value="5">Calcul intégral</option>
-                                    <option value="7">Equations différentielles</option>
-                                    <option value="8">Les suites numériques</option>
-                                    <option value="9">Fonctions exponentielles</option>
-                                </optgroup>
-                                <optgroup label="Algèbre">
-                                    <option value="10">Les nombres complexes 1</option>
-                                    <option value="11">Les nombres complexes 2</option>
-                                    <option value="12">Calcul des Probabilités</option>
-                                    <option value="13">Geométrie de l’espace Produit scalaire et applications
-                                    </option>
-                                    <option value="14">Fonctions exponentielles</option>
-                                </optgroup>
+                                <option value="" SELECTED disabled >Cours</option>
                             </select>
-
-                            <input type="text" hidden value="" name="crs" id="courses">
-
                         </div>
                     </div>
                     <div class="text_message form-group">
@@ -261,3 +232,20 @@ include 'footer.php';
 ?>
 <script src="src/js/general.js"></script>
 <script src="src/js/student.js"></script>
+<script>
+	function showMatiere(str) {
+		if (str == "") {
+			document.getElementById("cours").innerHTML = "";
+			return;
+		} else {
+			let xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function() {
+				if (this.readyState === 4 && this.status === 200) {
+					document.getElementById("cours").innerHTML = this.responseText;
+				}
+			};
+			xmlhttp.open("GET","getcours.php?c="+str,true);
+			xmlhttp.send();
+		}
+	}
+</script>

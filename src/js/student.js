@@ -174,3 +174,4 @@ $(function () {
 		$('#sidebar, #content').toggleClass('active');
 	});
 });
+

@@ -38,36 +38,29 @@ include("navbar.php");
 
 
                         <div class="form-group">
-                            <!--                            <label for="nScolaire"><i class="zmdi zmdi-account material-icons-name"></i></label>-->
-                            <!--                            <input type="text" name="nScolaire" id="nScolaire" placeholder="niveau scolaire"/>-->
                             <div class="input-group mb-3">
-                                <select class="custom-select" name="nScolaire" id="nScolaire">
+                                <select class="custom-select" name="nScolaire" id="nScolaire" onchange="showfillier(this.value)">
                                     <option selected>Niveau Scolaire</option>
-                                    <option value="2">Deuxième année Bac</option>
-                                    <option value="1">Premiere année Bac</option>
+
+                                    <?php
+
+                                    $sql = "SELECT * FROM `niveau`";
+                                    $send = mysqli_query($conn, $sql);
+
+                                    $rows = mysqli_fetch_all($send, MYSQLI_ASSOC);
+
+                                    foreach ($rows as $row ) {
+
+                                        echo '<option value=' . $row['idniveau'] . '> ' . $row['niveau'] . '</option>';
+
+                                    }
+                                    ?>
                                 </select>
                             </div>
 
-                            <?php
-
-                            //                            $levelid = $_SESSION['nvScolaire'];
-                            //
-                            //                            $querylevel ="SELECT * FROM niveau where idniveau = '" . $levelid . "' ";
-                            //
-                            //                            $exec_requete = mysqli_query($conn, $querylevel);
-                            //                            $reponse = mysqli_fetch_array($exec_requete);
-                            //                            $levelname= $reponse['niveau'];
-                            //
-                            //
-                            //                            ?>
-
-
-                            <div class="form-group">
+                            <div class="form-group" id="filiere">
                                 <select class="custom-select" name="filier" id="filier">
-                                    <option selected>Filière</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                    <option value="" selected disabled> Choisir une filiere</option>
                                 </select>
                             </div>
                         </div>
@@ -304,6 +297,21 @@ include "footer.php" ?>
 
 	let teacher = document.getElementById("teacher");
 	let prof = document.getElementById("prof");
+// ********************
 
-
+	function showfillier(str) {
+		if (str == "") {
+			document.getElementById("filier").innerHTML = "";
+			return;
+		} else {
+			let xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function() {
+				if (this.readyState === 4 && this.status === 200) {
+					document.getElementById("filiere").innerHTML = this.responseText;
+				}
+			};
+			xmlhttp.open("GET","getfillier.php?q="+str,true);
+			xmlhttp.send();
+		}
+	}
 </script>
