@@ -41,10 +41,10 @@ include('navbar.php');
 
         <!--        </div>-->
 
-    <div class="p-2  mb-5">
-        <?php
-        if (!empty($_SESSION['mailb'])) {
-            echo "
+        <div class="p-2  mb-5">
+            <?php
+            if (!empty($_SESSION['mailb'])) {
+                echo "
             <div class='btn_add_event'>
             <button id='add_event_btn' type='button'>Ajouter l'événement</button>
            </div>
@@ -55,10 +55,10 @@ include('navbar.php');
             </div>
              
                 ";
-        }
-        ?>
-        <!--        </div>-->
-    </div>
+            }
+            ?>
+            <!--        </div>-->
+        </div>
 
     </div>
 
@@ -120,14 +120,15 @@ include('navbar.php');
                     <div class="d-flex justify-content-between aline-items-baseline">
                         <div class="form-group">
                             <div class="input-group mb-3">
-                                <select class="custom-select" name="nScolaire" id="nScolaire" onchange="showfillier(this.value)">
+                                <select class="custom-select" name="nScolaire" id="nScolaire"
+                                        onchange="showfillier(this.value)">
                                     <option selected>Niveau Scolaire</option>
 
                                     <?php
                                     $sql = "SELECT * FROM `niveau`";
                                     $send = mysqli_query($conn, $sql);
                                     $rows = mysqli_fetch_all($send, MYSQLI_ASSOC);
-                                    foreach ($rows as $row ) {
+                                    foreach ($rows as $row) {
 
                                         echo '<option value=' . $row['idniveau'] . '> ' . $row['niveau'] . '</option>';
 
@@ -136,21 +137,22 @@ include('navbar.php');
                                 </select>
 
 
-
-                                <select class="custom-select ml-2" name="filier" id="filiere" onchange="showMatiere(this.value)">
+                                <select class="custom-select ml-2" name="filier" id="filiere"
+                                        onchange="showMatiere(this.value)">
                                     <option value="" selected disabled> Choisir une filiere</option>
                                 </select>
 
-                                <select class="custom-select ml-2" name="matiere" id="matiere" onchange="getMatiere(this.value)">
-                                    <option value="" SELECTED disabled >Matières</option>
+                                <select class="custom-select ml-2" name="matiere" id="matiere"
+                                        onchange="getMatiere(this.value)">
+                                    <option value="" SELECTED disabled>Matières</option>
                                 </select>
+
                                 <input type="text" hidden value="" name="selMatiere" id="selMatiere">
                             </div>
 
-                        <div class="text-center">
-
-                            <button type="submit" name="submit" id="" class="btn backRed btn-lg">Choisir</button>
-                        </div>
+                            <div class="text-center">
+                                <button type="submit" name="submit" id="" class="btn backRed btn-lg">Choisir</button>
+                            </div>
                         </div>
                     </div>
                 </form>
@@ -158,85 +160,86 @@ include('navbar.php');
 
             </div>
             <div class="d-flex flex-wrap justify-content-around m-2">
-            <?php
+                <?php
 
 
-            if (isset($_POST['submit'])) {
-                $matiereT = $_POST['selMatiere'];
+                if (isset($_POST['submit'])) {
+                    $matiereT = $_POST['selMatiere'];
 //print_r($matiereT);
 //die();
-                $req = "SELECT c.nomcours, e.prenometudiant, e.nometudiant, d.description,  m.nommatiere FROM demande d 
+                    $req = "SELECT c.nomcours, e.prenometudiant, e.nometudiant, d.description,  m.nommatiere FROM demande d 
     INNER JOIN etudiant e ON d.idetudiantc = e.idetudiant INNER JOIN cours c ON c.idcours = d.cours 
     INNER JOIN matiere m ON m.idmatiere = c.idmatiere WHERE m.idmatiere = '" . $matiereT . "' ";
 
-                $reqt = mysqli_query($conn, $req);
-                $row = mysqli_fetch_array($reqt);
+                    $reqt = mysqli_query($conn, $req);
+                    $row = mysqli_fetch_array($reqt);
 
 //                    print_r($row);
 //                    die();
-                if (!empty($_SESSION['mailb'] && $reqt)) {
+                    if (!empty($_SESSION['mailb'] && $reqt)) {
 //                    $row = mysqli_fetch_array($reqt);
 
-                    while ($row = mysqli_fetch_array($reqt)) {
+                        while ($row = mysqli_fetch_array($reqt)) {
 //                etudiant name
 
 
 //                    $cours = [];
 
 
-                        echo "
+                            echo "
                         <div class=\"card  card mb-4 rounded-lg m-2\" style=\"width: 18rem;\">
                           <div class=\"card-body  p-0\">
-                           <div class='backOrange rounded-top pt-2 p-1 text-center'>
-                            <h5 class=\"card-title mt-2\">$row[0]</h5>
-                            </div>
+                          
+                             <div class='backOrange rounded-top pt-2 p-1 text-center'>
+                                 <h5 class=\"card-title mt-2\">$row[0]</h5>
+                             </div>
                             
                             <div class='p-2 m-1 text-center'>
-                            <h5 class=\"card - title mt - 2\">$row[4]</h5>
-
-                            <h6 class=\"card-subtitle text-center m-2 text-muted\"> $row[1]  $row[2]</h6>
-                            <p class=\"card-text m-2\">$row[3]</p>
+                                <h5 class=\"card - title mt - 2\">$row[4]</h5>
+    
+                                <h6 class=\"card-subtitle text-center m-2 text-muted\"> $row[1]  $row[2]</h6>
+                                <p class=\"card-text m-2\">$row[3]</p>
                           </div>
                          </div>
-                         
+                         </div>
                          ";
+
+                        }
+
 
                     }
 
-
-                }
-
-            } else {
+                } else {
                     $req = "SELECT c.nomcours, e.prenometudiant, e.nometudiant, d.description,  m.nommatiere FROM demande d 
                         INNER JOIN etudiant e ON d.idetudiantc = e.idetudiant INNER JOIN cours c ON c.idcours = d.cours 
                         INNER JOIN matiere m ON m.idmatiere = c.idmatiere";
 
-                        $reqt = mysqli_query($conn, $req);
-                        $row = mysqli_fetch_array($reqt);
+                    $reqt = mysqli_query($conn, $req);
+                    $row = mysqli_fetch_array($reqt);
 
                     //                    print_r($row);
                     //                    die();
-                    if (!empty($_SESSION['mailb']) && $reqt = mysqli_query($conn, $req)) {
-        //                    $row = mysqli_fetch_array($reqt);
+                    if (!empty($_SESSION['mailb']) && $reqt ) {
+                        //                    $row = mysqli_fetch_array($reqt);
 
                         while ($row = mysqli_fetch_array($reqt)) {
-        //                etudiant name
+                            //                etudiant name
 
 
-        //                    $cours = [];
+                            //                    $cours = [];
 
 
                             echo "
                                 <div class=\"card  card mb-4 rounded-lg m-2\" style=\"width: 18rem;\">
                                   <div class=\"card-body  p-0\">
-                                   <div class='backOrange rounded-top pt-2 p-1 text-center'>
-                                    <h5 class=\"card-title font-weight-bold mt-2\">$row[4]</h5>
+                                     <div class='backOrange rounded-top pt-2 p-1 text-center'>
+                                             <h5 class=\"card-title font-weight-bold mt-2\">$row[4]</h5>
                                     </div>
                                     <div class='p-2 m-1 text-center'>
-                                    <h5 class=\"card-title text-center m-2\">$row[0]</h5>
-                                    <hr>
-                                    <p class=\"card-text font-weight-light m-2\">$row[3]</p>
-                                  </div>
+                                        <h5 class=\"card-title text-center m-2\">$row[0]</h5>
+                                        <hr>
+                                        <p class=\"card-text font-weight-light m-2\">$row[3]</p>
+                                     </div>
                                   </div>
                                  </div>
                                  
@@ -244,11 +247,11 @@ include('navbar.php');
 
                         }
                     }
-            }
+                }
 
-            //    ?>
+                //    ?>
 
-        </div>
+            </div>
         </div>
 
 
@@ -350,12 +353,12 @@ include 'footer.php';
 			return;
 		} else {
 			let xmlhttp = new XMLHttpRequest();
-			xmlhttp.onreadystatechange = function() {
+			xmlhttp.onreadystatechange = function () {
 				if (this.readyState === 4 && this.status === 200) {
 					document.getElementById("filiere").innerHTML += this.responseText;
 				}
 			};
-			xmlhttp.open("GET","getfillier.php?q="+str,true);
+			xmlhttp.open("GET", "getfillier.php?q=" + str, true);
 			xmlhttp.send();
 		}
 	}
@@ -366,15 +369,16 @@ include 'footer.php';
 			return;
 		} else {
 			let xmlhttp = new XMLHttpRequest();
-			xmlhttp.onreadystatechange = function() {
+			xmlhttp.onreadystatechange = function () {
 				if (this.readyState === 4 && this.status === 200) {
 					document.getElementById("matiere").innerHTML = this.responseText;
 				}
 			};
-			xmlhttp.open("GET","getmatiere.php?c="+str,true);
+			xmlhttp.open("GET", "getmatiere.php?c=" + str, true);
 			xmlhttp.send();
 		}
 	}
+
 	function getMatiere(str) {
 		document.getElementById('selMatiere').value = str;
 
