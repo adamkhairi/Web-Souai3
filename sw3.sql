@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 27, 2020 at 01:38 AM
+-- Generation Time: May 28, 2020 at 02:48 AM
 -- Server version: 8.0.18
 -- PHP Version: 7.3.11
 
@@ -33,9 +33,15 @@ CREATE TABLE `benevole` (
   `nombenevole` varchar(255) DEFAULT NULL,
   `prenombenevole` varchar(255) DEFAULT NULL,
   `mailbenevole` text,
-  `passwordbenevole` text,
-  `idmatiere` int(11) DEFAULT NULL
+  `passwordbenevole` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `benevole`
+--
+
+INSERT INTO `benevole` (`idbenevole`, `nombenevole`, `prenombenevole`, `mailbenevole`, `passwordbenevole`) VALUES
+(4, 'b', 'd', 'b@b.b', 'b');
 
 -- --------------------------------------------------------
 
@@ -231,6 +237,16 @@ CREATE TABLE `demande` (
   `reponce` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Dumping data for table `demande`
+--
+
+INSERT INTO `demande` (`iddemande`, `description`, `idetudiantc`, `cours`, `reponce`) VALUES
+(90, 'aaaaaaaaa', 21, 3, 0),
+(91, 'xwxwxxqdqdqs sdfsdfxwxwxxqdqdqs sdfsdfxwxwxxqdqdqs sdfsdfxwxwxxqdqdqs sdfsdfxwxwxxqdqdqs sdfsdfxwxwxxqdqdqs sdfsdfxwxwxxqdqdqs sdfsdfxwxwxxqdqdqs sdfsdf', 21, 22, 0),
+(92, 'wwwwww\r\nwwwwww', 21, 23, 0),
+(93, 'sdssd', 21, 34, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -246,6 +262,15 @@ CREATE TABLE `etudiant` (
   `mailetudiant` text,
   `passwordetudiant` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `etudiant`
+--
+
+INSERT INTO `etudiant` (`idetudiant`, `nometudiant`, `prenometudiant`, `niveauscolaire`, `filiere`, `mailetudiant`, `passwordetudiant`) VALUES
+(19, 'a', 'b', 2, 6, 'a@a.a', 'ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb'),
+(20, 'e', 'e', 2, 4, 'e@e.e', '3f79bb7b435b05321651daefd374cdc681dc06faa65e374e38337b88ca046dea'),
+(21, 'z', 'e', 1, 1, 'z@z.z', '594e519ae499312b29433b7dd8a97ff068defcba9755b6d5d00e84c524d67b06');
 
 -- --------------------------------------------------------
 
@@ -386,8 +411,7 @@ CREATE TABLE `theevanets` (
 -- Indexes for table `benevole`
 --
 ALTER TABLE `benevole`
-  ADD PRIMARY KEY (`idbenevole`),
-  ADD KEY `idmatiere` (`idmatiere`);
+  ADD PRIMARY KEY (`idbenevole`);
 
 --
 -- Indexes for table `cours`
@@ -409,7 +433,8 @@ ALTER TABLE `demande`
 --
 ALTER TABLE `etudiant`
   ADD PRIMARY KEY (`idetudiant`),
-  ADD KEY `filiere` (`filiere`);
+  ADD KEY `filiere` (`filiere`),
+  ADD KEY `niveau` (`niveauscolaire`);
 
 --
 -- Indexes for table `filiere`
@@ -453,7 +478,7 @@ ALTER TABLE `theevanets`
 -- AUTO_INCREMENT for table `benevole`
 --
 ALTER TABLE `benevole`
-  MODIFY `idbenevole` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idbenevole` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `cours`
@@ -465,13 +490,13 @@ ALTER TABLE `cours`
 -- AUTO_INCREMENT for table `demande`
 --
 ALTER TABLE `demande`
-  MODIFY `iddemande` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
+  MODIFY `iddemande` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
 -- AUTO_INCREMENT for table `etudiant`
 --
 ALTER TABLE `etudiant`
-  MODIFY `idetudiant` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `idetudiant` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `filiere`
@@ -502,12 +527,6 @@ ALTER TABLE `theevanets`
 --
 
 --
--- Constraints for table `benevole`
---
-ALTER TABLE `benevole`
-  ADD CONSTRAINT `idmatiere` FOREIGN KEY (`idmatiere`) REFERENCES `matiere` (`idmatiere`);
-
---
 -- Constraints for table `cours`
 --
 ALTER TABLE `cours`
@@ -524,7 +543,8 @@ ALTER TABLE `demande`
 -- Constraints for table `etudiant`
 --
 ALTER TABLE `etudiant`
-  ADD CONSTRAINT `filiere` FOREIGN KEY (`filiere`) REFERENCES `filiere` (`idfiliere`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `filiere` FOREIGN KEY (`filiere`) REFERENCES `filiere` (`idfiliere`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `niveau` FOREIGN KEY (`niveauscolaire`) REFERENCES `niveau` (`idniveau`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Constraints for table `filiere`
