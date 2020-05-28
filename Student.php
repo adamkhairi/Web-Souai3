@@ -130,12 +130,12 @@ include "navbar.php";
         <div class="Post_problem">
             <form action="addQst.php" method="post">
                 <h2 class="historique d-inline-block">Poster un problème:</h2>
-                <div class="post_pro">
+                <div class="post_pro d-flex align-items-center">
                     <div class="find_help">
 
                         <div>
                             <!-- Matiers -->
-                            <select class="custom-select" name="matiere" id="matiere" onchange="showMatiere(this.value)">
+                            <select class="custom-select" name="matiere" id="matiere" onchange="showCours(this.value)">
                                 <option value="" SELECTED disabled>Matière</option>
                                 <?php
                                 $sql = "SELECT * FROM `matiere` WHERE idfiliere = " .$_SESSION['banche'] . "";
@@ -148,7 +148,6 @@ include "navbar.php";
 
                                 }
                                 ?>
-
 
                             </select>
                             <input type="text" hidden value="" name="mt" id="matieres">
@@ -193,8 +192,8 @@ include "navbar.php";
                         array_push($demandes, $row[1]);
 
 ////    echo ($row[3]);  // cours
-                        $requet = "SELECT * FROM cours where
-                    idcours = '" . $row[3] . "'";
+                        $requet = "SELECT c.idcours, c.nomcours , m.nommatiere FROM cours c 
+            INNER JOIN matiere m on c.idmatiere = m.idmatiere where idcours =  '" . $row[3] . "'";
 
                         $results = mysqli_query($conn, $requet);
                         $row1 = mysqli_fetch_array($results);
@@ -205,11 +204,13 @@ include "navbar.php";
                            <div class=\"card-body  p-0\">
                            <div class='backOrange rounded-top pt-2 p-1 text-center'>
                            
-                            <h6 class=\"card-title mt-2\">$row1[1]</h6>
+                            <h6 class=\"card-title font-weight-bold mt-2\">$row1[2]</h6>
+                            
                             </div>
-                            <div class='p-2 m-1'>
-                            <h6 class=\"card-subtitle text-center m-2 text-muted\"> $lname  $fname</h6>
-                            <p class=\"card-text m-2\">$row[1]</p>
+                            <div class='p-2 m-1 text-center'>
+                            <h5 class=\"card-title mt-2\">$row1[1]</h5>
+                           <hr>
+                            <p class=\"card-text  m-2\">$row[1]</p>
                            </div>  
                           </div>
                         </div>
@@ -233,7 +234,7 @@ include 'footer.php';
 <script src="src/js/general.js"></script>
 <script src="src/js/student.js"></script>
 <script>
-	function showMatiere(str) {
+	function showCours(str) {
 		if (str == "") {
 			document.getElementById("cours").innerHTML = "";
 			return;
@@ -249,3 +250,4 @@ include 'footer.php';
 		}
 	}
 </script>
+<!--/* <h6 class=\"card-subtitle bg-light text-left mb-4 text-muted\"> $lname  $fname</h6> */-->

@@ -128,7 +128,8 @@ include("navbar.php");
                             <input type="password" name="your_pass" id="your_pass" placeholder="Mot de passe"/>
                         </div>
 
-                        <input type="text" name="userType" hidden id="userType" value="">
+                            <input type="text" name="userType" hidden id="userType" value="">
+
                         <div class="form-group form-button">
                             <input type="submit" name="signin" id="signin" class="form-submit" value="Connexion"/>
                         </div>
@@ -260,7 +261,6 @@ include("navbar.php");
 <!--Footer-->
 <?php
 include "footer.php" ?>
-<script src="src/js/collectInfo.js"></script>
 
 <script>
 	// Popups register
@@ -284,7 +284,6 @@ include "footer.php" ?>
 		// registerPop.classList.add('hide');
 	});
 	let exit2 = document.querySelector('#exit2');
-	// for (let exitKey in exit) {
 
 	exit2.addEventListener('click', function () {
 		teacher.classList.add('hide');
@@ -307,7 +306,7 @@ include "footer.php" ?>
 			let xmlhttp = new XMLHttpRequest();
 			xmlhttp.onreadystatechange = function() {
 				if (this.readyState === 4 && this.status === 200) {
-					document.getElementById("filiere").innerHTML = this.responseText;
+					document.getElementById("filiere").innerHTML += this.responseText;
 				}
 			};
 			xmlhttp.open("GET","getfillier.php?q="+str,true);
@@ -315,3 +314,5 @@ include "footer.php" ?>
 		}
 	}
 </script>
+<script src="src/js/collectInfo.js"></script>
+

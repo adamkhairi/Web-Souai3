@@ -118,32 +118,53 @@ include('navbar.php');
 
                 <form action="" method="post" class="w-100">
                     <div class="d-flex justify-content-between aline-items-baseline">
-                        <div>
+                        <div class="form-group">
+                            <div class="input-group mb-3">
+                                <select class="custom-select" name="nScolaire" id="nScolaire" onchange="showfillier(this.value)">
+                                    <option selected>Niveau Scolaire</option>
 
-                            <select class="custom-select mt-1" id="inputGroupSelect01" name="sel">
-                                <option selected>Matières</option>
-                                <option value="1">Français</option>
-                                <option value="2">Physique</option>
-                                <option value="3">Maths</option>
-                                <option value="4">Philosophie</option>
-                            </select>
-                        </div>
-                        <div>
+                                    <?php
+                                    $sql = "SELECT * FROM `niveau`";
+                                    $send = mysqli_query($conn, $sql);
+                                    $rows = mysqli_fetch_all($send, MYSQLI_ASSOC);
+                                    foreach ($rows as $row ) {
+
+                                        echo '<option value=' . $row['idniveau'] . '> ' . $row['niveau'] . '</option>';
+
+                                    }
+                                    ?>
+                                </select>
+
+
+
+                                <select class="custom-select ml-2" name="filier" id="filiere" onchange="showMatiere(this.value)">
+                                    <option value="" selected disabled> Choisir une filiere</option>
+                                </select>
+
+                                <select class="custom-select ml-2" name="matiere" id="matiere" onchange="getMatiere(this.value)">
+                                    <option value="" SELECTED disabled >Matières</option>
+                                </select>
+                                <input type="text" hidden value="" name="selMatiere" id="selMatiere">
+                            </div>
+
+                        <div class="text-center">
 
                             <button type="submit" name="submit" id="" class="btn backRed btn-lg">Choisir</button>
                         </div>
+                        </div>
                     </div>
                 </form>
+                <hr>
 
             </div>
-
             <div class="d-flex flex-wrap justify-content-around m-2">
             <?php
 
 
             if (isset($_POST['submit'])) {
-                $matiereT = $_POST['sel'];
-
+                $matiereT = $_POST['selMatiere'];
+//print_r($matiereT);
+//die();
                 $req = "SELECT c.nomcours, e.prenometudiant, e.nometudiant, d.description,  m.nommatiere FROM demande d 
     INNER JOIN etudiant e ON d.idetudiantc = e.idetudiant INNER JOIN cours c ON c.idcours = d.cours 
     INNER JOIN matiere m ON m.idmatiere = c.idmatiere WHERE m.idmatiere = '" . $matiereT . "' ";
@@ -169,6 +190,10 @@ include('navbar.php');
                            <div class='backOrange rounded-top pt-2 p-1 text-center'>
                             <h5 class=\"card-title mt-2\">$row[0]</h5>
                             </div>
+                            
+                            <div class='p-2 m-1 text-center'>
+                            <h5 class=\"card - title mt - 2\">$row[4]</h5>
+
                             <h6 class=\"card-subtitle text-center m-2 text-muted\"> $row[1]  $row[2]</h6>
                             <p class=\"card-text m-2\">$row[3]</p>
                           </div>
@@ -205,10 +230,13 @@ include('navbar.php');
                                 <div class=\"card  card mb-4 rounded-lg m-2\" style=\"width: 18rem;\">
                                   <div class=\"card-body  p-0\">
                                    <div class='backOrange rounded-top pt-2 p-1 text-center'>
-                                    <h5 class=\"card-title mt-2\">$row[0]</h5>
+                                    <h5 class=\"card-title font-weight-bold mt-2\">$row[4]</h5>
                                     </div>
-                                    <h6 class=\"card-subtitle text-center m-2 text-muted\"> $row[1]  $row[2]</h6>
-                                    <p class=\"card-text m-2\">$row[3]</p>
+                                    <div class='p-2 m-1 text-center'>
+                                    <h5 class=\"card-title text-center m-2\">$row[0]</h5>
+                                    <hr>
+                                    <p class=\"card-text font-weight-light m-2\">$row[3]</p>
+                                  </div>
                                   </div>
                                  </div>
                                  
@@ -315,7 +343,43 @@ include 'footer.php';
 <script src="src/js/script.js"></script>
 <script src="src/js/student.js"></script>
 
+<script>
+	function showfillier(str) {
+		if (str == "") {
+			document.getElementById("filier").innerHTML = "";
+			return;
+		} else {
+			let xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function() {
+				if (this.readyState === 4 && this.status === 200) {
+					document.getElementById("filiere").innerHTML += this.responseText;
+				}
+			};
+			xmlhttp.open("GET","getfillier.php?q="+str,true);
+			xmlhttp.send();
+		}
+	}
 
+	function showMatiere(str) {
+		if (str == "") {
+			document.getElementById("matiere").innerHTML = "";
+			return;
+		} else {
+			let xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function() {
+				if (this.readyState === 4 && this.status === 200) {
+					document.getElementById("matiere").innerHTML = this.responseText;
+				}
+			};
+			xmlhttp.open("GET","getmatiere.php?c="+str,true);
+			xmlhttp.send();
+		}
+	}
+	function getMatiere(str) {
+		document.getElementById('selMatiere').value = str;
+
+	}
+</script>
 
 
 
