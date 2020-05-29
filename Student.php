@@ -65,7 +65,8 @@ include "navbar.php";
         <?php
         $idetudiant = $_SESSION['userid'];
         $sql = "SELECT d.idetudiantc, d.iddemande ,d.cours, e.eventID , b.nombenevole ,b.prenombenevole ,e.hours ,e.theDate, c.nomcours FROM demande d INNER JOIN theevanets e ON d.cours = e.coursID INNER JOIN 
-                    benevole b ON e.ProfID = b.idbenevole INNER JOIN cours c ON c.idcours = e.coursID WHERE d.idetudiantc = " . $idetudiant . " ;";
+                    benevole b ON e.ProfID = b.idbenevole INNER JOIN cours c ON c.idcours = e.coursID WHERE d.idetudiantc = " . $idetudiant . " AND e.delay > CURRENT_DATE
+  ;";
         $exec_requete = mysqli_query($conn, $sql);
         $reponse = mysqli_fetch_array($exec_requete);
         $domende = array();
@@ -135,14 +136,15 @@ include "navbar.php";
 
                         <div>
                             <!-- Matiers -->
-                            <select class="custom-select" name="matiere" id="matiere" onchange="showCours(this.value)">
+                            <select class="custom-select" name="matiere" id="matiere"
+                                    onchange="showCours(this.value)">
                                 <option value="" SELECTED disabled>Matière</option>
                                 <?php
-                                $sql = "SELECT * FROM `matiere` WHERE idfiliere = " .$_SESSION['banche'] . "";
+                                $sql = "SELECT * FROM `matiere` WHERE idfiliere = " . $_SESSION['banche'] . "";
                                 $send = mysqli_query($conn, $sql);
                                 $rows = mysqli_fetch_all($send, MYSQLI_ASSOC);
 
-                                foreach ($rows as $row ) {
+                                foreach ($rows as $row) {
 
                                     echo '<option value=' . $row['idmatiere'] . '> ' . $row['nommatiere'] . '</option>';
 
@@ -152,10 +154,10 @@ include "navbar.php";
                             </select>
                             <input type="text" hidden value="" name="mt" id="matieres">
 
-                        </div >
+                        </div>
                         <div>
                             <select class="hour2" name="cours" id="cours">
-                                <option value="" SELECTED disabled >Cours</option>
+                                <option value="" SELECTED disabled>Cours</option>
                             </select>
                         </div>
                     </div>
@@ -200,7 +202,7 @@ include "navbar.php";
 //                    $cours = [];
 
                         echo "
-                        <div class=\"card mb-4 rounded-lg m-2\" style=\"width: 18rem;\">
+                        <div class=\"card mb-4 rounded-lg position-relative m-2\" style=\"width: 18rem;\">
                            <div class=\"card-body  p-0\">
                            <div class='backOrange rounded-top pt-2 p-1 text-center'>
                            
@@ -212,8 +214,17 @@ include "navbar.php";
                            <hr>
                             <p class=\"card-text  m-2\">$row[1]</p>
                            </div>  
+                           
+                           
+                            <button class='btn deldemande' type='submit' onclick='removeFrom(" . $row['iddemande'] . ")'>
+                                 <input type='text' hidden value='" . $row['iddemande'] . "' id='remove_" . $row['iddemande'] . "'>
+                                      <i class=\"fas fa-trash-alt\"></i>
+                             </button>
+                             
+
                           </div>
                         </div>
+                       
                          ";
                     }
                 } else {
@@ -240,14 +251,28 @@ include 'footer.php';
 			return;
 		} else {
 			let xmlhttp = new XMLHttpRequest();
-			xmlhttp.onreadystatechange = function() {
+			xmlhttp.onreadystatechange = function () {
 				if (this.readyState === 4 && this.status === 200) {
 					document.getElementById("cours").innerHTML = this.responseText;
 				}
 			};
-			xmlhttp.open("GET","getcours.php?c="+str,true);
+			xmlhttp.open("GET", "getcours.php?c=" + str, true);
 			xmlhttp.send();
 		}
+	}
+
+	function removeFrom(val) {
+		let str;
+		let xmlhttp = new XMLHttpRequest();
+
+		str = document.getElementById("remove_" + val).value;
+		xmlhttp.open("GET", "removeFrom.php?e=" + str, true);
+		xmlhttp.send();
+		setTimeout(reloadpage, 1000)
+	}
+
+	function reloadpage() {
+		location.reload();
 	}
 </script>
 <!--/* <h6 class=\"card-subtitle bg-light text-left mb-4 text-muted\"> $lname  $fname</h6> */-->

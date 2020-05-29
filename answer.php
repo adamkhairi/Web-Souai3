@@ -24,8 +24,9 @@ session_start();
                 }elseif($reponse['counters'] = 5){
                     
                     echo"<script>alert('we will send the link in your email')</script>";
-                    $delete_demonde = "DELETE FROM `theevanets` WHERE eventID = " . $Array2[$i]. ";";
-                    $doo = mysqli_query($conn , $delete_demonde);
+
+//                    $delete_demonde = "DELETE FROM `theevanets` WHERE eventID = " . $Array2[$i]. ";";
+//                    $doo = mysqli_query($conn , $delete_demonde);
                 }
 
             }

@@ -9,7 +9,7 @@
 
         </div>
         <div class="footer__serv">
-        <h5 class="text-light text-center ">All rights reserved <br> Copyright 2020</h5>
+            <h5 class="text-light text-center ">All rights reserved <br> Copyright 2020</h5>
         </div>
         <div class="footer__social">
             <a href="#">
