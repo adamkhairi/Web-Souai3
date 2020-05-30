@@ -8,11 +8,11 @@ include("navbar.php");
 ?>
 
 <!--header-->
-<div class="registerPopup popup hide">
+<div id="insc" class="registerPopup popup hide">
     <!-- Sign up form -->
     <section class="signup">
         <div class="container">
-            <div id="exit">
+            <div id="exit" onclick="hidelist()">
                 <i class="fas fa-times"></i>
             </div>
             <div class="signup-content">
@@ -267,35 +267,37 @@ include "footer.php" ?>
 	const registerBtn = document.querySelector('#register');
 	const registerPop = document.querySelector('.registerPopup');
 	registerBtn.addEventListener('click', () => {
-		registerPop.classList.remove('hide');
+		$('.registerPopup').toggle('hide');
 	})
+	const loginBtn = document.querySelector('#login');
+	const loginPopup = document.querySelector('.popup');
+
+	let teacher = document.getElementById("teacher");
+	let prof = document.getElementById("prof");
+
 
 	let student;
-	let exit = document.querySelector('#exit');
-
-	exit.addEventListener('click', function () {
-		loginPopup.classList.add('hide');
-		registerPop.classList.add('hide');
-	});
+	// let exit = document.querySelector('#exit');
+    //
+	// exit.addEventListener('click', function () {
+	// 	loginPopup.classList.add('hide');
+	// 	registerPop.classList.add('hide');
+	// });
 	student = document.getElementById("student");
 	let exit1 = document.querySelector('#exit1');
 	exit1.addEventListener('click', function () {
 		student.classList.add('hide');
 		// registerPop.classList.add('hide');
 	});
-	let exit2 = document.querySelector('#exit2');
-
-	exit2.addEventListener('click', function () {
-		teacher.classList.add('hide');
-		// registerPop.classList.add('hide');
-	});
+	// let exit2 = document.querySelector('#exit2');
+    //
+	// exit2.addEventListener('click', function () {
+	// 	teacher.classList.add('hide');
+	// 	// registerPop.classList.add('hide');
+	// });
 
 	// Popups LOGIN
-	const loginBtn = document.querySelector('#login');
-	const loginPopup = document.querySelector('.popup');
 
-	let teacher = document.getElementById("teacher");
-	let prof = document.getElementById("prof");
 // ********************
 
 	function showfillier(str) {
@@ -313,6 +315,9 @@ include "footer.php" ?>
 			xmlhttp.send();
 		}
 	}
+	function hidelist() {
+		$('#insc').toggle('hide');
+	};
 </script>
 <script src="src/js/collectInfo.js"></script>
 

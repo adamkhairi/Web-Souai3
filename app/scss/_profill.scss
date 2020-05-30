@@ -258,6 +258,7 @@ button:focus, input:focus, textarea:focus, select:focus {
   height: 100%;
   position: fixed;
   top: 0;
+  left: 0;
   background-color: $colorB;
   z-index: 1111;
   display: flex;
@@ -922,3 +923,7 @@ input[type="radio"]:checked:after {
   bottom: 0 !important;
   right: .5em !important;
 }
+//input{
+//  display: block !important;
+//}
+

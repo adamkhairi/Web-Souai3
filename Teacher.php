@@ -98,17 +98,13 @@ include('navbar.php');
                     </div>
                     <hr class="backRed">';
                     };
-
                 } else {
                     echo "<h5 class='text-danger text-center font-weight-bold mt-5'>Aucune demande</h5>";
                 };
             };
             ?>
-
-
         </div>
     </div>
-
     <div class="containers">
         <h4 class="historique">Évènements :</h4>
         <div class="d-flex justify-content-around flex-wrap align-items-center">
@@ -122,6 +118,7 @@ include('navbar.php');
 
                 foreach ($Arry as $Arr) {
 //print_r($Arr['theDate']);
+                    $l = 0;
                     //***** Change Date Format and Language *****//
                     $newDate = dateToFrench($Arr['theDate'], "l , d , M , Y");
 
@@ -131,33 +128,92 @@ include('navbar.php');
                     <h4 class=\"card-title font-weight-bold mt-2 \">" . $Arr['nomcours'] . "</h4>
                 </div>
                 <div class=\"card-body text-left\">
-                
                     <p class=\"card-text text-wrap\">Description sur l'évènement : <br>" . $Arr['message'] . "</p>
                     <hr>
                     <p class=\"card-text\">Le " . $newDate . ' à ' . $Arr['hours'] . "</p>
-                    
                     <hr>
                     <p class=\"card-text \">Les participants : <span class='backGreen rounded-circle p-2 pl-3 pr-3 ml-2'>" . $Arr['num'] . "</span> </p>
                     <hr>
-                
+                    
                     <button class='btn deldemande'' type='submit' onclick='removeFrom(" . $Arr['eventID'] . ")'>
                     <input type='text' hidden value='" . $Arr['eventID'] . "' id='remove_" . $Arr['eventID'] . "'>
                         <i class=\"fas fa-trash-alt\"></i>
                     </button>
                 </div>
+              <input  onclick='hidelist(" . $Arr['eventID'] . ")' type='button'  class='btn w-75 text-left' value='Afficher la list'/>
               
+
+          <div id=\"eventlist\" class=\"popup hide toggll" . $Arr['eventID'] . " \">
+            <section class=\"sign-in p-2\">
+                <div class=\"container\">
+                    <div id=\"exit\" onclick='hidelist(" . $Arr['eventID'] . ")'>
+                        <i class=\"fas fa-times\"></i>
+                    </div>
+                    <form action=\"sendemail.php\" method=\"post\">
+                        <div class=\"table-responsive\">
+                            <table class=\"table\">
+                                <thead class=\" thead-dark\">
+                                <tr class=''>
+                                    <th scope=\"col\">Select</th>
+                                    <th scope=\"col\">First</th>
+                                    <th scope=\"col\">Last</th>
+                                    <th scope=\"col\">Handle</th>
+                                </tr>
+                                </thead>
+                                <tbody>";
+
+                    $sql = "SELECT r.idetudiant,e.nometudiant,e.prenometudiant, e.mailetudiant FROM reponce r INNER JOIN etudiant e on r.idetudiant = e.idetudiant WHERE r.idevent =
+" . $Arr['eventID'] . " ";
+                    $req = mysqli_query($conn, $sql);
+                    $result = mysqli_fetch_all($req);
+                    //                    print_r($result);
+                    //                    die();
+                    foreach ($result as $row) {
+                        echo "
+                     
+                            <tr>
+                              <th scope=\"row\">
+                                <div class=\"custom-control custom-checkbox mr-sm-2\">
+                                <input type=\"checkbox\" value='" . $row['3'] . "' class=\"custom-control-input\" id=\"customControlAutosizing\">
+                                <label class=\"custom-control-label\"  for=\"customControlAutosizing\">Choisir</label>
+                                </div>
+                              </th>
+                              <td>" . $row['2'] . "</td>
+                              <td>" . $row['1'] . "</td>
+                              <td>" . $row['3'] . "</td>
+                            </tr>
+                            
+                          
+                    ";
+                    };
+
+                    echo "
+                            </tbody>
+                            </table>
+                            <div class=\"text-right\">
+                                <button type=\"submit\" class=\"btn backOrange m-1 rounded-pill\">Envoyer !</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+
+
+
             </div>
             
         ";
 //                   print_r( $Arr['eventID']);
                 }
             };
-
+            $l++;
 
             ?>
-
         </div>
     </div>
+
+
     <div class="containers">
         <h2 class="historique">Historique :</h2>
         <div class="d-flex flex-wrap flex-column align-items-center justify-content-center">
@@ -312,8 +368,6 @@ include('navbar.php');
     </div>
 
 
-
-
     <div style="display :none;" id="pop-up-add_events" class="pop-up-add_events">
         <div class="pop-up-add_event">
 
@@ -372,17 +426,17 @@ include('navbar.php');
                         <div><input class="thedate" type="time" id="appt" name="hours"></div>
                     </div>
                 </div>
-                    <div class="form-group Date" style="max-width: 60%">
-                       le dernier délai de participation
-                        <input class="thedate" type="date" name="lastdate" id="lastdate">
-                    </div>
+                <div class="form-group Date" style="max-width: 60%">
+                    le dernier délai de participation
+                    <input class="thedate" type="date" name="lastdate" id="lastdate">
+                </div>
                 <div>lien de visioconférence
 
                     <input class="lien_for_the_meeting" type="text" name="lien" placeholder="https//.com">
                 </div>
                 <div>
                     <textarea class="message" name="message" id="message" name="message" cols="30" rows="10"
-                      placeholder="Votre message"></textarea>
+                              placeholder="Votre message"></textarea>
                 </div>
                 <button type="submit">Ajouter l'événement</button>
             </form>
@@ -505,6 +559,14 @@ include 'footer.php';
 	}
 
 
+	let exit = document.querySelector('#exit');
+	let loginPopup = document.querySelector('.popup');
+
+	function hidelist(x) {
+		// for (let i = 0; i < 20; i++) {
+			$('.toggll' + x).toggle('hide');
+		// }
+	};
 </script>
 
 
