@@ -1,9 +1,9 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
 
-if (php_sapi_name() != 'cli') {
-    throw new Exception('This application must be run on the command line.');
-}
+//if (php_sapi_name() != 'cli') {
+//    throw new Exception('This application must be run on the command line.');
+//}
 
 /**
  * Returns an authorized API client.
@@ -99,15 +99,15 @@ if (empty($events)) {
 
 $event = new Google_Service_Calendar_Event(array(
     'summary' => 'GooGlE API',
-    'location' => '800 Howard St., San Francisco, CA 94103',
+    'location' => 'At Home',
     'description' => 'A chance to hear more about Google\'s developer products.',
     'start' => array(
-        'dateTime' => '2020-06-01T09:00:00-07:00',
+        'dateTime' => '2020-05-31T09:00:00-07:00',
         'timeZone' => 'America/Los_Angeles',
 
     ),
     'end' => array(
-        'dateTime' => '2020-06-01T09:00:00-07:00',
+        'dateTime' => '2020-05-31T09:00:00-07:00',
         'timeZone' => 'America/Los_Angeles',
     ),
     'recurrence' => array(
@@ -118,7 +118,7 @@ $event = new Google_Service_Calendar_Event(array(
     ),
     'attendees' => array(
          array('email' => 'khairiadam2@gmail.com'),
-       // array('email' => 'sbrin@example.com'),
+        array('email' => 'abdelkbirkhouilid32@gmail.com'),
     ),
     'reminders' => array(
         'useDefault' => FALSE,

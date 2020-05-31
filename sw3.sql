@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: May 28, 2020 at 02:48 AM
--- Server version: 8.0.18
--- PHP Version: 7.3.11
+-- Host: 127.0.0.1
+-- Generation Time: May 31, 2020 at 10:47 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -30,11 +29,11 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `benevole` (
   `idbenevole` int(11) NOT NULL,
-  `nombenevole` varchar(255) DEFAULT NULL,
-  `prenombenevole` varchar(255) DEFAULT NULL,
-  `mailbenevole` text,
-  `passwordbenevole` text
-);
+  `nombenevole` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `prenombenevole` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `mailbenevole` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `passwordbenevole` text COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `benevole`
@@ -51,9 +50,9 @@ INSERT INTO `benevole` (`idbenevole`, `nombenevole`, `prenombenevole`, `mailbene
 
 CREATE TABLE `cours` (
   `idcours` int(11) NOT NULL,
-  `nomcours` varchar(255) DEFAULT NULL,
+  `nomcours` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `idmatiere` int(11) DEFAULT NULL
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `cours`
@@ -231,11 +230,11 @@ INSERT INTO `cours` (`idcours`, `nomcours`, `idmatiere`) VALUES
 
 CREATE TABLE `demande` (
   `iddemande` int(11) NOT NULL,
-  `description` text,
+  `description` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `idetudiantc` int(11) DEFAULT NULL,
   `cours` int(11) NOT NULL,
   `reponce` int(11) NOT NULL
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `demande`
@@ -245,7 +244,14 @@ INSERT INTO `demande` (`iddemande`, `description`, `idetudiantc`, `cours`, `repo
 (90, 'aaaaaaaaa', 21, 3, 0),
 (91, 'xwxwxxqdqdqs sdfsdfxwxwxxqdqdqs sdfsdfxwxwxxqdqdqs sdfsdfxwxwxxqdqdqs sdfsdfxwxwxxqdqdqs sdfsdfxwxwxxqdqdqs sdfsdfxwxwxxqdqdqs sdfsdfxwxwxxqdqdqs sdfsdf', 21, 22, 0),
 (92, 'wwwwww\r\nwwwwww', 21, 23, 0),
-(93, 'sdssd', 21, 34, 0);
+(93, 'sdssd', 21, 34, 0),
+(94, 'aaassssqx', 22, 3, 0),
+(95, '', 22, 22, 0),
+(97, 'vv', 22, 1, 0),
+(98, '  2  ', 22, 2, 0),
+(99, 'Aucune desciption !', 22, 35, 0),
+(100, 'Aucune desciption !', 21, 21, 0),
+(102, 'mm', 21, 58, 0);
 
 -- --------------------------------------------------------
 
@@ -255,13 +261,13 @@ INSERT INTO `demande` (`iddemande`, `description`, `idetudiantc`, `cours`, `repo
 
 CREATE TABLE `etudiant` (
   `idetudiant` int(11) NOT NULL,
-  `nometudiant` varchar(255) DEFAULT NULL,
-  `prenometudiant` varchar(255) DEFAULT NULL,
+  `nometudiant` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `prenometudiant` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `niveauscolaire` int(11) NOT NULL,
   `filiere` int(11) DEFAULT NULL,
-  `mailetudiant` text,
-  `passwordetudiant` text
-);
+  `mailetudiant` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `passwordetudiant` text COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `etudiant`
@@ -270,7 +276,8 @@ CREATE TABLE `etudiant` (
 INSERT INTO `etudiant` (`idetudiant`, `nometudiant`, `prenometudiant`, `niveauscolaire`, `filiere`, `mailetudiant`, `passwordetudiant`) VALUES
 (19, 'a', 'b', 2, 6, 'a@a.a', 'ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb'),
 (20, 'e', 'e', 2, 4, 'e@e.e', '3f79bb7b435b05321651daefd374cdc681dc06faa65e374e38337b88ca046dea'),
-(21, 'z', 'e', 1, 1, 'z@z.z', '594e519ae499312b29433b7dd8a97ff068defcba9755b6d5d00e84c524d67b06');
+(21, 'z', 'e', 1, 1, 'z@z.z', '594e519ae499312b29433b7dd8a97ff068defcba9755b6d5d00e84c524d67b06'),
+(22, 'y', 'x', 1, 1, 'x@x.x', '2d711642b726b04401627ca9fbac32f5c8530fb1903cc4db02258717921a4881');
 
 -- --------------------------------------------------------
 
@@ -280,9 +287,9 @@ INSERT INTO `etudiant` (`idetudiant`, `nometudiant`, `prenometudiant`, `niveausc
 
 CREATE TABLE `filiere` (
   `idfiliere` int(11) NOT NULL,
-  `namfiliere` varchar(255) DEFAULT NULL,
+  `namfiliere` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `idniveau` int(11) DEFAULT NULL
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `filiere`
@@ -307,9 +314,9 @@ INSERT INTO `filiere` (`idfiliere`, `namfiliere`, `idniveau`) VALUES
 
 CREATE TABLE `matiere` (
   `idmatiere` int(11) NOT NULL,
-  `nommatiere` varchar(255) DEFAULT NULL,
+  `nommatiere` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `idfiliere` int(11) DEFAULT NULL
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `matiere`
@@ -365,8 +372,8 @@ INSERT INTO `matiere` (`idmatiere`, `nommatiere`, `idfiliere`) VALUES
 
 CREATE TABLE `niveau` (
   `idniveau` int(11) NOT NULL,
-  `niveau` varchar(255) DEFAULT NULL
-);
+  `niveau` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `niveau`
@@ -397,11 +404,19 @@ CREATE TABLE `theevanets` (
   `eventID` int(11) NOT NULL,
   `coursID` int(11) NOT NULL,
   `ProfID` int(11) NOT NULL,
-  `message` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `lien` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `hours` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `theDate` date DEFAULT NULL
+  `message` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `lien` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `hours` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `theDate` date DEFAULT NULL,
+  `delay` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `theevanets`
+--
+
+INSERT INTO `theevanets` (`eventID`, `coursID`, `ProfID`, `message`, `lien`, `hours`, `theDate`, `delay`) VALUES
+(18, 58, 4, 'aaaaa', 'aaa', '22:10', '2020-06-06', '2020-06-05');
 
 --
 -- Indexes for dumped tables
@@ -490,13 +505,13 @@ ALTER TABLE `cours`
 -- AUTO_INCREMENT for table `demande`
 --
 ALTER TABLE `demande`
-  MODIFY `iddemande` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `iddemande` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
 
 --
 -- AUTO_INCREMENT for table `etudiant`
 --
 ALTER TABLE `etudiant`
-  MODIFY `idetudiant` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `idetudiant` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `filiere`
@@ -520,7 +535,7 @@ ALTER TABLE `niveau`
 -- AUTO_INCREMENT for table `theevanets`
 --
 ALTER TABLE `theevanets`
-  MODIFY `eventID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `eventID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Constraints for dumped tables
@@ -543,8 +558,8 @@ ALTER TABLE `demande`
 -- Constraints for table `etudiant`
 --
 ALTER TABLE `etudiant`
-  ADD CONSTRAINT `filiere` FOREIGN KEY (`filiere`) REFERENCES `filiere` (`idfiliere`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `niveau` FOREIGN KEY (`niveauscolaire`) REFERENCES `niveau` (`idniveau`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `filiere` FOREIGN KEY (`filiere`) REFERENCES `filiere` (`idfiliere`),
+  ADD CONSTRAINT `niveau` FOREIGN KEY (`niveauscolaire`) REFERENCES `niveau` (`idniveau`);
 
 --
 -- Constraints for table `filiere`

@@ -3,6 +3,10 @@ require("connexion.php");
 $pageTitle = "Etudiant Profil";
 //session_start();
 include "navbar.php";
+if (empty($_SESSION['mail'])) {
+    header('Location: index.php');
+}
+
 ?>
 <div class="vertical-nav pt-lg-5" id="sidebar">
     <div class="mb-4  menu-head text-center">
@@ -63,23 +67,26 @@ include "navbar.php";
 
     <div class="row  w-100 flex-nowrap justify-content-around m-auto  ccc">
         <?php
-        $idetudiant = $_SESSION['userid'];
-        $sql = "SELECT d.idetudiantc, d.iddemande ,d.cours, e.eventID , b.nombenevole ,b.prenombenevole ,e.hours ,e.theDate, c.nomcours FROM demande d INNER JOIN theevanets e ON d.cours = e.coursID INNER JOIN 
+        if (!empty($_SESSION['mail'])) {
+            $idetudiant = $_SESSION['userid'];
+            $sql = "SELECT d.idetudiantc, d.iddemande ,d.cours, e.eventID , b.nombenevole ,b.prenombenevole ,e.hours ,e.theDate, c.nomcours FROM demande d INNER JOIN theevanets e ON d.cours = e.coursID INNER JOIN 
                     benevole b ON e.ProfID = b.idbenevole INNER JOIN cours c ON c.idcours = e.coursID WHERE d.idetudiantc = " . $idetudiant . " AND e.delay > CURRENT_DATE
   ;";
-        $exec_requete = mysqli_query($conn, $sql);
-        $reponse = mysqli_fetch_array($exec_requete);
-        $domende = array();
-        $eventID = array();
-        if ($exec_requete = mysqli_query($conn, $sql)) {
-            while ($reponse = mysqli_fetch_array($exec_requete)) {
-                array_push($domende, $reponse['iddemande']);
-                array_push($eventID, $reponse['eventID']);
-                $namefomr = 'reponce_' . $reponse['iddemande'];
-                $name = 'getans_' . $reponse['iddemande'];
-                // print_r($name);
-                // die();
-                echo "
+            $exec_requete = mysqli_query($conn, $sql);
+
+            if (!empty($exec_requete)) {
+                $reponse = mysqli_fetch_array($exec_requete);
+                $domende = array();
+                $eventID = array();
+                if ($exec_requete = mysqli_query($conn, $sql)) {
+                    while ($reponse = mysqli_fetch_array($exec_requete)) {
+                        array_push($domende, $reponse['iddemande']);
+                        array_push($eventID, $reponse['eventID']);
+                        $namefomr = 'reponce_' . $reponse['iddemande'];
+                        $name = 'getans_' . $reponse['iddemande'];
+                        // print_r($name);
+                        // die();
+                        echo "
                 <form name='" . $namefomr . "' action=\"answer.php\" method='POST' class=\"width ml-3\">
                     <div class=\"modal-dialog width shdow\" role=\"document\">
                         <div class=\"modal-content\">
@@ -89,7 +96,6 @@ include "navbar.php";
                                     <span aria-hidden=\"true\">&times;</span>
                                 </button>
                             </div>
-                            
                             <div class=\"modal-body pl-4\">     
                                 <h5>Cour : " . $reponse['nomcours'] . "</h5>
                                 <h6>l'heure : " . $reponse['hours'] . "</h6>
@@ -121,10 +127,14 @@ include "navbar.php";
                     </div>
                 </form>
                     ";
+                    }
+                }
             }
+            $_SESSION['domende'] = $domende;
+            $_SESSION['event'] = $eventID;
+        } else {
+            echo "<h2> Aucune !</h2>";
         }
-        $_SESSION['domende'] = $domende;
-        $_SESSION['event'] = $eventID;
         ?>
     </div>
     <div class="">

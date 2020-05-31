@@ -1,9 +1,9 @@
 <?php
 require("connexion.php");
 session_start();
- $matiere = $_POST['matiere'];
+$matiere = $_POST['matiere'];
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if (isset($matiere)) {
     $cours = $_POST['selCours'];
     $date = $_POST['date'];
     $hours = $_POST['hours'];
@@ -17,7 +17,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!empty($lien) && !empty($hours) && !empty($date)) {
 
 
-        $sql = "INSERT INTO `theevanets`(`coursID`, `ProfID`, `message`, `lien`, `hours`, `theDate`, `delay`) VALUES ('" . $cours . "','" . $idProuf . "','" . $message . "','" . $lien . "','" . $hours . "','" . $date . "','". $delay ."') ";
+        $sql = "INSERT INTO `theevanets`(`coursID`, `ProfID`, `message`, `lien`, `hours`, `theDate`, `delay`) 
+VALUES ('" . $cours . "','" . $idProuf . "','" . $message . "','" . $lien . "','" . $hours . "','" . $date . "','" . $delay . "') ";
         $select = mysqli_query($conn, $sql);
 //    print_r($select);
 //    die();

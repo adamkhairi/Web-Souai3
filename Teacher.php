@@ -2,6 +2,9 @@
 include("connexion.php");
 $pageTitle = "Bénévole Profile";
 include('navbar.php');
+if (empty($_SESSION['mailb'])) {
+    header('Location: index.php');
+}
 
 //session_start();
 ?>
@@ -118,7 +121,6 @@ include('navbar.php');
 
                 foreach ($Arry as $Arr) {
 //print_r($Arr['theDate']);
-                    $l = 0;
                     //***** Change Date Format and Language *****//
                     $newDate = dateToFrench($Arr['theDate'], "l , d , M , Y");
 
@@ -207,7 +209,6 @@ include('navbar.php');
 //                   print_r( $Arr['eventID']);
                 }
             };
-            $l++;
 
             ?>
         </div>
