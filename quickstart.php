@@ -75,21 +75,18 @@ $optParams = array(
 $results = $service->events->listEvents($calendarId, $optParams);
 $events = $results->getItems();
 
-if (empty($events)) {
-    print "No upcoming events found.\n";
-} else {
-    print "Upcoming events:\n";
-    foreach ($events as $event) {
-        $start = $event->start->dateTime;
-        if (empty($start)) {
-            $start = $event->start->date;
-        }
-        printf("%s (%s)\n", $event->getSummary(), $start);
-    }
-}
-
-
-
+//if (empty($events)) {
+//    print "No upcoming events found.\n";
+//} else {
+//    print "Upcoming events:\n";
+//    foreach ($events as $event) {
+//        $start = $event->start->dateTime;
+//        if (empty($start)) {
+//            $start = $event->start->date;
+//        }
+//        printf("%s (%s)\n", $event->getSummary(), $start);
+//    }
+//}
 
 
 // Refer to the PHP quickstart on how to setup the environment:
@@ -98,13 +95,12 @@ if (empty($events)) {
 // credentials.
 
 $event = new Google_Service_Calendar_Event(array(
-    'summary' => 'GooGlE API',
+    'summary' => 'Franch Meeting !',
     'location' => 'At Home',
-    'description' => 'A chance to hear more about Google\'s developer products.',
+    'description' => 'See you There... !',
     'start' => array(
         'dateTime' => '2020-05-31T09:00:00-07:00',
         'timeZone' => 'America/Los_Angeles',
-
     ),
     'end' => array(
         'dateTime' => '2020-05-31T09:00:00-07:00',

@@ -317,29 +317,19 @@ if (empty($_SESSION['mailb'])) {
                     }
                 } else {
                     $req = "SELECT c.nomcours, e.prenometudiant, e.nometudiant, d.description,  m.nommatiere FROM demande d 
-                        INNER JOIN etudiant e ON d.idetudiantc = e.idetudiant INNER JOIN cours c ON c.idcours = d.cours 
-                        INNER JOIN matiere m ON m.idmatiere = c.idmatiere";
-
+                            INNER JOIN etudiant e ON d.idetudiantc = e.idetudiant INNER JOIN cours c ON c.idcours = d.cours 
+                            INNER JOIN matiere m ON m.idmatiere = c.idmatiere";
                     $reqt = mysqli_query($conn, $req);
                     $row = mysqli_fetch_array($reqt);
-
                     //TODO Wierd !!!
-
                     if ($reqt = mysqli_query($conn, $req)) {
-
                         //                    print_r($row);
                         //                    die();
-
                         if (!empty($_SESSION['mailb']) && $reqt) {
                             //                    $row = mysqli_fetch_array($reqt);
-
                             while ($row = mysqli_fetch_array($reqt)) {
                                 //                etudiant name
-
-
                                 //                    $cours = [];
-
-
                                 echo "
                                 <div class=\"card  card mb-4 rounded-lg m-2\" style=\"width: 18rem;\">
                                   <div class=\"card-body  p-0\">
@@ -353,19 +343,14 @@ if (empty($_SESSION['mailb'])) {
                                      </div>
                                   </div>
                                  </div>
-                                 
                                  ";
-
                             }
                         }
                     }
                 }
                 //    ?>
-
             </div>
         </div>
-
-
     </div>
 
 
@@ -430,10 +415,6 @@ if (empty($_SESSION['mailb'])) {
                 <div class="form-group Date" style="max-width: 60%">
                     le dernier délai de participation
                     <input class="thedate" type="date" name="lastdate" id="lastdate">
-                </div>
-                <div>lien de visioconférence
-
-                    <input class="lien_for_the_meeting" type="text" name="lien" placeholder="https//.com">
                 </div>
                 <div>
                     <textarea class="message" name="message" id="message" name="message" cols="30" rows="10"

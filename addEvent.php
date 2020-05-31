@@ -7,7 +7,7 @@ if (isset($matiere)) {
     $cours = $_POST['selCours'];
     $date = $_POST['date'];
     $hours = $_POST['hours'];
-    $lien = $_POST['lien'];
+//    $lien = $_POST['lien'];
     $message = $_POST['message'];
     $idProuf = $_SESSION['idProf'];
     $delay = $_POST['lastdate'];
@@ -17,8 +17,8 @@ if (isset($matiere)) {
     if (!empty($lien) && !empty($hours) && !empty($date)) {
 
 
-        $sql = "INSERT INTO `theevanets`(`coursID`, `ProfID`, `message`, `lien`, `hours`, `theDate`, `delay`) 
-VALUES ('" . $cours . "','" . $idProuf . "','" . $message . "','" . $lien . "','" . $hours . "','" . $date . "','" . $delay . "') ";
+        $sql = "INSERT INTO `theevanets`(`coursID`, `ProfID`, `message`, `hours`, `theDate`, `delay`) 
+VALUES ('" . $cours . "','" . $idProuf . "','" . $message . "','" . $hours . "','" . $date . "','" . $delay . "') ";
         $select = mysqli_query($conn, $sql);
 //    print_r($select);
 //    die();
