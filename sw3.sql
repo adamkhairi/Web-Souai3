@@ -34,7 +34,7 @@ CREATE TABLE `benevole` (
   `prenombenevole` varchar(255) DEFAULT NULL,
   `mailbenevole` text,
   `passwordbenevole` text
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Dumping data for table `benevole`
@@ -53,7 +53,7 @@ CREATE TABLE `cours` (
   `idcours` int(11) NOT NULL,
   `nomcours` varchar(255) DEFAULT NULL,
   `idmatiere` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Dumping data for table `cours`
@@ -235,7 +235,7 @@ CREATE TABLE `demande` (
   `idetudiantc` int(11) DEFAULT NULL,
   `cours` int(11) NOT NULL,
   `reponce` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Dumping data for table `demande`
@@ -261,7 +261,7 @@ CREATE TABLE `etudiant` (
   `filiere` int(11) DEFAULT NULL,
   `mailetudiant` text,
   `passwordetudiant` text
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Dumping data for table `etudiant`
@@ -282,7 +282,7 @@ CREATE TABLE `filiere` (
   `idfiliere` int(11) NOT NULL,
   `namfiliere` varchar(255) DEFAULT NULL,
   `idniveau` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Dumping data for table `filiere`
@@ -309,7 +309,7 @@ CREATE TABLE `matiere` (
   `idmatiere` int(11) NOT NULL,
   `nommatiere` varchar(255) DEFAULT NULL,
   `idfiliere` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Dumping data for table `matiere`
@@ -366,7 +366,7 @@ INSERT INTO `matiere` (`idmatiere`, `nommatiere`, `idfiliere`) VALUES
 CREATE TABLE `niveau` (
   `idniveau` int(11) NOT NULL,
   `niveau` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Dumping data for table `niveau`
