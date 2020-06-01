@@ -151,20 +151,21 @@ if (empty($_SESSION['mailb'])) {
                     <div id=\"exit\" onclick='hidelist(" . $Arr['eventID'] . ")'>
                         <i class=\"fas fa-times\"></i>
                     </div>
-                    <form action=\"sendemail.php\" method=\"post\">
+                    <form action=\"quickstart.php\" method=\"post\">
                         <div class=\"table-responsive\">
                             <table class=\"table\">
                                 <thead class=\" thead-dark\">
                                 <tr class=''>
-                                    <th scope=\"col\">Select</th>
-                                    <th scope=\"col\">First</th>
-                                    <th scope=\"col\">Last</th>
-                                    <th scope=\"col\">Handle</th>
+                                    <th scope=\"col\">Selectionner</th>
+                                    <th scope=\"col\">Prénom</th>
+                                    <th scope=\"col\">Nom</th>
+                                    <th scope=\"col\">Adresse mail</th>
                                 </tr>
                                 </thead>
                                 <tbody>";
 
-                    $sql = "SELECT r.idetudiant,e.nometudiant,e.prenometudiant, e.mailetudiant FROM reponce r INNER JOIN etudiant e on r.idetudiant = e.idetudiant WHERE r.idevent =
+                    $sql = "SELECT r.idetudiant,e.nometudiant,e.prenometudiant, e.mailetudiant ,r.idevent FROM reponce r 
+                            INNER JOIN etudiant e on r.idetudiant = e.idetudiant WHERE r.idevent =
 " . $Arr['eventID'] . " ";
                     $req = mysqli_query($conn, $sql);
                     $result = mysqli_fetch_all($req);
@@ -176,8 +177,9 @@ if (empty($_SESSION['mailb'])) {
                             <tr>
                               <th scope=\"row\">
                                 <div class=\"custom-control custom-checkbox mr-sm-2\">
-                                <input type=\"checkbox\" value='" . $row['3'] . "' class=\"custom-control-input\" id=\"customControlAutosizing\">
-                                <label class=\"custom-control-label\"  for=\"customControlAutosizing\">Choisir</label>
+                                <input type='text' hidden name='ids' value='". $row[4] ."'>
+                                <input type=\"checkbox\" value='" . $row['3'] . "' class=\"custom-control-input\" id=\"check".$row[0]."\" name='emails[]'>
+                                <label class=\"custom-control-label\"  for=\"check".$row[0]."\">Choisir</label>
                                 </div>
                               </th>
                               <td>" . $row['2'] . "</td>

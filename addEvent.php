@@ -14,9 +14,7 @@ if (isset($matiere)) {
 
 //    print_r($cours,$date,$hours,$lien,$message,$idProuf);
 //    die();
-    if (!empty($lien) && !empty($hours) && !empty($date)) {
-
-
+    if (!empty($hours && $date)) {
         $sql = "INSERT INTO `theevanets`(`coursID`, `ProfID`, `message`, `hours`, `theDate`, `delay`) 
 VALUES ('" . $cours . "','" . $idProuf . "','" . $message . "','" . $hours . "','" . $date . "','" . $delay . "') ";
         $select = mysqli_query($conn, $sql);

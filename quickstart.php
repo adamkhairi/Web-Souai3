@@ -1,4 +1,20 @@
 <?php
+require "connexion.php";
+
+
+$row = $_POST['ids'];
+$mails = $_POST['emails'];
+$sql = "SELECT e.message, e.theDate, e.hours, c.nomcours FROM theevanets e  INNER JOIN cours c ON e.coursID = c.idcours WHERE e.eventID = ". $row ."";
+$run = mysqli_query($conn, $sql);
+$arr = mysqli_fetch_assoc($run);
+//print_r($arr);
+
+
+
+/////////
+
+
+
 require __DIR__ . '/vendor/autoload.php';
 
 //if (php_sapi_name() != 'cli') {
@@ -37,6 +53,10 @@ function getClient()
             // Request authorization from the user.
             $authUrl = $client->createAuthUrl();
             printf("Open the following link in your browser:\n%s\n", $authUrl);
+//            header('location: '. $authUrl);
+//            echo "<script>
+//            window.open('".$authUrl."');
+//            </script>";
             print 'Enter verification code: ';
             $authCode = trim(fgets(STDIN));
 
@@ -94,27 +114,26 @@ $events = $results->getItems();
 // Change the scope to Google_Service_Calendar::CALENDAR and delete any stored
 // credentials.
 
+
+
+
 $event = new Google_Service_Calendar_Event(array(
-    'summary' => 'Franch Meeting !',
+    'summary' => $arr['nomcours'],
     'location' => 'At Home',
-    'description' => 'See you There... !',
+    'description' => $arr['message'],
     'start' => array(
-        'dateTime' => '2020-05-31T09:00:00-07:00',
-        'timeZone' => 'America/Los_Angeles',
+        'dateTime' => $arr['theDate'].'T'.$arr['hours'].':00',
+        'timeZone' => 'Africa/Casablanca',
     ),
     'end' => array(
-        'dateTime' => '2020-05-31T09:00:00-07:00',
-        'timeZone' => 'America/Los_Angeles',
+        'dateTime' => $arr['theDate'].'T'.$arr['hours'].':00',
+        'timeZone' => 'Africa/Casablanca',
     ),
     'recurrence' => array(
         'RRULE:FREQ=DAILY;COUNT=1'
     ),
     'conferenceProperties' => array(
         'allowedConferenceSolutionTypes' => 'eventHangout'
-    ),
-    'attendees' => array(
-         array('email' => 'khairiadam2@gmail.com'),
-        array('email' => 'abdelkbirkhouilid32@gmail.com'),
     ),
     'reminders' => array(
         'useDefault' => FALSE,
@@ -125,15 +144,16 @@ $event = new Google_Service_Calendar_Event(array(
     ),
 ));
 
+$PrepaireArray = [];
+foreach($mails as $mail){
+    $PrepaireArray[]['email'] = $mail;
+}
+$event['attendees'] = $PrepaireArray;
+
+
 $calendarId = 'primary';
 $event = $service->events->insert($calendarId, $event);
 printf('Event created: %s\n', $event->htmlLink);
-
-
-
-
-
-
 
 
 
