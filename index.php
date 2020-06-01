@@ -2,11 +2,7 @@
 //session_start();
 require("connexion.php");
 $pageTitle = "Bienvenu dans Sway3";
-
-include("navbar.php");
-
-?>
-
+include("navbar.php");?>
 <!--header-->
 <div id="insc" class="registerPopup popup hide">
     <!-- Sign up form -->
@@ -35,15 +31,11 @@ include("navbar.php");
                             <label for="email"><i class="zmdi zmdi-email"></i></label>
                             <input type="email" name="email" id="email" placeholder="Votre Email"/>
                         </div>
-
-
                         <div class="form-group">
                             <div class="input-group mb-3">
                                 <select class="custom-select" name="nScolaire" id="nScolaire" onchange="showfillier(this.value)">
                                     <option selected>Niveau Scolaire</option>
-
                                     <?php
-
                                     $sql = "SELECT * FROM `niveau`";
                                     $send = mysqli_query($conn, $sql);
 
@@ -57,20 +49,12 @@ include("navbar.php");
                                     ?>
                                 </select>
                             </div>
-
                             <div class="form-group" id="filiere">
                                 <select class="custom-select" name="filier" id="filier">
                                     <option value="" selected disabled> Choisir une filiere</option>
                                 </select>
                             </div>
                         </div>
-
-                        <!--                        <div class="form-group">-->
-                        <!--                            <label for="filier"><i class="zmdi zmdi-account material-icons-name"></i></label>-->
-                        <!--                            <input type="text" name="filier" id="filier" placeholder="Filier"/>-->
-                        <!--                        </div>-->
-                        <!--                        Password-->
-
                         <div class="form-group">
                             <label for="pass"><i class="zmdi zmdi-lock"></i></label>
                             <input type="password" name="password" id="pass" placeholder="Mot de passe"/>
@@ -79,14 +63,6 @@ include("navbar.php");
                             <label for="pass2"><i class="zmdi zmdi-lock"></i></label>
                             <input type="password" name="password2" id="pass" placeholder="Confirmer Mot de passe"/>
                         </div>
-                        <?php
-                        //                        if(isset($_REQUEST['password']) &&  ){
-                        //
-                        //                        }
-
-                        ?>
-
-
                         <div class="form-group form-button">
                             <input type="submit" name="signup" id="signup" class="form-submit rounded-pill"
                                    value="Inscrivez-Vousss"/>
@@ -148,44 +124,6 @@ include("navbar.php");
         </div>
     </section>
 </div>
-
-<!-- <div id="teacher" class="loginPopup popup hide">
-
-   
-    <section class="sign-in">
-        <div class="container">
-            <div id="exit2">
-                <i class="fas fa-times"></i>
-            </div>
-            <div class="signin-content">
-                <div class="signin-image">
-                    <figure><img src="src/img/signin-image.jpg" alt="sing up image"></figure>
-                    <a href="#" class="signup-image-link">Create an account</a>
-                </div>
-
-                <div class="signin-form">
-                    <h2 class="form-title">Se Connecter</h2>
-                    <form method="POST" class="register-form" id="login-form">
-                        <div class="form-group">
-                            <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                            <input type="email" name="your_name" id="your_email" placeholder="Votre Email"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
-                            <input type="password" name="your_pass" id="your_pass" placeholder="Mot de passe"/>
-                        </div>
-
-                        <div class="form-group form-button">
-                            <input type="submit" name="signin" id="signin" class="form-submit" value="Connexion"/>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-</div> -->
-
-
 <main>
     <section class="header backGreen ">
         <div class="container-fluid">
@@ -274,29 +212,12 @@ include "footer.php" ?>
 
 	let teacher = document.getElementById("teacher");
 	let prof = document.getElementById("prof");
-
-
 	let student;
-	// let exit = document.querySelector('#exit');
-    //
-	// exit.addEventListener('click', function () {
-	// 	loginPopup.classList.add('hide');
-	// 	registerPop.classList.add('hide');
-	// });
 	student = document.getElementById("student");
 	let exit1 = document.querySelector('#exit1');
 	exit1.addEventListener('click', function () {
 		student.classList.add('hide');
-		// registerPop.classList.add('hide');
 	});
-	// let exit2 = document.querySelector('#exit2');
-    //
-	// exit2.addEventListener('click', function () {
-	// 	teacher.classList.add('hide');
-	// 	// registerPop.classList.add('hide');
-	// });
-
-	// Popups LOGIN
 
 // ********************
 

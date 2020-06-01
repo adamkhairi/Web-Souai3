@@ -1,7 +1,5 @@
 <?php
 session_start();
-//require("connexion.php");
-//$user = $_SESSION['your_email'];
 function dateToFrench($date, $format)
 {
     $english_days = array('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');
@@ -23,7 +21,6 @@ function dateToFrench($date, $format)
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="src/css/main.css"/>
     <link href="src/img/icon.ico" rel="shortcut icon"/>
-
     <title><?php echo $pageTitle ;?></title>
 </head>
 <body>
@@ -31,9 +28,7 @@ function dateToFrench($date, $format)
     <a class="navbar-brand" href="index.php">
         <img src="src/img/logo-02.png"  class="d-inline-block align-top" alt="">
     </a>
-
     <div>
-
         <div class="p-2">
             <?php
             if (!empty($_SESSION['mail'])) {
@@ -43,12 +38,9 @@ function dateToFrench($date, $format)
                 <i class=\"fas iconProfile fa-user-circle\"></i>
                 </a>
               </div>
-
                 ";
             }else
             if (!empty($_SESSION['mailb'])){
-
-
                 echo "
                 <div class=\"rounded-circle p-2 \">
                     <a href=\"Teacher.php\">
@@ -57,70 +49,46 @@ function dateToFrench($date, $format)
                 </div>
 ";
                         }
-
-
             ?>
-
-
         </div>
         <div class="p-2">
-
             <!--            -->
             <?php
-
             if (!empty($_SESSION['type'])) {
-//            session_start();
                 $teacherMail = $_SESSION['mailb'];
-
                 echo
                 "
-    
-        <div class=' rounded-circle p-2'>
-        
+            <div class=' rounded-circle p-2'>
                <a href=\"logout.php\">
             <i class=\"fas deleteSec fa-sign-out-alt\"></i>
-                  
                 </a>
-
          </div>
     ";
             } else if (!empty($_SESSION['mail'])) {
-
                 $usermail = $_SESSION['mail'];
                 // afficher un message
                 echo
                 "
-    
-        <div class=' rounded-circle p-2'>
-        
+            <div class=' rounded-circle p-2'>
                <a href=\"logout.php\">
-            <i class=\"fas deleteSec fa-sign-out-alt\"></i>
-                  
+                    <i class=\"fas deleteSec fa-sign-out-alt\"></i>  
                 </a>
-
          </div>
    ";
             } else {
                 echo "
                 <div class='header p-0'>
                 <div class='header_content'>
-
-                   
                         <button id=\"etud\" onclick=\"logingEtudiant()\" class=\"btn rounded-pill backOrange  \"
                                 data-target=\"#exampleModalCentertype=\"
                         >Se connecter
                         </button>
            </div>
-           </div>
-           
-
-                ";
+           </div>     ";
             };
-
             ?>
         </div>
     </div>
-
 </nav>
 
 

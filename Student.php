@@ -73,7 +73,6 @@ if (empty($_SESSION['mail'])) {
                     benevole b ON e.ProfID = b.idbenevole INNER JOIN cours c ON c.idcours = e.coursID WHERE d.idetudiantc = " . $idetudiant . " AND e.delay > CURRENT_DATE
   ;";
             $exec_requete = mysqli_query($conn, $sql);
-
             if (!empty($exec_requete)) {
                 $reponse = mysqli_fetch_array($exec_requete);
                 $domende = array();
@@ -117,9 +116,6 @@ if (empty($_SESSION['mail'])) {
                                     <input class='mb-2' type='radio' name='" . $name . "' value='2' id='non'>
                                     <label  for='non'>Non</label>
                                 </div>
-
-                     
-                                 
                             </div>
                         <button type=\"submit\" id='ansnon' class=\"btn m - 0 w - 25 rounded - pill backRed\">Envoyer</button>
 
@@ -143,7 +139,6 @@ if (empty($_SESSION['mail'])) {
                 <h2 class="historique d-inline-block">Poster un problème:</h2>
                 <div class="post_pro d-flex align-items-center">
                     <div class="find_help">
-
                         <div>
                             <!-- Matiers -->
                             <select class="custom-select" name="matiere" id="matiere"
@@ -153,17 +148,12 @@ if (empty($_SESSION['mail'])) {
                                 $sql = "SELECT * FROM `matiere` WHERE idfiliere = " . $_SESSION['banche'] . "";
                                 $send = mysqli_query($conn, $sql);
                                 $rows = mysqli_fetch_all($send, MYSQLI_ASSOC);
-
                                 foreach ($rows as $row) {
-
                                     echo '<option value=' . $row['idmatiere'] . '> ' . $row['nommatiere'] . '</option>';
-
                                 }
                                 ?>
-
                             </select>
                             <input type="text" hidden value="" name="mt" id="matieres">
-
                         </div>
                         <div>
                             <select class="hour2" name="cours" id="cours">
@@ -184,57 +174,39 @@ if (empty($_SESSION['mail'])) {
         <div class="containers">
             <h2 class="historique d-inline-block bBottom">Historique:</h2>
             <div class="d-flex flex-wrap justify-content-around m-2">
-
-
                 <?php
-
                 $sql = "SELECT * FROM demande where
                idetudiantc = '" . $_SESSION['userid'] . "'";
                 $result = mysqli_query($conn, $sql);
-
-
                 if (!empty($result)) {
 //                $row = mysqli_fetch_array($result);
                     $demandes = [];
                     $fname = $_SESSION['firstName'];
                     $lname = $_SESSION['lastName'];
-
                     while ($row = mysqli_fetch_array($result)) {
-//    echo ($row[1]);  // description
                         array_push($demandes, $row[1]);
-
-////    echo ($row[3]);  // cours
                         $requet = "SELECT c.idcours, c.nomcours , m.nommatiere FROM cours c 
             INNER JOIN matiere m on c.idmatiere = m.idmatiere where idcours =  '" . $row[3] . "'";
 
                         $results = mysqli_query($conn, $requet);
                         $row1 = mysqli_fetch_array($results);
-//                    $cours = [];
-
                         echo "
                         <div class=\"card mb-4 rounded-lg position-relative m-2\" style=\"width: 18rem;\">
                            <div class=\"card-body  p-0\">
-                           <div class='backOrange rounded-top pt-2 p-1 text-center'>
-                           
+                           <div class='backOrange rounded-top pt-2 p-1 text-center'> 
                             <h6 class=\"card-title font-weight-bold mt-2\">$row1[2]</h6>
-                            
                             </div>
                             <div class='p-2 m-1 text-center'>
                             <h5 class=\"card-title mt-2\">$row1[1]</h5>
                            <hr>
                             <p class=\"card-text  m-2\">$row[1]</p>
                            </div>  
-                           
-                           
                             <button class='btn deldemande' type='submit' onclick='removeFrom(" . $row['iddemande'] . ")'>
                                  <input type='text' hidden value='" . $row['iddemande'] . "' id='remove_" . $row['iddemande'] . "'>
                                       <i class=\"fas fa-trash-alt\"></i>
                              </button>
-                             
-
                           </div>
                         </div>
-                       
                          ";
                     }
                 } else {
@@ -242,16 +214,9 @@ if (empty($_SESSION['mail'])) {
                 }; ?>
             </div>
         </div>
-
-
     </div>
-    <!-- Demo content -->
-
 </div>
-
-<?php
-include 'footer.php';
-?>
+<?php include 'footer.php';?>
 <script src="src/js/general.js"></script>
 <script src="src/js/student.js"></script>
 <script>
@@ -270,19 +235,15 @@ include 'footer.php';
 			xmlhttp.send();
 		}
 	}
-
 	function removeFrom(val) {
 		let str;
 		let xmlhttp = new XMLHttpRequest();
-
 		str = document.getElementById("remove_" + val).value;
 		xmlhttp.open("GET", "removeFrom.php?e=" + str, true);
 		xmlhttp.send();
 		setTimeout(reloadpage, 1000)
 	}
-
 	function reloadpage() {
 		location.reload();
 	}
 </script>
-<!--/* <h6 class=\"card-subtitle bg-light text-left mb-4 text-muted\"> $lname  $fname</h6> */-->
