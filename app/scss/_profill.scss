@@ -1,9 +1,13 @@
-$colorV:#457B9D;
-$colorOr: #F9A826;
-$colorR: #F50057;
-$colorW: #FFFFFF;
-$colorB: rgba(0, 0, 0, 0.527);
-$colorX: #ccc;
+$lPink: #60A8A7;
+$pink: #60A8A7;
+$lRose: #E36414;
+$rose: #E36414;
+$orange: #2A9D8F;
+$lOrange:#2A9D8F;
+
+
+$lGreen :#264653;
+$green :#264653;
 
 body {
   padding: 0;
@@ -44,7 +48,7 @@ button:focus, input:focus, textarea:focus, select:focus {
     .chart_UI {
       height: 15px;
       width: 40%;
-      border: 1px solid $colorR;
+      border: 1px solid $orange;
       border-radius: 10px;
 
       @media only screen and (max-width: 670px) {
@@ -54,7 +58,7 @@ button:focus, input:focus, textarea:focus, select:focus {
       .chart_UI1 {
         width: 60%;
         height: 15px;
-        background-color: $colorR;
+        background-color: $orange;
         border-radius: 10px;
 
       }
@@ -63,11 +67,11 @@ button:focus, input:focus, textarea:focus, select:focus {
 
     .chart_2 {
       @extend .chart_UI;
-      border: 1px solid $colorOr;
+      border: 1px solid $lPink;
 
       .chart_UI2 {
         @extend .chart_UI1;
-        background-color: $colorOr;
+        background-color: $lPink;
         width: 30%;
 
       }
@@ -163,7 +167,7 @@ button:focus, input:focus, textarea:focus, select:focus {
       padding: 6px;
 
       h4 {
-        border-bottom: 3px solid $colorOr;
+        border-bottom: 3px solid $lPink;
         font-weight: 600;
         font-size: large;
         padding-bottom: 2px;
@@ -190,7 +194,7 @@ button:focus, input:focus, textarea:focus, select:focus {
   font-weight: 400;
   font-size: x-large;
   //width: 120px;
-  border-bottom: 3px solid $colorOr;
+  border-bottom: 3px solid $lPink;
   margin-top: -20px;
 
   @media only screen and (max-width: 475px) {
@@ -239,9 +243,9 @@ button:focus, input:focus, textarea:focus, select:focus {
   justify-content: center;
 
   button {
-    width: 170px;
+    width: 150px;
     padding: 15px;
-    background-color: $colorOr;
+    background-color: $lPink;
     color: $colorW;
     border: none;
     border-radius: 49px;
@@ -270,18 +274,22 @@ button:focus, input:focus, textarea:focus, select:focus {
   height: auto;
   // margin: auto;
   background-color: $colorW;
-  padding: 20px;
+  padding: 15px;
   position: fixed;
 
   // left: 29%;
-  top: 13%;
+  top: 6%;
   border-radius: 5px;
   @media only screen and (max-width: 900px) {
     width: 60%;
+    top: 2%;
+    // height: 800px;
 
   }
   @media only screen and (max-width: 600px) {
-    width: 80%;
+    width: 84%;
+    top: 1% !important;
+    // height: 900px;
 
   }
 
@@ -307,55 +315,55 @@ button:focus, input:focus, textarea:focus, select:focus {
       width: 260px;
       height: 50px;
       border-radius: 5px;
-      border: 1px solid black;
+      // border: 1px solid black;
       text-align: center;
       font-weight: 500;
       font-size: medium;
       margin-bottom: 10px;
       font-family: "Poppins", sans-serif;
-      padding-left: 5px;
+      // padding-left: 5px;
 
 
     }
 
   }
 
-  .hour {
-    margin-left: 20px;
-    @media only screen and (max-width: 1125px) {
-      margin-left: 0;
+  // .hour {
+  //   margin-left: 20px;
+  //   @media only screen and (max-width: 1125px) {
+  //     margin-left: 0;
 
-    }
+  //   }
 
-    @media only screen and (max-width: 900px) {
-      margin-left: 20px;
+  //   @media only screen and (max-width: 900px) {
+  //     margin-left: 20px;
 
-    }
-    @media only screen and (max-width: 712px) {
-      margin-left: 20px;
+  //   }
+  //   @media only screen and (max-width: 712px) {
+  //     margin-left: 20px;
 
-    }
-    @media only screen and (max-width: 660px) {
-      margin-left: 0;
+  //   }
+  //   @media only screen and (max-width: 660px) {
+  //     margin-left: 0;
 
-    }
-    @media only screen and (max-width: 600px) {
-      margin-left: 20px;
+  //   }
+  //   @media only screen and (max-width: 600px) {
+  //     margin-left: 20px;
 
-    }
-    @media only screen and (max-width: 533px) {
-      margin-left: 0;
+  //   }
+  //   @media only screen and (max-width: 533px) {
+  //     margin-left: 0;
 
-    }
-  }
+  //   }
+  // }
 
-  .hour2 {
-    margin-left: 20px;
-    @media only screen and (max-width: 1420px) {
-      margin-left: 0;
+  // .hour2 {
+  //   margin-left: 20px;
+  //   @media only screen and (max-width: 1420px) {
+  //     margin-left: 0;
 
-    }
-  }
+  //   }
+  // }
 
   .Date {
     display: flex;
@@ -368,7 +376,7 @@ button:focus, input:focus, textarea:focus, select:focus {
       width: 200px;
       height: 50px;
       border-radius: 5px;
-      border: 1px solid $colorOr;
+      border: 1px solid rgba(128, 128, 128, 0.322);
       font-weight: 500;
       font-size: medium;
       text-align: center;
@@ -377,20 +385,9 @@ button:focus, input:focus, textarea:focus, select:focus {
     }
   }
 
-  .lien_for_the_meeting {
-    width: 96%;
-    height: 50px;
-    border-radius: 5px;
-    border: 1px solid $colorR;
-    font-weight: 500;
-    font-size: medium;
-    // text-align: center;
-    margin-bottom: 10px;
-    padding-left: 10px;
-  }
 
   .message {
-    margin-top: 10px;
+    margin-top: -20px;
     width: 95%;
     height: 130px;
     padding: 10px;
@@ -398,21 +395,21 @@ button:focus, input:focus, textarea:focus, select:focus {
     font-weight: 500;
     font-family: "Poppins", sans-serif;
     border-radius: 5px;
-    border: 1px solid $colorV;
+    border: 1px solid rgba(128, 128, 128, 0.322);
 
   }
 
   button {
-    width: 170px;
+    width: 150px;
     padding: 15px;
-    background-color: $colorOr;
+    background-color: $lPink;
     color: $colorW;
     border: none;
     border-radius: 49px;
     margin: 10px auto;
     display: flex;
     justify-content: center;
-    font-size: medium;
+    // font-size: ;;
     font-weight: 600;
   }
 
@@ -471,7 +468,7 @@ footer {
       .btn-give-help {
         display: inline-block;
         width: 190px;
-        background-color: $colorOr;
+        background-color: $lPink;
         padding: 18px;
         border-radius: 40px;
         text-decoration: none;
@@ -490,7 +487,7 @@ footer {
       }
 
       .btn-give-help {
-        background-color: $colorR;
+        background-color: $orange;
       }
     }
 
@@ -532,7 +529,7 @@ footer {
   .show_notification {
     width: 25px;
     height: 25px;
-    background-color: $colorR;
+    background-color: $orange;
     text-align: center;
     border-radius: 50%;
     color: $colorW;
@@ -558,7 +555,7 @@ footer {
     position: fixed;
     right: 30px;
     bottom: 30px;
-    background-color: $colorOr;
+    background-color: $lPink;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -635,7 +632,7 @@ footer {
 
     .notif_name {
       text-align: center;
-      background-color: $colorOr;
+      background-color: $lPink;
       height: auto;
       padding: 15px;
       box-shadow: 0px 0px 11px 0px rgba(149, 152, 154, 0.554);
@@ -675,8 +672,8 @@ footer {
     }
 
     .NON {
-      background-color: $colorR;
-      border: 1px solid $colorR;
+      background-color: $orange;
+      border: 1px solid $orange;
     }
   }
 }
@@ -698,7 +695,7 @@ footer {
     // font-weight: 400;
     // font-size: x-large;
     // width: 240px;
-    // border-bottom: 3px solid $colorOr;
+    // border-bottom: 3px solid $lPink;
     // margin-top: -20px;
 
     @media only screen and (max-width: 475px) {
@@ -757,7 +754,7 @@ footer {
       width: 18rem;
       height: 3em;
       border-radius: 5px;
-      border: 1px solid $colorOr;
+      border: 1px solid $lPink;
       font-weight: 500;
       font-size: medium;
       margin-bottom: 10px;
@@ -781,7 +778,7 @@ footer {
 
   width: 170px;
   padding: 15px;
-  background-color: $colorOr;
+  background-color: $lPink;
   color: $colorW;
   border: none;
   border-radius: 49px;

@@ -296,15 +296,15 @@ if (empty($_SESSION['mailb'])) {
                             }
                             ?>
                         </select>
-                        <select class="custom-select ml-2" name="filier" id="filiere"
+                        <select class="custom-select " name="filier" id="filiere"
                                 onclick="showMatiere(this.value)">
                             <option value="" selected disabled> Choisir une filiere</option>
                         </select>
-                        <select class="custom-select ml-2" name="matiere" id="matiere"
+                        <select class="custom-select " name="matiere" id="matiere"
                                 onclick="showCours(this.value)">
                             <option value="" SELECTED disabled>Matières</option>
                         </select>
-                        <select class="custom-select ml-2" name="cours" id="cours"
+                        <select class="custom-select " name="cours" id="cours"
                                 onclick="getCours(this.value)">
                             <option value="" SELECTED disabled>Cours</option>
                         </select>
@@ -317,10 +317,10 @@ if (empty($_SESSION['mailb'])) {
                     </div>
                     <div class="hour">
                         l'heure
-                        <div><input class="thedate" type="time" id="appt" name="hours"></div>
+                        <div><input class="thedate ml-2" type="time" id="appt" name="hours"></div>
                     </div>
                 </div>
-                <div class="form-group Date" style="max-width: 60%">
+                <div class="form-group Date" style="max-width: 250px">
                     le dernier délai de participation
                     <input class="thedate" type="date" name="lastdate" id="lastdate">
                 </div>
