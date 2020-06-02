@@ -152,7 +152,7 @@ include("navbar.php");?>
                 </div>
                 <div class="" data-aos="zoom-in-up">
 
-                    <img class="header_img" src="src/img/header.png" alt="img">
+                    <img class="header_img" src="src/img/undraw_exams_g4ow.svg" alt="img">
                 </div>
             </div>
     </section>
@@ -161,7 +161,7 @@ include("navbar.php");?>
             <div class="header_content">
                 <div class="" data-aos="zoom-in-up">
 
-                    <img class="header_img" src="src/img/sec2.png" alt="">
+                    <img class="header_img" src="src/img/undraw_reading_time_gvg0.svg" alt="">
                 </div>
                 <div class="left d-flex flex-column justify-content-center" data-aos="fade-left">
                     <h1>Comment ?</h1>
@@ -189,7 +189,7 @@ include("navbar.php");?>
                     </a>
                 </div>
                 <div class="" data-aos="zoom-in-up">
-                    <img class="header_img" src="src/img/thirdimg.png" alt="img">
+                    <img class="header_img" src="src/img/undraw_online_test_gba7.svg" alt="img">
                 </div>
             </div>
         </div>
