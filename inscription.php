@@ -1,8 +1,6 @@
 <?php
 require("connexion.php");
-//include("inscription.php");
 $your_email = mysqli_real_escape_string($conn,htmlspecialchars($_POST['email']));
-
 $sql = "SELECT count(*) FROM `etudiant`  WHERE `mailetudiant`= '$your_email' ";
     $req = mysqli_query($conn,$sql);
     $data = mysqli_fetch_array($req);
@@ -27,22 +25,16 @@ $sql = "SELECT count(*) FROM `etudiant`  WHERE `mailetudiant`= '$your_email' ";
             $password = stripslashes($_REQUEST['password']);
             $password = mysqli_real_escape_string($conn, $password);
             //requéte SQL + mot de passe crypté
-
             $query = "INSERT into `etudiant` (`nometudiant`, `prenometudiant`,`niveauscolaire`,`filiere`, `mailetudiant`, `passwordetudiant`) 
         VALUES ('" . $username . "', '" . $prenom . "', '" . $nScolaire . "', '" . $filier . "','" . $email . "', '" . hash('sha256', $password) . "')";
-
             // Exécuter la requête sur la base de données
             $res = mysqli_query($conn, $query);
-
             if ($res) {
                 header('Location: index.php');
                 echo "<script>alert('Done')</script>";
             }
-
         } else {
             echo "<script>alert('Verifier vos informations !')</script>";
-//        header('Location: index.php');
-
         }
     }
 ?>

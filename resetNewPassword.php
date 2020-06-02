@@ -1,14 +1,11 @@
 <?php
-//session_start();
 require("connexion.php");
 include("navbar.php");
 ?>    
 <div class="signin-content">
 <div class="signin-image">
     <figure><img src="src/img/signin-image.jpg" alt="sing up image"></figure>
-  
 </div>
-
 <div class="signin-form">
     <h2 class="form-title">Modifier  mode passe Oublie</h2>
     <form method="POST" action="ressetthepassword.php" class="register-form" id="login-form">

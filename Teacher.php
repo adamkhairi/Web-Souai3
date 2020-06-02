@@ -5,19 +5,12 @@ include('navbar.php');
 if (empty($_SESSION['mailb'])) {
     header('Location: index.php');
 }
-
-//session_start();
 ?>
 <div class="vertical-nav pt-lg-5" id="sidebar">
     <div class=" mb-4  menu-head text-center d-flex flex-column align-items-center">
         <i class="far fa-user img-thumbnail shadow-sm rounded-circle p-3"
            style="font-size: 40px; color: #00BFA6"></i>
         <div class="media d-flex align-items-center ">
-
-
-            <!--            <img-->
-            <!--                    src="https://res.cloudinary.com/mhmd/image/upload/v1556074849/avatar-1_tcnd60.png" alt="..."-->
-            <!--                    width="65" class="">-->
             <div class="media-body">
                 <h3 class="">
                     <?php
@@ -26,12 +19,10 @@ if (empty($_SESSION['mailb'])) {
                     };
                     ?>
                 </h3>
-
                 <p class="font-weight-light text-muted mb-0">Bénévole</p>
             </div>
         </div>
         <div class="mt-4">
-
             <h6 class='text-center'>
                 <?php
                 if (!empty($_SESSION['mailb'])) {
@@ -40,10 +31,6 @@ if (empty($_SESSION['mailb'])) {
                 ?>
             </h6>
         </div>
-        <!--        <div class="text-center">-->
-
-        <!--        </div>-->
-
         <div class="p-2  mb-5">
             <?php
             if (!empty($_SESSION['mailb'])) {
@@ -56,18 +43,11 @@ if (empty($_SESSION['mailb'])) {
                     <button class='btn btn-danger rounded-pill'>Déconnexion</button>
                 </a>
             </div>
-             
                 ";
             }
             ?>
-            <!--        </div>-->
         </div>
-
     </div>
-
-    <!--   Links Of each section -->
-
-
 </div>
 
 <div class="page-content pl-4" id="content">
@@ -75,18 +55,13 @@ if (empty($_SESSION['mailb'])) {
     <button class="btn btn-dark bg-dark rounded-pill shadow-sm px-4 m-4" id="sidebarCollapse" type="button">
         <small class="text-uppercase font-weight-bold" id="togl"> <<< </small>
     </button>
-
-
     <div class="containers">
         <div class="statistics">
             <div class="chart_title">
                 <h4 class="chart_title_h2 historique">Les cours les plus demandés :</h4>
             </div>
             <?php
-
-
             if (!empty($_SESSION['mailb'])) {
-
                 $therequet = "SELECT COUNT(d.cours) AS num, d.cours,c.nomcours , m.nommatiere FROM demande d INNER JOIN cours c ON 
            d.cours = c.idcours INNER JOIN matiere m ON c.idmatiere = m.idmatiere GROUP BY d.cours ORDER BY COUNT(d.cours) DESC;";
                 $do = mysqli_query($conn, $therequet);
@@ -116,14 +91,10 @@ if (empty($_SESSION['mailb'])) {
             $sql = "SELECT e.coursID,e.message , e.hours, e.theDate, c.nomcours , COUNT(r.idetudiant) AS num,e.eventID  FROM theevanets e INNER JOIN reponce r ON e.eventID = r.idevent INNER JOIN cours c ON e.coursID = c.idcours  WHERE e.ProfID = " . $_SESSION['idProf'] . " GROUP BY r.idevent;";
             $run = mysqli_query($conn, $sql);
             $Arry = mysqli_fetch_all($run, MYSQLI_ASSOC);
-            //            print_r($Arry);
             if ($run = mysqli_query($conn, $sql)) {
-
                 foreach ($Arry as $Arr) {
-//print_r($Arr['theDate']);
                     //***** Change Date Format and Language *****//
                     $newDate = dateToFrench($Arr['theDate'], "l , d , M , Y");
-
                     echo "
             <div class=\"card m-2 position-relative\" style='max-width: 26em'>
                 <div class='card-header text-center backOrange'>
@@ -136,15 +107,12 @@ if (empty($_SESSION['mailb'])) {
                     <hr>
                     <p class=\"card-text \">Les participants : <span class='backGreen rounded-circle p-2 pl-3 pr-3 ml-2'>" . $Arr['num'] . "</span> </p>
                     <hr>
-                    
                     <button class='btn deldemande'' type='submit' onclick='removeFrom(" . $Arr['eventID'] . ")'>
                     <input type='text' hidden value='" . $Arr['eventID'] . "' id='remove_" . $Arr['eventID'] . "'>
                         <i class=\"fas fa-trash-alt\"></i>
                     </button>
                 </div>
               <input  onclick='hidelist(" . $Arr['eventID'] . ")' type='button'  class='btn w-75 text-left' value='Afficher la list'/>
-              
-
           <div id=\"eventlist\" class=\"popup hide toggll" . $Arr['eventID'] . " \">
             <section class=\"sign-in p-2\">
                 <div class=\"container\">
@@ -169,28 +137,22 @@ if (empty($_SESSION['mailb'])) {
 " . $Arr['eventID'] . " ";
                     $req = mysqli_query($conn, $sql);
                     $result = mysqli_fetch_all($req);
-                    //                    print_r($result);
-                    //                    die();
                     foreach ($result as $row) {
                         echo "
-                     
                             <tr>
                               <th scope=\"row\">
                                 <div class=\"custom-control custom-checkbox mr-sm-2\">
-                                <input type='text' hidden name='ids' value='". $row[4] ."'>
-                                <input type=\"checkbox\" value='" . $row['3'] . "' class=\"custom-control-input\" id=\"check".$row[0]."\" name='emails[]'>
-                                <label class=\"custom-control-label\"  for=\"check".$row[0]."\">Choisir</label>
+                                <input type='text' hidden name='ids' value='" . $row[4] . "'>
+                                <input type=\"checkbox\" value='" . $row['3'] . "' class=\"custom-control-input\" id=\"check" . $row[0] . "\" name='emails[]'>
+                                <label class=\"custom-control-label\"  for=\"check" . $row[0] . "\">Choisir</label>
                                 </div>
                               </th>
                               <td>" . $row['2'] . "</td>
                               <td>" . $row['1'] . "</td>
                               <td>" . $row['3'] . "</td>
-                            </tr>
-                            
-                          
+                            </tr>  
                     ";
                     };
-
                     echo "
                             </tbody>
                             </table>
@@ -202,28 +164,17 @@ if (empty($_SESSION['mailb'])) {
                 </div>
             </section>
         </div>
-
-
-
-            </div>
-            
+     </div>       
         ";
-//                   print_r( $Arr['eventID']);
                 }
             };
-
             ?>
         </div>
     </div>
-
-
     <div class="containers">
         <h2 class="historique">Historique :</h2>
         <div class="d-flex flex-wrap flex-column align-items-center justify-content-center">
             <div class="col-4 mb-3 ">
-
-                <!--//               getdemande();-->
-
                 <form action="" method="post" class="w-100">
                     <div class="d-flex justify-content-between aline-items-baseline">
                         <div class="form-group">
@@ -231,33 +182,25 @@ if (empty($_SESSION['mailb'])) {
                                 <select class="custom-select" name="nScolaire" id="nScolaire"
                                         onchange="showfilliers(this.value)">
                                     <option selected>Niveau Scolaire</option>
-
                                     <?php
                                     $sql = "SELECT * FROM `niveau`";
                                     $send = mysqli_query($conn, $sql);
                                     $rows = mysqli_fetch_all($send, MYSQLI_ASSOC);
                                     foreach ($rows as $row) {
-
                                         echo '<option value=' . $row['idniveau'] . '> ' . $row['niveau'] . '</option>';
-
                                     }
                                     ?>
                                 </select>
-
-
                                 <select class="custom-select ml-2" name="filier" id="filieres"
                                         onclick="showMatieres(this.value)">
                                     <option value="" selected disabled> Choisir une filiere</option>
                                 </select>
-
                                 <select class="custom-select ml-2" name="matiere" id="matieres"
                                         onchange="getMatieres(this.value)">
                                     <option value="" SELECTED disabled>Matières</option>
                                 </select>
-
                                 <input type="text" hidden value="" name="selMatiere" id="selMatieres">
                             </div>
-
                             <div class="text-center">
                                 <button type="submit" name="submit" id="" class="btn backRed btn-lg">Choisir</button>
                             </div>
@@ -265,38 +208,19 @@ if (empty($_SESSION['mailb'])) {
                     </div>
                 </form>
                 <hr>
-
             </div>
             <div class="d-flex flex-wrap justify-content-around m-2">
                 <?php
-
-
                 if (isset($_POST['submit'])) {
                     $matiereT = $_POST['selMatiere'];
-//                    print_r($matiereT);
-//                    die();
                     $req = "SELECT c.nomcours, e.prenometudiant, e.nometudiant, d.description,  m.nommatiere FROM demande d 
     INNER JOIN etudiant e ON d.idetudiantc = e.idetudiant INNER JOIN cours c ON c.idcours = d.cours 
     INNER JOIN matiere m ON m.idmatiere = c.idmatiere WHERE m.idmatiere = '" . $matiereT . "' ";
-
                     $reqt = mysqli_query($conn, $req);
                     $row = mysqli_fetch_array($reqt);
-
-
                     if ($reqt = mysqli_query($conn, $req)) {
-
-//                    print_r($row);
-//                    die();
                         if (!empty($_SESSION['mailb'] && $reqt)) {
-//                    $row = mysqli_fetch_array($reqt);
-
                             while ($row = mysqli_fetch_array($reqt)) {
-//                etudiant name
-
-
-//                    $cours = [];
-
-
                                 echo "
                                 <div class=\"card  card mb-4 rounded-lg m-2\" style=\"width: 18rem;\">
                                   <div class=\"card-body  p-0\">
@@ -312,10 +236,7 @@ if (empty($_SESSION['mailb'])) {
                                  </div>
                          ";
                             }
-
-
                         }
-
                     }
                 } else {
                     $req = "SELECT c.nomcours, e.prenometudiant, e.nometudiant, d.description,  m.nommatiere FROM demande d 
@@ -325,13 +246,8 @@ if (empty($_SESSION['mailb'])) {
                     $row = mysqli_fetch_array($reqt);
                     //TODO Wierd !!!
                     if ($reqt = mysqli_query($conn, $req)) {
-                        //                    print_r($row);
-                        //                    die();
                         if (!empty($_SESSION['mailb']) && $reqt) {
-                            //                    $row = mysqli_fetch_array($reqt);
                             while ($row = mysqli_fetch_array($reqt)) {
-                                //                etudiant name
-                                //                    $cours = [];
                                 echo "
                                 <div class=\"card  card mb-4 rounded-lg m-2\" style=\"width: 18rem;\">
                                   <div class=\"card-body  p-0\">
@@ -349,8 +265,7 @@ if (empty($_SESSION['mailb'])) {
                             }
                         }
                     }
-                }
-                //    ?>
+                } ?>
             </div>
         </div>
     </div>
@@ -358,7 +273,6 @@ if (empty($_SESSION['mailb'])) {
 
     <div style="display :none;" id="pop-up-add_events" class="pop-up-add_events">
         <div class="pop-up-add_event">
-
             <form method="POST" action="addEvent.php">
                 <div class="clouse">
                     <svg id="img_close" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times"
@@ -370,29 +284,22 @@ if (empty($_SESSION['mailb'])) {
                 </div>
                 <div class="pop-up-add_event_matairs">
                     <div>
-                        <!-- Matiers -->
                         <select class="custom-select" name="nScolaire" id="nScolaire"
                                 onchange="showfillier(this.value)">
                             <option selected>Niveau Scolaire</option>
-
                             <?php
                             $sql = "SELECT * FROM `niveau`";
                             $send = mysqli_query($conn, $sql);
                             $rows = mysqli_fetch_all($send, MYSQLI_ASSOC);
                             foreach ($rows as $row) {
-
                                 echo '<option value=' . $row['idniveau'] . '> ' . $row['niveau'] . '</option>';
-
                             }
                             ?>
                         </select>
-
-
                         <select class="custom-select ml-2" name="filier" id="filiere"
                                 onclick="showMatiere(this.value)">
                             <option value="" selected disabled> Choisir une filiere</option>
                         </select>
-
                         <select class="custom-select ml-2" name="matiere" id="matiere"
                                 onclick="showCours(this.value)">
                             <option value="" SELECTED disabled>Matières</option>
@@ -404,7 +311,6 @@ if (empty($_SESSION['mailb'])) {
                         <input type="text" hidden id="selCours" name="selCours" value="">
                     </div>
                 </div>
-
                 <div class="Date">
                     <div> la date
                         <div><input class="thedate" type="date" name="date" id="date"></div>
@@ -430,14 +336,10 @@ if (empty($_SESSION['mailb'])) {
 <?php
 include 'footer.php';
 ?>
-
 <script src="src/js/script.js"></script>
 <script src="src/js/student.js"></script>
-
 <script>
-
 	// ** Add Event Teacher
-
 	function showfillier(str) {
 		if (str == "") {
 			document.getElementById("filier").innerHTML = "";
@@ -453,7 +355,6 @@ include 'footer.php';
 			xmlhttp.send();
 		}
 	}
-
 	function showMatiere(str) {
 		if (str == "") {
 			document.getElementById("matiere").innerHTML = "";
@@ -485,13 +386,10 @@ include 'footer.php';
 			xmlhttp.send();
 		}
 	}
-
 	function getCours(str) {
 		document.getElementById('selCours').value = str;
 	}
-
 	// ** Filter Matiere
-
 	function showfilliers(str) {
 		if (str == "") {
 			document.getElementById("filieres").innerHTML = "";
@@ -507,7 +405,6 @@ include 'footer.php';
 			xmlhttp.send();
 		}
 	}
-
 	function showMatieres(str) {
 		if (str == "") {
 			document.getElementById("matieres").innerHTML = "";
@@ -523,37 +420,23 @@ include 'footer.php';
 			xmlhttp.send();
 		}
 	}
-
 	function getMatieres(str) {
 		document.getElementById('selMatieres').value = str;
 	}
-
 	function removeFrom(val) {
 		let str;
 		let xmlhttp = new XMLHttpRequest();
-
 		str = document.getElementById("remove_" + val).value;
 		xmlhttp.open("GET", "removeFrom.php?r=" + str, true);
 		xmlhttp.send();
 		setTimeout(reloadpage, 1000)
 	}
-
 	function reloadpage() {
 		location.reload();
 	}
-
-
 	let exit = document.querySelector('#exit');
 	let loginPopup = document.querySelector('.popup');
-
 	function hidelist(x) {
-		// for (let i = 0; i < 20; i++) {
-			$('.toggll' + x).toggle('hide');
-		// }
+		$('.toggll' + x).toggle('hide');
 	};
 </script>
-
-
-
-
-

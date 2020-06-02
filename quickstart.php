@@ -1,26 +1,16 @@
 <?php
 require "connexion.php";
-
-
 $row = $_POST['ids'];
 $mails = $_POST['emails'];
 $sql = "SELECT e.message, e.theDate, e.hours, c.nomcours FROM theevanets e  INNER JOIN cours c ON e.coursID = c.idcours WHERE e.eventID = ". $row ."";
 $run = mysqli_query($conn, $sql);
 $arr = mysqli_fetch_assoc($run);
-//print_r($arr);
-
-
-
-/////////
-
-
 
 require __DIR__ . '/vendor/autoload.php';
 
 //if (php_sapi_name() != 'cli') {
 //    throw new Exception('This application must be run on the command line.');
 //}
-
 /**
  * Returns an authorized API client.
  * @return Google_Client the authorized client object
@@ -53,10 +43,7 @@ function getClient()
             // Request authorization from the user.
             $authUrl = $client->createAuthUrl();
             printf("Open the following link in your browser:\n%s\n", $authUrl);
-//            header('location: '. $authUrl);
-//            echo "<script>
-//            window.open('".$authUrl."');
-//            </script>";
+
             print 'Enter verification code: ';
             $authCode = trim(fgets(STDIN));
 
@@ -77,13 +64,9 @@ function getClient()
     }
     return $client;
 }
-
-
 // Get the API client and construct the service object.
 $client = getClient();
 $service = new Google_Service_Calendar($client);
-
-
 // Print the next 10 events on the user's calendar.
 $calendarId = 'primary';
 $optParams = array(
@@ -94,29 +77,10 @@ $optParams = array(
 );
 $results = $service->events->listEvents($calendarId, $optParams);
 $events = $results->getItems();
-
-//if (empty($events)) {
-//    print "No upcoming events found.\n";
-//} else {
-//    print "Upcoming events:\n";
-//    foreach ($events as $event) {
-//        $start = $event->start->dateTime;
-//        if (empty($start)) {
-//            $start = $event->start->date;
-//        }
-//        printf("%s (%s)\n", $event->getSummary(), $start);
-//    }
-//}
-
-
 // Refer to the PHP quickstart on how to setup the environment:
 // https://developers.google.com/calendar/quickstart/php
 // Change the scope to Google_Service_Calendar::CALENDAR and delete any stored
 // credentials.
-
-
-
-
 $event = new Google_Service_Calendar_Event(array(
     'summary' => $arr['nomcours'],
     'location' => 'At Home',
@@ -143,20 +107,13 @@ $event = new Google_Service_Calendar_Event(array(
         ),
     ),
 ));
-
 $PrepaireArray = [];
 foreach($mails as $mail){
     $PrepaireArray[]['email'] = $mail;
 }
 $event['attendees'] = $PrepaireArray;
-
-
 $calendarId = 'primary';
 $event = $service->events->insert($calendarId, $event);
-// printf('Event created: %s\n', $event->htmlLink);
-
-
-
 header('location: Teacher.php');
 
 ?>
