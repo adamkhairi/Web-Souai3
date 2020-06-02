@@ -153,10 +153,10 @@ $event['attendees'] = $PrepaireArray;
 
 $calendarId = 'primary';
 $event = $service->events->insert($calendarId, $event);
-printf('Event created: %s\n', $event->htmlLink);
+// printf('Event created: %s\n', $event->htmlLink);
 
 
 
-
+header('location: Teacher.php');
 
 ?>
