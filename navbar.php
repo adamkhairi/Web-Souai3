@@ -65,6 +65,7 @@ function dateToFrench($date, $format)
          </div>
     ";
             } else if (!empty($_SESSION['mail'])) {
+
                 $usermail = $_SESSION['mail'];
                 // afficher un message
                 echo
