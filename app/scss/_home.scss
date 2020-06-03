@@ -42,6 +42,7 @@ html {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
+    
     }
     span{
       border-bottom: 3px solid $lOrange ;
@@ -54,7 +55,8 @@ html {
       @include btn($orange, 18em);
       font-size: medium;
       font-weight: 600;
-      margin-left: 20px;
+      // margin-left: 20px;
+      margin:  .5em;
     }
 
     .btnG {
@@ -70,7 +72,12 @@ html {
   }
 }
 
-
+@media (max-width: 1675px) {
+  * {
+    font-size: 10px;
+  }
+ 
+}
 
 @media (max-width: 1044px) {
   * {
@@ -127,20 +134,33 @@ html {
 
 
 .backGreen {
-  background-color: $green;
+  // background-color: $green;
+  background: linear-gradient(to left, #f6f1d3, #648880, #395368);
+
   color: white;
 }
 
 .backOrange {
-  background-color: $orange;
+  // background-color: $orange;
+  background: linear-gradient(to right, #f6f1d3, #648880, #395368);
   color: white;
 
 }
 
 .backRed {
-  background-color: $lPink;
+  // background-color: $lPink;
+  background: linear-gradient(to left, #f6f1d3, #648880, #395368);
   color: white;
 
+}
+.section{
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  @media (max-width:"956px"){
+    height: fit-content;
+  }
+  
 }
 .hide{
   display: none ;

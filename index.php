@@ -125,7 +125,7 @@ include("navbar.php");?>
     </section>
 </div>
 <main>
-    <section class="header backGreen ">
+    <section class="header section backGreen ">
         <div class="container-fluid">
             <div class="header_content">
                 <div class="left d-flex flex-column justify-content-center">
@@ -156,7 +156,7 @@ include("navbar.php");?>
                 </div>
             </div>
     </section>
-    <section class="header backOrange">
+    <section class="header section backOrange">
         <div class="container-fluid">
             <div class="header_content">
                 <div class="" data-aos="zoom-in-up">
@@ -173,7 +173,7 @@ include("navbar.php");?>
             </div>
         </div>
     </section>
-    <section class="header backRed ">
+    <section class="header section backRed ">
         <div class="container-fluid">
             <div class="header_content">
                 <div class="left d-flex flex-column justify-content-center">
