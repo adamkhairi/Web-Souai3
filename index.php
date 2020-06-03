@@ -2,7 +2,7 @@
 //session_start();
 require("connexion.php");
 $pageTitle = "Bienvenu dans Sway3";
-include("navbar.php");?>
+include("navbar.php"); ?>
 <!--header-->
 <div id="insc" class="registerPopup popup hide">
     <!-- Sign up form -->
@@ -33,7 +33,8 @@ include("navbar.php");?>
                         </div>
                         <div class="form-group">
                             <div class="input-group mb-3">
-                                <select class="custom-select" name="nScolaire" id="nScolaire" onchange="showfillier(this.value)">
+                                <select class="custom-select" name="nScolaire" id="nScolaire"
+                                        onchange="showfillier(this.value)">
                                     <option selected>Niveau Scolaire</option>
                                     <?php
                                     $sql = "SELECT * FROM `niveau`";
@@ -41,7 +42,7 @@ include("navbar.php");?>
 
                                     $rows = mysqli_fetch_all($send, MYSQLI_ASSOC);
 
-                                    foreach ($rows as $row ) {
+                                    foreach ($rows as $row) {
 
                                         echo '<option value=' . $row['idniveau'] . '> ' . $row['niveau'] . '</option>';
 
@@ -104,7 +105,7 @@ include("navbar.php");?>
                             <input type="password" name="your_pass" id="your_pass" placeholder="Mot de passe"/>
                         </div>
 
-                            <input type="text" name="userType" hidden id="userType" value="">
+                        <input type="text" name="userType" hidden id="userType" value="">
 
                         <div class="form-group form-button">
                             <input type="submit" name="signin" id="signin" class="form-submit" value="Connexion"/>
@@ -116,7 +117,6 @@ include("navbar.php");?>
                                 echo "<script>
                                     alert('Utilisateur ou mot de passe incorrect')</script>";
                         }
-
                         ?>
                     </form>
                 </div>
@@ -219,7 +219,7 @@ include "footer.php" ?>
 		student.classList.add('hide');
 	});
 
-// ********************
+	// ********************
 
 	function showfillier(str) {
 		if (str == "") {
@@ -227,15 +227,16 @@ include "footer.php" ?>
 			return;
 		} else {
 			let xmlhttp = new XMLHttpRequest();
-			xmlhttp.onreadystatechange = function() {
+			xmlhttp.onreadystatechange = function () {
 				if (this.readyState === 4 && this.status === 200) {
 					document.getElementById("filiere").innerHTML = this.responseText;
 				}
 			};
-			xmlhttp.open("GET","getfillier.php?q="+str,true);
+			xmlhttp.open("GET", "getfillier.php?q=" + str, true);
 			xmlhttp.send();
 		}
 	}
+
 	function hidelist() {
 		$('#insc').toggle('hide');
 	};

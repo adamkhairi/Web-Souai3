@@ -119,7 +119,7 @@ if (empty($_SESSION['mailb'])) {
                     <div id=\"exit\" onclick='hidelist(" . $Arr['eventID'] . ")'>
                         <i class=\"fas fa-times\"></i>
                     </div>
-                    <form action=\"quickstart.php\" method=\"post\">
+                    <form action=\"php-google-calendar/index.php\" method=\"post\">
                         <div class=\"table-responsive\">
                             <table class=\"table\">
                                 <thead class=\" thead-dark\">
@@ -355,6 +355,7 @@ include 'footer.php';
 			xmlhttp.send();
 		}
 	}
+
 	function showMatiere(str) {
 		if (str == "") {
 			document.getElementById("matiere").innerHTML = "";
@@ -386,9 +387,11 @@ include 'footer.php';
 			xmlhttp.send();
 		}
 	}
+
 	function getCours(str) {
 		document.getElementById('selCours').value = str;
 	}
+
 	// ** Filter Matiere
 	function showfilliers(str) {
 		if (str == "") {
@@ -405,6 +408,7 @@ include 'footer.php';
 			xmlhttp.send();
 		}
 	}
+
 	function showMatieres(str) {
 		if (str == "") {
 			document.getElementById("matieres").innerHTML = "";
@@ -420,9 +424,11 @@ include 'footer.php';
 			xmlhttp.send();
 		}
 	}
+
 	function getMatieres(str) {
 		document.getElementById('selMatieres').value = str;
 	}
+
 	function removeFrom(val) {
 		let str;
 		let xmlhttp = new XMLHttpRequest();
@@ -431,11 +437,14 @@ include 'footer.php';
 		xmlhttp.send();
 		setTimeout(reloadpage, 1000)
 	}
+
 	function reloadpage() {
 		location.reload();
 	}
+
 	let exit = document.querySelector('#exit');
 	let loginPopup = document.querySelector('.popup');
+
 	function hidelist(x) {
 		$('.toggll' + x).toggle('hide');
 	};

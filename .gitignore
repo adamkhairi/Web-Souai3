@@ -3,3 +3,5 @@ node_modules/
 .idea/
 .vscode/
 token.json
+!/php-google-calendar/vendor/
+php-google-calendar/vendor/
