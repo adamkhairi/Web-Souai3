@@ -24,10 +24,16 @@ function dateToFrench($date, $format)
     <title><?php echo $pageTitle ;?></title>
 </head>
 <body>
-<nav class="sticky-top">
-    <a class="navbar-brand" href="index.php">
-        <img src="src/img/logo-02.png"  class="d-inline-block align-top" alt="">
+<nav class="sticky-top justify-content-around ">
+    <a class="navbar-brand ml-4 " href="index.php">
+        <img src="src/img/salog1.png"  class="d-inline-block align-top ml-4" alt="">
     </a>
+    <div class="  text-center ">
+        <h1 class=" font-weight-bold text-white text-center">
+            Sway3
+        </h1>
+    </div>
+    
     <div>
         <div class="p-2">
             <?php
@@ -80,7 +86,7 @@ function dateToFrench($date, $format)
                 echo "
                 <div class='header p-0'>
                 <div class='header_content'>
-                        <button id=\"etud\" onclick=\"logingEtudiant()\" class=\"btn rounded-pill backOrange  \"
+                        <button id=\"etud\" onclick=\"logingEtudiant()\" class=\"btn rounded-pill backOrangeN  \"
                                 data-target=\"#exampleModalCentertype=\"
                         >Se connecter
                         </button>
