@@ -2,7 +2,26 @@
 //session_start();
 require("connexion.php");
 $pageTitle = "Bienvenu dans Sway3";
-include("navbar.php"); ?>
+include("navbar.php");
+
+if (!empty($_GET['msg'])) {
+
+    if ($_GET['msg'] == 'inscriptiondone') {
+//        echo "<script>alert('Votre inscription a été effectué avec succès.')</script>";
+        echo "
+
+<div class=\"alert alert-success m-0 alert-dismissible fade show\" role=\"alert\">
+  <strong>Bienvenu !</strong> Votre inscription a été effectué avec succès.
+  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+    <span aria-hidden=\"true\">&times;</span>
+  </button>
+</div>
+        ";
+    }
+}
+
+
+?>
 <!--header-->
 <div id="insc" class="registerPopup popup hide">
     <!-- Sign up form -->
@@ -168,7 +187,7 @@ include("navbar.php"); ?>
                     <p>C’est simple, inscrivez-vous en remplissant ce
                         formulaire d’inscription, poster la problématique
                         et réserver vos places.</p>
-                    <button id="register" class="btn btn-header btnG" type="button">Inscrivez-vous</button>
+                    <button id="register" class="btn btn-header" type="button">Inscrivez-vous</button>
                 </div>
             </div>
         </div>
@@ -185,7 +204,7 @@ include("navbar.php"); ?>
                     </div>
                     <a href="video.php">
 
-                        <button id="" class="btnG btn btn-header" type="button">Voir des vidéos</button>
+                        <button id="" class="btn btn-header" type="button">Voir des vidéos</button>
                     </a>
                 </div>
                 <div class="" data-aos="zoom-in-up">
