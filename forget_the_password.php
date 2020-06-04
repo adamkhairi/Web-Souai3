@@ -21,18 +21,19 @@ include("navbar.php");
                         $result = $conn->query($sql);
                         $reponse = mysqli_fetch_array($result);
                         if(!empty($reponse['mailetudiant'])){
-                            $to_email = "abdok7049@gmail.com";
-                            $subject = "Simple Email Test via PH";
-                            $body = "http://localhost/Web-Souai3/resetNewPassword.php";
-                            $headers = "From: abdelkbirkhouilid32@gmail.com";
+                            $to_email = $email;
+                            $subject = "Changer le mot de passe";
+                            $body = "Pour changer Le mot de passe clique lien suivant: http://localhost/Web-Souai3/resetNewPassword.php?m=". $email ."";
+                            $headers = "From: soutiensway3@gmail.com";
                             if (mail($to_email, $subject, $body, $headers)) {
-                                echo "Email successfully sent to $to_email...";
+                                echo "<p class ='text-success m-4'>vérifiez votre email</p>";
+                                
                             } else {
-                                echo "Email sending failed";
+                                echo"<p class ='text-danger m-4'>Cet email n'existe pas!</p>";
                             }   
                         }
                         else{
-                            echo"<p class ='text-danger m-4'>cet email n'existe pas!</p>";
+                            echo"<p class ='text-danger m-4'>Cet email n'existe pas!</p>";
                         }
                     } else{
                         header("location: index.php");

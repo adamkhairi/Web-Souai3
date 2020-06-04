@@ -1,6 +1,7 @@
 <?php
 require("connexion.php");
 include("navbar.php");
+$_SESSION['m'] = $_GET['m'];
 ?>    
 <div class="signin-content">
 <div class="signin-image">
@@ -9,10 +10,6 @@ include("navbar.php");
 <div class="signin-form">
     <h2 class="form-title">Modifier  mode passe Oublie</h2>
     <form method="POST" action="ressetthepassword.php" class="register-form" id="login-form">
-        <div class="form-group">
-            <label for="your_email"><i class="zmdi zmdi-account material-icons-name"></i></label>
-            <input type="email" name="email" id="your_email" placeholder="Votre Email"/>
-        </div>
         <div class="form-group">
             <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
             <input type="password" name="password1" id="your_pass" placeholder="Noveau Mot de passe"/>
