@@ -81,9 +81,10 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
         $PrepaireArray[]['email'] = $mail;
     }
     $event['attendees'] = $PrepaireArray;
+
     $calendarId = 'primary';
     $event = $service->events->insert($calendarId, $event);
-    header('location: Teacher.php');
+    // header('location: Teacher.php');
 
 
 } else {
