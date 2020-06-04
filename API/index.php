@@ -1,9 +1,17 @@
 <?php
+require "../connexion.php";
+session_start();
+$row = $_POST['ids'];
+$mails = $_POST['emails'];
+$sql = "SELECT e.message, e.theDate, e.hours, c.nomcours FROM theevanets e  INNER JOIN cours c ON e.coursID = c.idcours WHERE e.eventID = " . $row . "";
+$run = mysqli_query($conn, $sql);
+$arr = mysqli_fetch_assoc($run);
+// print_r($arr);
+// die();
 // require_once __DIR__.'./vendor/autoload.php';
 // require ('vendor\autoload.php');
 require_once './vendor/autoload.php';
 
-session_start();
 
 $client = new Google_Client();
 $client->setAuthConfig('./client_id.json');
@@ -49,36 +57,39 @@ if (isset($_SESSION['access_token'])) {
 // credentials.
 
   $event = new Google_Service_Calendar_Event(array(
-    'summary' => 'Google I/O 2015',
-    'location' => '800 Howard St., San Francisco, CA 94103',
-    'description' => 'A chance to hear more about Google\'s developer products.',
+    'summary' => $arr['nomcours'],
+    'location' => 'At Home',
+    'description' => $arr['message'],
     'start' => array(
-      'dateTime' => '2020-06-15T09:00:00-07:00',
-      'timeZone' => 'America/Los_Angeles',
+        'dateTime' => $arr['theDate'] . 'T' . $arr['hours'] . ':00',
+        'timeZone' => 'Africa/Casablanca',
     ),
     'end' => array(
-      'dateTime' => '2020-06-15T17:00:00-07:00',
-      'timeZone' => 'America/Los_Angeles',
+        'dateTime' => $arr['theDate'] . 'T' . $arr['hours'] . ':00',
+        'timeZone' => 'Africa/Casablanca',
     ),
     'recurrence' => array(
-      'RRULE:FREQ=DAILY;COUNT=1'
+        'RULE:FREQ=DAILY;COUNT=1'
     ),
-    'attendees' => array(
-      array('email' => 'lpage@example.com'),
-      array('email' => 'sbrin@example.com'),
+    'conferenceProperties' => array(
+        'allowedConferenceSolutionTypes' => 'eventHangout'
     ),
     'reminders' => array(
-      'useDefault' => FALSE,
-      'overrides' => array(
-        array('method' => 'email', 'minutes' => 24 * 60),
-        array('method' => 'popup', 'minutes' => 10),
-      ),
+        'useDefault' => FALSE,
+        'overrides' => array(
+            array('method' => 'email', 'minutes' => 24 * 60),
+            array('method' => 'popup', 'minutes' => 10),
+        ),
     ),
   ));
-
-  $calendarId = 'primary';
-  $event = $service->events->insert($calendarId, $event);
-  printf('Event created: %s\n', $event->htmlLink);
+   $PrepaireArray = [];
+    foreach ($mails as $mail) {
+        $PrepaireArray[]['email'] = $mail;
+    }
+    $event['attendees'] = $PrepaireArray;
+    $calendarId = 'primary';
+    $event = $service->events->insert($calendarId, $event);
+    header('location: ../Teacher.php');
 
 
 } else {

@@ -48,7 +48,7 @@ if (!empty($_GET['msg'])) {
                         <!--                        Email-->
                         <div class="form-group">
                             <label for="email"><i class="zmdi zmdi-email"></i></label>
-                            <input type="email" name="email" id="email" placeholder="Votre Email"/>
+                            <input type="email" name="email" id="email" placeholder="Votre adresse gmail"/>
                         </div>
                         <div class="form-group">
                             <div class="input-group mb-3">
@@ -71,7 +71,7 @@ if (!empty($_GET['msg'])) {
                             </div>
                             <div class="form-group" id="filiere">
                                 <select class="custom-select" name="filier" id="filier">
-                                    <option value="" selected disabled> Choisir une filiere</option>
+                                    <option value="" selected disabled> Choisir une filière</option>
                                 </select>
                             </div>
                         </div>
@@ -85,7 +85,7 @@ if (!empty($_GET['msg'])) {
                         </div>
                         <div class="form-group form-button">
                             <input type="submit" name="signup" id="signup" class="form-submit rounded-pill"
-                                   value="Inscrivez-Vousss"/>
+                                   value="Inscrivez-Vous"/>
                         </div>
                     </form>
                 </div>

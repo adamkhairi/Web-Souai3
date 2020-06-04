@@ -119,7 +119,7 @@ if (empty($_SESSION['mailb'])) {
                     <div id=\"exit\" onclick='hidelist(" . $Arr['eventID'] . ")'>
                         <i class=\"fas fa-times\"></i>
                     </div>
-                    <form action=\"php-google-calendar/index.php\" method=\"post\">
+                    <form action=\"API/index.php\" method=\"post\">
                         <div class=\"table-responsive\">
                             <table class=\"table\">
                                 <thead class=\" thead-dark\">
