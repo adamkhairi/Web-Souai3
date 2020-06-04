@@ -6,7 +6,7 @@ $sql = "SELECT e.message, e.theDate, e.hours, c.nomcours FROM theevanets e  INNE
 $run = mysqli_query($conn, $sql);
 $arr = mysqli_fetch_assoc($run);
 
-require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . './vendor/autoload.php';
 
 session_start();
 
@@ -32,18 +32,18 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
     $service = new Google_Service_Calendar($client);
     $results = $service->events->listEvents($calendarId, $optParams);
 
-//  if (count($results->getItems()) == 0) {
-//    print "No upcoming events found.\n";
-//  } else {
-//    print "Upcoming events:\n";
-//    foreach ($results->getItems() as $event) {
-//      $start = $event->start->dateTime;
-//      if (empty($start)) {
-//        $start = $event->start->date;
-//      }
-//      printf("%s (%s)\n", $event->getSummary(), $start);
-//    }
-//  }
+ if (count($results->getItems()) == 0) {
+   print "No upcoming events found.\n";
+ } else {
+   print "Upcoming events:\n";
+   foreach ($results->getItems() as $event) {
+     $start = $event->start->dateTime;
+     if (empty($start)) {
+       $start = $event->start->date;
+     }
+     printf("%s (%s)\n", $event->getSummary(), $start);
+   }
+ }
 
     $events = $results->getItems();
 // Refer to the PHP quickstart on how to setup the environment:
@@ -87,6 +87,6 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 
 
 } else {
-    $redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . '/php-google-calendar/oauth2callback.php';
+    $redirect_uri = 'http://localhost/Web-Souai3/php-google-calendar/oauth2callback.php';
     header('Location: ' . filter_var($redirect_uri, FILTER_SANITIZE_URL));
 }

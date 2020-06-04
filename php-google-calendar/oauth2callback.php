@@ -5,7 +5,7 @@ session_start();
 
 $client = new Google_Client();
 $client->setAuthConfigFile('credentials.json');
-$client->setRedirectUri('http://' . $_SERVER['HTTP_HOST'] . '/oauth2callback.php');
+$client->setRedirectUri('http://localhost/Web-Souai3/php-google-calendar/oauth2callback.php');
 //$client->addScope(Google_Service_Calendar::CALENDAR);
 $client->setScopes(Google_Service_Calendar::CALENDAR);
 $client->setAccessType('offline');
@@ -18,6 +18,6 @@ if (!isset($_GET['code'])) {
     $client->authenticate($_GET['code']);
     $_SESSION['access_token'] = $client->getAccessToken();
 //  $redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . '/';
-    $redirect_uri = 'http://facebook.com/';
+    $redirect_uri = 'http://localhost/Web-Souai3/quickstart.php';
     header('Location: ' . filter_var($redirect_uri, FILTER_SANITIZE_URL));
 }

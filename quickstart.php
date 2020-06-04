@@ -6,7 +6,7 @@ $sql = "SELECT e.message, e.theDate, e.hours, c.nomcours FROM theevanets e  INNE
 $run = mysqli_query($conn, $sql);
 $arr = mysqli_fetch_assoc($run);
 
-require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . './php-google-calendar/vendor/autoload.php';
 
 //if (php_sapi_name() != 'cli') {
 //    throw new Exception('This application must be run on the command line.');

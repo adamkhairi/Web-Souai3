@@ -21,8 +21,15 @@ include("navbar.php");
                         $result = $conn->query($sql);
                         $reponse = mysqli_fetch_array($result);
                         if(!empty($reponse['mailetudiant'])){
-                            //TODO Send email to Client
-                         header("location: resetNewPassword.php");
+                            $to_email = "abdok7049@gmail.com";
+                            $subject = "Simple Email Test via PH";
+                            $body = "http://localhost/Web-Souai3/resetNewPassword.php";
+                            $headers = "From: abdelkbirkhouilid32@gmail.com";
+                            if (mail($to_email, $subject, $body, $headers)) {
+                                echo "Email successfully sent to $to_email...";
+                            } else {
+                                echo "Email sending failed";
+                            }   
                         }
                         else{
                             echo"<p class ='text-danger m-4'>cet email n'existe pas!</p>";
