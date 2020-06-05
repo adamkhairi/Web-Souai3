@@ -114,8 +114,8 @@ if (empty($_SESSION['mailb'])) {
                 </div>
               <input  onclick='hidelist(" . $Arr['eventID'] . ")' type='button'  class='btn w-75 text-left' value='Afficher la list'/>
           <div id=\"eventlist\" class=\"popup hide toggll" . $Arr['eventID'] . " \">
-            <section class=\"sign-in p-2\">
-                <div class=\"container\">
+            <section class=\"sign-in \">
+                <div class=\"container pb-3\">
                     <div id=\"exit\" onclick='hidelist(" . $Arr['eventID'] . ")'>
                         <i class=\"fas fa-times\"></i>
                     </div>
@@ -156,7 +156,7 @@ if (empty($_SESSION['mailb'])) {
                             </tbody>
                             </table>
                             <div class=\"text-right\">
-                                <button type=\"submit\" class=\"btn backOrange m-1 rounded-pill\">Envoyer !</button>
+                                <button type=\"submit\" class=\"btn bg-dark text-light m-1 rounded-pill\">Envoyer !</button>
                             </div>
                         </div>
                     </form>

@@ -24,9 +24,9 @@ function dateToFrench($date, $format)
     <title><?php echo $pageTitle ;?></title>
 </head>
 <body>
-<nav class="sticky-top justify-content-around ">
+<nav class="sticky-top">
     <a class="navbar-brand ml-4 " href="index.php">
-        <img src="src/img/salog1.png"  class="d-inline-block align-top ml-4" alt="">
+        <img src="src/img/salog1.png"  class="d-inline-block align-top ml-3" alt="">
     </a>
     <div class="  text-center ">
         <h1 class=" font-weight-bold text-white text-center">
@@ -65,9 +65,7 @@ function dateToFrench($date, $format)
                 echo
                 "
             <div class=' rounded-circle p-2'>
-               <a href=\"logout.php\">
-            <i class=\"fas deleteSec fa-sign-out-alt\"></i>
-                </a>
+           
          </div>
     ";
             } else if (!empty($_SESSION['mail'])) {
@@ -77,9 +75,7 @@ function dateToFrench($date, $format)
                 echo
                 "
             <div class=' rounded-circle p-2'>
-               <a href=\"logout.php\">
-                    <i class=\"fas deleteSec fa-sign-out-alt\"></i>  
-                </a>
+             
          </div>
    ";
             } else {
