@@ -62,13 +62,16 @@ if (empty($_SESSION['mailb'])) {
             </div>
             <?php
             if (!empty($_SESSION['mailb'])) {
-                $therequet = "SELECT COUNT(d.cours) AS num, d.cours,c.nomcours , m.nommatiere FROM demande d INNER JOIN cours c ON 
-           d.cours = c.idcours INNER JOIN matiere m ON c.idmatiere = m.idmatiere GROUP BY d.cours ORDER BY COUNT(d.cours) DESC;";
+                $therequet = "SELECT COUNT(d.cours) AS num, d.cours,c.nomcours , m.nommatiere, f.namfiliere,n.niveau FROM demande d INNER JOIN cours c ON 
+           d.cours = c.idcours INNER JOIN matiere m ON c.idmatiere = m.idmatiere  INNER JOIN filiere f on m.idfiliere = f.idfiliere INNER JOIN niveau n on f.idniveau = n.idniveau GROUP BY d.cours ORDER BY COUNT(d.cours) DESC;";
                 $do = mysqli_query($conn, $therequet);
                 if ($do = mysqli_query($conn, $therequet)) {
 
                     while ($array = mysqli_fetch_array($do)) {
-                        echo '<div class="row  font-weight-bold align-items-center text-center" style="min-width: 16em ; max-width: 100%">
+                        echo '
+                    <div class="row  font-weight-bold align-items-center text-center" style="min-width: 16em ; max-width: 100%">
+                   <div class="col-sm m-2 rounded p-3 text-truncate backRed">' . $array[5] . '</div>
+                   <div class="col-sm m-2 rounded p-3 text-truncate backRed" data-toggle="tooltip" data-placement="top" title="' . $array[4] . '">' . $array[4] . '</div>
                    <div class="col-sm m-2 rounded p-3 text-truncate backRed">' . $array[3] . '</div>
 
                    <div class="col-sm m-2 rounded p-3 text-truncate backRed" data-toggle="tooltip" data-placement="top" title="' . $array[2] . '">' . $array[2] . '</div>
@@ -79,7 +82,9 @@ if (empty($_SESSION['mailb'])) {
                 } else {
                     echo "<h5 class='text-danger text-center font-weight-bold mt-5'>Aucune demande</h5>";
                 };
-            };
+            } else {
+                echo "<h5 class='text-danger text-center font-weight-bold mt-5'>Aucune demande</h5>";
+            };;
             ?>
         </div>
     </div>
@@ -132,18 +137,18 @@ if (empty($_SESSION['mailb'])) {
                                 </thead>
                                 <tbody>";
 
-                            $sql = "SELECT r.idetudiant,e.nometudiant,e.prenometudiant, e.mailetudiant ,r.idevent FROM reponce r 
+                    $sql = "SELECT r.idetudiant,e.nometudiant,e.prenometudiant, e.mailetudiant ,r.idevent FROM reponce r 
                                     INNER JOIN etudiant e on r.idetudiant = e.idetudiant WHERE r.idevent =" . $Arr['eventID'] . " ";
-                            $req = mysqli_query($conn, $sql);
-                            $result = mysqli_fetch_all($req);
-                            foreach ($result as $row) {
+                    $req = mysqli_query($conn, $sql);
+                    $result = mysqli_fetch_all($req);
+                    foreach ($result as $row) {
                         echo "
                             <tr>
                               <th scope=\"row\">
                                 <div class=\"custom-control custom-checkbox mr-sm-2\">
                                 <input type='text' hidden name='ids' value='" . $row['4'] . "'>
-                                <input type=\"checkbox\" value='" . $row['3'] ."' class=\"custom-control-input\" id=\"". $row['3'] ."". $row['4'] ."\" name='emails[]'>
-                                <label class=\"custom-control-label\"  for=\"". $row['3'] ."". $row['4'] ."\">Choisir</label>
+                                <input type=\"checkbox\" value='" . $row['3'] . "' class=\"custom-control-input\" id=\"" . $row['3'] . "" . $row['4'] . "\" name='emails[]'>
+                                <label class=\"custom-control-label\"  for=\"" . $row['3'] . "" . $row['4'] . "\">Choisir</label>
                                 </div>
                               </th>
                               <td>" . $row['2'] . "</td>
