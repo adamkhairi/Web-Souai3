@@ -35,8 +35,8 @@ if ($data[0] == 0) {
 
 //                echo "<script>alert('Done')</script>";
         }
-    } else {
-        echo "<script>alert('Verifier vos informations !')</script>";
     }
+}elseif($data[0] != 0){
+    header("location: index.php?msg=mailexist");
 }
 ?>

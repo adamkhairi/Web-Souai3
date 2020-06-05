@@ -133,8 +133,7 @@ if (empty($_SESSION['mailb'])) {
                                 <tbody>";
 
                     $sql = "SELECT r.idetudiant,e.nometudiant,e.prenometudiant, e.mailetudiant ,r.idevent FROM reponce r 
-                            INNER JOIN etudiant e on r.idetudiant = e.idetudiant WHERE r.idevent =
-" . $Arr['eventID'] . " ";
+                            INNER JOIN etudiant e on r.idetudiant = e.idetudiant WHERE r.idevent =" . $Arr['eventID'] . " ";
                     $req = mysqli_query($conn, $sql);
                     $result = mysqli_fetch_all($req);
                     foreach ($result as $row) {
@@ -244,7 +243,6 @@ if (empty($_SESSION['mailb'])) {
                             INNER JOIN matiere m ON m.idmatiere = c.idmatiere";
                     $reqt = mysqli_query($conn, $req);
                     $row = mysqli_fetch_array($reqt);
-                    //TODO Wierd !!!
                     if ($reqt = mysqli_query($conn, $req)) {
                         if (!empty($_SESSION['mailb']) && $reqt) {
                             while ($row = mysqli_fetch_array($reqt)) {
