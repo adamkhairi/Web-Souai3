@@ -243,9 +243,12 @@ if (empty($_SESSION['mailb'])) {
                         }
                     }
                 } else {
-                    $req = "SELECT c.nomcours, e.prenometudiant, e.nometudiant, d.description,  m.nommatiere FROM demande d 
-                            INNER JOIN etudiant e ON d.idetudiantc = e.idetudiant INNER JOIN cours c ON c.idcours = d.cours 
-                            INNER JOIN matiere m ON m.idmatiere = c.idmatiere";
+                    $req = "SELECT c.nomcours, e.prenometudiant, e.nometudiant, d.description,  m.nommatiere ,f.namfiliere ,n.niveau FROM demande d 
+                            INNER JOIN etudiant e ON d.idetudiantc = e.idetudiant 
+                            INNER JOIN cours c ON c.idcours = d.cours 
+                            INNER JOIN matiere m ON m.idmatiere = c.idmatiere
+                            INNER JOIN filiere f on m.idfiliere = f.idfiliere
+                            INNER JOIN niveau n on f.idniveau = n.idniveau";
                     $reqt = mysqli_query($conn, $req);
                     $row = mysqli_fetch_array($reqt);
                     if ($reqt = mysqli_query($conn, $req)) {
@@ -258,7 +261,10 @@ if (empty($_SESSION['mailb'])) {
                                              <h5 class=\"card-title font-weight-bold mt-2\">$row[4]</h5>
                                     </div>
                                     <div class='p-2 m-1 text-center'>
-                                        <h5 class=\"card-title text-center m-2\">$row[0]</h5>
+                                        <h6 class=\"card-title text-center mb-1\">- $row[6] -</h6>
+                                        <h6 class=\"card-title text-center\">$row[5]</h6>
+                                        <hr>
+                                        <h6 class=\"card-title text-center m-2\">$row[0]</h6>
                                         <hr>
                                         <p class=\"card-text font-weight-light m-2\">$row[3]</p>
                                      </div>

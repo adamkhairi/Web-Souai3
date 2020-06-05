@@ -196,8 +196,11 @@ if (empty($_SESSION['mail'])) {
                     $lname = $_SESSION['lastName'];
                     while ($row = mysqli_fetch_array($result)) {
                         array_push($demandes, $row[1]);
-                        $requet = "SELECT c.idcours, c.nomcours , m.nommatiere FROM cours c 
-            INNER JOIN matiere m on c.idmatiere = m.idmatiere where idcours =  '" . $row[3] . "'";
+                        $requet = "SELECT c.idcours, c.nomcours , m.nommatiere,f.namfiliere,n.niveau FROM cours c 
+                        INNER JOIN matiere m on c.idmatiere = m.idmatiere 
+                        INNER JOIN filiere f on m.idfiliere = f.idfiliere
+                        INNER JOIN niveau n on f.idniveau = n.idniveau
+                        where idcours =  '" . $row[3] . "'";
 
                         $results = mysqli_query($conn, $requet);
                         $row1 = mysqli_fetch_array($results);
@@ -205,10 +208,13 @@ if (empty($_SESSION['mail'])) {
                         <div class=\"card mb-4 rounded-lg position-relative m-2\" style=\"width: 18rem;\">
                            <div class=\"card-body  p-0\">
                            <div class='backOrange rounded-top pt-2 p-1 text-center'> 
-                            <h6 class=\"card-title font-weight-bold mt-2\">$row1[2]</h6>
+                            <h5 class=\"card-title font-weight-bold mt-2\">$row1[2]</h5>
                             </div>
                             <div class='p-2 m-1 text-center'>
-                            <h5 class=\"card-title mt-2\">$row1[1]</h5>
+                            <h6 class=\"card-title mb-1\">- $row1[4] -</h6>
+                            <h6 class=\"card-title\">$row1[3]</h6>
+                            <hr>
+                            <h6 class=\"card-title mt-2\">$row1[1]</h6>
                            <hr>
                             <p class=\"card-text  m-2\">$row[1]</p>
                            </div>  
