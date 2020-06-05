@@ -17,7 +17,7 @@ if (!empty($_GET['msg'])) {
   </button>
 </div>
         ";
-    }elseif ($_GET['msg'] = 'mailexist'){
+    }elseif ($_GET['msg'] == 'mailexist'){
         echo "
 
         <div class=\"alert alert-danger text-center m-0 alert-dismissible fade show\" role=\"alert\">
@@ -27,6 +27,15 @@ if (!empty($_GET['msg'])) {
           </button>
         </div>
                 ";
+    }elseif ($_GET['msg'] == 'invalidInfos') {
+        echo "
+        <div class=\"alert text-center alert-danger m-0 alert-dismissible fade show \" role=\"alert\">
+  <strong>Ops !</strong> Verifiez vos Informations .
+  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+    <span aria-hidden=\"true\">&times;</span>
+  </button>
+</div>
+        ";
     }
 }
 
