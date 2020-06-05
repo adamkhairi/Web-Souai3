@@ -22,6 +22,17 @@ if (empty($_SESSION['mail'])) {
                 </h3>
                 <p class="font-weight-light text-muted mb-0">Etudiant</p>
 
+
+                <?php
+                if (!empty($_SESSION['mail'])) {
+                    //TODO Show Level & Branch
+                    echo "
+                        <h6>" . $_SESSION['nomniveau'] . "</h6>
+                        <h6>" . $_SESSION['nomFiliere'] . "</h6>
+                        ";
+                }
+                ?>
+                </h6>
             </div>
         </div>
         <div class="mt-4">
@@ -216,7 +227,7 @@ if (empty($_SESSION['mail'])) {
         </div>
     </div>
 </div>
-<?php include 'footer.php';?>
+<?php include 'footer.php'; ?>
 <script src="src/js/general.js"></script>
 <script src="src/js/student.js"></script>
 <script>
@@ -235,6 +246,7 @@ if (empty($_SESSION['mail'])) {
 			xmlhttp.send();
 		}
 	}
+
 	function removeFrom(val) {
 		let str;
 		let xmlhttp = new XMLHttpRequest();
@@ -243,6 +255,7 @@ if (empty($_SESSION['mail'])) {
 		xmlhttp.send();
 		setTimeout(reloadpage, 1000)
 	}
+
 	function reloadpage() {
 		location.reload();
 	}

@@ -19,13 +19,21 @@ if (isset($_POST['your_email']) && isset($_POST['your_pass'])) {
             $_SESSION['banche'] = $reponse['filiere'];
             $_SESSION['mail'] = $reponse['mailetudiant'];
             $_SESSION['password'] = $reponse['passwordetudiant'];
+
+            $requete = "SELECT f.namfiliere, n.niveau FROM filiere f INNER JOIN niveau n ON n.idniveau = f.idniveau where
+                   idfiliere =" . $_SESSION['banche'];
+            $exec_requete = mysqli_query($conn, $requete);
+            $reponse = mysqli_fetch_array($exec_requete);
+            $_SESSION['nomFiliere'] = $reponse['namfiliere'];
+            $_SESSION['nomniveau'] = $reponse['niveau'];
+//            print_r($_SESSION['nomniveau']);
+//            die();
             echo($reponse);
             header('Location: Student.php');
-        } else{
+        } else {
             header("location: index.php?msg=invalidInfos");
         }
-    }
-    elseif ($_POST["userType"] == "teacher") {
+    } elseif ($_POST["userType"] == "teacher") {
         $_SESSION['type'] = $_POST['userType'];
         $requete = "SELECT * FROM benevole WHERE mailbenevole = '" . $your_email . "' and passwordbenevole = '" . $password . "'";
         $exec_requete = mysqli_query($conn, $requete);
@@ -38,13 +46,13 @@ if (isset($_POST['your_email']) && isset($_POST['your_pass'])) {
             $_SESSION['mailb'] = $reponse['mailbenevole'];
             $_SESSION['password'] = $reponse['passwordbenevole'];
             header('Location: Teacher.php');
-        }else{
+        } else {
             header("location: index.php?msg=invalidInfos");
         }
-    } else{
+    } else {
         header("location: index.php?msg=invalidInfos");
     }
-}else{
+} else {
     header("location: index.php?msg=invalidInfos");
 }
 mysqli_close($conn); // fermer la connexion
