@@ -190,10 +190,10 @@ button:focus, input:focus, textarea:focus, select:focus {
 }
 .btn_add_event {
   display: flex;
-  justify-content: center;
+  justify-content: center ;
   button {
-    width: 150px;
-    padding: 15px;
+    // width: 150px;
+    padding: 10px;
     background-color: $lPink;
     color: $colorW;
     border: none;

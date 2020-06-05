@@ -36,11 +36,11 @@ if (empty($_SESSION['mailb'])) {
             if (!empty($_SESSION['mailb'])) {
                 echo "
             <div class='btn_add_event'>
-                <button id='add_event_btn' type='button'>Ajouter l'événement</button>
+                <button id='add_event_btn'  type='button'><i class=\"fas fa-plus\"></i> Événement</button>
             </div>
             <div class='mt-2'>
                 <a  href=\"logout.php\">
-                    <button class='btn btn-danger rounded-pill'>Déconnexion</button>
+                    <button style='width: 139px !important; height: 47 !important;' class='btn btn-danger p-2 rounded-pill'>Déconnexion</button>
                 </a>
             </div>
                 ";
