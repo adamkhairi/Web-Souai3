@@ -71,7 +71,7 @@ if (empty($_SESSION['mailb'])) {
                         echo '<div class="row  font-weight-bold align-items-center text-center" style="min-width: 16em ; max-width: 100%">
                    <div class="col-sm m-2 rounded p-3 text-truncate backRed">' . $array[3] . '</div>
 
-                   <div class="col-sm m-2 rounded p-3 text-truncate backOrange" data-toggle="tooltip" data-placement="top" title="' . $array[2] . '">' . $array[2] . '</div>
+                   <div class="col-sm m-2 rounded p-3 text-truncate backRed" data-toggle="tooltip" data-placement="top" title="' . $array[2] . '">' . $array[2] . '</div>
                     <div class="col-sm m-2 rounded p-3 text-truncate backGreen">' . $array[0] . '</div>
                     </div>
                     <hr class="backRed">';
@@ -132,18 +132,18 @@ if (empty($_SESSION['mailb'])) {
                                 </thead>
                                 <tbody>";
 
-                    $sql = "SELECT r.idetudiant,e.nometudiant,e.prenometudiant, e.mailetudiant ,r.idevent FROM reponce r 
-                            INNER JOIN etudiant e on r.idetudiant = e.idetudiant WHERE r.idevent =" . $Arr['eventID'] . " ";
-                    $req = mysqli_query($conn, $sql);
-                    $result = mysqli_fetch_all($req);
-                    foreach ($result as $row) {
+                            $sql = "SELECT r.idetudiant,e.nometudiant,e.prenometudiant, e.mailetudiant ,r.idevent FROM reponce r 
+                                    INNER JOIN etudiant e on r.idetudiant = e.idetudiant WHERE r.idevent =" . $Arr['eventID'] . " ";
+                            $req = mysqli_query($conn, $sql);
+                            $result = mysqli_fetch_all($req);
+                            foreach ($result as $row) {
                         echo "
                             <tr>
                               <th scope=\"row\">
                                 <div class=\"custom-control custom-checkbox mr-sm-2\">
-                                <input type='text' hidden name='ids' value='" . $row[4] . "'>
-                                <input type=\"checkbox\" value='" . $row['3'] . "' class=\"custom-control-input\" id=\"check" . $row[0] . "\" name='emails[]'>
-                                <label class=\"custom-control-label\"  for=\"check" . $row[0] . "\">Choisir</label>
+                                <input type='text' hidden name='ids' value='" . $row['4'] . "'>
+                                <input type=\"checkbox\" value='" . $row['3'] ."' class=\"custom-control-input\" id=\"". $row['3'] ."". $row['4'] ."\" name='emails[]'>
+                                <label class=\"custom-control-label\"  for=\"". $row['3'] ."". $row['4'] ."\">Choisir</label>
                                 </div>
                               </th>
                               <td>" . $row['2'] . "</td>
