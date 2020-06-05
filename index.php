@@ -10,8 +10,17 @@ if (!empty($_GET['msg'])) {
 //        echo "<script>alert('Votre inscription a été effectué avec succès.')</script>";
         echo "
 
-<div class=\"alert alert-success m-0 alert-dismissible fade show\" role=\"alert\">
+<div class=\"alert text-center alert-success m-0 alert-dismissible fade show\" role=\"alert\">
   <strong>Bienvenu !</strong> Votre inscription a été effectué avec succès.
+  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+    <span aria-hidden=\"true\">&times;</span>
+  </button>
+</div>
+        ";
+    } elseif ($_GET['msg'] == 'pwdNotMatch') {
+        echo "
+        <div class=\"alert text-center alert-danger m-0 alert-dismissible fade show \" role=\"alert\">
+  <strong>Ops !</strong> Verifiez vos Informations .
   <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
     <span aria-hidden=\"true\">&times;</span>
   </button>

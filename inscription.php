@@ -5,24 +5,24 @@ $sql = "SELECT count(*) FROM `etudiant`  WHERE `mailetudiant`= '$your_email' ";
 $req = mysqli_query($conn, $sql);
 $data = mysqli_fetch_array($req);
 if ($data[0] == 0) {
-    if (isset($_REQUEST['username'], $_REQUEST['prenom'], $_REQUEST['nScolaire'], $_REQUEST['filier'], $_REQUEST['email'], $_REQUEST['password'], $_REQUEST['password2']) && $_REQUEST['password'] == $_REQUEST['password2']) {
+    if (!empty($_POST['username'] && $_POST['prenom'] && $_POST['nScolaire'] && $_POST['filier'] && $_POST['email'] && $_POST['password'] && $_POST['password2']) && $_POST['password'] == $_POST['password2']) {
         // récupérer le nom d'utilisateur et supprimer les antislashes ajoutés par le formulaire
-        $username = stripslashes($_REQUEST['username']);
+        $username = stripslashes($_POST['username']);
         $username = mysqli_real_escape_string($conn, $username);
         // récupérer le prenom et supprimer les antislashes ajoutés par le formulaire
-        $prenom = stripslashes($_REQUEST['prenom']);
+        $prenom = stripslashes($_POST['prenom']);
         $prenom = mysqli_real_escape_string($conn, $prenom);
         // récupérer le prenom et supprimer les antislashes ajoutés par le formulaire
-        $nScolaire = stripslashes($_REQUEST['nScolaire']);
+        $nScolaire = stripslashes($_POST['nScolaire']);
         $nScolaire = mysqli_real_escape_string($conn, $nScolaire);
         // récupérer le prenom et supprimer les antislashes ajoutés par le formulaire
-        $filier = stripslashes($_REQUEST['filier']);
+        $filier = stripslashes($_POST['filier']);
         $filier = mysqli_real_escape_string($conn, $filier);
         // récupérer l'email et supprimer les antislashes ajoutés par le formulaire
-        $email = stripslashes($_REQUEST['email']);
+        $email = stripslashes($_POST['email']);
         $email = mysqli_real_escape_string($conn, $email);
         // récupérer le mot de passe et supprimer les antislashes ajoutés par le formulaire
-        $password = stripslashes($_REQUEST['password']);
+        $password = stripslashes($_POST['password']);
         $password = mysqli_real_escape_string($conn, $password);
         //requéte SQL + mot de passe crypté
         $query = "INSERT into `etudiant` (`nometudiant`, `prenometudiant`,`niveauscolaire`,`filiere`, `mailetudiant`, `passwordetudiant`) 
@@ -36,7 +36,9 @@ if ($data[0] == 0) {
 //                echo "<script>alert('Done')</script>";
         }
     } else {
-        echo "<script>alert('Verifier vos informations !')</script>";
+//        echo "<script>alert('Verifier vos informations !')</script>";
+        header("location: index.php?msg=pwdNotMatch");
+
     }
 }
 ?>
