@@ -36,11 +36,11 @@ if (empty($_SESSION['mailb'])) {
             if (!empty($_SESSION['mailb'])) {
                 echo "
             <div class='btn_add_event'>
-                <button id='add_event_btn' type='button'>Ajouter l'événement</button>
+                <button id='add_event_btn'  type='button'><i class=\"fas fa-plus\"></i> Événement</button>
             </div>
             <div class='mt-2'>
                 <a  href=\"logout.php\">
-                    <button class='btn btn-danger rounded-pill'>Déconnexion</button>
+                    <button style='width: 139px !important; height: 47 !important;' class='btn btn-danger p-2 rounded-pill'>Déconnexion</button>
                 </a>
             </div>
                 ";
@@ -63,7 +63,7 @@ if (empty($_SESSION['mailb'])) {
             <?php
             if (!empty($_SESSION['mailb'])) {
                 $therequet = "SELECT COUNT(d.cours) AS num, d.cours,c.nomcours , m.nommatiere FROM demande d INNER JOIN cours c ON 
-                d.cours = c.idcours INNER JOIN matiere m ON c.idmatiere = m.idmatiere GROUP BY d.cours ORDER BY COUNT(d.cours) DESC;";
+           d.cours = c.idcours INNER JOIN matiere m ON c.idmatiere = m.idmatiere GROUP BY d.cours ORDER BY COUNT(d.cours) DESC;";
                 $do = mysqli_query($conn, $therequet);
                 if ($do = mysqli_query($conn, $therequet)) {
 
@@ -71,7 +71,7 @@ if (empty($_SESSION['mailb'])) {
                         echo '<div class="row  font-weight-bold align-items-center text-center" style="min-width: 16em ; max-width: 100%">
                    <div class="col-sm m-2 rounded p-3 text-truncate backRed">' . $array[3] . '</div>
 
-                   <div class="col-sm m-2 rounded p-3 text-truncate backOrange" data-toggle="tooltip" data-placement="top" title="' . $array[2] . '">' . $array[2] . '</div>
+                   <div class="col-sm m-2 rounded p-3 text-truncate backRed" data-toggle="tooltip" data-placement="top" title="' . $array[2] . '">' . $array[2] . '</div>
                     <div class="col-sm m-2 rounded p-3 text-truncate backGreen">' . $array[0] . '</div>
                     </div>
                     <hr class="backRed">';
@@ -112,14 +112,14 @@ if (empty($_SESSION['mailb'])) {
                         <i class=\"fas fa-trash-alt\"></i>
                     </button>
                 </div>
-              <input  onclick='hidelist(" . $Arr['eventID'] . ");' type='button'  class='btn w-75 text-left' id='" . $Arr['eventID'] . "' value='Afficher la list'/>
+              <input  onclick='hidelist(" . $Arr['eventID'] . ")' type='button'  class='btn w-75 text-left' value='Afficher la list'/>
           <div id=\"eventlist\" class=\"popup hide toggll" . $Arr['eventID'] . " \">
-            <section class=\"sign-in p-2\">
-                <div class=\"container\">
+            <section class=\"sign-in \">
+                <div class=\"container pb-3\">
                     <div id=\"exit\" onclick='hidelist(" . $Arr['eventID'] . ")'>
                         <i class=\"fas fa-times\"></i>
                     </div>
-                    <form action=\"API/index.php\" method=\"post\" name='" . $Arr['eventID'] . "'>
+                    <form action=\"API/index.php\" method=\"post\">
                         <div class=\"table-responsive\">
                             <table class=\"table\">
                                 <thead class=\" thead-dark\">
@@ -132,18 +132,18 @@ if (empty($_SESSION['mailb'])) {
                                 </thead>
                                 <tbody>";
 
-                    $sql = "SELECT r.idetudiant,e.nometudiant,e.prenometudiant, e.mailetudiant ,r.idevent FROM reponce r 
-                            INNER JOIN etudiant e on r.idetudiant = e.idetudiant WHERE r.idevent =" . $Arr['eventID'];
-                    $req = mysqli_query($conn, $sql);
-                    $result = mysqli_fetch_all($req);
-                    foreach ($result as $row) {
+                            $sql = "SELECT r.idetudiant,e.nometudiant,e.prenometudiant, e.mailetudiant ,r.idevent FROM reponce r 
+                                    INNER JOIN etudiant e on r.idetudiant = e.idetudiant WHERE r.idevent =" . $Arr['eventID'] . " ";
+                            $req = mysqli_query($conn, $sql);
+                            $result = mysqli_fetch_all($req);
+                            foreach ($result as $row) {
                         echo "
                             <tr>
                               <th scope=\"row\">
-                                <div class=\"mr-sm-2\">
-                                <input type='text' hidden name='ids' value='" . $row[4] . "'>
-                                <input type='checkbox' value='" . $row['3'] . "'  id='check " . $row[0] . "'  name='emails[]'/>
-                                <label class=\"\"  for=\"check" . $row[0] . "\">Choisir</label>
+                                <div class=\"custom-control custom-checkbox mr-sm-2\">
+                                <input type='text' hidden name='ids' value='" . $row['4'] . "'>
+                                <input type=\"checkbox\" value='" . $row['3'] ."' class=\"custom-control-input\" id=\"". $row['3'] ."". $row['4'] ."\" name='emails[]'>
+                                <label class=\"custom-control-label\"  for=\"". $row['3'] ."". $row['4'] ."\">Choisir</label>
                                 </div>
                               </th>
                               <td>" . $row['2'] . "</td>
@@ -156,7 +156,7 @@ if (empty($_SESSION['mailb'])) {
                             </tbody>
                             </table>
                             <div class=\"text-right\">
-                                <button type=\"submit\" class=\"btn backOrange m-1 rounded-pill\">Envoyer !</button>
+                                <button type=\"submit\" class=\"btn bg-dark text-light m-1 rounded-pill\">Envoyer !</button>
                             </div>
                         </div>
                     </form>
@@ -178,7 +178,7 @@ if (empty($_SESSION['mailb'])) {
                     <div class="d-flex justify-content-between aline-items-baseline">
                         <div class="form-group">
                             <div class="input-group mb-3">
-                                <select class="custom-select" name="nScolaire" id="nScolaires"
+                                <select class="custom-select" name="nScolaire" id="nScolaire"
                                         onchange="showfilliers(this.value)">
                                     <option selected>Niveau Scolaire</option>
                                     <?php
@@ -243,7 +243,6 @@ if (empty($_SESSION['mailb'])) {
                             INNER JOIN matiere m ON m.idmatiere = c.idmatiere";
                     $reqt = mysqli_query($conn, $req);
                     $row = mysqli_fetch_array($reqt);
-                    //TODO Wierd !!!
                     if ($reqt = mysqli_query($conn, $req)) {
                         if (!empty($_SESSION['mailb']) && $reqt) {
                             while ($row = mysqli_fetch_array($reqt)) {

@@ -21,8 +21,8 @@ if (isset($_POST['your_email']) && isset($_POST['your_pass'])) {
             $_SESSION['password'] = $reponse['passwordetudiant'];
             echo($reponse);
             header('Location: Student.php');
-        } else {
-            header('Location: index.php?erreur=1'); // utilisateur ou mot de passe incorrect
+        } else{
+            header("location: index.php?msg=invalidInfos");
         }
     }
     elseif ($_POST["userType"] == "teacher") {
@@ -38,14 +38,14 @@ if (isset($_POST['your_email']) && isset($_POST['your_pass'])) {
             $_SESSION['mailb'] = $reponse['mailbenevole'];
             $_SESSION['password'] = $reponse['passwordbenevole'];
             header('Location: Teacher.php');
-        } else {
-            header('Location: index.php?erreur=1'); // utilisateur ou mot de passe incorrect
+        }else{
+            header("location: index.php?msg=invalidInfos");
         }
-    } else {
-        header('Location: index.php?erreur=2'); // utilisateur ou mot de passe vide
+    } else{
+        header("location: index.php?msg=invalidInfos");
     }
-} else {
-    header('Location: index.php?error=ddddd');
+}else{
+    header("location: index.php?msg=invalidInfos");
 }
 mysqli_close($conn); // fermer la connexion
 ?>
