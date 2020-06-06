@@ -77,7 +77,7 @@ if (isset($_SESSION['access_token'])) {
         $headers = "From: soutiensway3@gmail.com";
         mail($to_email, $subject, $body, $headers);
     }
-    header('location: ../Teacher.php');
+    header('location: ../Teacher.php?msg=mailSend');
 
 
 } else {

@@ -18,6 +18,17 @@ if (!empty($_GET['msg'])) {
   </button>
 </div>
         ";
+    }elseif ($_GET['msg'] == 'mailSend') {
+        //        echo "<script>alert('Votre inscription a été effectué avec succès.')</script>";
+                echo "
+        
+        <div class=\"alert text-center alert-success m-0 alert-dismissible fade show\" role=\"alert\">
+          Le lien a été crée avec succès.
+          <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+            <span aria-hidden=\"true\">&times;</span>
+          </button>
+        </div>
+                ";
     }
 }
 ?>
