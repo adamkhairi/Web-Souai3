@@ -81,6 +81,9 @@ button:focus, input:focus, textarea:focus, select:focus {
     }
   }
 }
+.containers::-webkit-scrollbar {
+  display: none;
+}
 .containers {
   margin: 2em auto;
   max-width: 71vw;
