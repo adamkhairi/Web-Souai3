@@ -154,8 +154,9 @@ button:focus, input:focus, textarea:focus, select:focus {
   }
 }
 .historique {
-  font-weight: 400;
-  font-size: x-large;
+  font-weight: 600;
+  font-size: large;
+  padding: 5px;
   border-bottom: 3px solid $lPink;
   margin-top: -20px;
   @media only screen and (max-width: 475px) {
