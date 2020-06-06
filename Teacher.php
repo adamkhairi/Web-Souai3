@@ -5,6 +5,21 @@ include('navbar.php');
 if (empty($_SESSION['mailb'])) {
     header('Location: index.php');
 }
+if (!empty($_GET['msg'])) {
+
+    if ($_GET['msg'] == 'done') {
+//        echo "<script>alert('Votre inscription a été effectué avec succès.')</script>";
+        echo "
+
+<div class=\"alert text-center alert-success m-0 alert-dismissible fade show\" role=\"alert\">
+  Votre événement a été crée avec succès.
+  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+    <span aria-hidden=\"true\">&times;</span>
+  </button>
+</div>
+        ";
+    }
+}
 ?>
 <div class="vertical-nav pt-lg-5" id="sidebar">
     <div class=" mb-4  menu-head text-center d-flex flex-column align-items-center">

@@ -13,7 +13,7 @@ if (isset($matiere)) {
         $sql = "INSERT INTO `theevanets`(`coursID`, `ProfID`, `message`, `hours`, `theDate`, `delay`) 
 VALUES ('" . $cours . "','" . $idProuf . "','" . $message . "','" . $hours . "','" . $date . "','" . $delay . "') ";
         $select = mysqli_query($conn, $sql);
-        header("location: Teacher.php");
+        header("location: Teacher.php?msg=done");
     } else {
         echo "<script>alert('veuillez compléter les informations')</script>";
     }

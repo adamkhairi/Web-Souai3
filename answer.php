@@ -13,15 +13,8 @@ for ($i = 0; $i < sizeof($Array); $i++) {
             $req = "SELECT COUNT(idevent) AS counters FROM `reponce` WHERE idevent = " . $Array2[$i] . "";
             $do = mysqli_query($conn, $req);
             $reponse = mysqli_fetch_array($do);
-            //TODO send the meeting link
-            if ($reponse['counters'] < 5) {
-                echo "<script>alert('we will send the link in your email')</script>";
-            } elseif ($reponse['counters'] = 5) {
-                echo "<script>alert('we will send the link in your email')</script>";
-            }
+
         }
-        $sql2 = "DELETE FROM `demande` WHERE iddemande = " . $Array[$i] . "";
-        $send3 = mysqli_query($conn, $sql2);
         header('location: Student.php');
     }
 }

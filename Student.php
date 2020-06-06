@@ -7,6 +7,7 @@ if (empty($_SESSION['mail'])) {
     header('Location: index.php');
 }
 
+
 ?>
 <div class="vertical-nav pt-lg-5" id="sidebar">
     <div class="mb-4  menu-head text-center">
@@ -35,9 +36,9 @@ if (empty($_SESSION['mail'])) {
                 </h6>
             </div>
         </div>
-        <div class="mt-4">
+        <div class="mt-4 p-2">
 
-            <h6 class='text-center'>
+     <h6 class='text-center text-truncate text-center'>
                 <?php
                 if (!empty($_SESSION['mail'])) {
                     echo("  " . $_SESSION['mail']);
@@ -84,8 +85,11 @@ if (empty($_SESSION['mail'])) {
                     benevole b ON e.ProfID = b.idbenevole INNER JOIN cours c ON c.idcours = e.coursID WHERE d.idetudiantc = " . $idetudiant . " AND e.delay > CURRENT_DATE
   ;";
             $exec_requete = mysqli_query($conn, $sql);
-            if (!empty($exec_requete)) {
-                $reponse = mysqli_fetch_array($exec_requete);
+            $reponse = mysqli_fetch_array($exec_requete);
+
+         
+            if (!empty($reponse)) {
+           
                 $domende = array();
                 $eventID = array();
                 if ($exec_requete = mysqli_query($conn, $sql)) {
@@ -135,19 +139,20 @@ if (empty($_SESSION['mail'])) {
                 </form>
                     ";
                     }
+                    
+                    $_SESSION['domende'] = $domende;
+                    $_SESSION['event'] = $eventID;
                 }
+            }else {
+                echo "<h5 class='text-center font-weight-bold text-dark pb-3'> Aucun événement pour vous !</h5>";
             }
-            $_SESSION['domende'] = $domende;
-            $_SESSION['event'] = $eventID;
-        } else {
-            echo "<h2> Aucune !</h2>";
-        }
+        } 
         ?>
     </div>
     <div class="">
         <div class="Post_problem">
             <form action="addQst.php" method="post">
-                <h2 class="historique d-inline-block">Poster un problème:</h2>
+                <h2 class="historique d-inline-block ">Poster un problème:</h2>
                 <div class="post_pro d-flex align-items-center">
                     <div class="find_help">
                         <div>
