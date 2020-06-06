@@ -133,7 +133,7 @@ if (!empty($_GET['msg'])) {
 
                 <div class="signin-form">
                     <h2 class="form-title">Se Connecter</h2>
-                    <form method="POST" action="login.php" class="register-form" id="login-form">
+                    <form action="login.php" class="register-form" id="login-form" method="POST">
                         <div class="form-group">
                             <label for="your_email"><i class="zmdi zmdi-account material-icons-name"></i></label>
                             <input type="email" name="your_email" id="your_email" placeholder="Votre Email"/>
