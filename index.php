@@ -17,7 +17,7 @@ if (!empty($_GET['msg'])) {
   </button>
 </div>
         ";
-    }elseif ($_GET['msg'] == 'mailexist'){
+    } elseif ($_GET['msg'] == 'mailexist') {
         echo "
 
         <div class=\"alert alert-danger text-center m-0 alert-dismissible fade show\" role=\"alert\">
@@ -27,7 +27,7 @@ if (!empty($_GET['msg'])) {
           </button>
         </div>
                 ";
-    }elseif ($_GET['msg'] == 'invalidInfos') {
+    } elseif ($_GET['msg'] == 'invalidInfos') {
         echo "
         <div class=\"alert text-center alert-danger m-0 alert-dismissible fade show \" role=\"alert\">
   <strong>Ops !</strong> Verifiez vos Informations .
@@ -201,7 +201,7 @@ if (!empty($_GET['msg'])) {
 
                     <img class="header_img" src="src/img/undraw_reading_time_gvg0.svg" alt="">
                 </div>
-                <div class="left d-flex flex-column justify-content-center" data-aos="fade-left">
+                <div class="left d-flex flex-column justify-content-center align-items-center" data-aos="fade-left">
                     <h1>Comment ?</h1>
                     <p>C’est simple, inscrivez-vous en remplissant ce
                         formulaire d’inscription, poster la problématique

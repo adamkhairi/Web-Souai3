@@ -3,17 +3,18 @@
 @import "common/minxi";
 @import "common/variables";
 @import "common/global";
-
 //layout
 @import "layouts/main";
 // Responsive
 @import "layouts/responsive";
-.small{
+
+.small {
   font-size: .8em !important;
   width: 35em !important;
   margin: 0 auto !important;
 }
-.inscr{
+
+.inscr {
   text-decoration: none !important;
 
   //&:hove{
