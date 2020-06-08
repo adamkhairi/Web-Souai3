@@ -6,10 +6,10 @@ $iduser = $_SESSION['userid'];
 $inputMt = $_POST['matiere'];
 $inputCrs = $_POST['cours'];
 $inputMsg = $_POST['description'];
-$reqq = "SELECT COUNT(cours) FROM demande WHERE idetudiantc = '" . $iduser . "'  AND cours = '" . $inputCrs . "';";
+$reqq = "SELECT COUNT(cours) AS N FROM demande WHERE idetudiantc = '" . $iduser . "'  AND cours = '" . $inputCrs . "' AND reponce = '0';";
 $sqli = mysqli_query($conn, $reqq);
 $counter = mysqli_fetch_array($sqli);
-if($counter[0] == 0){
+if($counter['N'] == 0){
     if (!empty($_SESSION['mail'] && $_POST['description'])) {
         $sql = "INSERT INTO demande (description,idetudiantc,cours,reponce) VALUES ( '" . $inputMsg . "' , '" . $iduser . "'  ,  '" . $inputCrs . "',0)";
         $res = mysqli_query($conn, $sql);

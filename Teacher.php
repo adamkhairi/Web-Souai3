@@ -89,7 +89,7 @@ if (!empty($_GET['msg'])) {
             <?php
             if (!empty($_SESSION['mailb'])) {
                 $therequet = "SELECT COUNT(d.cours) AS num, d.cours,c.nomcours , m.nommatiere, f.namfiliere,n.niveau FROM demande d INNER JOIN cours c ON 
-           d.cours = c.idcours INNER JOIN matiere m ON c.idmatiere = m.idmatiere  INNER JOIN filiere f on m.idfiliere = f.idfiliere INNER JOIN niveau n on f.idniveau = n.idniveau GROUP BY d.cours ORDER BY COUNT(d.cours) DESC;";
+           d.cours = c.idcours INNER JOIN matiere m ON c.idmatiere = m.idmatiere  INNER JOIN filiere f on m.idfiliere = f.idfiliere INNER JOIN niveau n on f.idniveau = n.idniveau WHERE reponce = 0 GROUP BY d.cours ORDER BY COUNT(d.cours) DESC;";
                 $do = mysqli_query($conn, $therequet);
                 if ($do = mysqli_query($conn, $therequet)) {
 
