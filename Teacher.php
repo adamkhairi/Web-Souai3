@@ -61,8 +61,8 @@ if (!empty($_GET['msg'])) {
             <?php
             if (!empty($_SESSION['mailb'])) {
                 echo "
-            <div class='btn_add_event'>
-                <button id='add_event_btn'  type='button'><i class=\"fas fa-plus\"></i> Événement</button>
+            <div class='btn_add_event' style=\"zoom:0.85; \">
+                <button id='add_event_btn'  type='button'>Ajouter Événement</button>
             </div>
             <div class='mt-2'>
                 <a  href=\"logout.php\">

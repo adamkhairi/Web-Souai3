@@ -60,7 +60,7 @@ function dateToFrench($date, $format)
         <div class="p-2">
             <!--            -->
             <?php
-            if (!empty($_SESSION['type'])) {
+            if (!empty($_SESSION['mailb'])) {
                 $teacherMail = $_SESSION['mailb'];
                 echo
                 "
