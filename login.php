@@ -19,6 +19,7 @@ if (isset($_POST['your_email']) && isset($_POST['your_pass'])) {
             $_SESSION['banche'] = $reponse['filiere'];
             $_SESSION['mail'] = $reponse['mailetudiant'];
             $_SESSION['password'] = $reponse['passwordetudiant'];
+            $_SESSION['filiere'] = $reponse['filiere'];
 
             $requete = "SELECT f.namfiliere, n.niveau FROM filiere f INNER JOIN niveau n ON n.idniveau = f.idniveau where
                    idfiliere =" . $_SESSION['banche'];

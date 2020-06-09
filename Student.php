@@ -81,71 +81,68 @@ if (empty($_SESSION['mail'])) {
         <?php
         if (!empty($_SESSION['mail'])) {
             $idetudiant = $_SESSION['userid'];
-            $sql = "SELECT d.idetudiantc, d.iddemande ,d.cours, e.eventID , b.nombenevole ,b.prenombenevole ,e.hours ,e.theDate, c.nomcours FROM demande d INNER JOIN theevanets e ON d.cours = e.coursID INNER JOIN 
-                    benevole b ON e.ProfID = b.idbenevole INNER JOIN cours c ON c.idcours = e.coursID WHERE e.delay > CURRENT_DATE
-  ;";
+            // $sql = "SELECT d.idetudiantc, d.iddemande ,d.cours, e.eventID , b.nombenevole ,b.prenombenevole ,e.hours ,e.theDate, c.nomcours FROM demande d INNER JOIN theevanets e ON d.cours = e.coursID INNER JOIN 
+            //         benevole b ON e.ProfID = b.idbenevole INNER JOIN cours c ON c.idcours = e.coursID WHERE e.delay > CURRENT_DATE;";
+            // $sql = "SELECT e.coursID, e.eventID , b.nombenevole ,b.prenombenevole ,e.hours ,e.theDate, c.nomcours FROM theevanets e INNER JOIN cours c ON e.coursID = c.idcours INNER JOIN matiere m ON c.idmatiere = m.idmatiere INNER JOIN benevole b ON b.idbenevole = e.ProfID  WHERE m.idfiliere = ". $_SESSION['filiere'] ." AND e.delay > CURRENT_DATE ;";
+            $sql = "SELECT e.coursID, e.eventID , b.nombenevole ,b.prenombenevole ,e.hours ,e.theDate, c.nomcours FROM theevanets e INNER JOIN cours c ON e.coursID = c.idcours INNER JOIN matiere m ON c.idmatiere = m.idmatiere INNER JOIN benevole b ON b.idbenevole = e.ProfID WHERE NOT EXISTS(SELECT idetudiant FROM reponce WHERE idevent = e.eventID AND idetudiant = ". $_SESSION['userid'] .") AND m.idfiliere = ". $_SESSION['filiere'] ." AND e.delay > CURRENT_DATE ";
             $exec_requete = mysqli_query($conn, $sql);
             $reponse = mysqli_fetch_array($exec_requete);
-
-         
             if (!empty($reponse)) {
-           
                 $domende = array();
                 $eventID = array();
-                if ($exec_requete = mysqli_query($conn, $sql)) {
-                    while ($reponse = mysqli_fetch_array($exec_requete)) {
-                        array_push($domende, $reponse['iddemande']);
-                        array_push($eventID, $reponse['eventID']);
-                        $namefomr = 'reponce_' . $reponse['iddemande'];
-                        $name = 'getans_' . $reponse['iddemande'];
-                        // print_r($name);
-                        // die();
-                        echo "
-                <form name='" . $namefomr . "' action=\"answer.php\" method='POST' class=\"width ml-3\">
-                    <div class=\"modal-dialog width shdow\" role=\"document\">
-                        <div class=\"modal-content\">
-                            <div class=\"modal-header backOrange\">
-                                <h5 class=\"modal-title text-center \">Évènement</h5>
-                                <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">
-                                    <span aria-hidden=\"true\">&times;</span>
-                                </button>
-                            </div>
-                            <div class=\"modal-body pl-4\">     
-                                <h5>Cour : " . $reponse['nomcours'] . "</h5>
-                                <h6>l'heure : " . $reponse['hours'] . "</h6>
-                                <h6>la Date : " . $reponse['theDate'] . "</h6>
-                                <div class=\"row ml-2\">
-
-                                    <p>Organisé par: </p>
-                                    <h5 class=\"ml-4\">" . $reponse['nombenevole'] . "  " . $reponse['prenombenevole'] . "</h5>
+                    if ($exec_requete = mysqli_query($conn, $sql)) {
+                        while ($reponse = mysqli_fetch_array($exec_requete)) {
+                            // array_push($domende, $reponse['iddemande']);
+                            array_push($eventID, $reponse['eventID']);
+                            $namefomr = 'reponce_' . $reponse['eventID'];
+                            $name = 'getans_' . $reponse['eventID'];
+                            echo "
+                    <form name='" . $namefomr . "' action=\"answer.php\" method='POST' class=\"width ml-3\">
+                        <div class=\"modal-dialog width shdow\" role=\"document\">
+                            <div class=\"modal-content\">
+                                <div class=\"modal-header backOrange\">
+                                    <h5 class=\"modal-title text-center \">Évènement</h5>
+                                    <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">
+                                        <span aria-hidden=\"true\">&times;</span>
+                                    </button>
                                 </div>
-                            </div>
-                            <div class=\"modal-footer text-center d-flex justify-content-around\">
-                                <p>Intéressé(e) ?</p>
-                                <div class='d-flex align-items-center w-25'>
-                                    <input class='mb-2' type='radio' name='" . $name . "' value='1' id='oui'>
-                                    <label for='oui' >Oui</label>
+                                <div class=\"modal-body pl-4\">     
+                                    <h5>Cour : " . $reponse['nomcours'] . "</h5>
+                                    <h6>l'heure : " . $reponse['hours'] . "</h6>
+                                    <h6>la Date : " . $reponse['theDate'] . "</h6>
+                                    <div class=\"row ml-2\">
+    
+                                        <p>Organisé par: </p>
+                                        <h5 class=\"ml-4\">" . $reponse['nombenevole'] . "  " . $reponse['prenombenevole'] . "</h5>
+                                    </div>
                                 </div>
-                                <div class='d-flex align-items-center w-25'>
-
-                                    <input class='mb-2' type='radio' name='" . $name . "' value='2' id='non'>
-                                    <label  for='non'>Non</label>
+                                <div class=\"modal-footer text-center d-flex justify-content-around\">
+                                    <p>Intéressé(e) ?</p>
+                                    <div class='d-flex align-items-center w-25'>
+                                        <input class='mb-2' type='radio' name='" . $name . "' value='1' id='oui'>
+                                        <label for='oui' >Oui</label>
+                                    </div>
+                                    <div class='d-flex align-items-center w-25'>
+    
+                                        <input class='mb-2' type='radio' name='" . $name . "' value='2' id='non'>
+                                        <label  for='non'>Non</label>
+                                    </div>
                                 </div>
+                            <button type=\"submit\" id='ansnon' class=\"btn m - 0 w - 25 rounded - pill backRed\">Envoyer</button>
+    
                             </div>
-                        <button type=\"submit\" id='ansnon' class=\"btn m - 0 w - 25 rounded - pill backRed\">Envoyer</button>
-
                         </div>
-                    </div>
-                </form>
-                    ";
+                    </form>
+                        ";
+                        }
+                        
+                        $_SESSION['domende'] = $domende;
+                        $_SESSION['event'] = $eventID;
                     }
-                    
-                    $_SESSION['domende'] = $domende;
-                    $_SESSION['event'] = $eventID;
+                }else {
+                    echo "<h5 class='text-center font-weight-bold text-dark pb-3'> Aucun événement pour vous !</h5>";
+         
                 }
-            }else {
-                echo "<h5 class='text-center font-weight-bold text-dark pb-3'> Aucun événement pour vous !</h5>";
-            }
         } 
         ?>
     </div>

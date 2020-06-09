@@ -119,11 +119,14 @@ if (!empty($_GET['msg'])) {
         <div class="d-flex justify-content-around flex-wrap align-items-center">
             <?php
             setlocale(LC_ALL, 'fr_FR');
-            $sql = "SELECT e.coursID,e.message , e.hours, e.theDate, c.nomcours , COUNT(r.idetudiant) AS num,e.eventID  FROM theevanets e INNER JOIN reponce r ON e.eventID = r.idevent INNER JOIN cours c ON e.coursID = c.idcours  WHERE e.ProfID = " . $_SESSION['idProf'] . " GROUP BY r.idevent;";
+            $sql = "SELECT e.coursID,e.message , e.hours, e.theDate, c.nomcours, e.eventID  FROM theevanets e INNER JOIN cours c ON e.coursID = c.idcours WHERE e.ProfID = ". $_SESSION['idProf'] ."";
             $run = mysqli_query($conn, $sql);
             $Arry = mysqli_fetch_all($run, MYSQLI_ASSOC);
             if ($run = mysqli_query($conn, $sql)) {
                 foreach ($Arry as $Arr) {
+                    $sql2 = "SELECT COUNT(idetudiant) FROM `reponce` WHERE idevent =". $Arr['eventID'] ." AND reponce = 1";
+                    $go = mysqli_query($conn,$sql2);
+                    $goo = mysqli_fetch_array($go);
                     //***** Change Date Format and Language *****//
                     $newDate = dateToFrench($Arr['theDate'], "l , d , M , Y");
                     echo "
@@ -136,7 +139,7 @@ if (!empty($_GET['msg'])) {
                     <hr>
                     <p class=\"card-text\">Le " . $newDate . ' à ' . $Arr['hours'] . "</p>
                     <hr>
-                    <p class=\"card-text \">Les participants : <span class='backGreen rounded-circle p-2 pl-3 pr-3 ml-2'>" . $Arr['num'] . "</span> </p>
+                    <p class=\"card-text \">Les participants : <span class='backGreen rounded-circle p-2 pl-3 pr-3 ml-2'>". $goo['COUNT(idetudiant)'] ."</span> </p>
                     <hr>
                     <button class='btn deldemande'' type='submit' onclick='removeFrom(" . $Arr['eventID'] . ")'>
                     <input type='text' hidden value='" . $Arr['eventID'] . "' id='remove_" . $Arr['eventID'] . "'>
