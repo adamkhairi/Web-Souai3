@@ -139,7 +139,7 @@ if (!empty($_GET['msg'])) {
                     <hr>
                     <p class=\"card-text\">Le " . $newDate . ' à ' . $Arr['hours'] . "</p>
                     <hr>
-                    <p class=\"card-text \">Les participants : <span class='backGreen rounded-circle p-2 pl-3 pr-3 ml-2'>". $goo['COUNT(idetudiant)'] ."</span> </p>
+                    <p class=\"card-text \">Les participants : <span class='backGreen rounded-circle p-2 pl-3 pr-3 ml-2'>0". $goo['COUNT(idetudiant)'] ."</span> </p>
                     <hr>
                     <button class='btn deldemande'' type='submit' onclick='removeFrom(" . $Arr['eventID'] . ")'>
                     <input type='text' hidden value='" . $Arr['eventID'] . "' id='remove_" . $Arr['eventID'] . "'>

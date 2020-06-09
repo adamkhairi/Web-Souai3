@@ -9,3 +9,4 @@ for ($i = 0; $i < sizeof($Array2); $i++) {
         header('location: Student.php');
     }
 }
+
