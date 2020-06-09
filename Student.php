@@ -82,7 +82,7 @@ if (empty($_SESSION['mail'])) {
         if (!empty($_SESSION['mail'])) {
             $idetudiant = $_SESSION['userid'];
             $sql = "SELECT d.idetudiantc, d.iddemande ,d.cours, e.eventID , b.nombenevole ,b.prenombenevole ,e.hours ,e.theDate, c.nomcours FROM demande d INNER JOIN theevanets e ON d.cours = e.coursID INNER JOIN 
-                    benevole b ON e.ProfID = b.idbenevole INNER JOIN cours c ON c.idcours = e.coursID WHERE d.idetudiantc = " . $idetudiant . " AND e.delay > CURRENT_DATE
+                    benevole b ON e.ProfID = b.idbenevole INNER JOIN cours c ON c.idcours = e.coursID WHERE e.delay > CURRENT_DATE
   ;";
             $exec_requete = mysqli_query($conn, $sql);
             $reponse = mysqli_fetch_array($exec_requete);
