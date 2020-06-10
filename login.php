@@ -26,12 +26,12 @@ if (isset($_POST['your_email']) && isset($_POST['your_pass'])) {
                     $_SESSION['nomFiliere'] = $reponse['namfiliere'];
                     $_SESSION['nomniveau'] = $reponse['niveau'];
                     header("Location: Student.php");
-                }else {
-                    header("location: index.php?msg=invalidPassword");
-                }
             }else {
-                header("location: index.php?msg=invalidInfos");
+                    header("location: index.php?msg=invalidPassword");
             }
+        }else {
+                header("location: index.php?msg=invalidInfos");
+        }
             // get infos
     } elseif ($_POST["userType"] == "teacher") {
         $_SESSION['type'] = $_POST['userType'];

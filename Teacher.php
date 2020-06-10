@@ -86,6 +86,14 @@ if (!empty($_GET['msg'])) {
             <div class="chart_title">
                 <h4 class="chart_title_h2 historique">Les cours les plus demandés :</h4>
             </div>
+            <div class="row  font-weight-bold align-items-center text-center" style="min-width: 16em ; max-width: 100%">
+                   <div class="col-sm m-2 rounded p-3 text-truncate backRed">Nivaeu Scoliere</div>
+                   <div class="col-sm m-2 rounded p-3 text-truncate backRed" data-toggle="tooltip" data-placement="top" title="' . $array[4] . '">Filiere</div>
+                   <div class="col-sm m-2 rounded p-3 text-truncate backRed">Mataire</div>
+                   <div class="col-sm m-2 rounded p-3 text-truncate backRed" data-toggle="tooltip" data-placement="top" title="' . $array[2] . '">Cour</div>
+                    <div class="col-sm m-2 rounded p-3 text-truncate backGreen">Numbre de demande</div>
+            </div>
+            <hr class="backRed">
             <?php
             if (!empty($_SESSION['mailb'])) {
                 $therequet = "SELECT COUNT(d.cours) AS num, d.cours,c.nomcours , m.nommatiere, f.namfiliere,n.niveau FROM demande d INNER JOIN cours c ON 
