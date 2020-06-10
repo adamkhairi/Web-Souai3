@@ -1,13 +1,14 @@
 <footer>
     <div class="footer">
-        <div class="footer__info">
+        <div class="footer__info w-25">
             <a class="navbar-brand" href="index.php">
-                <img src="src/img/salog1.png" width="150" class="d-inline-block align-top" alt="">
+                <img src="src/img/logo.svg" width="100" class="d-inline-block align-top p-4" alt="">
             </a>
             <h3>Contacte-nous</h3>
             <h3><a href="mailto:contact@sway3.ma" class="text-decoration-none text-dark">contact@sway3.ma</a></h3>
 
         </div>
+
 
         <div class="row w-25 justify-content-center p-2  pb-4 rounded-lg ">
             <a href="#" class="m-2">
@@ -23,8 +24,16 @@
             </a>
 
         </div>
-        <div id="google_translate_element" class="text-white"></div>
-</div>
+        <div class="d-flex justify-content-center w-25" >
+            <div>
+                <img src="src/img/act-02.png" width="100" class="p-1 m-1">
+            </div>
+            <div>
+                <img src="src/img/Yc-01.png" width="100" class="p-1 m-1">
+            </div>
+        </div>
+    </div>
+    <div id="google_translate_element" class="text-white"></div>
     <h6 class="text-light text-center">Les Développeurs:</h6>
     <div class="footer__serv d-flex ">
 
@@ -51,9 +60,9 @@
     <h6 class="text-light text-center mt-1">Copyright © 2020, Tous droits réservés</h6>
 </div>
 <script type="text/javascript">
-	function googleTranslateElementInit() {
-		new google.translate.TranslateElement({pageLanguage: 'fr'}, 'google_translate_element');
-	}
+	// 	function googleTranslateElementInit() {
+	// 		new google.translate.TranslateElement({pageLanguage: 'fr'}, 'google_translate_element');
+	// 	}
 </script>
 
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
@@ -69,6 +78,6 @@
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
 	AOS.init({
-		duration: 1000, // values from 0 to 3000, with step 50ms
+		duration: 1200, // values from 0 to 3000, with step 50ms
 	});
 </script>

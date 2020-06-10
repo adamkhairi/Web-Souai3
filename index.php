@@ -36,7 +36,7 @@ if (!empty($_GET['msg'])) {
   </button>
 </div>
         ";
-    }elseif ($_GET['msg'] == 'invalidPassword') {
+    } elseif ($_GET['msg'] == 'invalidPassword') {
         echo "
 
         <div class=\"alert alert-danger text-center m-0 alert-dismissible fade show\" role=\"alert\">
@@ -46,7 +46,7 @@ if (!empty($_GET['msg'])) {
           </button>
         </div>
                 ";
-    } 
+    }
 
 }
 
@@ -147,11 +147,13 @@ if (!empty($_GET['msg'])) {
                     <form action="login.php" class="register-form" id="login-form" method="POST">
                         <div class="form-group">
                             <label for="your_email"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                            <input type="email" name="your_email" id="your_email" placeholder="Votre Email"/>
+                            <input class="intLogin" type="email" name="your_email" id="your_email"
+                                   placeholder="Votre Email"/>
                         </div>
                         <div class="form-group">
                             <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
-                            <input type="password" name="your_pass" id="your_pass" placeholder="Mot de passe"/>
+                            <input class="intLogin" type="password" name="your_pass" id="your_pass"
+                                   placeholder="Mot de passe"/>
                         </div>
 
                         <input type="text" name="userType" hidden id="userType" value="">
@@ -178,9 +180,9 @@ if (!empty($_GET['msg'])) {
         <div class="container-fluid">
             <div class="header_content">
                 <div class="left d-flex flex-column justify-content-center">
-                    <div data-aos="fade-right">
+                    <div data-aos="flip-right">
 
-                        <h1 class=" animate__slideInLeft">Les bons Profs font des bons élèves </h1>
+                        <h1 class=" animate__slideInLeft">Les bons Profs font les bons élèves </h1>
                         <p class="animate__slideInLeft">Vous trouvez des difficultés au niveau des cours ?
                             Nous avons la solution ! Avec les cours en ligne de <span>Sway3</span>,
                             vous pouvez avoir un professeur qui peut vous
@@ -212,7 +214,7 @@ if (!empty($_GET['msg'])) {
 
                     <img class="header_img" src="src/img/undraw_reading_time_gvg0.svg" alt="">
                 </div>
-                <div class=" left d-flex flex-column justify-content-center align-items-center" data-aos="fade-left">
+                <div class=" left d-flex flex-column justify-content-center align-items-center" data-aos="flip-left">
                     <h1 class="left">Comment ?</h1>
                     <p class="left">C’est simple, inscrivez-vous en remplissant ce
                         formulaire d’inscription, poster la problématique
@@ -226,18 +228,19 @@ if (!empty($_GET['msg'])) {
         <div class="container-fluid">
             <div class="header_content">
                 <div class="left d-flex flex-column justify-content-center">
-                    <div data-aos="fade-right">
+                    <div data-aos="zoom-in-up">
 
                         <h1>L'enseignement à distance nous rapproche</h1>
-                        <p>Vous avez raté le cour, ne paniquez pas on a pensé à
+                        <p>Vous avez raté le cours, ne paniquez pas! on a pensé à
                             enregistrer les cours en vidéo.</p>
-                    </div>
-                    <a href="video.php">
 
-                        <button id="" class="btn btn-header" type="button">Voir des vidéos</button>
-                    </a>
+                        <a href="#">
+
+                            <button id="" class="btn btn-header" type="button">Voir les vidéos</button>
+                        </a>
+                    </div>
                 </div>
-                <div class="" data-aos="zoom-in-up">
+                <div class="" data-aos="flip-right">
                     <img class="header_img" src="src/img/undraw_online_test_gba7.svg" alt="img">
                 </div>
             </div>
@@ -255,7 +258,7 @@ include "footer.php" ?>
 	const registerPop = document.querySelector('.registerPopup');
 	registerBtn.addEventListener('click', () => {
 		$('.registerPopup').toggle('hide');
-	})
+	});
 	const loginBtn = document.querySelector('#login');
 	const loginPopup = document.querySelector('.popup');
 
@@ -273,7 +276,7 @@ include "footer.php" ?>
 	function showfillier(str) {
 		if (str == "") {
 			document.getElementById("filier").innerHTML = "";
-			return;
+
 		} else {
 			let xmlhttp = new XMLHttpRequest();
 			xmlhttp.onreadystatechange = function () {
@@ -288,7 +291,7 @@ include "footer.php" ?>
 
 	function hidelist() {
 		$('#insc').toggle('hide');
-	};
+	}
 </script>
 <script src="src/js/collectInfo.js"></script>
 

@@ -26,7 +26,7 @@ function dateToFrench($date, $format)
 <body>
 <nav class="sticky-top">
     <a class="navbar-brand ml-4 " href="index.php">
-        <img src="src/img/salog1.png"  class="d-inline-block align-top ml-3" alt="">
+        <img src="src/img/logo.svg"  class="d-inline-block align-top ml-3 w-50" alt="">
     </a>
     <div class="  text-center ">
         <h1 class=" font-weight-bold text-white text-center">
