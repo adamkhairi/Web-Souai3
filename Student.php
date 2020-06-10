@@ -198,6 +198,87 @@ if(!empty($_GET['m'])){
             </form>
         </div>
         <div class="containers">
+        <h4 class="historique">Évènements :</h4>
+        <div class="d-flex justify-content-around flex-wrap align-items-center">
+            <?php
+            setlocale(LC_ALL, 'fr_FR');
+            $sql = "SELECT e.coursID,e.message , e.hours, e.theDate, c.nomcours, e.eventID FROM theevanets e INNER JOIN cours c ON e.coursID = c.idcours INNER JOIN reponce r ON e.eventID = r.idevent WHERE r.idetudiant = ". $_SESSION['userid'] ." AND r.reponce = '1' ";
+            $run = mysqli_query($conn, $sql);
+            $Arry = mysqli_fetch_all($run, MYSQLI_ASSOC);
+            if ($run = mysqli_query($conn, $sql)) {
+                foreach ($Arry as $Arr) {
+                    $newDate = dateToFrench($Arr['theDate'], "l , d , M , Y");
+                    echo "
+            <div class=\"card m-2 position-relative\" style='max-width: 26em'>
+                <div class='card-header text-center backOrange'>
+                    <h4 class=\"card-title font-weight-bold mt-2 \">" . $Arr['nomcours'] . "</h4>
+                </div>
+                <div class=\"card-body text-left\">
+                    <p class=\"card-text text-wrap\">Description sur l'évènement : <br>" . $Arr['message'] . "</p>
+                    <hr>
+                    <p class=\"card-text\">Le " . $newDate . ' à ' . $Arr['hours'] . "</p>
+                    <hr>
+                  
+                </div>
+             
+          <div id=\"eventlist\" class=\"popup hide toggll" . $Arr['eventID'] . " \">
+            <section class=\"sign-in \">
+                <div class=\"container pb-3\">
+                    <div id=\"exit\" onclick='hidelist(" . $Arr['eventID'] . ")'>
+                        <i class=\"fas fa-times\"></i>
+                    </div>
+                    <form action=\"API/index.php\" method=\"post\">
+                        <div class=\"table-responsive\">
+                            <table class=\"table\">
+                                <thead class=\" thead-dark\">
+                                <tr class=''>
+                                    <th scope=\"col\">Selectionner</th>
+                                    <th scope=\"col\">Prénom</th>
+                                    <th scope=\"col\">Nom</th>
+                                    <th scope=\"col\">Adresse mail</th>
+                                </tr>
+                                </thead>
+                                <tbody>";
+
+                    $sql = "SELECT r.idetudiant,e.nometudiant,e.prenometudiant, e.mailetudiant ,r.idevent FROM reponce r 
+                                    INNER JOIN etudiant e on r.idetudiant = e.idetudiant WHERE r.idevent =" . $Arr['eventID'] . " ";
+                    $req = mysqli_query($conn, $sql);
+                    $result = mysqli_fetch_all($req);
+                    foreach ($result as $row) {
+                        echo "
+                            <tr>
+                              <th scope=\"row\">
+                                <div class=\"custom-control custom-checkbox mr-sm-2\">
+                                <input type='text' hidden name='ids' value='" . $row['4'] . "'>
+                                <input type=\"checkbox\" value='" . $row['3'] . "' class=\"custom-control-input\" id=\"" . $row['3'] . "" . $row['4'] . "\" name='emails[]'>
+                                <label class=\"custom-control-label\"  for=\"" . $row['3'] . "" . $row['4'] . "\">Choisir</label>
+                                </div>
+                              </th>
+                              <td>" . $row['2'] . "</td>
+                              <td>" . $row['1'] . "</td>
+                              <td>" . $row['3'] . "</td>
+                            </tr>  
+                    ";
+                    };
+                    echo "
+                            </tbody>
+                            </table>
+                            <div class=\"text-right\">
+                                <button type=\"submit\" class=\"btn bg-dark text-light m-1 rounded-pill\">Envoyer !</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+     </div>       
+        ";
+                }
+            };
+            ?>
+        </div>
+    </div>
+        <div class="containers">
             <h2 class="historique d-inline-block bBottom">Historique:</h2>
             <div class="d-flex flex-wrap justify-content-around m-2">
                 <?php
