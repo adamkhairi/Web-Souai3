@@ -6,6 +6,20 @@ include "navbar.php";
 if (empty($_SESSION['mail'])) {
     header('Location: index.php');
 }
+if(!empty($_GET['m'])){
+ if ($_GET['m'] == 'done') {
+        //        echo "<script>alert('Votre inscription a été effectué avec succès.')</script>";
+                echo "
+        
+        <div class=\"alert alert-success text-center m-0 alert-dismissible fade show\" role=\"alert\">
+          Votre modification a été effectué avec succès.
+          <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+            <span aria-hidden=\"true\">&times;</span>
+          </button>
+        </div>
+                ";
+            }
+}
 
 
 ?>
@@ -48,17 +62,16 @@ if (empty($_SESSION['mail'])) {
         </div>
         <!--   Links Of each section -->
         <div class="d-flex mt-2 flex-column justify-content-center align-items-center">
-            <div class='mt-4 '>
-                <a href="#">
-                    <button class='btn backOrange rounded-pill'>Voir les vidéos</button>
-                </a>
-            </div>
             <?php
             if (!empty($_SESSION['mail'])) {
                 echo "<div class='mt-2'>
+                <a  href=\"Update.php\">
+                <button class='btn btn-light border rounded-pill mb-3' >Modifier le Profil</button>
+            </a>
             <a  href=\"logout.php\">
                 <button class='btn btn-danger rounded-pill'>Déconnexion</button>
             </a>
+
             </div>
              
                 ";
