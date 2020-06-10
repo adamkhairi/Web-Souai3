@@ -132,7 +132,7 @@ if (!empty($_GET['msg'])) {
             $Arry = mysqli_fetch_all($run, MYSQLI_ASSOC);
             if ($run = mysqli_query($conn, $sql)) {
                 foreach ($Arry as $Arr) {
-                    $sql2 = "SELECT COUNT(idetudiant) FROM `reponce` WHERE idevent =". $Arr['eventID'] ." AND reponce = 1";
+                    $sql2 = "SELECT COUNT(idetudiant) FROM `reponce` WHERE idevent =". $Arr['eventID'] ." AND reponce = '1'";
                     $go = mysqli_query($conn,$sql2);
                     $goo = mysqli_fetch_array($go);
                     //***** Change Date Format and Language *****//
