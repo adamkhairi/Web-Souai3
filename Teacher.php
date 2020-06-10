@@ -62,7 +62,7 @@ if (!empty($_GET['msg'])) {
             if (!empty($_SESSION['mailb'])) {
                 echo "
             <div class='btn_add_event' style=\"zoom:0.85; \">
-                <button id='add_event_btn'  type='button'>Ajouter Événement</button>
+                <button id='add_event_btn' class='btn-event'  type='button'>Ajouter Événement</button>
             </div>
             <div class='mt-2'>
                 <a  href=\"logout.php\">
@@ -91,7 +91,7 @@ if (!empty($_GET['msg'])) {
                    <div class="col-sm m-2 rounded p-3 text-truncate demande-bg" data-toggle="tooltip" data-placement="top" title="' . $array[4] . '">Filiere</div>
                    <div class="col-sm m-2 rounded p-3 text-truncate demande-bg">Mataire</div>
                    <div class="col-sm m-2 rounded p-3 text-truncate demande-bg" data-toggle="tooltip" data-placement="top" title="' . $array[2] . '">Cour</div>
-                    <div class="col-sm m-2 rounded p-3 text-truncate demande-bg">Nbr de demande</div>
+                    <div class="col-sm m-2 rounded p-3 text-truncate demande-bg">Nbr de demande par ordre</div>
             </div>
             <hr class="backRed">
             <?php

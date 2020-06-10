@@ -43,9 +43,14 @@ if(!empty($_GET['m'])){
                 <h3 class="">
                 <?php
                     if (!empty($_SESSION['userid'])) {
-                        $sqls = "SELECT e.nometudiant,e.prenometudiant,e.mailetudiant,n.niveau, f.namfiliere FROM etudiant e INNER JOIN niveau n ON n.idniveau = e.niveauscolaire inner JOIN filiere f on f.idfiliere = e.filiere WHERE e.idetudiant ='". $_SESSION["userid"] ."' ";
+                        $sqls = "SELECT e.nometudiant,e.prenometudiant,e.mailetudiant,n.niveau, f.namfiliere, e.filiere FROM etudiant e INNER JOIN niveau n ON n.idniveau = e.niveauscolaire inner JOIN filiere f on f.idfiliere = e.filiere WHERE e.idetudiant ='". $_SESSION["userid"] ."' ";
                         $ro = mysqli_query($conn, $sqls);
                         $r = mysqli_fetch_array($ro);
+                        $_SESSION['firstName'] = $r['nometudiant'];
+                        $_SESSION['lastName'] = $r['prenometudiant'];
+                        $_SESSION['nvScolaire'] = $r['niveau'];
+                        $_SESSION['banche'] = $r['namfiliere'];
+                        $_SESSION['filiere'] = $r['filiere'];
      
                      
                         echo "
@@ -118,7 +123,7 @@ if(!empty($_GET['m'])){
             // $sql = "SELECT d.idetudiantc, d.iddemande ,d.cours, e.eventID , b.nombenevole ,b.prenombenevole ,e.hours ,e.theDate, c.nomcours FROM demande d INNER JOIN theevanets e ON d.cours = e.coursID INNER JOIN 
             //         benevole b ON e.ProfID = b.idbenevole INNER JOIN cours c ON c.idcours = e.coursID WHERE e.delay > CURRENT_DATE;";
             // $sql = "SELECT e.coursID, e.eventID , b.nombenevole ,b.prenombenevole ,e.hours ,e.theDate, c.nomcours FROM theevanets e INNER JOIN cours c ON e.coursID = c.idcours INNER JOIN matiere m ON c.idmatiere = m.idmatiere INNER JOIN benevole b ON b.idbenevole = e.ProfID  WHERE m.idfiliere = ". $_SESSION['filiere'] ." AND e.delay > CURRENT_DATE ;";
-            $sql = "SELECT e.coursID, e.eventID , b.nombenevole ,b.prenombenevole ,e.hours ,e.theDate, c.nomcours FROM theevanets e INNER JOIN cours c ON e.coursID = c.idcours INNER JOIN matiere m ON c.idmatiere = m.idmatiere INNER JOIN benevole b ON b.idbenevole = e.ProfID WHERE NOT EXISTS(SELECT idetudiant FROM reponce WHERE idevent = e.eventID AND idetudiant = ". $_SESSION['userid'] .") AND m.idfiliere = ". $_SESSION['filiere'] ." AND e.delay > CURRENT_DATE ";
+            $sql = "SELECT e.coursID, e.eventID , b.nombenevole ,b.prenombenevole ,e.hours ,e.theDate, c.nomcours FROM theevanets e INNER JOIN cours c ON e.coursID = c.idcours INNER JOIN matiere m ON c.idmatiere = m.idmatiere INNER JOIN benevole b ON b.idbenevole = e.ProfID WHERE NOT EXISTS(SELECT idetudiant FROM reponce WHERE idevent = e.eventID AND idetudiant = ". $_SESSION['userid'] .") AND m.idfiliere = '". $_SESSION['filiere'] ."' AND e.delay > CURRENT_DATE ";
             $exec_requete = mysqli_query($conn, $sql);
             $reponse = mysqli_fetch_array($exec_requete);
             if (!empty($reponse)) {
@@ -126,7 +131,6 @@ if(!empty($_GET['m'])){
                 $eventID = array();
                     if ($exec_requete = mysqli_query($conn, $sql)) {
                         while ($reponse = mysqli_fetch_array($exec_requete)) {
-                            // array_push($domende, $reponse['iddemande']);
                             array_push($eventID, $reponse['eventID']);
                             $namefomr = 'reponce_' . $reponse['eventID'];
                             $name = 'getans_' . $reponse['eventID'];
