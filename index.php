@@ -182,7 +182,7 @@ if (!empty($_GET['msg'])) {
                 <div class="left d-flex flex-column justify-content-center">
                     <div data-aos="flip-right">
 
-                        <h1 class=" animate__slideInLeft">Les bons Profs font les bons élèves </h1>
+                        <h1 class=" animate__slideInLeft">Sway3, le soutien scolaire social </h1>
                         <p class="animate__slideInLeft">Vous trouvez des difficultés au niveau des cours ?
                             Nous avons la solution ! Avec les cours en ligne de <span>Sway3</span>,
                             vous pouvez avoir un professeur qui peut vous
