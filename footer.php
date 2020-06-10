@@ -9,6 +9,7 @@
         </div>
         <div class="footer__serv">
             <h5 class="text-light text-center ">All rights reserved <br> Copyright 2020</h5>
+            <h5 class="text-light text-center "> Abdelkbir khouilid<br> Samir ZAHIDI <br> adam khiri</h5>
         </div>
         <div class="footer__social  p-2  pb-4 bg-white rounded-lg">
         
