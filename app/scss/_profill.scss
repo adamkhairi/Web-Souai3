@@ -223,8 +223,18 @@ button:focus, input:focus, textarea:focus, select:focus {
 }
 
 .btn_add_event {
-  display: flex;
-  justify-content: center;
+  
+  @media only screen and (max-width: 1675px) {
+    // max-width: 100%;
+    
+   .btn-event{
+    max-width: 90%;
+    font-size: 1.1em;
+    padding-left: 1.2em;
+    padding-right: 1.2em;
+   } 
+  }
+
 
   button {
     // width: 150px;
@@ -761,8 +771,9 @@ input[type="radio"]:checked:after {
   bottom: 0 !important;
   right: .5em !important;
 }
-demande-bg{
-  background: #00BFA6;
+.demande-bg{
+  background: #60a8a7;
+  color: white;
 }
 
 .intLogin {
