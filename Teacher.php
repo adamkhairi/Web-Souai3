@@ -91,7 +91,7 @@ if (!empty($_GET['msg'])) {
                    <div class="col-sm m-2 rounded p-3 text-truncate demande-bg" data-toggle="tooltip" data-placement="top" title="' . $array[4] . '">Filiere</div>
                    <div class="col-sm m-2 rounded p-3 text-truncate demande-bg">Mataire</div>
                    <div class="col-sm m-2 rounded p-3 text-truncate demande-bg" data-toggle="tooltip" data-placement="top" title="' . $array[2] . '">Cour</div>
-                    <div class="col-sm m-2 rounded p-3 text-truncate demande-bg">Nbr de demande</div>
+                    <div class="col-sm m-2 rounded p-3 text-truncate demande-bg">Nbr de demande par ordre</div>
             </div>
             <hr class="backRed">
             <?php
