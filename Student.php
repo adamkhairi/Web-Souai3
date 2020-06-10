@@ -43,7 +43,7 @@ if(!empty($_GET['m'])){
                 <h3 class="">
                 <?php
                     if (!empty($_SESSION['userid'])) {
-                        $sqls = "SELECT e.nometudiant,e.prenometudiant,e.mailetudiant,n.niveau, f.namfiliere, e.filiere FROM etudiant e INNER JOIN niveau n ON n.idniveau = e.niveauscolaire inner JOIN filiere f on f.idfiliere = e.filiere WHERE e.idetudiant ='". $_SESSION["userid"] ."' ";
+                        $sqls = "SELECT e.nometudiant,e.prenometudiant,e.mailetudiant,n.niveau, f.namfiliere, e.filiere FROM etudiant e INNER JOIN niveau n ON n.idniveau = e.niveauscolaire inner JOIN filiere f on f.idfiliere = e.filiere WHERE e.idetudiant ='". $_SESSION["userid"] ."';";
                         $ro = mysqli_query($conn, $sqls);
                         $r = mysqli_fetch_array($ro);
                         $_SESSION['firstName'] = $r['nometudiant'];
@@ -196,7 +196,7 @@ if(!empty($_GET['m'])){
                                     onchange="showCours(this.value)">
                                 <option value="" SELECTED disabled>Matière</option>
                                 <?php
-                                $sql = "SELECT * FROM `matiere` WHERE idfiliere = " . $_SESSION['banche'] . "";
+                                $sql = "SELECT * FROM `matiere` WHERE idfiliere = " . $_SESSION['filiere'] . "";
                                 $send = mysqli_query($conn, $sql);
                                 $rows = mysqli_fetch_all($send, MYSQLI_ASSOC);
                                 foreach ($rows as $row) {
@@ -227,7 +227,7 @@ if(!empty($_GET['m'])){
         <div class="d-flex justify-content-around flex-wrap align-items-center">
             <?php
             setlocale(LC_ALL, 'fr_FR');
-            $sql = "SELECT e.coursID,e.message , e.hours, e.theDate, c.nomcours, e.eventID FROM theevanets e INNER JOIN cours c ON e.coursID = c.idcours INNER JOIN reponce r ON e.eventID = r.idevent WHERE r.idetudiant = ". $_SESSION['userid'] ." AND r.reponce = '1' ";
+            $sql = "SELECT e.coursID,e.message , e.hours, e.theDate, c.nomcours, e.eventID FROM theevanets e INNER JOIN cours c ON e.coursID = c.idcours INNER JOIN reponce r ON e.eventID = r.idevent WHERE r.idetudiant = '". $_SESSION['userid'] ."' AND r.reponce = '1' ";
             $run = mysqli_query($conn, $sql);
             $Arry = mysqli_fetch_all($run, MYSQLI_ASSOC);
             if ($run = mysqli_query($conn, $sql)) {
@@ -245,6 +245,8 @@ if(!empty($_GET['m'])){
                     <hr>
                   
                 </div>
+          
+                <div onclick=(sup(". $Arr['eventID'] .")) class=\"row justify-content-end m-3\"><i class=\"fas fa-trash-alt\" aria-hidden=\"true\"></i></div>
              
           <div id=\"eventlist\" class=\"popup hide toggll" . $Arr['eventID'] . " \">
             <section class=\"sign-in \">
@@ -379,6 +381,14 @@ if(!empty($_GET['m'])){
 		let xmlhttp = new XMLHttpRequest();
 		str = document.getElementById("remove_" + val).value;
 		xmlhttp.open("GET", "removeFrom.php?e=" + str, true);
+		xmlhttp.send();
+		setTimeout(reloadpage, 1000)
+	}
+    function sup(val) {
+		let str;
+		let xmlhttp = new XMLHttpRequest();
+	
+		xmlhttp.open("GET", "sup.php?s=" + val, true);
 		xmlhttp.send();
 		setTimeout(reloadpage, 1000)
 	}
