@@ -87,11 +87,11 @@ if (!empty($_GET['msg'])) {
                 <h4 class="chart_title_h2 historique">Les cours les plus demandés :</h4>
             </div>
             <div class="row  font-weight-bold align-items-center text-center" style="min-width: 16em ; max-width: 100%">
-                   <div class="col-sm m-2 rounded p-3 text-truncate backRed">Nivaeu Scoliere</div>
-                   <div class="col-sm m-2 rounded p-3 text-truncate backRed" data-toggle="tooltip" data-placement="top" title="' . $array[4] . '">Filiere</div>
-                   <div class="col-sm m-2 rounded p-3 text-truncate backRed">Mataire</div>
-                   <div class="col-sm m-2 rounded p-3 text-truncate backRed" data-toggle="tooltip" data-placement="top" title="' . $array[2] . '">Cour</div>
-                    <div class="col-sm m-2 rounded p-3 text-truncate backGreen">Numbre de demande</div>
+                   <div class="col-sm m-2 rounded p-3 text-truncate demande-bg">Nivaeu Scoliere</div>
+                   <div class="col-sm m-2 rounded p-3 text-truncate demande-bg" data-toggle="tooltip" data-placement="top" title="' . $array[4] . '">Filiere</div>
+                   <div class="col-sm m-2 rounded p-3 text-truncate demande-bg">Mataire</div>
+                   <div class="col-sm m-2 rounded p-3 text-truncate demande-bg" data-toggle="tooltip" data-placement="top" title="' . $array[2] . '">Cour</div>
+                    <div class="col-sm m-2 rounded p-3 text-truncate demande-bg">Nbr de demande</div>
             </div>
             <hr class="backRed">
             <?php
