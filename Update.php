@@ -2,7 +2,7 @@
 require("connexion.php");
 include("navbar.php");
 if (!empty($_POST)){
-    if (isset($_REQUEST['username'], $_REQUEST['prenom'], $_REQUEST['nScolaire'], $_REQUEST['filier'],$_REQUEST['password'], $_REQUEST['password2']) && $_REQUEST['password'] == $_REQUEST['password2']) {
+    // if (isset($_REQUEST['username'], $_REQUEST['prenom'], $_REQUEST['nScolaire'], $_REQUEST['filier'],$_REQUEST['password'], $_REQUEST['password2']) && $_REQUEST['password'] == $_REQUEST['password2']) {
         $username = stripslashes($_REQUEST['username']);
         $username = mysqli_real_escape_string($conn, $username);
         // récupérer le prenom et supprimer les antislashes ajoutés par le formulaire
@@ -17,31 +17,29 @@ if (!empty($_POST)){
         // récupérer le mot de passe et supprimer les antislashes ajoutés par le formulaire
         $password = stripslashes($_REQUEST['password']);
         $password = mysqli_real_escape_string($conn, $password);
-        $sql = "UPDATE etudiant SET nometudiant= '". $username . "',prenometudiant = '". $prenom ."',niveauscolaire= ". $nScolaire .", filiere = ". $filier .",passwordetudiant = '". hash('sha256', $password) ."' WHERE mailetudiant = '". $_SESSION['mail'] ."' ";
-        $run = mysqli_query($conn, $sql);
-        if($run){
 
+        if($username != ""){
+            $sql1 = "UPDATE etudiant SET nometudiant= '". $username . "' WHERE mailetudiant = '". $_SESSION['mail'] ."' ";
+            $run1 = mysqli_query($conn, $sql1);
             header('location:Student.php?m=done');
-        }else{
-            header('location:Update.php?m=error');
         }
-    }else{
-        header('location:Update.php?m=error');
-    }
+        if($prenom != ''){
+            $sql2 = "UPDATE etudiant SET prenometudiant = '". $prenom ."' WHERE mailetudiant = '". $_SESSION['mail'] ."' ";
+            $run2 = mysqli_query($conn, $sql2);
+            header('location:Student.php?m=done');
+        }
+        if(isset($nScolaire, $filier)){
+            $sql3 = "UPDATE etudiant SET niveauscolaire= ". $nScolaire .", filiere = ". $filier ." WHERE mailetudiant = '". $_SESSION['mail'] ."' ";
+            $run3 = mysqli_query($conn, $sql3);
+            header('location:Student.php?m=done');
+        }
+        if(($_REQUEST['password'] != '' && $_REQUEST['password2'] != '' ) && ($_REQUEST['password'] == $_REQUEST['password2'])){
+            $sql4 = "UPDATE etudiant SET passwordetudiant = '". hash('sha256', $password) ."'  WHERE mailetudiant = '". $_SESSION['mail'] ."' ";
+            $run4 = mysqli_query($conn, $sql4);
+            header('location:Student.php?m=done');
+        }
 }
-if(!empty($_GET['m'])){
-    if($_GET['m'] = 'error'){
 
-        echo "
-        <div class=\"alert text-center alert-danger m-0 alert-dismissible fade show \" role=\"alert\">
-    <strong>Ops !</strong> Verifiez vos Informations .
-    <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
-    <span aria-hidden=\"true\">&times;</span>
-    </button>
-    </div>
-        ";
-    }
-}
 ?>
 
 <div>
