@@ -17,15 +17,13 @@ if (!empty($_POST)){
         // récupérer le mot de passe et supprimer les antislashes ajoutés par le formulaire
         $password = stripslashes($_REQUEST['password']);
         $password = mysqli_real_escape_string($conn, $password);
-        $sql = "UPDATE etudiant SET nometudiant= ". $username . ",prenometudiant = ". $prenom .",niveauscolaire= ". $nScolaire .",filiere = ". $filier .",passwordetudiant = ". hash('sha256', $password) ." WHERE mailetudiant = ". $_SESSION['mail'] ." ";
+        $sql = "UPDATE etudiant SET nometudiant= '". $username . "',prenometudiant = '". $prenom ."',niveauscolaire= ". $nScolaire .", filiere = ". $filier .",passwordetudiant = '". hash('sha256', $password) ."' WHERE mailetudiant = '". $_SESSION['mail'] ."' ";
         $run = mysqli_query($conn, $sql);
-    
         if($run){
 
             header('location:Student.php?m=done');
         }else{
-            print_r($run);
-                die();
+            header('location:Update.php?m=error');
         }
     }else{
         header('location:Update.php?m=error');
