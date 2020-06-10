@@ -7,10 +7,7 @@
             <h3>name@gmail.com</h3>
             <h3>06******1</h3>
         </div>
-        <div class="footer__serv">
-            <h5 class="text-light text-center ">All rights reserved <br> Copyright 2020</h5>
-            <h5 class="text-light text-center "> Abdelkbir khouilid<br> Samir ZAHIDI <br> adam khiri</h5>
-        </div>
+
         <div class="footer__social  p-2  pb-4 bg-white rounded-lg">
         
             <a href="#" class="ml-3">
@@ -41,10 +38,31 @@
                 </svg>
             </a>
         </div>
-        <div id="google_translate_element"></div>
+        <div id="google_translate_element" class="text-white"></div>
 
     </div>
+    <h6 class="text-light text-center">Les Développeurs:</h6>
+    <div class="footer__serv d-flex ">
+
+        <a href="https://www.linkedin.com/in/samir-zahidi" target="_blank" class="text-decoration-none p-1 row align-items-center m-2 text-white">
+            <i class="fab fa-linkedin "></i>
+            <h6 class="text-center m-4 font-weight-bold">SAMIR ZAHIDI </h6>
+        </a>
+        <a href="https://www.linkedin.com/in/abdelkbir-khouilid" target="_blank" class="text-decoration-none p-1 row align-items-center m-2 text-white">
+            <i class="fab fa-linkedin "></i>
+            <h6 class=" text-center m-4 font-weight-bold">ABDELKBIR KHOUILID </h6>
+        </a>
+        <a href="https://www.linkedin.com/in/adam-khairi" target="_blank" class="text-decoration-none p-1 row align-items-center m-2 text-white">
+            <i class="fab fa-linkedin "></i>
+        <h6 class="text-center m-4 font-weight-bold"> ADAM KHAIRI  </h6>
+        </a>
+    </div>
+
 </footer>
+<div class="p-2" style="background-color: #2a9d8f;">
+
+<h6 class="text-light text-center mt-1" >Copyright © 2020, Tous droits réservés</h6>
+</div>
 <script crossorigin="anonymous"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
