@@ -212,9 +212,9 @@ if (!empty($_GET['msg'])) {
 
                     <img class="header_img" src="src/img/undraw_reading_time_gvg0.svg" alt="">
                 </div>
-                <div class="left d-flex flex-column justify-content-center align-items-center" data-aos="fade-left">
-                    <h1>Comment ?</h1>
-                    <p>C’est simple, inscrivez-vous en remplissant ce
+                <div class=" left d-flex flex-column justify-content-center align-items-center" data-aos="fade-left">
+                    <h1 class="left">Comment ?</h1>
+                    <p class="left">C’est simple, inscrivez-vous en remplissant ce
                         formulaire d’inscription, poster la problématique
                         et réserver vos places.</p>
                     <button id="register" class="btn btn-header" type="button">Inscrivez-vous</button>
