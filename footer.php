@@ -40,6 +40,8 @@
                 </svg>
             </a>
         </div>
+        <div id="google_translate_element"></div>
+
     </div>
 </footer>
 <script crossorigin="anonymous"
