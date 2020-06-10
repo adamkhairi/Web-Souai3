@@ -13,11 +13,11 @@ if($counter['N'] == 0){
     if (!empty($_SESSION['mail'] && $_POST['description'])) {
         $sql = "INSERT INTO demande (description,idetudiantc,cours,reponce) VALUES ( '" . $inputMsg . "' , '" . $iduser . "'  ,  '" . $inputCrs . "',0)";
         $res = mysqli_query($conn, $sql);
-            header('Location: Student.php');
+            header('Location: Student.php?m=done2');
     }elseif (!empty($_SESSION['mail'] )){
         $sql = "INSERT INTO demande (description,idetudiantc,cours,reponce) VALUES ( 'Aucune desciption !' , '" . $iduser . "'  ,  '" . $inputCrs . "',0)";
         $res = mysqli_query($conn, $sql);
-        header('Location: Student.php');
+        header('Location: Student.php?m=done2');
     };
 }else{
     header('Location: Student.php');
