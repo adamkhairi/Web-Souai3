@@ -7,4 +7,5 @@ let logingTeacher = () => {
 	student = document.getElementById("student");
 	student.classList.remove('hide');
 	document.getElementById('userType').value = "teacher";
+	document.getElementById('changepass').classList.toggle('hide');
 };
