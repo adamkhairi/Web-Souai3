@@ -40,21 +40,31 @@ if(!empty($_GET['m'])){
            style="font-size: 40px; color: #00BFA6"></i>
         <div class="media d-flex align-items-center ">
             <div class="media-body">
-                <h3 class=""><?php
-                    if (!empty($_SESSION['mail'])) {
-                        echo($_SESSION['firstName'] . ' ' . $_SESSION['lastName']);
+                <h3 class="">
+                <?php
+                    if (!empty($_SESSION['userid'])) {
+                        $sqls = "SELECT e.nometudiant,e.prenometudiant,e.mailetudiant,n.niveau, f.namfiliere FROM etudiant e INNER JOIN niveau n ON n.idniveau = e.niveauscolaire inner JOIN filiere f on f.idfiliere = e.filiere WHERE e.idetudiant ='". $_SESSION["userid"] ."' ";
+                        $ro = mysqli_query($conn, $sqls);
+                        $r = mysqli_fetch_array($ro);
+     
+                     
+                        echo "
+                        <h5>" . $r['nometudiant'] . " " . $r['prenometudiant'] . "</h5>
+                
+                        ";
                     }
                     ?>
                 </h3>
                 <p class="font-weight-light text-muted mb-0">Etudiant</p>
-
-
                 <?php
-                if (!empty($_SESSION['mail'])) {
-                    //TODO Show Level & Branch
+                if (!empty($_SESSION['userid'])) {
+                    $sqls = "SELECT e.nometudiant,e.prenometudiant,e.mailetudiant,n.niveau, f.namfiliere FROM etudiant e INNER JOIN niveau n ON n.idniveau = e.niveauscolaire inner JOIN filiere f on f.idfiliere = e.filiere WHERE e.idetudiant ='". $_SESSION["userid"] ."' ";
+                    $ro = mysqli_query($conn, $sqls);
+                    $r = mysqli_fetch_array($ro);
+   
                     echo "
-                        <h6>" . $_SESSION['nomniveau'] . "</h6>
-                        <h6>" . $_SESSION['nomFiliere'] . "</h6>
+                        <h6>" . $r['niveau'] . "</h6>
+                        <h6>" . $r['namfiliere'] . "</h6>
                         ";
                 }
                 ?>
