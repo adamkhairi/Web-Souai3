@@ -21,23 +21,36 @@ if (!empty($_POST)){
         if($username != ""){
             $sql1 = "UPDATE etudiant SET nometudiant= '". $username . "' WHERE mailetudiant = '". $_SESSION['mail'] ."' ";
             $run1 = mysqli_query($conn, $sql1);
-            header('location:Student.php?m=done');
+            header('location:Update.php?m=done');
         }
         if($prenom != ''){
             $sql2 = "UPDATE etudiant SET prenometudiant = '". $prenom ."' WHERE mailetudiant = '". $_SESSION['mail'] ."' ";
             $run2 = mysqli_query($conn, $sql2);
-            header('location:Student.php?m=done');
+            header('location:Update.php?m=done');
         }
         if(isset($nScolaire, $filier)){
             $sql3 = "UPDATE etudiant SET niveauscolaire= ". $nScolaire .", filiere = ". $filier ." WHERE mailetudiant = '". $_SESSION['mail'] ."' ";
             $run3 = mysqli_query($conn, $sql3);
-            header('location:Student.php?m=done');
+            header('location:Update.php?m=done');
         }
         if(($_REQUEST['password'] != '' && $_REQUEST['password2'] != '' ) && ($_REQUEST['password'] == $_REQUEST['password2'])){
             $sql4 = "UPDATE etudiant SET passwordetudiant = '". hash('sha256', $password) ."'  WHERE mailetudiant = '". $_SESSION['mail'] ."' ";
             $run4 = mysqli_query($conn, $sql4);
-            header('location:Student.php?m=done');
+            header('location:Update.php?m=done');
         }
+}
+if(!empty($_GET['m'])){
+    if ($_GET['m'] == 'done') {
+                       echo "
+               
+               <div class=\"alert alert-success text-center m-0 alert-dismissible fade show\" role=\"alert\">
+                 Votre demande a été effectué avec succès.
+                 <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+                   <span aria-hidden=\"true\">&times;</span>
+                 </button>
+               </div>
+                       ";
+                   }
 }
 
 ?>

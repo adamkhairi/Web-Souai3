@@ -246,7 +246,7 @@ if(!empty($_GET['m'])){
                   
                 </div>
           
-                <div onclick=(sup(". $Arr['eventID'] .")) class=\"row justify-content-end m-3\"><i class=\"fas fa-trash-alt\" aria-hidden=\"true\"></i></div>
+                <div onclick=(sup(". $Arr['eventID'] .")) class=\"row justify-content-center mb-2\"><button class=\"btn btn-danger rounded-pill font-weight-bold\" >Annuler</button></div>
              
           <div id=\"eventlist\" class=\"popup hide toggll" . $Arr['eventID'] . " \">
             <section class=\"sign-in \">
@@ -268,7 +268,7 @@ if(!empty($_GET['m'])){
                                 <tbody>";
 
                     $sql = "SELECT r.idetudiant,e.nometudiant,e.prenometudiant, e.mailetudiant ,r.idevent FROM reponce r 
-                                    INNER JOIN etudiant e on r.idetudiant = e.idetudiant WHERE r.idevent =" . $Arr['eventID'] . " ";
+                                    INNER JOIN etudiant e on r.idetudiant = e.idetudiant WHERE r.idevent =" . $Arr['eventID'] . " AND r.reponce = 1";
                     $req = mysqli_query($conn, $sql);
                     $result = mysqli_fetch_all($req);
                     foreach ($result as $row) {

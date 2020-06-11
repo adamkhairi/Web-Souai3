@@ -154,7 +154,7 @@ if (!empty($_GET['msg'])) {
                         <i class=\"fas fa-trash-alt\"></i>
                     </button>
                 </div>
-              <input  onclick='hidelist(" . $Arr['eventID'] . ")' type='button'  class='btn w-75 text-left' value='Afficher la list'/>
+              <input  onclick='hidelist(" . $Arr['eventID'] . ")' type='button'  class='btn w-75 text-left font-weight-bold ' style=\" color :#60a8a7;\" value='Afficher la liste'/>
           <div id=\"eventlist\" class=\"popup hide toggll" . $Arr['eventID'] . " \">
             <section class=\"sign-in \">
                 <div class=\"container pb-3\">
