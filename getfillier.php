@@ -5,6 +5,7 @@ echo " <select class=\"custom-select\" name=\"filier\" id=\"filier\">";
 $sql1 = "SELECT * FROM `filiere` WHERE idniveau = " .$q . "";
 $send1 = mysqli_query($conn, $sql1);
 if ($send1 = mysqli_query($conn, $sql1)) {
+    echo " <option selected>Choisir une filiere</option>";
     while ($row = mysqli_fetch_array($send1)) {
         echo "<option value='  $row[0]  '> $row[1]  </option>'";
     };

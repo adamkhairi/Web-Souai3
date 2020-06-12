@@ -92,10 +92,10 @@ if(!empty($_GET['m'])){
             if (!empty($_SESSION['mail'])) {
                 echo "<div class='mt-2'>
                 <a  href=\"Update.php\">
-                <button class='btn btn-light border rounded-pill mb-3' >Modifier le Profil</button>
+                <button class='btn btn-light border rounded-pill mb-3  demande-bg' style='width: 150px !important; height: 47px !important;'>Modifier le Profil</button>
             </a>
             <a  href=\"logout.php\">
-                <button class='btn btn-danger rounded-pill'>Déconnexion</button>
+                <button class='btn btn-danger rounded-pill ' style='width: 150px !important; height: 47px !important;'>Déconnexion</button>
             </a>
 
             </div>
@@ -136,13 +136,11 @@ if(!empty($_GET['m'])){
                             $name = 'getans_' . $reponse['eventID'];
                             echo "
                     <form name='" . $namefomr . "' action=\"answer.php\" method='POST' class=\"width ml-3\">
-                        <div class=\"modal-dialog width shdow\" role=\"document\">
+                        <div class=\"modal-dialog width shdow bg-light\" role=\"document\">
                             <div class=\"modal-content\">
-                                <div class=\"modal-header backOrange\">
+                                <div class=\"modal-header demande-bg\">
                                     <h5 class=\"modal-title text-center \">Évènement</h5>
-                                    <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">
-                                        <span aria-hidden=\"true\">&times;</span>
-                                    </button>
+                                   
                                 </div>
                                 <div class=\"modal-body pl-4\">     
                                     <h5>Cour : " . $reponse['nomcours'] . "</h5>
@@ -166,7 +164,7 @@ if(!empty($_GET['m'])){
                                         <label  for='non'>Non</label>
                                     </div>
                                 </div>
-                            <button type=\"submit\" id='ansnon' class=\"btn m - 0 w - 25 rounded - pill backRed\">Envoyer</button>
+                            <button type=\"submit\" id='ansnon' class=\"btn m - 0 w - 25 rounded - pill demande-bg\">Envoyer</button>
     
                             </div>
                         </div>
@@ -235,7 +233,7 @@ if(!empty($_GET['m'])){
                     $newDate = dateToFrench($Arr['theDate'], "l , d , M , Y");
                     echo "
             <div class=\"card m-2 position-relative\" style='max-width: 26em'>
-                <div class='card-header text-center backOrange'>
+                <div class='card-header text-center demande-bg'>
                     <h4 class=\"card-title font-weight-bold mt-2 \">" . $Arr['nomcours'] . "</h4>
                 </div>
                 <div class=\"card-body text-left\">
@@ -305,55 +303,7 @@ if(!empty($_GET['m'])){
             ?>
         </div>
     </div>
-        <div class="containers">
-            <h2 class="historique d-inline-block bBottom">Historique:</h2>
-            <div class="d-flex flex-wrap justify-content-around m-2">
-                <?php
-                $sql = "SELECT * FROM demande where
-               idetudiantc = '" . $_SESSION['userid'] . "'";
-                $result = mysqli_query($conn, $sql);
-                if (!empty($result)) {
-//                $row = mysqli_fetch_array($result);
-                    $demandes = [];
-                    $fname = $_SESSION['firstName'];
-                    $lname = $_SESSION['lastName'];
-                    while ($row = mysqli_fetch_array($result)) {
-                        array_push($demandes, $row[1]);
-                        $requet = "SELECT c.idcours, c.nomcours , m.nommatiere,f.namfiliere,n.niveau FROM cours c 
-                        INNER JOIN matiere m on c.idmatiere = m.idmatiere 
-                        INNER JOIN filiere f on m.idfiliere = f.idfiliere
-                        INNER JOIN niveau n on f.idniveau = n.idniveau
-                        where idcours =  '" . $row[3] . "'";
 
-                        $results = mysqli_query($conn, $requet);
-                        $row1 = mysqli_fetch_array($results);
-                        echo "
-                        <div class=\"card mb-4 rounded-lg position-relative m-2\" style=\"width: 18rem;\">
-                           <div class=\"card-body  p-0\">
-                           <div class='backOrange rounded-top pt-2 p-1 text-center'> 
-                            <h5 class=\"card-title font-weight-bold mt-2\">$row1[2]</h5>
-                            </div>
-                            <div class='p-2 m-1 text-center'>
-                            <h6 class=\"card-title mb-1\">- $row1[4] -</h6>
-                            <h6 class=\"card-title\">$row1[3]</h6>
-                            <hr>
-                            <h6 class=\"card-title mt-2\">$row1[1]</h6>
-                           <hr>
-                            <p class=\"card-text  m-2\">$row[1]</p>
-                           </div>  
-                            <button class='btn deldemande' type='submit' onclick='removeFrom(" . $row['iddemande'] . ")'>
-                                 <input type='text' hidden value='" . $row['iddemande'] . "' id='remove_" . $row['iddemande'] . "'>
-                                      <i class=\"fas fa-trash-alt\"></i>
-                             </button>
-                          </div>
-                        </div>
-                         ";
-                    }
-                } else {
-                    echo "<h5 class=\"activité\">aucune activité</h5>";
-                }; ?>
-            </div>
-        </div>
     </div>
 </div>
 <?php include 'footer.php'; ?>

@@ -57,16 +57,16 @@ if (!empty($_GET['msg'])) {
                 ?>
             </h6>
         </div>
-        <div class="p-2  mb-5">
+        <div>
             <?php
             if (!empty($_SESSION['mailb'])) {
                 echo "
-            <div class='btn_add_event' style=\"zoom:0.85; \">
-                <button id='add_event_btn' class='btn-event'  type='button'>Ajouter Événement</button>
+            <div  class='p-2 mt-4  demande-bg btn'style='width: 100%;'>
+                <a id='add_event_btn' class='text-decoration-none text-white'>Ajouter un événement</a>
             </div>
-            <div class='mt-2'>
-                <a  href=\"logout.php\">
-                    <button style='width: 139px !important; height: 47 !important;' class='btn btn-danger p-2 rounded-pill'>Déconnexion</button>
+            <div class='p-2 mt-4  btn btn-danger'style='width: 100%;'>
+                <a class='text-decoration-none text-white'  href=\"logout.php\">
+                    Déconnexion
                 </a>
             </div>
                 ";
@@ -81,47 +81,6 @@ if (!empty($_GET['msg'])) {
     <button class="btn btn-dark bg-dark rounded-pill shadow-sm px-4 m-4" id="sidebarCollapse" type="button">
         <small class="text-uppercase font-weight-bold" id="togl"> <<< </small>
     </button>
-    <div class="containers">
-        <div class="statistics">
-            <div class="chart_title">
-                <h4 class="chart_title_h2 historique">Les cours les plus demandés :</h4>
-            </div>
-            <div class="row  font-weight-bold align-items-center text-center" style="min-width: 16em ; max-width: 100%">
-                   <div class="col-sm m-2 rounded p-3 text-truncate demande-bg">Nivaeu Scoliere</div>
-                   <div class="col-sm m-2 rounded p-3 text-truncate demande-bg" data-toggle="tooltip" data-placement="top" title="' . $array[4] . '">Filiere</div>
-                   <div class="col-sm m-2 rounded p-3 text-truncate demande-bg">Mataire</div>
-                   <div class="col-sm m-2 rounded p-3 text-truncate demande-bg" data-toggle="tooltip" data-placement="top" title="' . $array[2] . '">Cour</div>
-                    <div class="col-sm m-2 rounded p-3 text-truncate demande-bg">Nbr de demande par ordre</div>
-            </div>
-            <hr class="backRed">
-            <?php
-            if (!empty($_SESSION['mailb'])) {
-                $therequet = "SELECT COUNT(d.cours) AS num, d.cours,c.nomcours , m.nommatiere, f.namfiliere,n.niveau FROM demande d INNER JOIN cours c ON 
-           d.cours = c.idcours INNER JOIN matiere m ON c.idmatiere = m.idmatiere  INNER JOIN filiere f on m.idfiliere = f.idfiliere INNER JOIN niveau n on f.idniveau = n.idniveau WHERE reponce = 0 GROUP BY d.cours ORDER BY COUNT(d.cours) DESC;";
-                $do = mysqli_query($conn, $therequet);
-                if ($do = mysqli_query($conn, $therequet)) {
-
-                    while ($array = mysqli_fetch_array($do)) {
-                        echo '
-                    <div class="row  font-weight-bold align-items-center text-center" style="min-width: 16em ; max-width: 100%">
-                   <div class="col-sm m-2 rounded p-3 text-truncate backRed">' . $array[5] . '</div>
-                   <div class="col-sm m-2 rounded p-3 text-truncate backRed" data-toggle="tooltip" data-placement="top" title="' . $array[4] . '">' . $array[4] . '</div>
-                   <div class="col-sm m-2 rounded p-3 text-truncate backRed">' . $array[3] . '</div>
-
-                   <div class="col-sm m-2 rounded p-3 text-truncate backRed" data-toggle="tooltip" data-placement="top" title="' . $array[2] . '">' . $array[2] . '</div>
-                    <div class="col-sm m-2 rounded p-3 text-truncate backGreen">' . $array[0] . '</div>
-                    </div>
-                    <hr class="backRed">';
-                    };
-                } else {
-                    echo "<h5 class='text-danger text-center font-weight-bold mt-5'>Aucune demande</h5>";
-                };
-            } else {
-                echo "<h5 class='text-danger text-center font-weight-bold mt-5'>Aucune demande</h5>";
-            };;
-            ?>
-        </div>
-    </div>
     <div class="containers">
         <h4 class="historique">Évènements :</h4>
         <div class="d-flex justify-content-around flex-wrap align-items-center">
@@ -138,8 +97,8 @@ if (!empty($_GET['msg'])) {
                     //***** Change Date Format and Language *****//
                     $newDate = dateToFrench($Arr['theDate'], "l , d , M , Y");
                     echo "
-            <div class=\"card m-2 position-relative\" style='max-width: 26em'>
-                <div class='card-header text-center backOrange'>
+            <div class=\"card m-2 position-relative \" style='max-width: 26em'>
+                <div class='card-header text-center demande-bg'>
                     <h4 class=\"card-title font-weight-bold mt-2 \">" . $Arr['nomcours'] . "</h4>
                 </div>
                 <div class=\"card-body text-left\">
@@ -147,7 +106,7 @@ if (!empty($_GET['msg'])) {
                     <hr>
                     <p class=\"card-text\">Le " . $newDate . ' à ' . $Arr['hours'] . "</p>
                     <hr>
-                    <p class=\"card-text \">Les participants : <span class='backGreen rounded-circle p-2 pl-3 pr-3 ml-2'>0". $goo['COUNT(idetudiant)'] ."</span> </p>
+                    <p class=\"card-text \">Les participants : <span class='demande-bg rounded-circle p-2 pl-3 pr-3 ml-2'>". $goo['COUNT(idetudiant)'] ."</span> </p>
                     <hr>
                     <button class='btn deldemande'' type='submit' onclick='removeFrom(" . $Arr['eventID'] . ")'>
                     <input type='text' hidden value='" . $Arr['eventID'] . "' id='remove_" . $Arr['eventID'] . "'>
@@ -213,108 +172,47 @@ if (!empty($_GET['msg'])) {
         </div>
     </div>
     <div class="containers">
-        <h2 class="historique">Historique :</h2>
-        <div class="d-flex flex-wrap flex-column align-items-center justify-content-center">
-            <div class="col-4 mb-3 ">
-                <form action="" method="post" class="w-100">
-                    <div class="d-flex justify-content-between aline-items-baseline">
-                        <div class="form-group">
-                            <div class="input-group mb-3">
-                                <select class="custom-select" name="nScolaire" id="nScolaire"
-                                        onchange="showfilliers(this.value)">
-                                    <option selected>Niveau Scolaire</option>
-                                    <?php
-                                    $sql = "SELECT * FROM `niveau`";
-                                    $send = mysqli_query($conn, $sql);
-                                    $rows = mysqli_fetch_all($send, MYSQLI_ASSOC);
-                                    foreach ($rows as $row) {
-                                        echo '<option value=' . $row['idniveau'] . '> ' . $row['niveau'] . '</option>';
-                                    }
-                                    ?>
-                                </select>
-                                <select class="custom-select ml-2" name="filier" id="filieres"
-                                        onclick="showMatieres(this.value)">
-                                    <option value="" selected disabled> Choisir une filiere</option>
-                                </select>
-                                <select class="custom-select ml-2" name="matiere" id="matieres"
-                                        onchange="getMatieres(this.value)">
-                                    <option value="" SELECTED disabled>Matières</option>
-                                </select>
-                                <input type="text" hidden value="" name="selMatiere" id="selMatieres">
-                            </div>
-                            <div class="text-center">
-                                <button type="submit" name="submit" id="" class="btn backRed btn-lg">Choisir</button>
-                            </div>
-                        </div>
+        <div class="statistics">
+            <div class="chart_title">
+                <h4 class="chart_title_h2 historique">Les cours les plus demandés par ordre:</h4>
+            </div>
+            <div class="row  font-weight-bold align-items-center text-center" style="min-width: 16em ; max-width: 100%">
+                   <div class="col-sm m-2 rounded p-3 text-truncate demande-bg">Nivaeu Scoliere</div>
+                   <div class="col-sm m-2 rounded p-3 text-truncate demande-bg" data-toggle="tooltip" data-placement="top" title="' . $array[4] . '">Filiere</div>
+                   <div class="col-sm m-2 rounded p-3 text-truncate demande-bg">Mataire</div>
+                   <div class="col-sm m-2 rounded p-3 text-truncate demande-bg" data-toggle="tooltip" data-placement="top" title="' . $array[2] . '">Cour</div>
+                    <div class="col-sm m-2 rounded p-3 text-truncate demande-bg">Nbr de demande</div>
+            </div>
+            <hr class="backRed">
+            <?php
+            if (!empty($_SESSION['mailb'])) {
+                $therequet = "SELECT COUNT(d.cours) AS num, d.cours,c.nomcours , m.nommatiere, f.namfiliere,n.niveau FROM demande d INNER JOIN cours c ON 
+           d.cours = c.idcours INNER JOIN matiere m ON c.idmatiere = m.idmatiere  INNER JOIN filiere f on m.idfiliere = f.idfiliere INNER JOIN niveau n on f.idniveau = n.idniveau WHERE reponce = 0 GROUP BY d.cours ORDER BY COUNT(d.cours) DESC;";
+                $do = mysqli_query($conn, $therequet);
+                if ($do = mysqli_query($conn, $therequet)) {
+
+                    while ($array = mysqli_fetch_array($do)) {
+                        echo '
+                    <div class="row  font-weight-bold align-items-center text-center" style="min-width: 16em ; max-width: 100%">
+                   <div class="col-sm m-2 rounded p-3 text-truncate bg-light border" >' . $array[5] . '</div>
+                   <div class="col-sm m-2 rounded p-3 text-truncate bg-light border" data-toggle="tooltip" data-placement="top" title="' . $array[4] . '">' . $array[4] . '</div>
+                   <div class="col-sm m-2 rounded p-3 text-truncate bg-light border">' . $array[3] . '</div>
+
+                   <div class="col-sm m-2 rounded p-3 text-truncate bg-light border" data-toggle="tooltip" data-placement="top" title="' . $array[2] . '">' . $array[2] . '</div>
+                    <div class="col-sm m-2 rounded p-3 text-truncate bg-light border">' . $array[0] . '</div>
                     </div>
-                </form>
-                <hr>
-            </div>
-            <div class="d-flex flex-wrap justify-content-around m-2">
-                <?php
-                if (isset($_POST['submit'])) {
-                    $matiereT = $_POST['selMatiere'];
-                    $req = "SELECT c.nomcours, e.prenometudiant, e.nometudiant, d.description,  m.nommatiere FROM demande d 
-    INNER JOIN etudiant e ON d.idetudiantc = e.idetudiant INNER JOIN cours c ON c.idcours = d.cours 
-    INNER JOIN matiere m ON m.idmatiere = c.idmatiere WHERE m.idmatiere = '" . $matiereT . "' ";
-                    $reqt = mysqli_query($conn, $req);
-                    $row = mysqli_fetch_array($reqt);
-                    if ($reqt = mysqli_query($conn, $req)) {
-                        if (!empty($_SESSION['mailb'] && $reqt)) {
-                            while ($row = mysqli_fetch_array($reqt)) {
-                                echo "
-                                <div class=\"card  card mb-4 rounded-lg m-2\" style=\"width: 18rem;\">
-                                  <div class=\"card-body  p-0\">
-                                     <div class='backOrange rounded-top pt-2 p-1 text-center'>
-                                             <h5 class=\"card-title font-weight-bold mt-2\">$row[4]</h5>
-                                    </div>
-                                    <div class='p-2 m-1 text-center'>
-                                        <h5 class=\"card-title text-center m-2\">$row[0]</h5>
-                                        <hr>
-                                        <p class=\"card-text font-weight-light m-2\">$row[3]</p>
-                                     </div>
-                                  </div>
-                                 </div>
-                         ";
-                            }
-                        }
-                    }
+                    <hr class="backRed">';
+                    };
                 } else {
-                    $req = "SELECT c.nomcours, e.prenometudiant, e.nometudiant, d.description,  m.nommatiere ,f.namfiliere ,n.niveau FROM demande d 
-                            INNER JOIN etudiant e ON d.idetudiantc = e.idetudiant 
-                            INNER JOIN cours c ON c.idcours = d.cours 
-                            INNER JOIN matiere m ON m.idmatiere = c.idmatiere
-                            INNER JOIN filiere f on m.idfiliere = f.idfiliere
-                            INNER JOIN niveau n on f.idniveau = n.idniveau";
-                    $reqt = mysqli_query($conn, $req);
-                    $row = mysqli_fetch_array($reqt);
-                    if ($reqt = mysqli_query($conn, $req)) {
-                        if (!empty($_SESSION['mailb']) && $reqt) {
-                            while ($row = mysqli_fetch_array($reqt)) {
-                                echo "
-                                <div class=\"card  card mb-4 rounded-lg m-2\" style=\"width: 18rem;\">
-                                  <div class=\"card-body  p-0\">
-                                     <div class='backOrange rounded-top pt-2 p-1 text-center'>
-                                             <h5 class=\"card-title font-weight-bold mt-2\">$row[4]</h5>
-                                    </div>
-                                    <div class='p-2 m-1 text-center'>
-                                        <h6 class=\"card-title text-center mb-1\">- $row[6] -</h6>
-                                        <h6 class=\"card-title text-center\">$row[5]</h6>
-                                        <hr>
-                                        <h6 class=\"card-title text-center m-2\">$row[0]</h6>
-                                        <hr>
-                                        <p class=\"card-text font-weight-light m-2\">$row[3]</p>
-                                     </div>
-                                  </div>
-                                 </div>
-                                 ";
-                            }
-                        }
-                    }
-                } ?>
-            </div>
+                    echo "<h5 class='text-danger text-center font-weight-bold mt-5'>Aucune demande</h5>";
+                };
+            } else {
+                echo "<h5 class='text-danger text-center font-weight-bold mt-5'>Aucune demande</h5>";
+            };;
+            ?>
         </div>
     </div>
+
 
 
     <div style="display :none;" id="pop-up-add_events" class="pop-up-add_events">
