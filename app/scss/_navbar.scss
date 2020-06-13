@@ -39,3 +39,9 @@ nav {
   color: white;
   padding: .8em;
 }
+.linko{
+  @media (max-width:750px){
+    display: none !important;
+    
+  }
+}

@@ -256,7 +256,12 @@ include "footer.php" ?>
 	// Popups register
 	const registerBtn = document.querySelector('#register');
 	const registerPop = document.querySelector('.registerPopup');
-	registerBtn.addEventListener('click', () => {
+
+    function reg(){
+        $('.registerPopup').toggle('hide');
+
+    }
+    registerBtn.addEventListener('click', () => {
 		$('.registerPopup').toggle('hide');
 	});
 	const loginBtn = document.querySelector('#login');

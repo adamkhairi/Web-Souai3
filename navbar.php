@@ -81,13 +81,17 @@ function dateToFrench($date, $format)
             } else {
                 echo "
                 <div class='header p-0'>
-                <div class='header_content'>
-                        <button id=\"etud\" onclick=\"logingEtudiant()\" class=\"btn rounded-pill backOrangeN  \"
+                <div class='header_content d-flex align-items-center'>
+                        <p id=\"etud\" onclick=\"logingEtudiant()\"  class=\"btn \"
                                 data-target=\"#exampleModalCentertype=\"
-                        >Se connecter
-                        </button>
-           </div>
-           </div>     ";
+                        >Se connecter 
+                        </p>
+                        <p onclick='reg()' class=\"btn linko\"
+                        data-target=\"#exampleModalCentertype=\"
+                        >Inscrivez-vous
+                </p>
+            </div>
+            </div>";
             };
             ?>
         </div>
