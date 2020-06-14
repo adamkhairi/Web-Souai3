@@ -1,7 +1,13 @@
 <?php
-//session_start();
+session_start();
 require("connexion.php");
 $pageTitle = "Bienvenu dans Sway3";
+$_SESSION['lg'] = "Ar";
+if(!empty($_SESSION['lg'])){
+    require_once "". $_SESSION['lg'] .".php";
+}else{
+    require_once 'Fr.php';
+}
 include("navbar.php");
 
 if (!empty($_GET['msg'])) {
@@ -63,28 +69,28 @@ if (!empty($_GET['msg'])) {
             <div class="signup-content">
                 <div class="signup-form">
                     <!--                    Inscriptio-->
-                    <h2 class="form-title">Inscription</h2>
+                    <h2 class="form-title"><?php echo $elements['btn_3'] ?></h2>
                     <form method="POST" action="inscription.php" class="register-form">
                         <!--                        name-->
                         <div class="form-group">
                             <label for="fname"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                            <input type="text" name="username" id="fname" placeholder="Votre Nom"/>
+                            <input type="text" name="username" id="fname" placeholder="<?php echo $elements['name'] ?>"/>
                         </div>
 
                         <div class="form-group">
                             <label for="lname"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                            <input type="text" name="prenom" id="lname" placeholder="Votre Prénom"/>
+                            <input type="text" name="prenom" id="lname" placeholder="<?php echo $elements['name2'] ?>"/>
                         </div>
                         <!--                        Email-->
                         <div class="form-group">
                             <label for="email"><i class="zmdi zmdi-email"></i></label>
-                            <input type="email" name="email" id="email" placeholder="Votre adresse gmail"/>
+                            <input type="email" name="email" id="email" placeholder="<?php echo $elements['mail'] ?>"/>
                         </div>
                         <div class="form-group">
                             <div class="input-group mb-3">
                                 <select class="custom-select" name="nScolaire" id="nScolaire"
                                         onchange="showfillier(this.value)">
-                                    <option selected>Niveau Scolaire</option>
+                                    <option selected><?php echo $elements['niveau'] ?></option>
                                     <?php
                                     $sql = "SELECT * FROM `niveau`";
                                     $send = mysqli_query($conn, $sql);
@@ -101,27 +107,26 @@ if (!empty($_GET['msg'])) {
                             </div>
                             <div class="form-group" id="filiere">
                                 <select class="custom-select" name="filier" id="filier">
-                                    <option value="" selected disabled> Choisir une filière</option>
+                                    <option value="" selected disabled><?php echo $elements['filiere'] ?></option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                            <input type="password" name="password" id="pass" placeholder="Mot de passe"/>
+                            <input type="password" name="password" id="pass" placeholder="<?php echo $elements['mode'] ?>"/>
                         </div>
                         <div class="form-group">
                             <label for="pass2"><i class="zmdi zmdi-lock"></i></label>
-                            <input type="password" name="password2" id="pass" placeholder="Confirmer Mot de passe"/>
+                            <input type="password" name="password2" id="pass" placeholder="<?php echo $elements['mode2'] ?>"/>
                         </div>
                         <div class="form-group form-button">
                             <input type="submit" name="signup" id="signup" class="form-submit rounded-pill"
-                                   value="Inscrivez-Vous"/>
+                                   value="<?php echo $elements['btn_3'] ?>"/>
                         </div>
                     </form>
                 </div>
                 <div class="signup-image">
                     <figure><img src="src/img/signup-image.jpg" alt="sing up image"></figure>
-                    <a href="#" class="signup-image-link">Vous êtes déjà un member !</a>
                 </div>
             </div>
         </div>
@@ -139,27 +144,27 @@ if (!empty($_GET['msg'])) {
             <div class="signin-content">
                 <div class="signin-image">
                     <figure><img src="src/img/signin-image.jpg" alt="sing up image"></figure>
-                    <a href="forget_the_password.php" id="changepass" class="signup-image-link">Mot de passe Oublié ?</a>
+                    <a href="forget_the_password.php" id="changepass" class="signup-image-link"><?php echo $elements['passO'] ?></a>
                 </div>
 
                 <div class="signin-form">
-                    <h2 class="form-title">Se Connecter</h2>
+                    <h2 class="form-title"><?php echo $elements['btn'] ?></h2>
                     <form action="login.php" class="register-form" id="login-form" method="POST">
                         <div class="form-group">
                             <label for="your_email"><i class="zmdi zmdi-account material-icons-name"></i></label>
                             <input class="intLogin" type="email" name="your_email" id="your_email"
-                                   placeholder="Votre Email"/>
+                                   placeholder="<?php echo $elements['mail'] ?>"/>
                         </div>
                         <div class="form-group">
                             <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
                             <input class="intLogin" type="password" name="your_pass" id="your_pass"
-                                   placeholder="Mot de passe"/>
+                                   placeholder="<?php echo $elements['mode'] ?>"/>
                         </div>
 
                         <input type="text" name="userType" hidden id="userType" value="">
 
                         <div class="form-group form-button">
-                            <input type="submit" name="signin" id="signin" class="form-submit" value="Connexion"/>
+                            <input type="submit" name="signin" id="signin" class="form-submit" value="<?php echo $elements['btn'] ?>"/>
                         </div>
                         <?php
                         if (isset($_GET['erreur'])) {
@@ -182,22 +187,19 @@ if (!empty($_GET['msg'])) {
                 <div class="left d-flex flex-column justify-content-center">
                     <div data-aos="flip-right">
 
-                        <h1 class=" animate__slideInLeft">Sway3, le soutien scolaire social </h1>
-                        <p class="animate__slideInLeft">Vous trouvez des difficultés au niveau des cours ?
-                            Nous avons la solution ! Avec les cours en ligne de <span>Sway3</span>,
-                            vous pouvez avoir un professeur qui peut vous
-                            assurer des cours de soutien à distance.</p>
+                        <h1 class=" animate__slideInLeft"><?php echo $elements['title_1'] ?></h1>
+                        <p class="animate__slideInLeft"><?php echo $elements['para_1'] ?></p>
                     </div>
                     <div class="btn_for_login ">
 
                         <button id="etud" onclick="logingEtudiant()" class="btn btn-header"
                                 data-target="#exampleModalCentertype="
-                        >Connectez-vous "Etudiant(e)"
+                        ><?php echo $elements['btn_1'] ?>
                         </button>
 
                         <button id="prof" onclick="logingTeacher()" class="btn btn-header backro"
                                 data-target="#exampleModalCentertype="
-                        >Connectez-vous "Professeur"
+                        ><?php echo $elements['btn_2'] ?>
                         </button>
                     </div>
                 </div>
@@ -215,33 +217,9 @@ if (!empty($_GET['msg'])) {
                     <img class="header_img" src="src/img/undraw_reading_time_gvg0.svg" alt="">
                 </div>
                 <div class=" left d-flex flex-column justify-content-center align-items-center" data-aos="flip-left">
-                    <h1 class="left">Comment ?</h1>
-                    <p class="left">C’est simple, inscrivez-vous en remplissant ce
-                        formulaire d’inscription, poster la problématique
-                        et réserver vos places.</p>
-                    <button id="register" class="btn btn-header" type="button">Inscrivez-vous</button>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="header section backRed ">
-        <div class="container-fluid">
-            <div class="header_content">
-                <div class="left d-flex flex-column justify-content-center">
-                    <div data-aos="zoom-in-up">
-
-                        <h1>L'enseignement à distance nous rapproche</h1>
-                        <p>Vous avez raté le cours, ne paniquez pas! on a pensé à
-                            enregistrer les cours en vidéo.</p>
-
-                        <a href="#">
-
-                            <button id="" class="btn btn-header" type="button">Voir les vidéos</button>
-                        </a>
-                    </div>
-                </div>
-                <div class="" data-aos="flip-right">
-                    <img class="header_img" src="src/img/undraw_online_test_gba7.svg" alt="img">
+                    <h1 class="left"><?php echo $elements['title_2'] ?></h1>
+                    <p class="left"><?php echo $elements['para_2'] ?>.</p>
+                    <button id="register" class="btn btn-header" type="button"><?php echo $elements['btn_3'] ?></button>
                 </div>
             </div>
         </div>

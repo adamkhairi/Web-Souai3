@@ -1,5 +1,4 @@
 <?php
-session_start();
 function dateToFrench($date, $format)
 {
     $english_days = array('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');
@@ -84,11 +83,11 @@ function dateToFrench($date, $format)
                 <div class='header_content d-flex align-items-center'>
                         <p id=\"etud\" onclick=\"logingEtudiant()\"  class=\"btn \"
                                 data-target=\"#exampleModalCentertype=\"
-                        >Se connecter 
+                        >". $elements['btn_1'] ."
                         </p>
                         <p onclick='reg()' class=\"btn linko\"
                         data-target=\"#exampleModalCentertype=\"
-                        >Inscrivez-vous
+                        >". $elements['btn_3'] ."
                 </p>
             </div>
             </div>";

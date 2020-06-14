@@ -1,10 +1,19 @@
+<?php
+
+if(!empty($_SESSION['lg'])){
+    require_once "". $_SESSION['lg'] .".php";
+}else{
+    require_once 'Fr.php';
+}
+?>
+
 <footer>
     <div class="footer">
         <div class="footer__info w-25">
             <a class="navbar-brand" href="index.php">
                 <img src="src/img/logo.svg" width="100" class="d-inline-block align-top p-4" alt="">
             </a>
-            <h3>Contacte-nous</h3>
+            <h3><?php echo $elements['contact'] ?></h3>
             <h3><a href="mailto:contact@sway3.ma" class="text-decoration-none text-dark">contact@sway3.ma</a></h3>
 
         </div>
@@ -34,7 +43,7 @@
         </div>
     </div>
     <div id="google_translate_element" class="text-white"></div>
-    <h6 class="text-light text-center">Les Développeurs:</h6>
+    <h6 class="text-light text-center"><?php $elements['sing'] ?></h6>
     <div class="footer__serv d-flex ">
 
         <a href="https://www.linkedin.com/in/samir-zahidi" target="_blank"
