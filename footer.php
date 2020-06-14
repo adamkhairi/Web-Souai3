@@ -1,12 +1,3 @@
-<?php
-
-if(!empty($_SESSION['lg'])){
-    require_once "". $_SESSION['lg'] .".php";
-}else{
-    require_once 'Fr.php';
-}
-?>
-
 <footer>
     <div class="footer">
         <div class="footer__info w-25">
@@ -43,7 +34,7 @@ if(!empty($_SESSION['lg'])){
         </div>
     </div>
     <div id="google_translate_element" class="text-white"></div>
-    <h6 class="text-light text-center"><?php $elements['sing'] ?></h6>
+    <h6 class="text-light text-center"><?php echo $elements['sing'] ?></h6>
     <div class="footer__serv d-flex ">
 
         <a href="https://www.linkedin.com/in/samir-zahidi" target="_blank"

@@ -7,9 +7,19 @@ function dateToFrench($date, $format)
     $french_months = array('janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre');
     return str_replace($english_months, $french_months, str_replace($english_days, $french_days, date($format, strtotime($date) ) ) );
 }
+session_start();
+if(!empty($_GET['lg'])){
+    $_SESSION['lg'] = $_GET['lg'];
+}
+if(!empty($_SESSION['lg'])){
+    
+    require_once "". $_SESSION['lg'] .".php";
+}else{
+    require_once 'Fr.php';
+}
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -24,16 +34,21 @@ function dateToFrench($date, $format)
 </head>
 <body>
 <nav class="sticky-top">
-    <a class="navbar-brand ml-4 " href="index.php">
-        <img src="src/img/logo.svg"  class="d-inline-block align-top ml-3 w-50" alt="">
-    </a>
-    <div class="  text-center ">
-        <h1 class=" font-weight-bold text-white text-center">
+<a class="navbar-brand ml-1 d-flex aling-items-center" href="index.php">
+         <div>
+        <img src="src/img/logo.svg" style="height: 5em; width:5em;"  class="d-inline-block align-top w-100" alt="logo">
+             
+         </div>
+         <div>
+             
+         <h1 class=" font-weight-bold text-white mt-2">
             Sway3
         </h1>
-    </div>
+         </div>
+    </a>
     
     <div>
+  
         <div class="p-2">
             <?php
             if (!empty($_SESSION['mail'])) {
@@ -73,15 +88,15 @@ function dateToFrench($date, $format)
                 // afficher un message
                 echo
                 "
-            <div class=' rounded-circle p-2'>
-             
+        <div class=' rounded-circle p-2'>
+
          </div>
    ";
             } else {
                 echo "
                 <div class='header p-0'>
                 <div class='header_content d-flex align-items-center'>
-                        <p id=\"etud\" onclick=\"logingEtudiant()\"  class=\"btn \"
+                        <p id=\"etud\" onclick=\"logingEtudiant()\"  class=\"btn linko\"
                                 data-target=\"#exampleModalCentertype=\"
                         >". $elements['btn_1'] ."
                         </p>
@@ -90,10 +105,17 @@ function dateToFrench($date, $format)
                         >". $elements['btn_3'] ."
                 </p>
             </div>
+            <div>
+            <p id=\"AR\"> <a class='text-dark text-decoration-none font-weight-bold' href=\"index.php?lg=Ar\">العربية</a> <a class='text-dark text-decoration-none font-weight-bold' href=\"index.php?lg=Fr\">| Français</a></p>
+           
+        </div>
             </div>";
             };
             ?>
+
         </div>
+        
+    </div>
     </div>
 </nav>
 

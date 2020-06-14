@@ -1,17 +1,9 @@
 <?php
-session_start();
 require("connexion.php");
 $pageTitle = "Bienvenu dans Sway3";
-$_SESSION['lg'] = "Ar";
-if(!empty($_SESSION['lg'])){
-    require_once "". $_SESSION['lg'] .".php";
-}else{
-    require_once 'Fr.php';
-}
 include("navbar.php");
-
 if (!empty($_GET['msg'])) {
-
+    
     if ($_GET['msg'] == 'inscriptiondone') {
 //        echo "<script>alert('Votre inscription a été effectué avec succès.')</script>";
         echo "
@@ -275,6 +267,10 @@ include "footer.php" ?>
 	function hidelist() {
 		$('#insc').toggle('hide');
 	}
+
+
+
+
 </script>
 <script src="src/js/collectInfo.js"></script>
 
