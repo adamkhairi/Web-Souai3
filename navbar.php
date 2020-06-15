@@ -34,17 +34,18 @@ if(!empty($_SESSION['lg'])){
 </head>
 <body>
 <nav class="sticky-top">
-<a class="navbar-brand ml-1 d-flex aling-items-center" href="index.php">
-         <div>
-        <img src="src/img/logo.svg" style="height: 5em; width:5em;"  class="d-inline-block align-top w-100" alt="logo">
-             
-         </div>
-         <div>
-             
-         <h1 class=" font-weight-bold text-white mt-2">
-            Sway3
-        </h1>
-         </div>
+    <a class="navbar-brand d-flex justify-content-center aling-items-center" href="index.php">
+        <div class="p-2" style="width: 6rem">
+
+            <img src="src/img/logo.svg" class="d-inline-block align-top" style="width:5rem" alt="logo">
+        </div>
+        <div class='d-flex flex-column align-items-start justify-content-center'>
+
+            <h2 class=" font-weight-bold text-white mt-3 linko2">
+                Sway3
+            </h2>
+            <p class='text-decoration-none text-white pb-0 linko'>Vous accordez le temps pour réussir</p>
+        </div>
     </a>
     
     <div>

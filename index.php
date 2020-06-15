@@ -3,7 +3,7 @@ require("connexion.php");
 $pageTitle = "Bienvenu dans Sway3";
 include("navbar.php");
 if (!empty($_GET['msg'])) {
-    
+
     if ($_GET['msg'] == 'inscriptiondone') {
 //        echo "<script>alert('Votre inscription a été effectué avec succès.')</script>";
         echo "
@@ -176,8 +176,8 @@ if (!empty($_GET['msg'])) {
     <section class="header section backGreen ">
         <div class="container-fluid">
             <div class="header_content">
-                <div class="left d-flex flex-column justify-content-center">
-                    <div data-aos="flip-right">
+                <div class="left d-flex flex-column justify-content-center align-items-center">
+                    <div data-aos="flip-right" class="w-75">
 
                         <h1 class=" animate__slideInLeft"><?php echo $elements['title_1'] ?></h1>
                         <p class="animate__slideInLeft"><?php echo $elements['para_1'] ?></p>
@@ -209,9 +209,14 @@ if (!empty($_GET['msg'])) {
                     <img class="header_img" src="src/img/undraw_reading_time_gvg0.svg" alt="">
                 </div>
                 <div class=" left d-flex flex-column justify-content-center align-items-center" data-aos="flip-left">
-                    <h1 class="left"><?php echo $elements['title_2'] ?></h1>
-                    <p class="left"><?php echo $elements['para_2'] ?>.</p>
-                    <button id="register" class="btn btn-header" type="button"><?php echo $elements['btn_3'] ?></button>
+
+                    <div class="w-100 p-2 ml-2 d-flex flex-column justify-content-center align-items-center">
+
+                        <h1 class="left"><?php echo $elements['title_2'] ?></h1>
+                        <p class="left"><?php echo $elements['para_2'] ?>.</p>
+                        <button id="register" class="btn btn-header" type="button"><?php echo $elements['btn_3'] ?></button>
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -227,11 +232,11 @@ include "footer.php" ?>
 	const registerBtn = document.querySelector('#register');
 	const registerPop = document.querySelector('.registerPopup');
 
-    function reg(){
-        $('.registerPopup').toggle('hide');
+	function reg(){
+		$('.registerPopup').toggle('hide');
 
-    }
-    registerBtn.addEventListener('click', () => {
+	}
+	registerBtn.addEventListener('click', () => {
 		$('.registerPopup').toggle('hide');
 	});
 	const loginBtn = document.querySelector('#login');
