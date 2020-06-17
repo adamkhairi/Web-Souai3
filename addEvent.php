@@ -1,8 +1,8 @@
 <?php
 require("connexion.php");
 session_start();
-$matiere = $_POST['matiere'];
-if (isset($matiere)) {
+// $matiere = $_POST['matiere'];
+// if (isset($matiere)) {
     $cours = $_POST['selCours'];
     $date = $_POST['date'];
     $hours = $_POST['hours'];
@@ -17,5 +17,5 @@ VALUES ('" . $cours . "','" . $idProuf . "','" . $message . "','" . $hours . "',
     } else {
         echo "<script>alert('veuillez compléter les informations')</script>";
     }
-}
+// }
 ?>
