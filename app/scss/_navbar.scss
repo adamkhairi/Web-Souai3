@@ -3,9 +3,9 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px;
-  // background-color: $lGreen;
-  background: linear-gradient(to left, #f6f1d3, #648880, #395368);
+  // padding: 15px;
+  background-color: white !important;
+  // background: linear-gradient(to left, #f6f1d3, #648880, #395368);
 
 
   a {
@@ -45,3 +45,4 @@ nav {
     
   }
 }
+

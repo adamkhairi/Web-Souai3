@@ -206,7 +206,7 @@ if (!empty($_GET['msg'])) {
             <div class="header_content">
                 <div class="" data-aos="zoom-in-up">
 
-                    <img class="header_img" src="src/img/undraw_reading_time_gvg0.svg" alt="">
+                    <img class="header_img" src="src/img/undraw_researching_22gp.svg" alt="">
                 </div>
                 <div class=" left d-flex flex-column justify-content-center align-items-center" data-aos="flip-left">
 
@@ -214,7 +214,7 @@ if (!empty($_GET['msg'])) {
 
                         <h1 class="left"><?php echo $elements['title_2'] ?></h1>
                         <p class="left"><?php echo $elements['para_2'] ?>.</p>
-                        <button id="register" class="btn btn-header" type="button"><?php echo $elements['btn_3'] ?></button>
+                        <button id="register" class="btn backGreen btn-header" stye="background-color:#10375ce0 ;" type="button"><?php echo $elements['btn_3'] ?></button>
 
                     </div>
                 </div>

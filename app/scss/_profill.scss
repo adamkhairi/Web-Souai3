@@ -371,9 +371,16 @@ button:focus, input:focus, textarea:focus, select:focus {
 footer {
   padding: 10px;
   z-index: 1;
+  background-color: rgb(255, 255, 255);
+  opacity: unset;
   // background-color: $colorV;
-  background: linear-gradient(to right, #f6f1d3, #648880, #395368);
+  // background: linear-gradient(to right, #f6f1d3, #648880, #395368);
+.border-b{
+  border-bottom: #10375ce0 3px solid;
+  width: fit-content;
+ 
 
+}
   .footer {
     position: relative;
     display: flex;
@@ -381,9 +388,9 @@ footer {
     align-items: center;
     flex-wrap: wrap;
     align-items: center;
-    @media only screen and (max-width: 475px) {
-      justify-content: center;
-    }
+    // @media only screen and (max-width: 475px) {
+    //   justify-content: center;
+    // }
 
     &__info {
 
