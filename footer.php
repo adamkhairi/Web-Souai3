@@ -1,61 +1,58 @@
 <footer>
     <div class="footer">
-        <div class="footer__info w-25">
-            <a class="navbar-brand" href="index.php">
-                <img src="src/img/logo.svg" width="100" class="d-inline-block align-top p-4" alt="">
-            </a>
-            <h3><?php echo $elements['contact'] ?></h3>
-            <h3><a href="mailto:contact@sway3.ma" class="text-decoration-none text-dark">contact@sway3.ma</a></h3>
+        <div class="footer__info w-25 font-weight-bold">
+            <h3 class="text-dark font-weight-bold"><?php echo $elements['contact'] ?></h3>
+            <h3><a href="mailto:contact@sway3.ma" class="text-decoration-none font-weight-bold text-dark">contact@sway3.ma</a></h3>
 
         </div>
 
 
         <div class="row w-25 justify-content-center p-2  pb-4 rounded-lg ">
             <a href="#" class="m-2">
-                <i class="fab fa-facebook-square" style="color: #3b5998;font-size: 3em"></i>
+                <i class="fab fa-facebook-square " style="color: #10375ce0;font-size: 3em"></i>
             </a>
 
             <a href="#" class="m-2">
-                <i class="fab fa-twitter-square"style="color: #00acee;font-size: 3em"></i>
+                <i class="fab fa-twitter-square"style="color:#10375ce0;font-size: 3em"></i>
             </a>
 
             <a href="#" class="m-2">
-                <i class="fab fa-youtube-square"style="color: #c4302b;font-size: 3em"></i>
+                <i class="fab fa-youtube-square"style="color: #10375ce0;font-size: 3em"></i>
             </a>
 
         </div>
         <div class="d-flex justify-content-center w-25" >
             <div>
-                <img src="src/img/act-02.png" width="100" class="p-1 m-1">
+                <img src="src/img/act-02.png" width="150" class="p-1 m-1">
             </div>
             <div>
-                <img src="src/img/Yc-01.png" width="100" class="p-1 m-1">
+                <img src="src/img/Yc-01.png" width="150" class="p-1 m-1">
             </div>
         </div>
     </div>
-    <div id="google_translate_element" class="text-white"></div>
-    <h6 class="text-light text-center"><?php echo $elements['sing'] ?></h6>
+    <div id="google_translate_element" class="text-white d-flex justify-content-center">
+    <h6 class="text-dark text-center m-4 border-b"><?php echo $elements['sing'] ?></h6></div>
     <div class="footer__serv d-flex ">
 
         <a href="https://www.linkedin.com/in/samir-zahidi" target="_blank"
            class="text-decoration-none p-1 row align-items-center m-2 text-white">
-            <i class="fab fa-linkedin" style="font-size: 2em;"></i>
-            <h6 class="text-center m-1 font-weight-bold">SAMIR ZAHIDI </h6>
+            <i class="fab fa-linkedin" style="font-size: 2em ; color:#10375ce0;"></i>
+            <h6 class="text-center m-1 text-dark font-weight-bold">SAMIR ZAHIDI </h6>
         </a>
         <a href="https://www.linkedin.com/in/abdelkbir-khouilid" target="_blank"
            class="text-decoration-none p-1 row align-items-center m-2 text-white">
-            <i class="fab fa-linkedin " style="font-size: 2em;"></i>
-            <h6 class=" text-center m-1 font-weight-bold">ABDELKBIR KHOUILID </h6>
+            <i class="fab fa-linkedin  " style="font-size: 2em ; color:#10375ce0;"></i>
+            <h6 class=" text-center m-1 text-dark font-weight-bold">ABDELKBIR KHOUILID </h6>
         </a>
         <a href="https://www.linkedin.com/in/adam-khairi" target="_blank"
            class="text-decoration-none p-1 row align-items-center m-2 text-white">
-            <i class="fab fa-linkedin " style="font-size: 2em;"></i>
-            <h6 class="text-center m-1 font-weight-bold"> ADAM KHAIRI </h6>
+            <i class="fab fa-linkedin " style="font-size: 2em ; color:#10375ce0;"></i>
+            <h6 class="text-center m-1 text-dark font-weight-bold"> ADAM KHAIRI </h6>
         </a>
     </div>
 
 </footer>
-<div class="p-2" style="background-color: #2a9d8f;">
+<div class="p-2" style="background-color: #10375ce0;">
 
     <h6 class="text-light text-center mt-1">Copyright © 2020, Tous droits réservés</h6>
 </div>

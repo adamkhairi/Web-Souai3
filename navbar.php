@@ -19,7 +19,7 @@ if(!empty($_SESSION['lg'])){
 }
 ?>
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -33,20 +33,20 @@ if(!empty($_SESSION['lg'])){
     <title><?php echo $pageTitle ;?></title>
 </head>
 <body>
-<nav class="sticky-top">
-    <a class="navbar-brand d-flex justify-content-center aling-items-center" href="index.php">
-        <div class="p-2" style="width: 6rem">
-
+<nav class=" bg-light">
+<a class="navbar-brand d-flex justify-content-center aling-items-center" href="index.php">
+         <div class="p-2" style="width: 6rem">
+             
             <img src="src/img/logo.svg" class="d-inline-block align-top" style="width:5rem" alt="logo">
-        </div>
-        <div class='d-flex flex-column align-items-start justify-content-center'>
-
-            <h2 class=" font-weight-bold text-white mt-3 linko2">
-                Sway3
-            </h2>
-            <p class='text-decoration-none text-white pb-0 linko'>Vous accordez le temps pour réussir</p>
-        </div>
-    </a>
+         </div>
+         <div class='d-flex flex-column align-items-start justify-content-center'>
+             
+         <h2 class=" font-weight-bold text-dark mt-3 linko2">
+            Sway3
+        </h2>
+        <p class='text-decoration-none text-dark pb-0 linko'>Vous accordez le temps pour réussir</p>
+         </div>
+</a>
     
     <div>
   
@@ -95,21 +95,23 @@ if(!empty($_SESSION['lg'])){
    ";
             } else {
                 echo "
-                <div class='header p-0'>
-                <div class='header_content d-flex align-items-center'>
-                        <p id=\"etud\" onclick=\"logingEtudiant()\"  class=\"btn linko\"
-                                data-target=\"#exampleModalCentertype=\"
-                        >". $elements['btn_1'] ."
-                        </p>
-                        <p onclick='reg()' class=\"btn linko\"
-                        data-target=\"#exampleModalCentertype=\"
-                        >". $elements['btn_3'] ."
-                </p>
-            </div>
-            <div>
-            <p id=\"AR\"> <a class='text-dark text-decoration-none font-weight-bold' href=\"index.php?lg=Ar\">العربية</a> <a class='text-dark text-decoration-none font-weight-bold' href=\"index.php?lg=Fr\">| Français</a></p>
+                         <div>
+            <p id=\"AR\"> <a class='text-dark text-decoration-none font-weight-bold ' href=\"index.php?lg=Ar\">العربية</a> <a class='text-dark text-decoration-none font-weight-bold mr-3' href=\"index.php?lg=Fr\">| Français</a></p>
+            
            
         </div>
+                <div class='header p-0'>
+                <div class='header_content d-flex align-items-center'>
+                        <p id=\"etud\" onclick=\"logingEtudiant()\" style='width:9em;'  class=\"btn  backOrange text-light rounded-pill mr-2 linko\"
+                                data-target=\"#exampleModalCentertype=\"
+                        >". $elements['btn1_navbar'] ."
+                        </p>
+                        <p onclick='reg()' style='width:9em;' class=\" btn rounded-pill backGreen text-light mr-2  linko\"
+                        data-target=\"#exampleModalCentertype=\"
+                        >". $elements['btn2_navbar'] ."
+                </p>
+            </div>
+   
             </div>";
             };
             ?>

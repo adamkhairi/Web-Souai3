@@ -8,7 +8,9 @@ html {
   scroll-behavior: smooth;
 }
 .backro{
-  background-color: $pink !important;
+  background-color: #f4f6ff !important;
+  color: black !important;
+ 
 }
 
 .header {
@@ -52,7 +54,7 @@ html {
 
     .btn-header {
       //place-self: center;
-      @include btn($orange, 18em);
+      @include btn(#10375ce0, 18em);
       font-size: medium;
       font-weight: 600;
       // margin-left: 20px;
@@ -135,21 +137,25 @@ html {
 
 .backGreen {
   // background-color: $green;
-  background: linear-gradient(to left, #f6f1d3, #648880, #395368);
+  // background: linear-gradient(to left, #36A7B9, #1C629D);
+  background-color: #10375ce0;
 
   color: white;
 }
 
 .backOrange {
   // background-color: $orange;
-  background: linear-gradient(to right, #f6f1d3, #648880, #395368);
+  // background: linear-gradient(to right, #f6f1d3, #648880, #395368);
+  background-color: #127681;
   color: white;
 
 }
 
 .backRed {
   // background-color: $lPink;
-  background: linear-gradient(to left, #f6f1d3, #648880, #395368);
+  background-color: #127681;
+
+  // background: linear-gradient(to left, #f6f1d3, #648880, #395368);
   color: white;
 
 }
