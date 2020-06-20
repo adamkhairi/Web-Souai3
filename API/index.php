@@ -7,8 +7,8 @@ if (isset($_SESSION['mails']) && isset($_SESSION['id'])) {
     $run = mysqli_query($conn, $sql);
     $arr = mysqli_fetch_assoc($run);
 } else {
-    $row = $_POST['ids'];
-    $mails = $_POST['emails'];
+    $row = $_GET['ids'];
+    $mails = $_POST['emails_'. $row];
     $sql = "SELECT e.message, e.theDate, e.hours, c.nomcours FROM theevanets e  INNER JOIN cours c ON e.coursID = c.idcours WHERE e.eventID = " . $row . "";
     $run = mysqli_query($conn, $sql);
     $arr = mysqli_fetch_assoc($run);

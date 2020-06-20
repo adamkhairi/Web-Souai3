@@ -143,7 +143,7 @@ if (!empty($_GET['msg'])) {
                               <th scope=\"row\">
                                 <div class=\"custom-control custom-checkbox mr-sm-2\">
                                 <input type='text' hidden name='ids' value='" . $row['4'] . "'>
-                                <input type=\"checkbox\" value='" . $row['3'] . "' class=\"custom-control-input\" id=\"" . $row['3'] . "" . $row['4'] . "\" name='emails[]'>
+                                <input type=\"checkbox\" value='" . $row['3'] . "' class=\"custom-control-input\" id=\"" . $row['3'] . "" . $row['4'] . "\" name='emails_". $row['4'] ."[]'>
                                 <label class=\"custom-control-label\"  for=\"" . $row['3'] . "" . $row['4'] . "\">Choisir</label>
                                 </div>
                               </th>
@@ -157,7 +157,7 @@ if (!empty($_GET['msg'])) {
                             </tbody>
                             </table>
                             <div class=\"text-right\">
-                                <button type=\"submit\" class=\"btn bg-dark text-light m-1 rounded-pill\">Envoyer !</button>
+                                <a href='API/index.php?ids=". $row['4'] ."'><button type=\"submit\" class=\"btn bg-dark text-light m-1 rounded-pill\">Envoyer !</button></a>
                             </div>
                         </div>
                     </form>
