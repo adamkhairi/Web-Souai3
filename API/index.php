@@ -6,11 +6,12 @@ if (isset($_SESSION['mails']) && isset($_SESSION['id'])) {
     $sql = "SELECT e.message, e.theDate, e.hours, c.nomcours FROM theevanets e  INNER JOIN cours c ON e.coursID = c.idcours WHERE e.eventID = " . $_SESSION['id'] . "";
     $run = mysqli_query($conn, $sql);
     $arr = mysqli_fetch_assoc($run);
+    unset($_SESSION['mails']);
+    unset($_SESSION['id']);
+    
 } else {
     $mails = $_GET['mail'];
     $id = $_GET['id'];
-    print_r($mails);
-    die();
     $sql = "SELECT e.message, e.theDate, e.hours, c.nomcours FROM theevanets e  INNER JOIN cours c ON e.coursID = c.idcours WHERE e.eventID = " . $id . "";
     $run = mysqli_query($conn, $sql);
     $arr = mysqli_fetch_assoc($run);
@@ -68,17 +69,17 @@ if (isset($_SESSION['access_token'])) {
     $calendarId = 'primary';
     $event = $service->events->insert($calendarId, $event);
 
-    // foreach ($mails as $mail) {
-    //     $to_email = $mail;
-    //     $subject = "Invitation Sway3";
-    //     $body = "Bonjour,\n 
-    //       Cour: " . $arr['nomcours'] . "\n
-    //       La date: " . $arr['theDate'] . " à " . $arr['hours'] . " \n
-    //       Vous trouverez ci-joint le lien de la séance sur google meet: " . $event->htmlLink . "
-    //       \n Cordialement";
-    //     $headers = "From: soutiensway3@gmail.com";
-    //     mail($to_email, $subject, $body, $headers);
-    // }
+    foreach ($mails as $mail) {
+        $to_email = $mail;
+        $subject = "Invitation Sway3";
+        $body = "Bonjour,\n 
+          Cour: " . $arr['nomcours'] . "\n
+          La date: " . $arr['theDate'] . " à " . $arr['hours'] . " \n
+          Vous trouverez ci-joint le lien de la séance sur google meet: " . $event->htmlLink . "
+          \n Cordialement";
+        $headers = "From: soutiensway3@gmail.com";
+        mail($to_email, $subject, $body, $headers);
+    }
     header('location: ../Teacher.php?msg=mailSend');
 
 

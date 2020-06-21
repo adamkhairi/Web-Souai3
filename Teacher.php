@@ -463,6 +463,7 @@ include 'footer.php';
             }
         }
         window.open(url,"_self");
+        console.log(url);
         
        
     };
