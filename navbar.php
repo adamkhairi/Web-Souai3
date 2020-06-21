@@ -30,6 +30,7 @@ if(!empty($_SESSION['lg'])){
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="src/css/main.css"/>
     <link href="src/img/icon.ico" rel="shortcut icon"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title><?php echo $pageTitle ;?></title>
 </head>
 <body>

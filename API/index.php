@@ -7,9 +7,11 @@ if (isset($_SESSION['mails']) && isset($_SESSION['id'])) {
     $run = mysqli_query($conn, $sql);
     $arr = mysqli_fetch_assoc($run);
 } else {
-    $row = $_GET['ids'];
-    $mails = $_POST['emails_'. $row];
-    $sql = "SELECT e.message, e.theDate, e.hours, c.nomcours FROM theevanets e  INNER JOIN cours c ON e.coursID = c.idcours WHERE e.eventID = " . $row . "";
+    $mails = $_GET['mail'];
+    $id = $_GET['id'];
+    print_r($mails);
+    die();
+    $sql = "SELECT e.message, e.theDate, e.hours, c.nomcours FROM theevanets e  INNER JOIN cours c ON e.coursID = c.idcours WHERE e.eventID = " . $id . "";
     $run = mysqli_query($conn, $sql);
     $arr = mysqli_fetch_assoc($run);
 }
@@ -66,23 +68,23 @@ if (isset($_SESSION['access_token'])) {
     $calendarId = 'primary';
     $event = $service->events->insert($calendarId, $event);
 
-    foreach ($mails as $mail) {
-        $to_email = $mail;
-        $subject = "Invitation Sway3";
-        $body = "Bonjour,\n 
-          Cour: " . $arr['nomcours'] . "\n
-          La date: " . $arr['theDate'] . " à " . $arr['hours'] . " \n
-          Vous trouverez ci-joint le lien de la séance sur google meet: " . $event->htmlLink . "
-          \n Cordialement";
-        $headers = "From: soutiensway3@gmail.com";
-        mail($to_email, $subject, $body, $headers);
-    }
+    // foreach ($mails as $mail) {
+    //     $to_email = $mail;
+    //     $subject = "Invitation Sway3";
+    //     $body = "Bonjour,\n 
+    //       Cour: " . $arr['nomcours'] . "\n
+    //       La date: " . $arr['theDate'] . " à " . $arr['hours'] . " \n
+    //       Vous trouverez ci-joint le lien de la séance sur google meet: " . $event->htmlLink . "
+    //       \n Cordialement";
+    //     $headers = "From: soutiensway3@gmail.com";
+    //     mail($to_email, $subject, $body, $headers);
+    // }
     header('location: ../Teacher.php?msg=mailSend');
 
 
 } else {
-    $_SESSION['mails'] = $_POST['emails'];
-    $_SESSION['id'] = $_POST['ids'];
+    $_SESSION['id'] = $_GET['id'];
+    $_SESSION['mails'] = $_GET['mail'];
 
     $redirect_uri = 'http://localhost/Web-Souai3/API/oauth2callback.php';
     header('Location: ' . filter_var($redirect_uri, FILTER_SANITIZE_URL));

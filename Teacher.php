@@ -120,7 +120,7 @@ if (!empty($_GET['msg'])) {
                     <div id=\"exit\" onclick='hidelist(" . $Arr['eventID'] . ")'>
                         <i class=\"fas fa-times\"></i>
                     </div>
-                    <form action=\"API/index.php\" method=\"post\">
+         
                         <div class=\"table-responsive\">
                             <table class=\"table\">
                                 <thead class=\" thead-dark\">
@@ -142,31 +142,35 @@ if (!empty($_GET['msg'])) {
                             <tr>
                               <th scope=\"row\">
                                 <div class=\"custom-control custom-checkbox mr-sm-2\">
-                                <input type=\"checkbox\" value='" . $row['3'] . "' class=\"custom-control-input\" id=\"" . $row['3'] . "" . $row['4'] . "\" name='emails_". $row['4'] ."[]'>
+                                <input type=\"checkbox\" value='" . $row['3'] . "' class=\"custom-control-input name\" id=\"" . $row['3'] . "" . $row['4'] . "\" name='emails_". $row['4'] ."[]'>
                                 <label class=\"custom-control-label\"  for=\"" . $row['3'] . "" . $row['4'] . "\">Choisir</label>
                                 </div>
+                                <input hidden 
                               </th>
                               <td>" . $row['2'] . "</td>
                               <td>" . $row['1'] . "</td>
                               <td>" . $row['3'] . "</td>
                             </tr>  
+                            <input hidden id='m' name='m' >
                     ";
                     };
                     echo "
                             </tbody>
                             </table>
                             <div class=\"text-right\">
-                                <a href='API/index.php?ids=<?php echo $row[4] ?>'><button type=\"submit\" class=\"btn bg-dark text-light m-1 rounded-pill\">Envoyer !</button></a>
+                                <button type=\"button\" onclick='send_mails(`". $row['4'] ."`)' class=\"btn bg-dark text-light m-1 rounded-pill\">Envoyer !</button>
                                </div>
                         </div>
-                    </form>
+           
                 </div>
             </section>
         </div>
      </div>       
         ";
                 }
+              
             };
+  
             ?>
         </div>
     </div>
@@ -313,6 +317,7 @@ if (!empty($_GET['msg'])) {
         </div>
     </div>
 </div>
+
 <?php
 include 'footer.php';
 ?>
@@ -445,6 +450,21 @@ include 'footer.php';
         document.getElementById('cour_id').value = id;
         document.getElementById('paraghra').textContent = `${id5} - ${id4} - ${id3} - ${id2}`;
 
+    };
+    
+
+    function send_mails(v2){
+        let url = 'API/index.php?id=' + v2;
+        let ar = document.getElementsByClassName('name');
+        for (let i = 0 ; i < ar.length; i++){
+            if(ar[i].checked){
+                let x = ar[i].value;
+                url = url + '&mail[]=' + x;
+            }
+        }
+        window.open(url,"_self");
+        
+       
     };
 
 </script>

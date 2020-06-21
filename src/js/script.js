@@ -7,3 +7,4 @@ add_event_btn.addEventListener('click' , () => {
 img_close.addEventListener('click' , () => {
     pop_events.style.display = 'none';
 });
+
