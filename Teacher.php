@@ -451,8 +451,6 @@ include 'footer.php';
         document.getElementById('paraghra').textContent = `${id5} - ${id4} - ${id3} - ${id2}`;
 
     };
-    
-
     function send_mails(v2){
         let url = 'API/index.php?id=' + v2;
         let ar = document.getElementsByClassName('name');
@@ -462,10 +460,7 @@ include 'footer.php';
                 url = url + '&mail[]=' + x;
             }
         }
-        window.open(url,"_self");
-        console.log(url);
-        
-       
+        window.open(url,"_self");       
     };
 
 </script>

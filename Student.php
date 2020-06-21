@@ -29,7 +29,18 @@ if(!empty($_GET['m'])){
                   </button>
                 </div>
                         ";
-                    }
+            }elseif ($_GET['m'] == 'get_mail') {
+                //        echo "<script>alert('Votre inscription a été effectué avec succès.')</script>";
+                        echo "
+                
+                <div class=\"alert alert-primary text-center m-0 alert-dismissible fade show\" role=\"alert\">
+                  Une fois vous accepté vous recevez un email
+                  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+                    <span aria-hidden=\"true\">&times;</span>
+                  </button>
+                </div>
+                        ";
+            }
 }
 
 
