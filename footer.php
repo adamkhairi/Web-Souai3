@@ -12,12 +12,16 @@
                 <i class="fab fa-facebook-square " style="color: #10375ce0;font-size: 3em"></i>
             </a>
 
-            <a href="https://twitter.com/sway311" class="m-2">
-                <i class="fab fa-twitter-square"style="color:#10375ce0;font-size: 3em"></i>
-            </a>
-
             <a href="https://www.youtube.com/channel/UCjqxtZ9Rc2QM7VWGhsJThBg" class="m-2">
                 <i class="fab fa-youtube-square"style="color: #10375ce0;font-size: 3em"></i>
+            </a>
+
+            <a href="https://www.instagram.com/sway3_maroc/" class="m-2">
+                <i class="fab fa-instagram-square" style="color: #10375ce0;font-size: 3em"></i>
+            </a>
+
+            <a href="https://twitter.com/sway311" class="m-2">
+                <i class="fab fa-twitter-square"style="color:#10375ce0;font-size: 3em"></i>
             </a>
 
         </div>
