@@ -8,15 +8,15 @@
 
 
         <div class="row w-25 justify-content-center p-2  pb-4 rounded-lg ">
-            <a href="#" class="m-2">
+            <a href="https://www.facebook.com/Sway3-101065184982770" class="m-2">
                 <i class="fab fa-facebook-square " style="color: #10375ce0;font-size: 3em"></i>
             </a>
 
-            <a href="#" class="m-2">
+            <a href="https://twitter.com/sway311" class="m-2">
                 <i class="fab fa-twitter-square"style="color:#10375ce0;font-size: 3em"></i>
             </a>
 
-            <a href="#" class="m-2">
+            <a href="https://www.youtube.com/channel/UCjqxtZ9Rc2QM7VWGhsJThBg" class="m-2">
                 <i class="fab fa-youtube-square"style="color: #10375ce0;font-size: 3em"></i>
             </a>
 
