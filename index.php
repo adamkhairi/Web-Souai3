@@ -1,6 +1,6 @@
 <?php
 require("connexion.php");
-$pageTitle = "Bienvenu dans Sway3";
+$pageTitle = "Bienvenue dans Sway3";
 include("navbar.php");
 if (!empty($_GET['msg'])) {
 
@@ -9,7 +9,7 @@ if (!empty($_GET['msg'])) {
         echo "
 
 <div class=\"alert alert-success m-0 alert-dismissible fade show\" role=\"alert\">
-  <strong>Bienvenu !</strong> Votre inscription a été effectué avec succès.
+  <strong>Bienvenue !</strong> Votre inscription a été effectué avec succès.
   <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
     <span aria-hidden=\"true\">&times;</span>
   </button>
@@ -182,18 +182,27 @@ if (!empty($_GET['msg'])) {
                         <h1 class=" animate__slideInLeft"><?php echo $elements['title_1'] ?></h1>
                         <p class="animate__slideInLeft"><?php echo $elements['para_1'] ?></p>
                     </div>
-                    <div class="btn_for_login ">
+                    <?php 
+                    if(empty($_SESSION['mail']) && empty($_SESSION['mailb'])){
+                        echo '
+                        
+                        <div class="btn_for_login ">
+    
+    
+                            <button id="etud" onclick="logingEtudiant()" class="btn btn-header"
+                                    data-target="#exampleModalCentertype="
+                            >'.  $elements['btn_1'] .'
+                            </button>
+    
+                            <button id="prof" onclick="logingTeacher()" class="btn btn-header backro"
+                                    data-target="#exampleModalCentertype="
+                            >'. $elements['btn_2'] .'
+                            </button>
+                        </div>
+                        ';
 
-                        <button id="etud" onclick="logingEtudiant()" class="btn btn-header"
-                                data-target="#exampleModalCentertype="
-                        ><?php echo $elements['btn_1'] ?>
-                        </button>
-
-                        <button id="prof" onclick="logingTeacher()" class="btn btn-header backro"
-                                data-target="#exampleModalCentertype="
-                        ><?php echo $elements['btn_2'] ?>
-                        </button>
-                    </div>
+                    }
+                    ?>
                 </div>
                 <div class="" data-aos="zoom-in-up">
 
@@ -214,7 +223,14 @@ if (!empty($_GET['msg'])) {
 
                         <h1 class="left"><?php echo $elements['title_2'] ?></h1>
                         <p class="left"><?php echo $elements['para_2'] ?>.</p>
-                        <button id="register" class="btn backGreen btn-header" stye="background-color:#10375ce0 ;" type="button"><?php echo $elements['btn_3'] ?></button>
+                        <?php 
+                        if(empty($_SESSION['mail']) && empty($_SESSION['mailb'])){
+                            echo '
+                            
+                            <button id="register" class="btn backGreen btn-header" stye="background-color:#10375ce0 ;" type="button">' .$elements['btn_3'] .'</button>
+                            ';
+                        }
+                        ?>
 
                     </div>
                 </div>

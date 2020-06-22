@@ -86,7 +86,7 @@ if (!empty($_GET['msg'])) {
         <div class="d-flex justify-content-around flex-wrap align-items-center">
             <?php
             setlocale(LC_ALL, 'fr_FR');
-            $sql = "SELECT e.coursID,e.message , e.hours, e.theDate, c.nomcours, e.eventID  FROM theevanets e INNER JOIN cours c ON e.coursID = c.idcours WHERE e.ProfID = ". $_SESSION['idProf'] ."";
+            $sql = "SELECT e.coursID,e.message , e.hours, e.theDate, c.nomcours, e.eventID  FROM theevanets e INNER JOIN cours c ON e.coursID = c.idcours WHERE e.ProfID = ". $_SESSION['idProf'] ." AND e.theDate > CURRENT_DATE";
             $run = mysqli_query($conn, $sql);
             $Arry = mysqli_fetch_all($run, MYSQLI_ASSOC);
             if ($run = mysqli_query($conn, $sql)) {
