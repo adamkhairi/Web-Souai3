@@ -131,9 +131,6 @@ if(!empty($_GET['m'])){
         <?php
         if (!empty($_SESSION['mail'])) {
             $idetudiant = $_SESSION['userid'];
-            // $sql = "SELECT d.idetudiantc, d.iddemande ,d.cours, e.eventID , b.nombenevole ,b.prenombenevole ,e.hours ,e.theDate, c.nomcours FROM demande d INNER JOIN theevanets e ON d.cours = e.coursID INNER JOIN 
-            //         benevole b ON e.ProfID = b.idbenevole INNER JOIN cours c ON c.idcours = e.coursID WHERE e.delay > CURRENT_DATE;";
-            // $sql = "SELECT e.coursID, e.eventID , b.nombenevole ,b.prenombenevole ,e.hours ,e.theDate, c.nomcours FROM theevanets e INNER JOIN cours c ON e.coursID = c.idcours INNER JOIN matiere m ON c.idmatiere = m.idmatiere INNER JOIN benevole b ON b.idbenevole = e.ProfID  WHERE m.idfiliere = ". $_SESSION['filiere'] ." AND e.delay > CURRENT_DATE ;";
             $sql = "SELECT e.coursID, e.eventID , b.nombenevole ,b.prenombenevole ,e.hours ,e.theDate, c.nomcours FROM theevanets e INNER JOIN cours c ON e.coursID = c.idcours INNER JOIN matiere m ON c.idmatiere = m.idmatiere INNER JOIN benevole b ON b.idbenevole = e.ProfID WHERE NOT EXISTS(SELECT idetudiant FROM reponce WHERE idevent = e.eventID AND idetudiant = ". $_SESSION['userid'] .") AND m.idfiliere = '". $_SESSION['filiere'] ."' AND e.delay > CURRENT_DATE ";
             $exec_requete = mysqli_query($conn, $sql);
             $reponse = mysqli_fetch_array($exec_requete);

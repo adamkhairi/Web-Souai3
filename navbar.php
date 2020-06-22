@@ -31,6 +31,7 @@ if(!empty($_SESSION['lg'])){
     <link rel="stylesheet" href="src/css/main.css"/>
     <link href="src/img/icon.ico" rel="shortcut icon"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="normalize.css">
     <title><?php echo $pageTitle ;?></title>
 </head>
 <body>
