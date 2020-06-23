@@ -10,8 +10,9 @@ session_start();
     $delay = $_POST['lastdate'];
     $timestamp = strtotime($hours) + 60*60;
     $time = date('H:i', $timestamp);
-   //TODO check if this requet correct
-    $sql1 = "SELECT COUNT(ProfID) AS n FROM theevanets WHERE ProfID = ". $idProuf ." AND theDate = '". $date ."' AND hours >= '". $hours ."' AND hours <= '". $time ."'";
+    $timestamp1 = strtotime($hours) - 60*60;
+    $time1 = date('H:i', $timestamp1);
+    $sql1 = "SELECT COUNT(ProfID) AS n FROM theevanets WHERE ProfID = ". $idProuf ." AND theDate = '". $date ."' AND hours >= '". $time1 ."' AND hours <= '". $time ."'";
     $select = mysqli_query($conn, $sql1);
     $select = mysqli_fetch_array($select);
     if (!empty($hours && $date) && $select['n'] == 0) {
