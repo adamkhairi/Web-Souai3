@@ -1,21 +1,24 @@
 <?php
 require("connexion.php");
 session_start();
-// $matiere = $_POST['matiere'];
-// if (isset($matiere)) {
+
     $cours = $_POST['selCours'];
     $date = $_POST['date'];
     $hours = $_POST['hours'];
     $message = $_POST['message'];
     $idProuf = $_SESSION['idProf'];
     $delay = $_POST['lastdate'];
-    if (!empty($hours && $date)) {
-        $sql = "INSERT INTO `theevanets`(`coursID`, `ProfID`, `message`, `hours`, `theDate`, `delay`) 
-VALUES ('" . $cours . "','" . $idProuf . "','" . $message . "','" . $hours . "','" . $date . "','" . $delay . "') ";
+    $timestamp = strtotime($hours) + 60*60;
+    $time = date('H:i', $timestamp);
+   //TODO check if this requet correct
+    $sql1 = "SELECT COUNT(ProfID) AS n FROM theevanets WHERE ProfID = ". $idProuf ." AND theDate = '". $date ."' AND hours >= '". $hours ."' AND hours <= '". $time ."'";
+    $select = mysqli_query($conn, $sql1);
+    $select = mysqli_fetch_array($select);
+    if (!empty($hours && $date) && $select['n'] == 0) {
+        $sql = "INSERT INTO `theevanets`(`coursID`, `ProfID`, `message`, `hours`, `theDate`, `delay`) VALUES ('" . $cours . "','" . $idProuf . "','" . $message . "','" . $hours . "','" . $date . "','" . $delay . "') ";
         $select = mysqli_query($conn, $sql);
         header("location: Teacher.php?msg=done");
-    } else {
-        echo "<script>alert('veuillez compléter les informations')</script>";
-    }
-// }
+    }else {
+        header("location: Teacher.php?msg=NotDone");
+}
 ?>

@@ -29,7 +29,17 @@ if (!empty($_GET['msg'])) {
           </button>
         </div>
                 ";
-    }
+    }elseif ($_GET['msg'] == 'NotDone') {
+        echo "
+
+        <div class=\"alert alert-danger text-center m-0 alert-dismissible fade show\" role=\"alert\">
+        Vous avez déjà créé un évènement du même date et heure, merci de choisir une autre date.
+          <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+            <span aria-hidden=\"true\">&times;</span>
+          </button>
+        </div>
+                ";
+    } 
 }
 ?>
 <div class="vertical-nav pt-lg-5" id="sidebar">
