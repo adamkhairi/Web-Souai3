@@ -176,7 +176,7 @@ if (!empty($_GET['msg'])) {
     <section class="header section backGreen ">
         <div class="container-fluid">
             <div class="header_content">
-                <div class="left d-flex flex-column justify-content-center align-items-center">
+                <div class="left bg-img d-flex flex-column justify-content-center align-items-center">
                     <div data-aos="flip-right" class="w-75">
 
                         <h1 class=" animate__slideInLeft"><?php echo $elements['title_1'] ?></h1>
@@ -204,18 +204,17 @@ if (!empty($_GET['msg'])) {
                     }
                     ?>
                 </div>
-                <div class="" data-aos="zoom-in-up">
-
-                    <img class="header_img" src="src/img/undraw_exams_g4ow.svg" alt="img">
+                <div class="w-50  h-100" data-aos="zoom-in-up">
+                    <img class="m-1  w-100 h-100" src="src/img/Asset 1.svg" alt="img">
                 </div>
             </div>
     </section>
     <section class="header section backOrange">
         <div class="container-fluid">
             <div class="header_content">
-                <div class="" data-aos="zoom-in-up">
+                <div class="w-50 bg-img" data-aos="zoom-in-up">
 
-                    <img class="header_img" src="src/img/undraw_researching_22gp.svg" alt="">
+                    <img class="m-1 w-100 h-100"  src="src/img/Asset 3.svg" alt="">
                 </div>
                 <div class=" left d-flex flex-column justify-content-center align-items-center" data-aos="flip-left">
 

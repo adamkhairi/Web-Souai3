@@ -68,7 +68,6 @@ html {
 
 
     .header_img {
-      max-width: 40em;
       margin: 1em;
     }
   }
@@ -119,12 +118,13 @@ html {
 
     .btn-header {
       //place-self: center;
-      @include btn($orange, 15 xem);
+      // @include btn(#579c9f, 15em);
       font-size: larger;
+      background-color: #579c9f !important;
 
     }
     .btnG {
-      @include btn($green, 17em);
+      @include btn(#579c9f, 17em);
 
     }
 
@@ -136,18 +136,14 @@ html {
 
 
 .backGreen {
-  // background-color: $green;
-  // background: linear-gradient(to left, #36A7B9, #1C629D);
-  background-color: #10375ce0;
-
-  color: white;
+  background-color: #afe9e1;
+  color:#579c9f;
 }
 
 .backOrange {
-  // background-color: $orange;
-  // background: linear-gradient(to right, #f6f1d3, #648880, #395368);
-  background-color: #127681;
-  color: white;
+
+  background-color: #c0dd7a;
+  color:#4f6F22;
 
 }
 
@@ -170,4 +166,13 @@ html {
 }
 .hide{
   display: none ;
+}
+.bg-img{
+  background-image:url('../../src/img/Asset 5.svg');
+  background-repeat: no-repeat;
+  // background-size: cover;
+  backface-visibility: 3;
+  background-position: center ;
+  // padding: 120px;
+
 }
